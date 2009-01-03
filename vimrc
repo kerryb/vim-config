@@ -60,10 +60,10 @@ imap <c-s> <esc><c-s>
 
 set guioptions-=T
 if has("gui_running")
-	"tell the term has 256 colors
-	set t_Co=256
-	colorscheme vibrantink
-  set transparency=7
+  "tell the term has 256 colors
+  set t_Co=256
+  colorscheme vibrantink
+  " set transparency=7
   set lines=40
   set columns=115
 else

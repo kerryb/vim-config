@@ -1,6 +1,7 @@
 h1. Usage
 
-In your home directory, run:
+In your home directory (Linux or Mac), run:
+
 <pre><code>
 mv ~/.vim ~/vim_old # backup your old .vim folder
 git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
@@ -8,3 +9,25 @@ git clone git://github.com/akitaonrails/vimfiles.git ~/.vim
 mv ~/.vimrc ~/vimrc_old
 mv ~/.vim/vimrc ~/.vimrc
 </code></pre>
+
+If you're using Windows do the following under C:\Documents and Settings\Your_User
+
+<pre><code>
+git clone git://github.com/akitaonrails/vimfiles.git vimfiles
+move vimfiles\vimrc _vimrc
+copy vimfiles\snippets.vim.win32 vimfiles\after\plugin\snippets.vim
+</code></pre>
+
+Still on Windows, edit your _vimrc to replace this line:
+
+<pre><code>
+set guifont=Monaco:h13
+</code></pre>
+
+for this one:
+
+<pre><code>
+set guifont=Consolas:h13
+</code></pre>
+
+Monaco is for Mac, Consolas is for Windows. Under Linux better try "Bitstream Vera Sans Mono"
