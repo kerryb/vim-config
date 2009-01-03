@@ -54,6 +54,7 @@ endfunction
 
 if s:inRailsEnv()
     call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-rails', 'ruby')
+    call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-rspec', 'ruby')
 else
     "create merb snippets
 endif
@@ -61,6 +62,7 @@ endif
 "eruby {{{1
 if s:inRailsEnv()
     call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/eruby-rails', 'eruby')
+    call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-rails-rjs', 'javascript')
 else
     "create merb snippets
 endif

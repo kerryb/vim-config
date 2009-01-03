@@ -1,173 +1,87 @@
-"Use Vim settings, rather then Vi settings (much better!).
-"This must be first, because it changes other options as a side effect.
-set nocompatible
-
-"allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-"store lots of :cmdline history
-set history=1000
-
-set showcmd     "show incomplete cmds down the bottom
-set showmode    "show current mode down the bottom
-
-set incsearch   "find the next match as we type the search
-set hlsearch    "hilight searches by default
-
-set nowrap      "dont wrap lines
-set linebreak   "wrap lines at convenient points
-
-"Add the variable with the name a:varName to the statusline. Highlight it as
-"'error' unless its value is in a:goodValues (a comma separated string)
-function! AddStatuslineFlag(varName, goodValues)
-  set statusline+=%#error#
-  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',1)}"
-  set statusline+=%*
-  exec "set statusline+=%{RenderStlFlag(".a:varName.",'".a:goodValues."',0)}"
-endfunction
-
-"returns a:value or ''
-"
-"a:goodValues is a comma separated string of values that shouldn't be
-"highlighted with the error group
-"
-"a:error indicates whether the string that is returned will be highlighted as
-"'error'
-"
-function! RenderStlFlag(value, goodValues, error)
-  let goodValues = split(a:goodValues, ',', 1)
-  let good = index(goodValues, a:value) != -1
-  if (a:error && !good) || (!a:error && good)
-    return '[' . a:value . ']'
-  else
-    return ''
-  endif
-endfunction
-
-"statusline setup
-set statusline=%f       "tail of the filename
-call AddStatuslineFlag('&ff', 'unix,')    "fileformat
-call AddStatuslineFlag('&fenc', 'utf-8,') "file encoding
-set statusline+=%h      "help file flag
-set statusline+=%y      "filetype
-set statusline+=%r      "read only flag
-set statusline+=%m      "modified flag
-
-"display a warning if &et is wrong, or we have mixed-indenting
-set statusline+=%#error#
-set statusline+=%{StatuslineTabWarning()}
-set statusline+=%*
-
-set statusline+=%{StatuslineTrailingSpaceWarning()}
-
-"display a warning if &paste is set
-set statusline+=%#error#
-set statusline+=%{&paste?'[paste]':''}
-set statusline+=%*
-
-set statusline+=%=      "left/right separator
-set statusline+=%{StatuslineCurrentHighlight()}\ \ "current highlight
-set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,perl,tex set shiftwidth=2
+ 
+autocmd FileType c,cpp,java,javascript,python,xml,xhtml,html set shiftwidth=2
+ 
+augroup filetypedetect
+  au! BufNewFile,BufRead *.ch setf cheat
+  au BufNewFile,BufRead *.liquid setf liquid
+  au! BufRead,BufNewFile *.haml setfiletype haml
+  autocmd BufNewFile,BufRead *.yml setf eruby
+augroup END
+ 
+autocmd BufNewFile,BufRead *_test.rb source ~/.vim/ftplugin/shoulda.vim
+"use \rci in normal mode to indent ruby code,should install kode ,sudo gem
+"install kode
+nmap <leader>rci :%!ruby-code-indenter<cr>
+ 
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" Load matchit (% to bounce from do to end, etc.)
+runtime! plugin/matchit.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+ 
+" Minibuffer Explorer Settings
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+ 
+" Change which file opens after executing :Rails command
+let g:rails_default_file='config/database.yml'
+ 
+set nocompatible          " We're running Vim, not Vi!
+set guifont=Monaco:h13
+set guitablabel=%M%t
+set nobackup
+set nowritebackup
+set path=$PWD/public/**,$PWD/**
+filetype plugin indent on " Enable filetype-specific indenting and plugins
+set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+set guioptions-=m
+set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
 set laststatus=2
 
-"recalculate the trailing whitespace warning when idle, and after saving
-autocmd cursorhold,bufwritepost * unlet! b:statusline_trailing_space_warning
+map <C-q> :mksession! ~/.vim/.session <cr>
+map <C-//> map ,# :s/^/#/<CR>
+map <S-//> :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR><Esc>:nohlsearch<CR>
+imap <M-Up> :tabn<CR>
+imap <M-Down> :tabp<CR>
+imap <c-s> <esc><c-s>
 
-"return '[\s]' if trailing white space is detected
-"return '' otherwise
-function! StatuslineTrailingSpaceWarning()
-    if !exists("b:statusline_trailing_space_warning")
-        if search('\s\+$', 'nw') != 0
-            let b:statusline_trailing_space_warning = '[\s]'
-        else
-            let b:statusline_trailing_space_warning = ''
-        endif
-    endif
-    return b:statusline_trailing_space_warning
-endfunction
-
-
-"return the syntax highlight group under the cursor ''
-function! StatuslineCurrentHighlight()
-    let name = synIDattr(synID(line('.'),col('.'),1),'name')
-    if name == ''
-        return ''
-    else
-        return '[' . name . ']'
-    endif
-endfunction
-
-"recalculate the tab warning flag when idle and after writing
-autocmd cursorhold,bufwritepost * unlet! b:statusline_tab_warning
-
-"return '[&et]' if &et is set wrong
-"return '[mixed-indenting]' if spaces and tabs are used to indent
-"return an empty string if everything is fine
-function! StatuslineTabWarning()
-    if !exists("b:statusline_tab_warning")
-        let tabs = search('^\t', 'nw') != 0
-        let spaces = search('^ ', 'nw') != 0
-
-        if tabs && spaces
-            let b:statusline_tab_warning =  '[mixed-indenting]'
-        elseif (spaces && !&et) || (tabs && &et)
-            let b:statusline_tab_warning = '[&et]'
-        else
-            let b:statusline_tab_warning = ''
-        endif
-    endif
-    return b:statusline_tab_warning
-endfunction
-
-"indent settings
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set autoindent
-
-"folding settings
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
-
-set wildmode=list:longest   "make cmdline tab completion similar to bash
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-
-"display tabs and trailing spaces
-set list
-set listchars=tab:▷⋅,trail:⋅,nbsp:⋅
-
-set formatoptions-=o "dont continue comments when pushing o/O
-
-"vertical/horizontal scroll off settings
-set scrolloff=3
-set sidescrolloff=7
-set sidescroll=1
-
-"load ftplugins and indent files
-filetype plugin on
-filetype indent on
-
-"turn on syntax highlighting
-syntax on
-
-"some stuff to get the mouse going in term
-set mouse=a
-set ttymouse=xterm2
-
-"tell the term has 256 colors
-set t_Co=256
-
-"hide buffers when not displayed
-set hidden
-
-"dont load csapprox if we no gui support - silences an annoying warning
-if !has("gui")
-    let g:CSApprox_loaded = 1
+set guioptions-=T
+if has("gui_running")
+	"tell the term has 256 colors
+	set t_Co=256
+	colorscheme vibrantink
+  set transparency=7
+  set lines=40
+  set columns=115
+else
+  let g:CSApprox_loaded = 0
 endif
+
+syntax on                 " Enable syntax highlighting
+ 
+" Load matchit (% to bounce from do to end, etc.)
+runtime! macros/matchit.vim
+set nonumber
+ 
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+augroup END
 
 "make <c-l> clear the highlight as well as redraw
 nnoremap <C-L> :nohls<CR><C-L>
@@ -184,6 +98,68 @@ noremap Q gq
 
 "make Y consistent with C and D
 nnoremap Y y$
+
+map <leader>b :FuzzyFinderBuffer<CR>
+map <leader>] :FuzzyFinderMruFile<CR>
+map <leader>r :ruby finder.rescan!<CR>
+map ,t :Rake<CR>
+
+let g:proj_flags="imstg"
+let g:fuzzy_ceiling=20000
+let g:fuzzy_matching_limit=25
+let g:fuzzy_ignore = "gems/*, log/*"
+set cursorline
+
+"folding settings
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+set wildmode=list:longest   "make cmdline tab completion similar to bash
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+
+"vertical/horizontal scroll off settings
+set scrolloff=3
+set sidescrolloff=7
+set sidescroll=1
+
+set cf  " Enable error files & error jumping.
+set clipboard+=unnamed  " Yanks go on clipboard instead.
+set history=256  " Number of things to remember in history.
+set autowrite  " Writes on make/shell commands
+set ruler  " Ruler on
+set nu  " Line numbers on
+set nowrap  " Line wrapping off
+set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
+" colorscheme vividchalk  " Uncomment this to set a default theme
+ 
+" Formatting (some of these are for coding in C and C++)
+set ts=2  " Tabs are 2 spaces
+set bs=2  " Backspace over everything in insert mode
+set shiftwidth=2  " Tabs under smart indent
+set nocp incsearch
+set cinoptions=:0,p0,t0
+set cinwords=if,else,while,do,for,switch,case
+set formatoptions=tcqr
+set cindent
+set autoindent
+set smarttab
+set expandtab
+ 
+" Visual
+set showmatch  " Show matching brackets.
+set mat=5  " Bracket blinking.
+set list
+" Show $ at end of line and trailing space as ~
+set lcs=tab:\ \ ,extends:>,precedes:<
+set novisualbell  " No blinking .
+set noerrorbells  " No noise.
+set laststatus=2  " Always show status line.
+ 
+" gvim specific
+set mousehide  " Hide mouse after chars typed
+set mouse=a  " Mouse in all modes
 
 "visual search mappings
 function! s:VSetSearch()
