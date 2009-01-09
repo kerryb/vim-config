@@ -40,7 +40,7 @@ let g:miniBufExplModSelTarget = 1
 let g:rails_default_file='config/database.yml'
  
 set nocompatible          " We're running Vim, not Vi!
-set guifont=Monaco:h13
+set guifont=monaco
 set guitablabel=%M%t
 set nobackup
 set nowritebackup
@@ -62,12 +62,20 @@ set guioptions-=T
 if has("gui_running")
   "tell the term has 256 colors
   set t_Co=256
-  colorscheme vibrantink
-  " set transparency=7
+  colorscheme desert 
   set lines=40
   set columns=115
 else
   let g:CSApprox_loaded = 0
+endif
+
+colorscheme railscasts
+
+if $COLORTERM == 'gnome-terminal'
+  set term=gnome-256color
+  colorscheme railscasts
+else
+  colorscheme default
 endif
 
 syntax on                 " Enable syntax highlighting
@@ -93,7 +101,8 @@ inoremap <C-L> <C-O>:nohls<CR>
 nnoremap <C-B> :BufExplorer<cr>
 
 "map to fuzzy finder text mate stylez
-nnoremap <c-t> :FuzzyFinderTextMate<CR>
+"nnoremap <c-f> :FuzzyFinderMruFile<CR>
+nnoremap <c-f> :FuzzyFinderTextMate<CR>
 
 "map Q to something useful
 noremap Q gq
@@ -134,7 +143,6 @@ set ruler  " Ruler on
 set nu  " Line numbers on
 set nowrap  " Line wrapping off
 set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)
-" colorscheme vividchalk  " Uncomment this to set a default theme
  
 " Formatting (some of these are for coding in C and C++)
 set ts=2  " Tabs are 2 spaces
@@ -148,7 +156,16 @@ set cindent
 set autoindent
 set smarttab
 set expandtab
- 
+
+let g:rubycomplete_buffer_loading = 1
+let g:rubycomplete_classes_in_global = 1
+let g:rubycomplete_rails = 1
+let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+" BEGIN rails-toolkit settings
+runtime debian.vim
+runtime macros/rails-toolkit.vim
+" " END rails-toolkit setting
+
 " Visual
 set showmatch  " Show matching brackets.
 set mat=5  " Bracket blinking.
@@ -229,3 +246,40 @@ function! <SID>AvailableTemplates(lead, cmdline, cursorpos)
     "chop off the templateDir from each file
     return map(files, 'strpart(v:val,strlen(templateDir))')
 endfunction
+
+" CTRL-R reloads the ~/.vimrc file
+nnoremap <C-R> :source ~/.vimrc
+inoremap <C-R> <C-O>:source ~/.vimrc
+vnoremap <C-R> <C-C>:source ~/.vimrc
+
+" CTRL-T and CTRL-D indent and unindent blocks
+inoremap <C-D> <C-O><LT><LT>
+nnoremap <C-D> <LT><LT>
+vnoremap <C-T> >
+vnoremap <C-D> <LT>
+
+" CTRL-Z undoes even in visual/selection mode
+vnoremap <C-Z> <C-C>
+
+" Copy selected lines to the system clipboard
+vmap <C-c> y: call system("xclip -i -selection clipboard", getreg("\""))<CR>
+
+" Run Rspec for the current spec file
+function! RunRspec()
+ruby << EOF
+  buffer = VIM::Buffer.current
+  spec_file=VIM::Buffer.current.name
+  command = "ruby ~/.vim/bin/run_rspec.rb #{spec_file}"
+  print "Running Rspec for #{spec_file}. Results will be displayed in Firefox."
+  system(command)
+EOF
+endfunction
+map <F7> :call RunRspec()<cr>
+
+" Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
+let g:browser = 'firefox -new-tab '     
+function! OpenRubyDoc(keyword)
+  let url = 'http://apidock.com/ruby/'.a:keyword
+  exec '!'.g:browser.' '.url.' &'
+endfunction           
+noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
