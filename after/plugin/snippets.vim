@@ -55,6 +55,8 @@ endfunction
 if s:inRailsEnv()
     call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-rails', 'ruby')
     call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-rspec', 'ruby')
+    " create factory-girl snippets
+    call NERDSnippetsFromDirectoryForFiletype('~/.vim/snippets/ruby-factorygirl', 'ruby')
 else
     "create merb snippets
 endif

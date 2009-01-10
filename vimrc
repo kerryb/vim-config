@@ -67,15 +67,15 @@ if has("gui_running")
   set columns=115
 else
   let g:CSApprox_loaded = 0
+  colorscheme desert
 endif
 
-colorscheme railscasts
 
 if $COLORTERM == 'gnome-terminal'
   set term=gnome-256color
-  colorscheme railscasts
+  colorscheme desert
 else
-  colorscheme default
+  colorscheme desert
 endif
 
 syntax on                 " Enable syntax highlighting
@@ -101,7 +101,6 @@ inoremap <C-L> <C-O>:nohls<CR>
 nnoremap <C-B> :BufExplorer<cr>
 
 "map to fuzzy finder text mate stylez
-"nnoremap <c-f> :FuzzyFinderMruFile<CR>
 nnoremap <c-f> :FuzzyFinderTextMate<CR>
 
 "map Q to something useful
@@ -178,7 +177,7 @@ set laststatus=2  " Always show status line.
  
 " gvim specific
 set mousehide  " Hide mouse after chars typed
-set mouse=a  " Mouse in all modes
+"set mouse=a  " Mouse in all modes
 
 "visual search mappings
 function! s:VSetSearch()
@@ -261,9 +260,6 @@ vnoremap <C-D> <LT>
 " CTRL-Z undoes even in visual/selection mode
 vnoremap <C-Z> <C-C>
 
-" Copy selected lines to the system clipboard
-vmap <C-c> y: call system("xclip -i -selection clipboard", getreg("\""))<CR>
-
 " Run Rspec for the current spec file
 function! RunRspec()
 ruby << EOF
@@ -276,10 +272,17 @@ EOF
 endfunction
 map <F7> :call RunRspec()<cr>
 
-" Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
 let g:browser = 'firefox -new-tab '     
+" Open the Ruby ApiDock page for the word under cursor, in a new Firefox tab
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
   exec '!'.g:browser.' '.url.' &'
 endfunction           
 noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
+
+" Open the Rails ApiDock page for the word under cursos, in a new Firefox tab
+function! OpenRailsDoc(keyword)
+  let url = 'http://apidock.com/rails/'.a:keyword
+  exec '!'.g:browser.' '.url.' &'
+endfunction
+noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
