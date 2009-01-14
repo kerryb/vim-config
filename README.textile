@@ -24,7 +24,8 @@ cd %HOME%\vimfiles
 vim after\plugin\snippets.vim +":%s/.vim/vimfiles/g" +":x!"
 vim plugin\fuzzyfinder_textmate.vim +":%s/.vim/vimfiles/g" +":x!"
 vim vimrc +":%s/desert/vibrantink/g" +":x!"
-vim vimrc +":%s/monaco/Consolas/g" +":x!"
+vim vimrc +":%s/monaco/Consolas:h12/g" +":x!"
+vim vimrc +":%s/<c-f>/<c-t>/g" +":x!"
 
 copy /y vimrc ..\_vimrc
 </code></pre>
