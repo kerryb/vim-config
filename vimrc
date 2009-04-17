@@ -40,7 +40,6 @@ let g:miniBufExplModSelTarget = 1
 let g:rails_default_file='config/database.yml'
  
 set nocompatible          " We're running Vim, not Vi!
-set guifont=DejaVuSansMono:h10
 set guitablabel=%M%t
 set nobackup
 set nowritebackup
@@ -59,23 +58,23 @@ imap <M-Down> :tabp<CR>
 imap <c-s> <esc><c-s>
 
 set guioptions-=T
+colorscheme railscasts
+
 if has("gui_running")
   "tell the term has 256 colors
   set t_Co=256
-  colorscheme railscasts
   set lines=65
   set columns=180
 else
   let g:CSApprox_loaded = 0
-  colorscheme railscasts
 endif
 
 
 if $COLORTERM == 'gnome-terminal'
-  set term=gnome-256color
-  colorscheme railscasts
+  set term=xterm-color
+  set guifont=DejaVu\ Sans\ Mono\ 10
 else
-  colorscheme railscasts
+  set guifont=DejaVuSansMono:h10
 endif
 
 syntax on                 " Enable syntax highlighting
