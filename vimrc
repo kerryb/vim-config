@@ -1,4 +1,5 @@
 set nocompatible
+
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T " no toolbar
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
@@ -9,7 +10,6 @@ set hlsearch  " highlight search matches...
 set incsearch " ...as you type
 set ignorecase 
 set smartcase
-syntax on " Enable syntax highlighting
 set hidden " Allow buffer switching without saving
 set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
@@ -37,4 +37,8 @@ else
   set guifont=DejaVuSansMono:h10
 endif
 
-nmap <silent> <Leader>p :NERDTreeToggle<CR>
+" ,s to show trailing whitespace
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>s :set nolist!<CR>
+
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
