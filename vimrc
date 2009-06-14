@@ -8,6 +8,7 @@ set hlsearch " highlight search matches
 syntax on " Enable syntax highlighting
 set hidden " Allow buffer switching without saving
 set history=1000
+set wildmode=list:longest " Shell-like behaviour for command autocompletion
 
 :let mapleader = ","
 
