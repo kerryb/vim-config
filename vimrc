@@ -14,6 +14,7 @@ set hidden " Allow buffer switching without saving
 set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set visualbell
+set mousehide
 
 let mapleader = ","
 
