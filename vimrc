@@ -6,6 +6,7 @@ set laststatus=2  " Always show status line.
 set number " line numbers
 set hlsearch " highlight search matches
 syntax on " Enable syntax highlighting
+set hidden " Allow buffer switching without saving
 
 :let mapleader = ","
 
