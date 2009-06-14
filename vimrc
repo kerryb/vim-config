@@ -1,4 +1,8 @@
 set nocompatible
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T " no toolbar
@@ -30,7 +34,9 @@ autocmd FileType make     set noexpandtab
 
 runtime! plugin/matchit.vim " extends % to do/end etc
 
-colorscheme railscasts
+if has('gui')
+  colorscheme railscasts
+endif
 
 if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
