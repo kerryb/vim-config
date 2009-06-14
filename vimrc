@@ -23,4 +23,11 @@ runtime! plugin/matchit.vim " extends % to do/end etc
 
 colorscheme railscasts
 
+if $COLORTERM == 'gnome-terminal'
+  set term=xterm-color
+  set guifont=DejaVu\ Sans\ Mono\ 10
+else
+  set guifont=DejaVuSansMono:h10
+endif
+
 nmap <silent> <Leader>p :NERDTreeToggle<CR>
