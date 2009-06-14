@@ -5,6 +5,7 @@ set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n
 set laststatus=2  " Always show status line.
 set number " line numbers
 set hlsearch " highlight search matches
+syntax on " Enable syntax highlighting
 
 :let mapleader = ","
 
