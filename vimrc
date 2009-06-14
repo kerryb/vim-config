@@ -13,8 +13,9 @@ set smartcase
 set hidden " Allow buffer switching without saving
 set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
+set visualbell
 
-:let mapleader = ","
+let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
 
