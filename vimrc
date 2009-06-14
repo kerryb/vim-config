@@ -71,3 +71,26 @@ command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
       \ fugiat nulla pariatur.  Excepteur sint occaecat cupidatat non
       \ proident, sunt in culpa qui officia deserunt mollit anim id est
       \ laborum
+
+function! OpenInBrowser(url)
+  if has("mac")
+    exec '!open '.a:url
+  else
+    exec '!firefox -new-tab '.a:url.' &'
+  endif
+endfunction
+
+" Open the Ruby ApiDock page for the word under cursor
+function! OpenRubyDoc(keyword)
+  let url = 'http://apidock.com/ruby/'.a:keyword
+  call OpenInBrowser(url)
+endfunction           
+noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
+
+" Open the Rails ApiDock page for the word under cursor
+function! OpenRailsDoc(keyword)
+  let url = 'http://apidock.com/rails/'.a:keyword
+  call OpenInBrowser(url)
+endfunction
+noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
+
