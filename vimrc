@@ -23,7 +23,7 @@ set smarttab
 set shiftwidth=2
 set autoindent
 set expandtab
-set backspace=start,indent
+set backspace=start,indent,eol
 autocmd FileType make     set noexpandtab
 
 runtime! plugin/matchit.vim " extends % to do/end etc
