@@ -7,6 +7,7 @@ set number " line numbers
 set hlsearch " highlight search matches
 syntax on " Enable syntax highlighting
 set hidden " Allow buffer switching without saving
+set history=1000
 
 :let mapleader = ","
 
