@@ -50,3 +50,14 @@ map <Leader>r :Rake<CR>
 set foldmethod=indent "fold based on indent
 set foldnestmax=3     "deepest fold is 3 levels
 set nofoldenable      "dont fold by default
+"
+" Jump to last cursor position when opening a file
+" Don't do it when writing a commit log entry
+autocmd BufReadPost * call SetCursorPosition()
+function! SetCursorPosition()
+  if &filetype !~ 'commit\c'
+    if line("'\"") > 0 && line("'\"") <= line("$")
+      exe "normal g`\""
+    endif
+  end
+endfunction
