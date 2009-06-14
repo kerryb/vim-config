@@ -4,6 +4,7 @@ set guioptions-=T " no toolbar
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
 set laststatus=2  " Always show status line.
 set number " line numbers
+set scrolloff=3 " More context around cursor
 set hlsearch " highlight search matches
 set ignorecase 
 set smartcase
