@@ -8,10 +8,14 @@ set number " line numbers
 :let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
-set ts=2  " Tabs are 2 spaces
-set bs=2  " Backspace over everything in insert mode
-set sw=2  " Tabs under smart indent
-set ai    " auto-indent
+
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+set backspace=start,indent
+autocmd FileType make     set noexpandtab
 
 runtime! plugin/matchit.vim " extends % to do/end etc
 
