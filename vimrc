@@ -19,7 +19,11 @@ set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set visualbell
 set mousehide
-
+set cf  " Enable error files & error jumping.
+set autowrite  " Writes on make/shell commands
+set ruler  " Ruler on
+set nowrap  " Line wrapping off
+set timeoutlen=250  " Time to wait after ESC (default causes an annoying delay)                                                 
 let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
