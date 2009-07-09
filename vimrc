@@ -55,6 +55,10 @@ nmap <silent> <leader>s :set nolist!<CR>
 
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
+map <silent> <Leader>rb :RunAllRubyTests<CR>
+map <silent> <Leader>rc :RunRubyFocusedContext<CR>
+map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
+
 
 " Folding settings
 set foldmethod=indent "fold based on indent
