@@ -19,7 +19,11 @@ set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set visualbell
 set mousehide
-
+set cf  " Enable error files & error jumping.
+set autowrite  " Writes on make/shell commands
+set ruler  " Ruler on
+set nowrap  " Line wrapping off
+set timeoutlen=500
 let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -52,6 +56,10 @@ nmap <silent> <leader>s :set nolist!<CR>
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
+map <silent> <Leader>rb :RunAllRubyTests<CR>
+map <silent> <Leader>rc :RunRubyFocusedContext<CR>
+map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
+
 
 " Folding settings
 set foldmethod=indent "fold based on indent
