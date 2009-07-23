@@ -50,6 +50,7 @@ set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
 
 " Folding settings
