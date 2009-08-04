@@ -53,6 +53,9 @@ endif
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
+" ,h to toggle search result highlighting
+:noremap <silent> <leader>h :set hls!<CR>
+
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
 map <silent> <Leader>rb :RunAllRubyTests<CR>
