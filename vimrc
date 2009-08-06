@@ -53,6 +53,9 @@ endif
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
+" ,h to toggle search result highlighting
+:noremap <silent> <leader>h :set hls!<CR>
+
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
@@ -77,6 +80,9 @@ function! SetCursorPosition()
     endif
   end
 endfunction
+
+" make Y consistent with C and D                                                                                                 
+nnoremap Y y$
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
