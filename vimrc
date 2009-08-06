@@ -60,6 +60,7 @@ map <silent> <Leader>rb :RunAllRubyTests<CR>
 map <silent> <Leader>rc :RunRubyFocusedContext<CR>
 map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
 
+nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " Folding settings
 set foldmethod=indent "fold based on indent
