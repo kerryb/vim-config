@@ -1,4 +1,7 @@
 tags
 *~
+*.swn
+*.swo
 *.swp
 .DS_Store
+spell/**
