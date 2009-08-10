@@ -56,6 +56,9 @@ nmap <silent> <leader>s :set nolist!<CR>
 " ,h to toggle search result highlighting
 :noremap <silent> <leader>h :set hls!<CR>
 
+" ,w to toggle line wrap
+:map <silent> <Leader>w :set wrap!<CR>
+
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
