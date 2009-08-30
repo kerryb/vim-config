@@ -66,6 +66,11 @@ map <silent> <Leader>rb :RunAllRubyTests<CR>
 map <silent> <Leader>rc :RunRubyFocusedContext<CR>
 map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
 
+let g:speckyQuoteSwitcherKey = "<Leader>s'"
+let g:speckySpecSwitcherKey = "<Leader>sx"
+let g:speckyRunSpecKey = "<Leader>ss"
+let g:speckyWindowType = 1
+
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " Folding settings
