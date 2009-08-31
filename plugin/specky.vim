@@ -22,7 +22,7 @@ if exists( 'g:speckyBannerKey' )
 endif
 
 if exists( 'g:speckyRunSpecKey' )
-	execute 'map ' . g:speckyRunSpecKey . ' :call <SID>RunSpec()<CR>'
+	execute 'map ' . g:speckyRunSpecKey . ' :wa<CR>:call <SID>RunSpec()<CR>'
 endif
 
 if exists( 'g:speckyRunRdocKey' )
