@@ -66,6 +66,8 @@ map <silent> <Leader>rb :RunAllRubyTests<CR>
 map <silent> <Leader>rc :RunRubyFocusedContext<CR>
 map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
 
+map <silent> <Leader>rr :w<CR>:rubyf %<CR>
+
 let g:speckyQuoteSwitcherKey = "<Leader>s'"
 let g:speckySpecSwitcherKey = "<Leader>sx"
 let g:speckyRunSpecKey = "<Leader>ss"
