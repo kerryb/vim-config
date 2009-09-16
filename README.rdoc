@@ -1,0 +1,121 @@
+= Installation
+
+If necessary, backup and remove your <tt>~/.vim</tt> directory and
+<tt>~/.vimrc</tt> file.
+
+Clone this repository to <tt>~/git</tt>. If you're reading this on GitHub:
+
+  git clone git://github.com/kerryb/vim-config.git ~/.vim
+
+(If you're behind a firewall that blocks port 9418, replace <tt>git::</tt> with
+<tt>http:</tt> in the above URL.)
+
+If you're on the BT intranet you can get it from here instead:
+
+  git clone git://nimbus-git.nat.bt.com/vim/mainline.git ~/.vim
+
+Alternatively, if for some bizarre reason you don't have git installed, you can
+download a zip or tar file using the link on
+GitHub[http://github.com/kerryb/vim-config].
+
+Finally, symlink <tt>.vimrc</tt>:
+
+  ln -s ~/.vim/vimrc ~/.vimrc
+
+== Keeping up-to-date
+
+  cd ~/.vim
+  git pull
+
+== Local Customisation
+
+Local change (eg if you prefer a different font or colour scheme) can either
+be made in a branch, or in <tt>~/.vimrc.local</tt>.
+
+= Included Plugins
+
+See the plugins' web pages for more information. The keybindings listed are
+just those defined or overridden locally, not the ones provided by default.
+
+== bufexplorer
+
+Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])
+
+*Keybindings*
+
+,.:: Show buffer explorer
+
+== bufman
+
+Quickly switch between buffers without knowing their numbers (more[http://www.vim.org/scripts/script.php?script_id=875])
+
+== endwise
+
+Wisely add "end" in ruby, endfunction/endif/more in vim script, etc (more[http://www.vim.org/scripts/script.php?script_id=2386])
+
+== matchit
+
+Extended % matching for HTML, LaTeX, and many other languages (more[http://www.vim.org/scripts/script.php?script_id=39])
+
+== NERD_tree
+
+A tree explorer plugin for navigating the filesystem (more[http://www.vim.org/scripts/script.php?script_id=1658])
+
+*Keybindings*
+
+,m:: Show NERDTree
+
+== NERD_commenter
+
+A plugin that allows for easy commenting of code for many filetypes (more[http://www.vim.org/scripts/script.php?script_id=1218])
+
+== rails
+
+Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more (more[http://www.vim.org/scripts/script.php?script_id=1567])
+
+*Keybindings*
+
+,r:: run rake
+
+== ruby_focused_unit_test
+
+Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_unit_test_vim])
+
+*Keybindings*
+
+,rb:: Run entire test/spec
+,rf:: Run focussed test/spec
+,rc:: Run focussed contex (ie describe block)
+
+== specky
+
+Functions to help make behavioral testing easy with ruby and rspec (more[http://www.vim.org/scripts/script.php?script_id=2286])
+
+*Keybindings*
+
+,ss:: Run spec
+,sx:: Switch between spec and implementation
+,s':: Cycle between single quotes, double quotes and symbol
+
+== surroundings
+
+Delete/change/add parentheses/quotes/XML-tags/much more with ease (more[http://www.vim.org/scripts/script.php?script_id=1697])
+
+= Other Keybindings
+
+ctrl-]:: Jump to definitio (requires exuberant ctags[http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/])
+,rr:: Run ruby file
+,s:: Show/hide hidden characters
+,h:: Hide search highlighting
+,w:: Toggle word wrapping
+
+= Commands
+
+RB:: Open Ruby ApiDock docs for word under cursor
+RR:: Open Rails ApiDock docs for word under cursor
+Lorem:: Generate 'lorem ipsum' text
+SudoW:: Save using sud (run sudo -v in terminal first)
+
+= Vim Resources
+
+See my vim bookmarks on delicious[http://delicious.com/kjbuckley/vim].
