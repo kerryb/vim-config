@@ -59,8 +59,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 " ,w to toggle line wrap
 :map <silent> <Leader>w :set wrap!<CR>
 
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
-nmap <silent> <Leader>m :NERDTreeToggle<CR>
 map <Leader>r :Rake<CR>
 map <silent> <Leader>rb :RunAllRubyTests<CR>
 map <silent> <Leader>rc :RunRubyFocusedContext<CR>
@@ -73,6 +71,7 @@ let g:speckySpecSwitcherKey = "<Leader>sx"
 let g:speckyRunSpecKey = "<Leader>ss"
 let g:speckyWindowType = 1
 
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " Folding settings
