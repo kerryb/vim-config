@@ -37,6 +37,10 @@ be made in a branch, or in <tt>~/.vimrc.local</tt>.
 See the plugins' web pages for more information. The keybindings listed are
 just those defined or overridden locally, not the ones provided by default.
 
+== ack
+
+Plugin for the Perl module / CLI script 'ack' (more[http://www.vim.org/scripts/script.php?script_id=2572])
+
 == bufexplorer
 
 Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])
