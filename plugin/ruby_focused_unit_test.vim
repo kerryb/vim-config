@@ -5,6 +5,7 @@ end
 command RunRubyFocusedUnitTest :call <SID>RunRubyFocusedUnitTest()
 command RunRubyFocusedContext :call <SID>RunRubyFocusedContext()
 command RunAllRubyTests :call <SID>RunAllRubyTests()
+command RunLastRubyTest :call <SID>RunLastRubyTest()
 
 function! s:RunRubyFocusedUnitTest()
   ruby RubyFocusedUnitTest.new.run_test
@@ -16,6 +17,10 @@ endfunction
 
 function! s:RunAllRubyTests()
   ruby RubyFocusedUnitTest.new.run_all
+endfunction
+
+function! s:RunLastRubyTest()
+  ruby RubyFocusedUnitTest.new.run_last
 endfunction
 
 ruby << EOF
@@ -55,8 +60,11 @@ end
 
 class RubyFocusedUnitTest
   DEFAULT_OUTPUT_BUFFER = "rb_test_output"
+  SAVED_TEST_COMMAND_FILE = '/tmp/last_ruby_focused_unit_test'
 
   def write_output_to_buffer(test_command)
+    save_test_command(test_command)
+
     if buffer = VIM::Buffer.find { |b| b.name =~ /#{DEFAULT_OUTPUT_BUFFER}/ }
       buffer.bdelete! 
     end
@@ -77,6 +85,10 @@ class RubyFocusedUnitTest
       rescue EOFError
       end
     end
+  end
+
+  def save_test_command(test_command)
+    File.open(SAVED_TEST_COMMAND_FILE, 'w') { |f| f.write(test_command) }
   end
 
   def current_file
@@ -129,9 +141,9 @@ class RubyFocusedUnitTest
     context_line_number = nil
 
     (line_number + 1).downto(1) do |line_number|
-      if VIM::Buffer.current[line_number] =~ /context "([^"]+)"/ ||
-         VIM::Buffer.current[line_number] =~ /context '([^']+)'/ 
-        method_name = $1
+      if VIM::Buffer.current[line_number] =~ /(context|describe) "([^"]+)"/ ||
+         VIM::Buffer.current[line_number] =~ /(context|describe) '([^']+)'/ 
+        method_name = $2
         context_line_number = line_number
         break
       end
@@ -153,6 +165,10 @@ class RubyFocusedUnitTest
     else
       write_output_to_buffer("ruby #{current_file}")
     end
+  end
+
+  def run_last
+    write_output_to_buffer(File.read(SAVED_TEST_COMMAND_FILE))
   end
 end
 EOF
