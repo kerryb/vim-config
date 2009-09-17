@@ -3,11 +3,11 @@
 If necessary, backup and remove your <tt>~/.vim</tt> directory and
 <tt>~/.vimrc</tt> file.
 
-Clone this repository to <tt>~/git</tt>. If you're reading this on GitHub:
+Clone this repository to <tt>~/git</tt>:
 
   git clone git://github.com/kerryb/vim-config.git ~/.vim
 
-(If you're behind a firewall that blocks port 9418, replace <tt>git::</tt> with
+(If you're behind a firewall that blocks port 9418, replace <tt>git:</tt> with
 <tt>http:</tt> in the above URL.)
 
 If you're on the BT intranet you can get it from here instead:
