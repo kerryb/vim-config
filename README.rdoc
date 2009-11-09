@@ -112,6 +112,7 @@ ctrl-]:: Jump to definitio (requires exuberant ctags[http://blog.tobiascrawley.n
 ,s:: Show/hide hidden characters
 ,h:: Hide search highlighting
 ,w:: Toggle word wrapping
+,sw:: Strip trailing whitespace
 
 = Commands
 

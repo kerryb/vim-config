@@ -12,7 +12,7 @@ set number " line numbers
 set scrolloff=3 " More context around cursor
 set hlsearch  " highlight search matches...
 set incsearch " ...as you type
-set ignorecase 
+set ignorecase
 set smartcase
 set hidden " Allow buffer switching without saving
 set history=1000
@@ -82,7 +82,7 @@ nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 set foldmethod=indent "fold based on indent
 set foldnestmax=3     "deepest fold is 3 levels
 set nofoldenable      "dont fold by default
-"
+
 " Jump to last cursor position when opening a file
 " Don't do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
@@ -94,8 +94,19 @@ function! SetCursorPosition()
   end
 endfunction
 
-" make Y consistent with C and D                                                                                                 
+" make Y consistent with C and D
 nnoremap Y y$
+
+" strip trailing whitespace
+"autocmd BufWritePre,FileWritePre * call StripTrailingWhitespace()
+function! StripTrailingWhitespace()
+	normal mz
+	normal Hmy
+	exec '%s/\s*$//g'
+	normal 'yz<cr>
+	normal `z
+endfunction
+nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
@@ -119,7 +130,7 @@ endfunction
 function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
   call OpenInBrowser(url)
-endfunction           
+endfunction
 noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
 
 " Open the Rails ApiDock page for the word under cursor
