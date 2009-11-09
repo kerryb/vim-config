@@ -53,6 +53,10 @@ endif
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
+" Highlight trailing whitespace
+highlight RedundantSpaces term=standout ctermbg=red guibg=red
+match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces highlighted
+
 " ,h to toggle search result highlighting
 :noremap <silent> <leader>h :set hls!<CR>
 
