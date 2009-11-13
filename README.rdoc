@@ -53,6 +53,10 @@ Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42
 
 Quickly switch between buffers without knowing their numbers (more[http://www.vim.org/scripts/script.php?script_id=875])
 
+== EasyGrep
+
+Fast and Easy Find and Replace Across Multiple Files (more[http://www.vim.org/scripts/script.php?script_id=2438])
+
 == endwise
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc (more[http://www.vim.org/scripts/script.php?script_id=2386])
