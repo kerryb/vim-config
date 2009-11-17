@@ -118,6 +118,12 @@ ctrl-]:: Jump to definitio (requires exuberant ctags[http://blog.tobiascrawley.n
 ,w:: Toggle word wrapping
 ,sw:: Strip trailing whitespace
 
+= Brackets
+
+Enter a bracket and the system will include a closing bracket of the same type.
+Enter bracket twice to prevent the second one being added
+Enter bracket and <CR> to add the pair of brackets around an empty line and position the cursor on this line.
+
 = Commands
 
 RB:: Open Ruby ApiDock docs for word under cursor
