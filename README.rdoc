@@ -61,6 +61,10 @@ Fast and Easy Find and Replace Across Multiple Files (more[http://www.vim.org/sc
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc (more[http://www.vim.org/scripts/script.php?script_id=2386])
 
+== FindInNERDTree
+
+Expands NERDTree to file in current buffer (more[http://www.vim.org/scripts/script.php?script_id=2850])
+
 == matchit
 
 Extended % matching for HTML, LaTeX, and many other languages (more[http://www.vim.org/scripts/script.php?script_id=39])
