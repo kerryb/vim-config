@@ -147,19 +147,23 @@ noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
 " bracket completion routines 
-inoremap {      {}<Left>
-inoremap {<CR>  {<CR>}<Esc>O
-inoremap {{     {
-inoremap {}     {}
-inoremap (      ()<Left>
-inoremap (<CR>  (<CR>)<Esc>O
-inoremap ((     (
-inoremap ()     ()
-inoremap [      []<Left>
-inoremap [<CR>  [<CR>]<Esc>O
-inoremap [[     [
-inoremap []     []
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+" not enabled by default - to enable put "call EnableBracketCompletion()" in
+" vimrc.local
+function! EnableBracketCompletion()
+  inoremap {      {}<Left>
+  inoremap {<CR>  {<CR>}<Esc>O
+  inoremap {{     {
+  inoremap {}     {}
+  inoremap (      ()<Left>
+  inoremap (<CR>  (<CR>)<Esc>O
+  inoremap ((     (
+  inoremap ()     ()
+  inoremap [      []<Left>
+  inoremap [<CR>  [<CR>]<Esc>O
+  inoremap [[     [
+  inoremap []     []
+  inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+endfunction
 
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
