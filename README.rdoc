@@ -125,7 +125,7 @@ ctrl-]:: Jump to definitio (requires exuberant ctags[http://blog.tobiascrawley.n
 = Brackets
 
 Bracket completion is off by default.
-To enable, add "call EnableBracketComplation" in your vimrc.local
+To enable, add "call EnableBracketCompletion()" in your vimrc.local
 
 Enter a bracket and the system will include a closing bracket of the same type.
 Enter bracket twice to prevent the second one being added
