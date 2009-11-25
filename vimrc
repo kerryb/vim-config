@@ -165,6 +165,22 @@ function! EnableBracketCompletion()
   inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
 endfunction
 
+function! DisableBracketCompletion()
+  iunmap {
+  iunmap {<CR>
+  iunmap {{
+  iunmap {}
+  iunmap (
+  iunmap (<CR>
+  iunmap ((
+  iunmap ()
+  iunmap [
+  iunmap [<CR>
+  iunmap [[
+  iunmap []
+  iunmap <expr> )
+endfunction
+
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
