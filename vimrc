@@ -67,11 +67,11 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 map <silent> <Leader>f :call FindInNERDTree()<CR>
 
 map <Leader>r :Rake<CR>
-map <silent> <Leader>rb :RunAllRubyTests<CR>
-map <silent> <Leader>rc :RunRubyFocusedContext<CR>
-map <silent> <Leader>rf :RunRubyFocusedUnitTest<CR>
+map <silent> <Leader>rb :wa<CR>:RunAllRubyTests<CR>
+map <silent> <Leader>rc :wa<CR>:RunRubyFocusedContext<CR>
+map <silent> <Leader>rf :wa<CR>:RunRubyFocusedUnitTest<CR>
 
-map <silent> <Leader>rr :w<CR>:rubyf %<CR>
+map <silent> <Leader>rr :wa<CR>:rubyf %<CR>
 
 let g:speckyQuoteSwitcherKey = "<Leader>s'"
 let g:speckySpecSwitcherKey = "<Leader>sx"
