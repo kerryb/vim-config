@@ -99,6 +99,10 @@ Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_u
 ,rf:: Run focussed test/spec
 ,rc:: Run focussed contex (ie describe block)
 
+== scala
+
+Scala support (more[http://www.3plus4.de/scala/])
+
 == specky
 
 Functions to help make behavioral testing easy with ruby and rspec (more[http://www.vim.org/scripts/script.php?script_id=2286])
