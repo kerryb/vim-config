@@ -61,7 +61,7 @@ function! GetScalaIndent()
   elseif c < 0
     let ind = ind - &shiftwidth
   endif
-  
+
   " Dedent after if, for, while and val, var, def without block
   let pprevline = getline(prevnonblank(lnum - 1))
   if pprevline =~ '^\s*\<\(\(else\s\+\)\?if\|for\|while\|va[lr]\|def\)\>.*[)=]\s*$'
@@ -76,7 +76,7 @@ function! GetScalaIndent()
 
   " Subtract a 'shiftwidth' on '}' or html
   let thisline = getline(v:lnum)
-  if thisline =~ '^\s*[})]' 
+  if thisline =~ '^\s*[})]'
         \ || thisline =~ '^\s*</[a-zA-Z][^>]*>'
     let ind = ind - &shiftwidth
   endif
