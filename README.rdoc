@@ -103,6 +103,14 @@ Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_u
 
 Scala support (more[http://www.3plus4.de/scala/])
 
+== snipMate
+
+TextMate-style snippets for Vim (more[http://www.vim.org/scripts/script.php?script_id=2540])
+
+snipMate.vim aims to be an unobtrusive, concise vim script that implements some of TextMate's snippets features in Vim. A snippet is a piece of often-typed text that you can insert into your document using a trigger word followed by a <tab>. 
+
+Also added scala.snippets[http://github.com/tommorris/scala-vim-snippets].
+
 == specky
 
 Functions to help make behavioral testing easy with ruby and rspec (more[http://www.vim.org/scripts/script.php?script_id=2286])
