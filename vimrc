@@ -6,7 +6,7 @@ filetype plugin on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T " no toolbar
-set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P
+set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set laststatus=2  " Always show status line.
 set number " line numbers
 set scrolloff=3 " More context around cursor
@@ -110,6 +110,9 @@ function! StripTrailingWhitespace()
 	normal `z
 endfunction
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
+
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=1
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur

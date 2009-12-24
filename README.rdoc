@@ -117,9 +117,13 @@ Functions to help make behavioral testing easy with ruby and rspec (more[http://
 
 Delete/change/add parentheses/quotes/XML-tags/much more with ease (more[http://www.vim.org/scripts/script.php?script_id=1697])
 
+== syntastic
+
+Automatic syntax checking (more[http://www.vim.org/scripts/script.php?script_id=2736])
+
 = Other Keybindings
 
-ctrl-]:: Jump to definitio (requires exuberant ctags[http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/])
+ctrl-]:: Jump to definition (requires exuberant ctags[http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/])
 ,rr:: Run ruby file
 ,s:: Show/hide hidden characters
 ,h:: Hide search highlighting
