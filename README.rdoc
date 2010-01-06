@@ -103,6 +103,16 @@ Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_u
 
 Scala support (more[http://www.3plus4.de/scala/])
 
+== SimpleFold
+
+space-optimized, configurable folds, supports Ruby, Ocaml, Perl, PHP, Java... (more[http://www.vim.org/scripts/script.php?script_id=1868])
+
+*Keybindings*
+
+,F:: Fold
+
+Uses standard vim commands to open and close folds etc (:help fold)
+
 == snipMate
 
 TextMate-style snippets for Vim (more[http://www.vim.org/scripts/script.php?script_id=2540])
