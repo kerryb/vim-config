@@ -41,6 +41,10 @@ just those defined or overridden locally, not the ones provided by default.
 
 Plugin for the Perl module / CLI script 'ack' (more[http://www.vim.org/scripts/script.php?script_id=2572])
 
+== afterimage
+
+Edit PNG and GIF icons by converting them to XPM (more[http://www.vim.org/scripts/script.php?script_id=1617])
+
 == bufexplorer
 
 Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])
