@@ -135,6 +135,10 @@ Functions to help make behavioral testing easy with ruby and rspec (more[http://
 ,sx:: Switch between spec and implementation
 ,s':: Cycle between single quotes, double quotes and symbol
 
+== SuperTab
+
+Do all your insert-mode completion with Tab (more[http://www.vim.org/scripts/script.php?script_id=1643])
+
 == surroundings
 
 Delete/change/add parentheses/quotes/XML-tags/much more with ease (more[http://www.vim.org/scripts/script.php?script_id=1697])
