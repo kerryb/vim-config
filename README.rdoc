@@ -27,6 +27,10 @@ Finally, symlink <tt>.vimrc</tt>:
   cd ~/.vim
   git pull
 
+Then in vim:
+
+  :helptags ~/.vim/doc
+
 == Local Customisation
 
 Local change (eg if you prefer a different font or colour scheme) can either
@@ -36,6 +40,10 @@ be made in a branch, or in <tt>~/.vimrc.local</tt>.
 
 See the plugins' web pages for more information. The keybindings listed are
 just those defined or overridden locally, not the ones provided by default.
+
+== Abolish
+
+Work with several variants of a word at once (more[http://www.vim.org/scripts/script.php?script_id=1545])
 
 == ack
 

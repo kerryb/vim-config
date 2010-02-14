@@ -41,6 +41,7 @@
 .snippets	snipMate.txt	/*.snippets*
 /MyProjectDir/	dbext.txt	/*\/MyProjectDir\/*
 /MyProjectDir/	dbext.txt	/*\/MyProjectDir\/*
+:Abolish	abolish.txt	/*:Abolish*
 :Ack	ack.txt	/*:Ack*
 :AckAdd	ack.txt	/*:AckAdd*
 :Errors	syntastic.txt	/*:Errors*
@@ -54,6 +55,8 @@
 :NERDTreeMirror	NERD_tree.txt	/*:NERDTreeMirror*
 :NERDTreeToggle	NERD_tree.txt	/*:NERDTreeToggle*
 :RmVimball	pi_vimball.txt	/*:RmVimball*
+:S	abolish.txt	/*:S*
+:Subvert	abolish.txt	/*:Subvert*
 :SyntasticDisable	syntastic.txt	/*:SyntasticDisable*
 :SyntasticEnable	syntastic.txt	/*:SyntasticEnable*
 :UseVimball	pi_vimball.txt	/*:UseVimball*
@@ -206,6 +209,15 @@ SyntasticMake()	syntastic.txt	/*SyntasticMake()*
 Vimball-copyright	pi_vimball.txt	/*Vimball-copyright*
 [%	matchit.txt	/*[%*
 ]%	matchit.txt	/*]%*
+abolish	abolish.txt	/*abolish*
+abolish-abbrev	abolish.txt	/*abolish-abbrev*
+abolish-author	abolish.txt	/*abolish-author*
+abolish-coercion	abolish.txt	/*abolish-coercion*
+abolish-grep	abolish.txt	/*abolish-grep*
+abolish-patterns	abolish.txt	/*abolish-patterns*
+abolish-search	abolish.txt	/*abolish-search*
+abolish-substitute	abolish.txt	/*abolish-substitute*
+abolish.txt	abolish.txt	/*abolish.txt*
 ack	ack.txt	/*ack*
 ack-author	ack.txt	/*ack-author*
 ack.txt	ack.txt	/*ack.txt*
@@ -238,6 +250,7 @@ bufexplorer-usage	bufexplorer.txt	/*bufexplorer-usage*
 bufexplorer.txt	bufexplorer.txt	/*bufexplorer.txt*
 buffer-explorer	bufexplorer.txt	/*buffer-explorer*
 config/rails.vim	rails.txt	/*config\/rails.vim*
+cr	abolish.txt	/*cr*
 cs	surround.txt	/*cs*
 database-extension	dbext.txt	/*database-extension*
 db2	dbext.txt	/*db2*
