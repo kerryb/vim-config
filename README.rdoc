@@ -45,6 +45,8 @@ Plugin for the Perl module / CLI script 'ack' (more[http://www.vim.org/scripts/s
 
 Edit PNG and GIF icons by converting them to XPM (more[http://www.vim.org/scripts/script.php?script_id=1617])
 
+== autoload
+
 == bufexplorer
 
 Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])
@@ -57,7 +59,7 @@ Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42
 
 Quickly switch between buffers without knowing their numbers (more[http://www.vim.org/scripts/script.php?script_id=875])
 
-== css.vim
+== css_color
 
 CSS color preview (more[http://www.vim.org/scripts/script.php?script_id=2150])
 
@@ -96,6 +98,10 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more (mor
 *Keybindings*
 
 ,r:: run rake
+
+== repeat
+
+Use the repeat command (.) with supported plugins (more[http://www.vim.org/scripts/script.php?script_id=2136])
 
 == ruby_focused_unit_test
 
