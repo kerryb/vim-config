@@ -57,6 +57,10 @@ Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42
 
 Quickly switch between buffers without knowing their numbers (more[http://www.vim.org/scripts/script.php?script_id=875])
 
+== css.vim
+
+CSS color preview (more[http://www.vim.org/scripts/script.php?script_id=2150])
+
 == EasyGrep
 
 Fast and Easy Find and Replace Across Multiple Files (more[http://www.vim.org/scripts/script.php?script_id=2438])
