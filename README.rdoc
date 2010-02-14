@@ -99,6 +99,10 @@ A tree explorer plugin for navigating the filesystem (more[http://www.vim.org/sc
 
 A plugin that allows for easy commenting of code for many filetypes (more[http://www.vim.org/scripts/script.php?script_id=1218])
 
+== ragtag
+
+A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (more[http://www.vim.org/scripts/script.php?script_id=1896])
+
 == rails
 
 Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more (more[http://www.vim.org/scripts/script.php?script_id=1567])
@@ -164,6 +168,10 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease (more[http://w
 == syntastic
 
 Automatic syntax checking (more[http://www.vim.org/scripts/script.php?script_id=2736])
+
+== unimpaired
+
+Pairs of handy bracket maps (more[http://www.vim.org/scripts/script.php?script_id=1590])
 
 = Other Keybindings
 
