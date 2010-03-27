@@ -147,6 +147,10 @@ snipMate.vim aims to be an unobtrusive, concise vim script that implements some 
 
 Also added scala.snippets[http://github.com/tommorris/scala-vim-snippets].
 
+*Keybindings*
+
+Changed trigger key to shift-tab from the default tab, to avoid triggering unexpectedly when trying to use tab completion.
+
 == specky
 
 Functions to help make behavioral testing easy with ruby and rspec (more[http://www.vim.org/scripts/script.php?script_id=2286])
