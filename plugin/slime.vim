@@ -25,8 +25,10 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-vmap <C-c><C-c> "ry :call Send_to_Screen(@r)<CR>
-nmap <C-c><C-c> vip<C-c><C-c>
-
-nmap <C-c>v :call Screen_Vars()<CR>
+"vmap <C-c><C-c> "ry :call Send_to_Screen(@r)<CR>
+"nmap <C-c><C-c> vip<C-c><C-c>
+"nmap <C-c>v :call Screen_Vars()<CR>
+vmap <leader>x "ry :call Send_to_Screen(@r)<CR>
+nmap <leader>x vip<leader>x
+nmap <leader>xx :call Screen_Vars()<CR>
 

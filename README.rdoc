@@ -139,6 +139,15 @@ space-optimized, configurable folds, supports Ruby, Ocaml, Perl, PHP, Java... (m
 
 Uses standard vim commands to open and close folds etc (:help fold)
 
+== Slime
+
+Run selected code in a screen session (irb etc) (more[http://technotales.wordpress.com/2007/10/03/like-slime-for-vim/])
+
+*Keybindings*
+
+,x:: Run current paragraph or selection in named screen session
+,xx:: Set session/window name
+
 == snipMate
 
 TextMate-style snippets for Vim (more[http://www.vim.org/scripts/script.php?script_id=2540])
