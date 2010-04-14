@@ -80,8 +80,6 @@ let g:speckyWindowType = 1
 
 let g:ragtag_global_maps = 1
 
-let g:SuperTabDefaultCompletionType = 'context'
-
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
