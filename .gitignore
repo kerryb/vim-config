@@ -1,1 +1,6 @@
 .netrwhist
+ruby/command-t/Makefile
+ruby/command-t/*.bundle
+ruby/command-t/*.o
+ruby/command-t/*.dll
+ruby/command-t/*.log

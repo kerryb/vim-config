@@ -67,6 +67,10 @@ Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42
 
 Quickly switch between buffers without knowing their numbers (more[http://www.vim.org/scripts/script.php?script_id=875])
 
+== Command-T
+
+Fast file navigation for VIM (more[http://www.vim.org/scripts/script.php?script_id=3025])
+
 == css_color
 
 CSS color preview (more[http://www.vim.org/scripts/script.php?script_id=2150])
