@@ -24,6 +24,7 @@ set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
+set clipboard+=unnamed
 let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
