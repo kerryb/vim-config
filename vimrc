@@ -152,7 +152,11 @@ noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
 " :SudoW to save file using sudo (must be already authorised, eg sudo -v)
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
 
-" bracket completion routines 
+" Edit routes
+command! Rroutes :Redit config/routes.rb
+command! RTroutes :RTedit config/routes.rb
+
+" bracket completion routines
 " not enabled by default - to enable put "call EnableBracketCompletion()" in
 " vimrc.local
 function! EnableBracketCompletion()
