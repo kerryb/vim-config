@@ -117,6 +117,15 @@ nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" Alternatives to ESC: *******************************************************
+imap jkl <ESC>
+imap jlk <ESC>
+imap kjl <ESC>
+imap klj <ESC>
+imap lkj <ESC>
+imap ljk <ESC>
+imap ;l <ESC>
+
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
       \ adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
