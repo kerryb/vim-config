@@ -5,3 +5,4 @@ ruby/command-t/*.o
 ruby/command-t/*.dll
 ruby/command-t/*.log
 *.swp
+tmp/*
