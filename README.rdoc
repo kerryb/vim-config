@@ -138,6 +138,10 @@ Ruby Debugger: supports running of specs and cucumber features from within vim (
 ,de:: Exit
 ,dd:: Remove breakpoint
 
+If you don't have 'spec' or 'cucumber' in your /usr/bin folder, because you're using RVM, you need to add the following lines to your vimrc.local:
+  let g:ruby_debugger_spec_path = '$GEM_HOME/bin/spec'
+  let g:ruby_debugger_cucumber_path = '$GEM_HOME/bin/cucumber'
+
 
 == ruby_focused_unit_test
 
