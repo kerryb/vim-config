@@ -41,6 +41,8 @@ runtime! plugin/matchit.vim " extends % to do/end etc
 if has('gui')
   colorscheme railscasts
   source ~/.vim/ruby_debugger/ruby_debugger.vim
+  map <Leader>dg :Rdebugger<CR>
+  map <Leader>dr :RdbTest<CR>
 endif
 
 if $COLORTERM == 'gnome-terminal'
