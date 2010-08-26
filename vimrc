@@ -24,7 +24,6 @@ set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
-set clipboard+=unnamed
 let mapleader = ","
 
 filetype plugin indent on " Enable filetype-specific indenting and plugins
@@ -47,7 +46,7 @@ if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
   set guifont=DejaVu\ Sans\ Mono\ 10
 else
-  set guifont=DejaVuSansMono:h10
+  set guifont=Menlo:h10
 endif
 
 " ,s to show trailing whitespace
@@ -116,6 +115,15 @@ nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+" Alternatives to ESC: *******************************************************
+imap jkl <ESC>
+imap jlk <ESC>
+imap kjl <ESC>
+imap klj <ESC>
+imap lkj <ESC>
+imap ljk <ESC>
+imap ;l <ESC>
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
