@@ -124,18 +124,19 @@ Use the repeat command (.) with supported plugins (more[http://www.vim.org/scrip
 Ruby Debugger: supports running of specs and cucumber features from within vim (more[http://github.com/astashov/vim-ruby-debugger])
 
 *Keybindings*
-,dg Start the Debugger
-,dr Debug the current test (can be a spec or a cucumber feature)
-,db Toggle breakpoint
-,dv Show variables window
-,dm Show breakpoints window
-,dt Show frames window
-,ds Step
-,df Finish
-,dn Next
-,dc Continue
-,de Exit
-,dd Remove breakpoint
+
+,dg:: Start the Debugger
+,dr:: Debug the current test (can be a spec or a cucumber feature)
+,db:: Toggle breakpoint
+,dv:: Show variables window
+,dm:: Show breakpoints window
+,dt:: Show frames window
+,ds:: Step
+,df:: Finish
+,dn:: Next
+,dc:: Continue
+,de:: Exit
+,dd:: Remove breakpoint
 
 
 == ruby_focused_unit_test
