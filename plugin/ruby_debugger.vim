@@ -1,20 +1,20 @@
 " Init section - set mappings, default values, highlight colors
 
-map <Leader>b  :call g:RubyDebugger.toggle_breakpoint()<CR>
-map <Leader>v  :call g:RubyDebugger.open_variables()<CR>
-map <Leader>m  :call g:RubyDebugger.open_breakpoints()<CR>
-map <Leader>t  :call g:RubyDebugger.open_frames()<CR>
-map <Leader>s  :call g:RubyDebugger.step()<CR>
-map <Leader>f  :call g:RubyDebugger.finish()<CR>
-map <Leader>n  :call g:RubyDebugger.next()<CR>
-map <Leader>c  :call g:RubyDebugger.continue()<CR>
-map <Leader>e  :call g:RubyDebugger.exit()<CR>
-map <Leader>d  :call g:RubyDebugger.remove_breakpoints()<CR>
+map <Leader>db  :call g:RubyDebugger.toggle_breakpoint()<CR>
+map <Leader>dv  :call g:RubyDebugger.open_variables()<CR>
+map <Leader>dm  :call g:RubyDebugger.open_breakpoints()<CR>
+map <Leader>dt  :call g:RubyDebugger.open_frames()<CR>
+map <Leader>ds  :call g:RubyDebugger.step()<CR>
+map <Leader>df  :call g:RubyDebugger.finish()<CR>
+map <Leader>dn  :call g:RubyDebugger.next()<CR>
+map <Leader>dc  :call g:RubyDebugger.continue()<CR>
+map <Leader>de  :call g:RubyDebugger.exit()<CR>
+map <Leader>dd  :call g:RubyDebugger.remove_breakpoints()<CR>
 
-command! -nargs=? -complete=file Rdebugger :call g:RubyDebugger.start(<q-args>) 
-command! -nargs=0 RdbStop :call g:RubyDebugger.stop() 
-command! -nargs=1 RdbCommand :call g:RubyDebugger.send_command(<q-args>) 
-command! -nargs=0 RdbTest :call g:RubyDebugger.run_test() 
+command! -nargs=? -complete=file Rdebugger :call g:RubyDebugger.start(<q-args>)
+command! -nargs=0 RdbStop :call g:RubyDebugger.stop()
+command! -nargs=1 RdbCommand :call g:RubyDebugger.send_command(<q-args>)
+command! -nargs=0 RdbTest :call g:RubyDebugger.run_test()
 command! -nargs=1 RdbEval :call g:RubyDebugger.eval(<q-args>)
 command! -nargs=1 RdbCond :call g:RubyDebugger.conditional_breakpoint(<q-args>)
 command! -nargs=1 RdbCatch :call g:RubyDebugger.catch_exception(<q-args>)
@@ -22,7 +22,7 @@ command! -nargs=1 RdbCatch :call g:RubyDebugger.catch_exception(<q-args>)
 if exists("g:ruby_debugger_loaded")
   "finish
 endif
-if v:version < 700 
+if v:version < 700
   echoerr "RubyDebugger: This plugin requires Vim >= 7."
   finish
 endif
@@ -67,7 +67,7 @@ hi def link Breakpoint Error
 sign define breakpoint linehl=Breakpoint  text=xx
 
 " Init current line signs
-hi def link CurrentLine DiffAdd 
+hi def link CurrentLine DiffAdd
 sign define current_line linehl=CurrentLine text=>>
 
 
@@ -76,9 +76,9 @@ sign define current_line linehl=CurrentLine text=>>
 
 " *** Common (global) functions
 
-" Split string of tags to List. E.g., 
+" Split string of tags to List. E.g.,
 " <variables><variable name="a" value="b" /><variable name="c" value="d" /></variables>
-" will be splitted to 
+" will be splitted to
 " [ '<variable name="a" value="b" />', '<variable name="c" value="d" />' ]
 function! s:get_tags(cmd)
   let tags = []
@@ -87,7 +87,7 @@ function! s:get_tags(cmd)
   let inner_tags_match = s:get_inner_tags(cmd)
   if !empty(inner_tags_match)
     " Then find every tag and remove it from source string
-    let pattern = '<.\{-}\/>' 
+    let pattern = '<.\{-}\/>'
     let inner_tags = inner_tags_match[1]
     let tagmatch = matchlist(inner_tags, pattern)
     while empty(tagmatch) == 0
@@ -105,10 +105,10 @@ endfunction
 
 
 " Return match of inner tags without wrap tags. E.g.:
-" <variables><variable name="a" value="b" /></variables> mathes only <variable /> 
+" <variables><variable name="a" value="b" /></variables> mathes only <variable />
 function! s:get_inner_tags(cmd)
   return matchlist(a:cmd, '^<.\{-}>\(.\{-}\)<\/.\{-}>$')
-endfunction 
+endfunction
 
 
 " Return Dict of attributes.
@@ -122,7 +122,7 @@ function! s:get_tag_attributes(cmd)
   let quote = empty(quote_match) ? "\"" : escape(quote_match[1], "'\"")
   let pattern = "\\(\\w\\+\\)=" . quote . "\\(.\\{-}\\)" . quote
   " Find every attribute and remove it from source string
-  let attrmatch = matchlist(cmd, pattern) 
+  let attrmatch = matchlist(cmd, pattern)
   while !empty(attrmatch)
     " Values of attributes can be escaped by HTML entities, unescape them
     let attributes[attrmatch[1]] = s:unescape_html(attrmatch[2])
@@ -131,7 +131,7 @@ function! s:get_tag_attributes(cmd)
     " Remove it from source string
     let cmd = substitute(cmd, attrmatch[0], '', '')
     " Find next attribute
-    let attrmatch = matchlist(cmd, pattern) 
+    let attrmatch = matchlist(cmd, pattern)
   endwhile
   return attributes
 endfunction
@@ -187,7 +187,7 @@ function! s:send_message_to_debugger(message)
     let script .= "end; \""
     let output = system(script)
     if output =~ 'can not be opened'
-      call g:RubyDebugger.logger.put("Can't send a message to rdebug - port is not opened") 
+      call g:RubyDebugger.logger.put("Can't send a message to rdebug - port is not opened")
     endif
   endif
 endfunction
@@ -225,7 +225,7 @@ function! s:jump_to_file(file, line)
     exe window_number . "wincmd w"
   else
     " Check if last accessed window is usable to use it
-    " Usable window - not quickfix, explorer, modified, etc 
+    " Usable window - not quickfix, explorer, modified, etc
     if !s:is_window_usable(winnr("#"))
       exe s:first_normal_window() . "wincmd w"
     else
@@ -238,8 +238,8 @@ function! s:jump_to_file(file, line)
 endfunction
 
 
-" Return 1 if window is usable (not quickfix, explorer, modified, only one 
-" window, ...) 
+" Return 1 if window is usable (not quickfix, explorer, modified, only one
+" window, ...)
 function! s:is_window_usable(winnumber)
   "If there is only one window (winnr("$") - windows count)
   if winnr("$") ==# 1
@@ -256,7 +256,7 @@ function! s:is_window_usable(winnumber)
 
   exe oldwinnr . "wincmd p"
 
-  "if it is a special window, e.g. quickfix or another explorer plugin    
+  "if it is a special window, e.g. quickfix or another explorer plugin
   if specialWindow
     return 0
   endif
@@ -287,7 +287,7 @@ function! s:buf_in_windows(buffer_number)
   endwhile
 
   return count
-endfunction 
+endfunction
 
 
 " Find first 'normal' window (not quickfix, explorer, etc)
@@ -465,7 +465,7 @@ function! RubyDebugger.toggle_breakpoint(...) dict
   if empty(existed_breakpoints)
     let breakpoint = s:Breakpoint.new(file, line)
     call add(g:RubyDebugger.breakpoints, breakpoint)
-    call breakpoint.send_to_debugger() 
+    call breakpoint.send_to_debugger()
   else
     let breakpoint = existed_breakpoints[0]
     call filter(g:RubyDebugger.breakpoints, 'v:val.id != ' . breakpoint.id)
@@ -607,7 +607,7 @@ endfunction
 " <suspended file='test.rb' line='1' threadId='1' />
 " Jump to file/line where execution was suspended, set current line sign and get local variables
 function! RubyDebugger.commands.jump_to_breakpoint(cmd) dict
-  let attrs = s:get_tag_attributes(a:cmd) 
+  let attrs = s:get_tag_attributes(a:cmd)
   call s:jump_to_file(attrs.file, attrs.line)
   call g:RubyDebugger.logger.put("Jumped to breakpoint " . attrs.file . ":" . attrs.line)
 
@@ -724,7 +724,7 @@ endfunction
 " <processingException type="SyntaxError" message="some message" />
 " Just show exception message
 function! RubyDebugger.commands.processing_exception(cmd)
-  let attrs = s:get_tag_attributes(a:cmd) 
+  let attrs = s:get_tag_attributes(a:cmd)
   let message = "RubyDebugger Exception, type: " . attrs.type . ", message: " . attrs.message
   echo message
   call g:RubyDebugger.logger.put(message)
@@ -759,7 +759,7 @@ endfunction
 " <error>Error</error>
 " Just show error
 function! RubyDebugger.commands.error(cmd)
-  let error_match = s:get_inner_tags(a:cmd) 
+  let error_match = s:get_inner_tags(a:cmd)
   if !empty(error_match)
     let error = error_match[1]
     echo "RubyDebugger Error: " . error
@@ -771,7 +771,7 @@ endfunction
 " <message>Message</message>
 " Just show message
 function! RubyDebugger.commands.message(cmd)
-  let message_match = s:get_inner_tags(a:cmd) 
+  let message_match = s:get_inner_tags(a:cmd)
   if !empty(message_match)
     let message = message_match[1]
     echo "RubyDebugger Message: " . message
@@ -780,15 +780,15 @@ function! RubyDebugger.commands.message(cmd)
 endfunction
 
 
-" *** End of debugger Commands 
+" *** End of debugger Commands
 
 
 
-" *** Window class (start). Abstract Class for creating window. 
+" *** Window class (start). Abstract Class for creating window.
 "     Must be inherited. Mostly, stolen from the NERDTree.
 
-let s:Window = {} 
-let s:Window['next_buffer_number'] = 1 
+let s:Window = {}
+let s:Window['next_buffer_number'] = 1
 let s:Window['position'] = 'botright'
 let s:Window['size'] = 10
 
@@ -933,7 +933,7 @@ endfunction
 
 " Return 1 if the window exists in current tab
 function! s:Window._exist_for_tab() dict
-  return exists("t:window_" . self.name . "_buf_name") 
+  return exists("t:window_" . self.name . "_buf_name")
 endfunction
 
 
@@ -970,7 +970,7 @@ function! s:Window._restore_view(top_line, current_line, current_column) dict
   call cursor(a:top_line, 1)
   normal! zt
   call cursor(a:current_line, a:current_column)
-  let &scrolloff = old_scrolloff 
+  let &scrolloff = old_scrolloff
   call self._log("Restored view of window with name: " . self.name)
 endfunction
 
@@ -1200,9 +1200,9 @@ endfunction
 
 " Get variable under cursor
 function! s:Var.get_selected()
-  let line = getline(".") 
+  let line = getline(".")
   " Get its id - it is last in the string
-  let match = matchlist(line, '.*\t\(\d\+\)$') 
+  let match = matchlist(line, '.*\t\(\d\+\)$')
   let id = get(match, 1)
   if id
     let variable = g:RubyDebugger.variables.find_variable({'id' : id})
@@ -1307,7 +1307,7 @@ function! s:VarChild._render(depth, draw_text, vertical_map, is_last_child)
         endif
       endfor
     endif
-    
+
     " get the last vertical tree part for this line which will be different
     " if this node is the last child of its parent
     if a:is_last_child
@@ -1362,7 +1362,7 @@ function! s:VarChild._match_attributes(attrs)
     if has_key(self.attributes, attr)
       " If current key is contained in attributes of variable (they were
       " attributes in <variable /> tag, then trying to match there.
-      let conditions = conditions && self.attributes[attr] == a:attrs[attr] 
+      let conditions = conditions && self.attributes[attr] == a:attrs[attr]
     elseif has_key(self, attr)
       " Otherwise, if current key is contained in auxiliary attributes of the
       " variable, trying to match there
@@ -1508,7 +1508,7 @@ endfunction
 " *** Logger class (start)
 
 
-let s:Logger = {} 
+let s:Logger = {}
 
 function! s:Logger.new(file)
   let new_variable = copy(self)
@@ -1591,8 +1591,8 @@ endfunction
 
 " Find and return breakpoint under cursor
 function! s:Breakpoint.get_selected() dict
-  let line = getline(".") 
-  let match = matchlist(line, '^\(\d\+\)') 
+  let line = getline(".")
+  let match = matchlist(line, '^\(\d\+\)')
   let id = get(match, 1)
   let breakpoints = filter(copy(g:RubyDebugger.breakpoints), "v:val.id == " . id)
   if !empty(breakpoints)
@@ -1702,7 +1702,7 @@ let s:Frame = { }
 
 " ** Public methods
 
-" Constructor of new frame. 
+" Constructor of new frame.
 " Create new frame and set sign to it.
 function! s:Frame.new(attrs)
   let var = copy(self)
@@ -1723,8 +1723,8 @@ endfunction
 
 " Find and return frame under cursor
 function! s:Frame.get_selected() dict
-  let line = getline(".") 
-  let match = matchlist(line, '^\(\d\+\)') 
+  let line = getline(".")
+  let match = matchlist(line, '^\(\d\+\)')
   let no = get(match, 1)
   let frames = filter(copy(g:RubyDebugger.frames), "v:val.no == " . no)
   if !empty(frames)
@@ -1818,7 +1818,7 @@ function! s:Server.start(script) dict
   let self.debugger_pid = self._get_pid(self.debugger_port, 1)
 
   call g:RubyDebugger.logger.put("Start debugger")
-endfunction  
+endfunction
 
 
 " Kill servers and empty PIDs
