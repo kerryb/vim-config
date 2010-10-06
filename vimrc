@@ -91,6 +91,9 @@ let g:ragtag_global_maps = 1
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
+" Tabular
+vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
+
 " Folding settings
 set foldmethod=indent "fold based on indent
 set foldnestmax=3     "deepest fold is 3 levels

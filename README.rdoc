@@ -202,6 +202,10 @@ Automatic syntax checking (more[http://www.vim.org/scripts/script.php?script_id=
 
 Configurable, flexible, intuitive text aligning (more[http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt])
 
+*Keybindings*
+
+,tt:: (when text is selected) format tables made with pipes (|)
+
 == unimpaired
 
 Pairs of handy bracket maps (more[http://www.vim.org/scripts/script.php?script_id=1590])
