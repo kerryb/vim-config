@@ -1,8 +1,8 @@
 set nocompatible
+call pathogen#runtime_append_all_bundles()
 syntax on
-filetype on
-filetype indent on
-filetype plugin on
+filetype off
+filetype plugin indent on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T " no toolbar
