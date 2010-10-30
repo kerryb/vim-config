@@ -80,6 +80,10 @@ Fast and Easy Find and Replace Across Multiple Files (more[http://www.vim.org/sc
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc (more[http://www.vim.org/scripts/script.php?script_id=2386])
 
+== markdown
+
+Syntax highlighting for Markdown (more[http://plasticboy.com/markdown-vim-mode/])
+
 == matchit (1.13.2)
 
 Extended % matching for HTML, LaTeX, and many other languages (more[http://www.vim.org/scripts/script.php?script_id=39])
