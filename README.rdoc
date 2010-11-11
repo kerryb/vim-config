@@ -142,7 +142,6 @@ If you don't have 'spec' or 'cucumber' in your /usr/bin folder, because you're u
   let g:ruby_debugger_spec_path = '$GEM_HOME/bin/spec'
   let g:ruby_debugger_cucumber_path = '$GEM_HOME/bin/cucumber'
 
-
 == ruby_focused_unit_test
 
 Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_unit_test_vim])
@@ -152,6 +151,20 @@ Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_u
 ,rb:: Run entire test/spec
 ,rf:: Run focussed test/spec
 ,rc:: Run focussed contex (ie describe block)
+
+== ruby-refactoring
+
+Ruby Refactoring Tool for Vim (more[https://github.com/ecomba/vim-ruby-refactoring])
+
+*Keybindings*
+,rap::  Add Parameter
+,rit::  Inline Temp
+,rec::  Extract Constant
+,relv:: Extract Local Variable
+,rrlv:: Rename Local Variable
+,rriv:: Rename Instance Variable
+,rem:: Extract Method
+,rel:: Extract Let (RSpec)
 
 == scala
 
