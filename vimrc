@@ -1,8 +1,9 @@
 set nocompatible
-call pathogen#runtime_append_all_bundles()
-syntax on
 filetype off
+call pathogen#helptags()
+call pathogen#runtime_append_all_bundles()
 filetype plugin indent on
+syntax on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T " no toolbar
@@ -25,8 +26,6 @@ set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
 let mapleader = ","
-
-filetype plugin indent on " Enable filetype-specific indenting and plugins
 
 set tabstop=2
 set smarttab
@@ -72,7 +71,7 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 :map <silent> <Leader>w :set wrap!<CR>
 
 " ,f to find current file in NERDTree
-map <silent> <Leader>f :call FindInNERDTree()<CR>
+map <silent> <Leader>f :NERDTreeFind<CR>
 
 map <Leader>r :Rake<CR>
 map <silent> <Leader>rb :wa<CR>:RunAllRubyTests<CR>
