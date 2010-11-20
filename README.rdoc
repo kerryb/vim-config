@@ -41,7 +41,8 @@ be made in a branch, or in <tt>~/.vimrc.local</tt>.
 See the plugins' web pages for more information. The keybindings listed are mostly
 just those defined or overridden locally, not the ones provided by default.
 
-Plugins are isntalled in their own directories under <tt>bundle</tt>, thanks to Pathogen[http://www.vim.org/scripts/script.php?script_id=2332].
+Plugins are installed in their own directories under <tt>bundle</tt>, thanks to
+Pathogen[http://www.vim.org/scripts/script.php?script_id=2332].
 
 == Abolish (1.0)
 
