@@ -8,5 +8,5 @@ bundle/vim-ruby-debugger/tmp
 tags
 *~
 *.swp
-tmp/*
+tmp
 .DS_Store
