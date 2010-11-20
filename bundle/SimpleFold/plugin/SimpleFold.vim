@@ -365,7 +365,7 @@ endif
 
 "{{{ mappings and default options
 if !hasmapto("<Plug>SimpleFold_Foldsearch")
-    map <unique> <silent> <Leader>f <Plug>SimpleFold_Foldsearch
+    map <unique> <silent> <Leader>F <Plug>SimpleFold_Foldsearch
 endif
 noremap <unique> <script> <Plug>SimpleFold_Foldsearch <SID>FoldSearch
 noremap <SID>FoldSearch :call <SID>Foldsearch("")<cr>
