@@ -82,6 +82,10 @@ You need to build the code before you can use it:
   ruby extconf.rb
   make
 
+== Conque Shell (2.0)
+
+Run interactive commands inside a Vim buffer (more[http://www.vim.org/scripts/script.php?script_id=2771])
+
 == css_color (0.7)
 
 CSS color preview (more[http://www.vim.org/scripts/script.php?script_id=2150])

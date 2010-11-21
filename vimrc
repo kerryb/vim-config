@@ -221,6 +221,9 @@ function! SetCursorPosition()
   end
 endfunction
 
+" Conque Shell
+let g:ConqueTerm_ReadUnfocused = 1
+
 " make Y consistent with C and D
 nnoremap Y y$
 
