@@ -56,6 +56,14 @@ Plugin for the Perl module / CLI script 'ack' (more[http://www.vim.org/scripts/s
 
 Edit PNG and GIF icons by converting them to XPM (more[http://www.vim.org/scripts/script.php?script_id=1617])
 
+== Align (35/41)
+
+Help folks to align text, eqns, declarations, tables, etc (more[http://www.vim.org/scripts/script.php?script_id=294])
+
+*Keybindings*
+
+,tlt:: Align LaTEX tables (to avoid clashing with our existing ,tt mapping)
+
 == bufexplorer (7.2.8)
 
 Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])

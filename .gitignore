@@ -1,4 +1,5 @@
 .netrwhist
+.VimballRecord
 bundle/command-t/ruby/command-t/Makefile
 bundle/command-t/ruby/command-t/*.bundle
 bundle/command-t/ruby/command-t/*.o
