@@ -32,7 +32,7 @@ set shiftwidth=2
 set autoindent
 set expandtab
 set backspace=start,indent,eol
-autocmd FileType make     set noexpandtab
+autocmd FileType make set noexpandtab
 
 runtime! plugin/matchit.vim " extends % to do/end etc
 
@@ -88,6 +88,9 @@ let g:ragtag_global_maps = 1
 
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
+
+" Command-T configuration
+let g:CommandTMaxHeight=20
 
 " Tabular
 vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
