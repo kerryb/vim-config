@@ -96,7 +96,8 @@ let g:CommandTMaxHeight=20
 
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
-autocmd VimEnter * NERDTree
+"autocmd VimEnter * NERDTree
+autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
 autocmd VimEnter * wincmd p
 autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 
@@ -107,6 +108,13 @@ augroup FileExplorer
 augroup END
 
 let g:NERDTreeHijackNetrw = 0
+
+" If the parameter is a directory (including implicit '.'), open NERDTree
+function s:NERDTreeIfDirectory(directory)
+  if isdirectory(a:directory) || a:directory == ""
+    NERDTree
+  endif
+endfunction
 
 " If the parameter is a directory, cd into it
 function s:CdIfDirectory(directory)
