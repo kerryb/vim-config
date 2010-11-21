@@ -232,6 +232,14 @@ Configurable, flexible, intuitive text aligning (more[http://github.com/godlygee
 
 Pairs of handy bracket maps (more[http://www.vim.org/scripts/script.php?script_id=1590])
 
+== ZoomWin (23)
+
+Zoom in/out  of windows (toggle between one window and multi-window) (more[http://www.vim.org/scripts/script.php?script_id=508])
+
+*Keybindings*
+
+,z:: Zoom
+
 = Other Keybindings
 
 ctrl-]:: Jump to definition (requires exuberant ctags[http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/])

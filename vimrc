@@ -224,6 +224,9 @@ endfunction
 " Conque Shell
 let g:ConqueTerm_ReadUnfocused = 1
 
+" ZoomWin configuration
+map <Leader>z :ZoomWin<CR>
+
 " make Y consistent with C and D
 nnoremap Y y$
 
