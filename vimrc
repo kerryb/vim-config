@@ -253,6 +253,8 @@ imap lkj <ESC>
 imap ljk <ESC>
 imap ;l <ESC>
 
+map <Leader>rt :!run_tags<CR><CR>
+
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
       \ adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
