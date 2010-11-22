@@ -98,6 +98,10 @@ Fast and Easy Find and Replace Across Multiple Files (more[http://www.vim.org/sc
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc (more[http://www.vim.org/scripts/script.php?script_id=2386])
 
+== Fugitive (1.1)
+
+A Git wrapper so awesome, it should be illegal (more[http://www.vim.org/scripts/script.php?script_id=2975])
+
 == markdown
 
 Syntax highlighting for Markdown (more[http://plasticboy.com/markdown-vim-mode/])
