@@ -124,19 +124,19 @@ A plugin that allows for easy commenting of code for many filetypes (more[http:/
 A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (more[http://www.vim.org/scripts/script.php?script_id=1896])
 
 If you have already typed 'foo', the following shortcuts apply (with the cursor position marked by ^):
-<C-X>=       :foo<%= ^ %>
-<C-X>+       :<%= foo^ %>
-<C-X>-       :foo<% ^ %>
-<C-X>_       :<% foo^ %>
-<C-X>'       :foo<%# ^ %>
-<C-X>"       :<%# foo^ %>
-<C-X><Space> :<foo>^</foo>
-<C-X><CR>    :<foo>\n^\n</foo>
-<C-X>/       :Last HTML tag closed
-<C-X>!       :<!DOCTYPE...>/<?xml ...?> (menu)
-<C-X>@       :<link rel="stylesheet" ...>
-<C-X>#       :<meta http-equiv="Content-Type" ... />    *ragtag-CTRL-X_#*
-<C-X>$       :<script src="/javascripts/^.js"></script> *ragtag-CTRL-X_$*
+<C-X>=       ::foo<%= ^ %>
+<C-X>+       ::<%= foo^ %>
+<C-X>-       ::foo<% ^ %>
+<C-X>_       ::<% foo^ %>
+<C-X>'       ::foo<%# ^ %>
+<C-X>"       ::<%# foo^ %>
+<C-X><Space> ::<foo>^</foo>
+<C-X><CR>    ::<foo>\n^\n</foo>
+<C-X>/       ::Last HTML tag closed
+<C-X>!       ::<!DOCTYPE...>/<?xml ...?> (menu)
+<C-X>@       ::<link rel="stylesheet" ...>
+<C-X>#       ::<meta http-equiv="Content-Type" ... />    *ragtag-CTRL-X_#*
+<C-X>$       ::<script src="/javascripts/^.js"></script> *ragtag-CTRL-X_$*
 
 
 == rails (4.3)
