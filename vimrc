@@ -278,14 +278,14 @@ function! OpenRubyDoc(keyword)
   let url = 'http://apidock.com/ruby/'.a:keyword
   call OpenInBrowser(url)
 endfunction
-noremap RB :call OpenRubyDoc(expand('<cword>'))<CR>
+noremap RB :call OpenRubyDoc(expand('<cword>'))<CR><CR>
 
 " Open the Rails ApiDock page for the word under cursor
 function! OpenRailsDoc(keyword)
   let url = 'http://apidock.com/rails/'.a:keyword
   call OpenInBrowser(url)
 endfunction
-noremap RR :call OpenRailsDoc(expand('<cword>'))<CR>
+noremap RR :call OpenRailsDoc(expand('<cword>'))<CR><CR>
 
 " :SudoW to save file using sudo (must be already authorised, eg sudo -v)
 command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
