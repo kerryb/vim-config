@@ -1,6 +1,6 @@
 set nocompatible
-call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
