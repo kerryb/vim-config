@@ -64,6 +64,10 @@ Help folks to align text, eqns, declarations, tables, etc (more[http://www.vim.o
 
 ,tlt:: Align LaTEX tables (to avoid clashing with our existing ,tt mapping)
 
+== AutoClose
+
+Inserts matching bracket, paren, brace or quote (more[http://www.vim.org/scripts/script.php?script_id=1849])
+
 == bufexplorer (7.2.8)
 
 Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42])
@@ -73,7 +77,7 @@ Buffer explorer/browser (more[http://www.vim.org/scripts/script.php?script_id=42
 ,.:: Show buffer explorer
 
 == Command-T (1.0b)
-
+http://*.google.com/reader/*
 Fast file navigation for VIM (more[http://www.vim.org/scripts/script.php?script_id=3025])
 
 You need to build the code before you can use it:
