@@ -140,19 +140,19 @@ A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more ([more](http://w
 If you have already typed 'foo', the following shortcuts apply (with the cursor position marked by ^):
 
 <dl>
-  <dt>&lt;C-X&gt;=</dt><dd>foo<%= ^ %></dd>
-  <dt>&lt;C-X&gt;+</dt><dd><%= foo^ %></dd>
-  <dt>&lt;C-X&gt;-</dt><dd>foo<% ^ %></dd>
-  <dt>&lt;C-X&gt;_</dt><dd><% foo^ %></dd>
-  <dt>&lt;C-X&gt;'</dt><dd>foo<%# ^ %></dd>
-  <dt>&lt;C-X&gt;"</dt><dd><%# foo^ %></dd>
+  <dt>&lt;C-X&gt;=</dt><dd>foo&lt;%= ^ %&gt;</dd>
+  <dt>&lt;C-X&gt;+</dt><dd>&lt;%= foo^ %&gt;</dd>
+  <dt>&lt;C-X&gt;-</dt><dd>foo&lt;% ^ %&gt;</dd>
+  <dt>&lt;C-X&gt;_</dt><dd>&lt;% foo^ %&gt;</dd>
+  <dt>&lt;C-X&gt;'</dt><dd>foo&lt;%# ^ %&gt;</dd>
+  <dt>&lt;C-X&gt;"</dt><dd>&lt;%# foo^ %&gt;</dd>
   <dt>&lt;C-X&gt;&lt;Space&lt;</dt><dd>&lt;foo&gt;^&lt;/foo&gt;</dd>
   <dt>&lt;C-X&gt;&lt;CR&lt;</dt><dd>&lt;foo&gt;\n^\n&lt;/foo&gt;</dd>
   <dt>&lt;C-X&gt;/</dt><dd>Last HTML tag closed</dd>
-  <dt>&lt;C-X&gt;lt;!</dt><dd>&gt;!DOCTYPE...>gt;/&gt;?xml ...?>gt; (menu)</dd>
-  <dt>&lt;C-X&gt;lt;@</dt><dd>&gt;link rel="stylesheet" ...>gt;</dd>
-  <dt>&lt;C-X&gt;lt;#</dt><dd>&gt;meta http-equiv="Content-Type" ... />gt; *ragtag-CTRL-X_#*</dd>
-  <dt>&lt;C-X&gt;lt;$</dt><dd>&gt;script src="/javascripts/^.js">gt;&gt;/script>gt; *ragtag-CTRL-X_$*</dd>
+  <dt>&lt;C-X&gt;lt;!</dt><dd>&lt;!DOCTYPE...&gt;/&lt;?xml ...?&gt; (menu)</dd>
+  <dt>&lt;C-X&gt;lt;@</dt><dd>&lt;link rel="stylesheet" ...&gt;</dd>
+  <dt>&lt;C-X&gt;lt;#</dt><dd>&lt;meta http-equiv="Content-Type" ... /&gt; *ragtag-CTRL-X_#*</dd>
+  <dt>&lt;C-X&gt;lt;$</dt><dd>&lt;script src="/javascripts/^.js"&gt;&lt;/script&gt; *ragtag-CTRL-X_$*</dd>
 </dl>
 
 ## rails (4.3)
@@ -312,15 +312,15 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,s</dt><dd>Show/hide hidden characters</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
+  <dt>RB</dt><dd>Open Ruby ApiDock docs for word under cursor</dd>
+  <dt>RR</dt><dd>Open Rails ApiDock docs for word under cursor</dd>
 </dl>
 
 # Commands
 
 <dl>
-  <dt>RB</dt><dd>Open Ruby ApiDock docs for word under cursor</dd>
-  <dt>RR</dt><dd>Open Rails ApiDock docs for word under cursor</dd>
-  <dt>Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
-  <dt>SudoW</dt><dd>Save using sud (run sudo -v in terminal first)</dd>
+  <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
+  <dt>:SudoW</dt><dd>Save using sud (run <tt>sudo -v</tt> in terminal first)</dd>
 </dl>
 
 # Vim Resources
