@@ -193,9 +193,19 @@ Run a focused ruby unit test in vi (more[http://github.com/pgr0ss/ruby_focused_u
 ,rf:: Run focussed test/spec
 ,rc:: Run focussed contex (ie describe block)
 
+*Note:* May not work in RSpec 2.
+
 == ruby-refactoring (5028bd - November 06, 2010)
 
-TODO
+*Keybindings*
+,rap::  Add Parameter
+,rit::  Inline Temp
+,rec::  Extract Constant
+,relv:: Extract Local Variable
+,rrlv:: Rename Local Variable
+,rriv:: Rename Instance Variable
+,rem::  Extract Method
+,rel::  Extract Let (RSpec)
 
 == scala
 
