@@ -146,8 +146,8 @@ If you have already typed 'foo', the following shortcuts apply (with the cursor 
   <dt>&lt;C-X&gt;_</dt><dd>&lt;% foo^ %&gt;</dd>
   <dt>&lt;C-X&gt;'</dt><dd>foo&lt;%# ^ %&gt;</dd>
   <dt>&lt;C-X&gt;"</dt><dd>&lt;%# foo^ %&gt;</dd>
-  <dt>&lt;C-X&gt;&lt;Space&lt;</dt><dd>&lt;foo&gt;^&lt;/foo&gt;</dd>
-  <dt>&lt;C-X&gt;&lt;CR&lt;</dt><dd>&lt;foo&gt;\n^\n&lt;/foo&gt;</dd>
+  <dt>&lt;C-X&gt;&lt;Space&gt;</dt><dd>&lt;foo&gt;^&lt;/foo&gt;</dd>
+  <dt>&lt;C-X&gt;&lt;CR&gt;</dt><dd>&lt;foo&gt;<br />^<br />&lt;/foo&gt;</dd>
   <dt>&lt;C-X&gt;/</dt><dd>Last HTML tag closed</dd>
   <dt>&lt;C-X&gt;!</dt><dd>&lt;!DOCTYPE...&gt;/&lt;?xml ...?&gt; (menu)</dd>
   <dt>&lt;C-X&gt;@</dt><dd>&lt;link rel="stylesheet" ...&gt;</dd>
