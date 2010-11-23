@@ -274,16 +274,6 @@ ctrl-]:: Jump to definition (requires exuberant ctags[http://blog.tobiascrawley.
 ,sw:: Strip trailing whitespace
 ,w:: Toggle word wrapping
 
-= Brackets
-
-Bracket completion is off by default.
-To enable, add "call EnableBracketCompletion()" in your vimrc.local
-You can disable bracket completion once you've started vim using ":call DisableBracketCompletion()"
-
-Enter a bracket and the system will include a closing bracket of the same type.
-Enter bracket twice to prevent the second one being added
-Enter bracket and <CR> to add the pair of brackets around an empty line and position the cursor on this line.
-
 = Commands
 
 RB:: Open Ruby ApiDock docs for word under cursor

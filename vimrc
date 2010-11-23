@@ -294,41 +294,6 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 command! Rroutes :Redit config/routes.rb
 command! RTroutes :RTedit config/routes.rb
 
-" bracket completion routines
-" not enabled by default - to enable put "call EnableBracketCompletion()" in
-" vimrc.local
-function! EnableBracketCompletion()
-  inoremap {      {}<Left>
-  inoremap {<CR>  {<CR>}<Esc>O
-  inoremap {{     {
-  inoremap {}     {}
-  inoremap (      ()<Left>
-  inoremap (<CR>  (<CR>)<Esc>O
-  inoremap ((     (
-  inoremap ()     ()
-  inoremap [      []<Left>
-  inoremap [<CR>  [<CR>]<Esc>O
-  inoremap [[     [
-  inoremap []     []
-  inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-endfunction
-
-function! DisableBracketCompletion()
-  iunmap {
-  iunmap {<CR>
-  iunmap {{
-  iunmap {}
-  iunmap (
-  iunmap (<CR>
-  iunmap ((
-  iunmap ()
-  iunmap [
-  iunmap [<CR>
-  iunmap [[
-  iunmap []
-  iunmap <expr> )
-endfunction
-
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
