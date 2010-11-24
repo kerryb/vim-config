@@ -312,8 +312,8 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,s</dt><dd>Show/hide hidden characters</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
-  <dt>RB</dt><dd>Open Ruby ApiDock docs for word under cursor</dd>
-  <dt>RR</dt><dd>Open Rails ApiDock docs for word under cursor</dd>
+  <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
+  <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
 </dl>
 
 # Commands
