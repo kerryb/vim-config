@@ -72,6 +72,9 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
 
+" Fix supertab/endwise incompatibility
+let g:SuperTabCrMapping = 0
+
 map <Leader>r :Rake<CR>
 map <silent> <Leader>rb :wa<CR>:RunAllRubyTests<CR>
 map <silent> <Leader>rc :wa<CR>:RunRubyFocusedContext<CR>
@@ -232,7 +235,7 @@ map <Leader>z :ZoomWin<CR>
 " make Y consistent with C and D
 nnoremap Y y$
 
-" strip trailing whitespace
+" strip trailing whitespace<foo&bar>
 "autocmd BufWritePre,FileWritePre * call StripTrailingWhitespace()
 function! StripTrailingWhitespace()
 	normal mz
