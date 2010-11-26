@@ -86,7 +86,7 @@ Fast file navigation for VIM ([more](http://www.vim.org/scripts/script.php?scrip
 
 You need to build the code before you can use it:
 
-    cd bundle/command-t/ruby
+    cd bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
 
