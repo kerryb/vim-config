@@ -68,7 +68,7 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 
 ## AutoClose
 
-Auto close pair of characters ([more](http://www.vim.org/scripts/script.php?script_id=2009))
+Inserts matching bracket, paren, brace or quote ([more](http://www.vim.org/scripts/script.php?script_id=1849))
 
 ## bufexplorer (7.2.8)
 
