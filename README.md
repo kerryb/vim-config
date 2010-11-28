@@ -307,20 +307,24 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 
 # Other Keybindings
 
-| ctrl-] | Jump to definition (requires [exuberant ctags](http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/)) |
-| ,h     | Hide search highlighting                                                                                                          |
-| ,rr    | Run ruby file                                                                                                                     |
-| ,rt    | Run [run_tags](http://gist.github.com/186567) script (assuming it's installed and in the path)                                    |
-| ,s     | Show/hide hidden characters                                                                                                       |
-| ,sw    | Strip trailing whitespace                                                                                                         |
-| ,w     | Toggle word wrapping                                                                                                              |
-| RB     | Open Ruby docs in browser for word under cursor                                                                                   |
-| RR     | Open Rails docs in browser for word under cursor                                                                                  |
+<dl>
+  <dt>ctrl-]</dt><dd>Jump to definition (requires [exuberant ctags](http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/))</dd>
+  <dt>,h</dt><dd>Hide search highlighting</dd>
+  <dt>,rr</dt><dd>Run ruby file</dd>
+  <dt>,rt</dt><dd>Run [run_tags](http://gist.github.com/186567) script (assuming it's installed and in the path)</dd>
+  <dt>,s</dt><dd>Show/hide hidden characters</dd>
+  <dt>,sw</dt><dd>Strip trailing whitespace</dd>
+  <dt>,w</dt><dd>Toggle word wrapping</dd>
+  <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
+  <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
+</dl>
 
 # Commands
 
-| :Lorem | Generate 'lorem ipsum' text                             |
-| :SudoW | Save using sud (run <tt>sudo -v</tt> in terminal first) |
+<dl>
+  <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
+  <dt>:SudoW</dt><dd>Save using sud (run <tt>sudo -v</tt> in terminal first)</dd>
+</dl>
 
 # Vim Resources
 
