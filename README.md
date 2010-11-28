@@ -212,6 +212,8 @@ Run a focused ruby unit test in vi ([more](http://github.com/pgr0ss/ruby_focused
 
 ## ruby-refactoring (ee523d - November 28, 2010)
 
+Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
+
 *Keybindings*
 
 <dl>
