@@ -3,7 +3,7 @@
 # 'snipmate' Vim plugin by Michael Sanders <msanders42+vim@gmail.com>.
 # http://www.vim.org/scripts/script.php?script_id=2540
 #
-# $Id: rspec.snippets 70 2009-06-01 14:33:54Z mahlon $
+# $Id$
 #
 
 snippet .and and_raise()
@@ -56,8 +56,13 @@ snippet con
 	context "${1:context}" do
 		${2}
 	end
+# this is the 'old' mock syntax (rspec 1.x)
+# use 'double' for rspec 2.x
 snippet mock
 	${1:var} = mock( "${2:mock_name}"${3:, :null_object => true} )
+	${4}
+snippet dou
+	${1:var} = double( "${2:double_name}" )${3:.as_null_object}
 	${4}
 snippet st
 	stub!( :${1:expectation} ).with( ${2:args} ).and_return( ${3} )
@@ -135,16 +140,16 @@ snippet shbp
 snippet shnbp
 	${1:target}.should_not ${2:be_${3:predicate}} ${4}
 snippet exre
-	expect { ${1} }.to raise_error( ${2:ErrorClass}, /${3:message match}/i )
+	expect { ${1} }.to raise_exception( ${2:ErrorClass}, /${3:message match}/i )
 	${4}
 snippet exnre
-	expect { ${1} }.to_not raise_error( ${2:ErrorClass} )
+	expect { ${1} }.to_not raise_exception( ${2:ErrorClass} )
 	${3}
 snippet shre
-	lambda { ${1} }.should raise_error( ${2:ErrorClass}, /${3:message match}/i )
+	lambda { ${1} }.should raise_exception( ${2:ErrorClass}, /${3:message match}/i )
 	${4}
 snippet shnre
-	lambda { ${1} }.should_not raise_error( ${2:ErrorClass} )
+	lambda { ${1} }.should_not raise_exception( ${2:ErrorClass} )
 	${3}
 snippet shr
 	${1:mock}.should_receive( :${2:message} )${3}

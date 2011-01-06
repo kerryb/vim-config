@@ -1,6 +1,7 @@
 "
-" specky: syntax highlighting for the 'spec' script output
-" $Id: specrun.vim 67 2009-04-20 00:57:06Z mahlon $
+" specky: syntax highlighting for rspec test output, using the
+" custom specky formatter. (rspec 2.x)
+" $Id: specrun.vim,v cd1f3381c1ed 2010/12/25 04:01:10 mahlon $
 "
 
 if has("folding")
@@ -8,68 +9,51 @@ if has("folding")
 endif
 
 " Command line as it was called, inserted by Specky
-"
 syntax match specSpeckyCmd /^Output of: .*/
-highlight link specSpeckyCmd Question
-"syntax match WarningMsg /\.\./
 
-" Plain output block (...P..F...)
-"
-syntax region specPlain start="^[\.PF]\+" end="^$" contains=specFailedPlain,specPendingPlain
-highlight link specPlain MoreMsg
+" Pending specs that somehow pass
+syntax keyword specCallout FIXED
 
-" Passed specs (specdoc output)
-"
-syntax match specPassed /^- .*/ contains=specFailed,specPending
-highlight link specPassed MoreMsg
-
-" Pending specs (specdoc output)
-"
-syntax match specPending /.*PENDING: .*)$/ contained
-highlight link specPending Function
-"
-" (Plain output)
-syntax match specPendingPlain /P/ contained
-highlight link specPendingPlain Function
-
-" Failed specs (specdoc output)
-"
-syntax match specFailed /.*\(FAILED\|ERROR\) - \d\+)/ contained
-highlight link specFailed WarningMsg
-"
-" (Plain output)
-syntax match specFailedPlain /F/ contained
-highlight link specFailedPlain WarningMsg
-
-" Warning details
-"
-syntax region specFailedDetails start="^\d\+)" end="^$" fold
-highlight link specFailedDetails WarningMsg
+" Passed specs
+syntax match specPassed /.*(\d\+.\d\+s)/ contains=specDuration,specBoxLine
+syntax keyword specPassedKeyword Succeeded
 
 " Pending specs
-"
-syntax region specPendingDetails start="^Pending:" end="^$" fold
-highlight link specPendingDetails Function
+syntax match specPending /.*PENDING: .*)$/ contains=specDuration,specBoxLine
+syntax keyword specPendingKeyword Pending
 
-" Timing information
-"
-syntax match specTimedRun /^Finished in.*/
-highlight link specTimedRun Question
+" Failed specs
+syntax match specFailed /.*FAILED - #\d\+)/ contains=specDuration,specBoxLine
+syntax keyword specFailedKeyword Failed
 
-" Status summary
-"
-syntax match specExamplesTotal /^\d\+ examples, .\+/ contains=specTotalFailed,specNoFailures,specTotalPending
-highlight link specExamplesTotal Special
-"
-syntax match specTotalFailed /\d\+ failure\%[s]/ contained
-highlight link specTotalFailed WarningMsg
-"
-syntax match specTotalPending /\d pending/ contained
-highlight link specTotalPending Function
-"
-syntax match specNoFailures /0 failures/ contained
-highlight link specNoFailures MoreMsg
+" Failure details
+syntax region specFailedDetails start="^FAILURE - #\d\+)" end="^$" fold contains=specCallout,specErrorLine
+syntax match specErrorLine /^  >>/
 
+
+" Boxes
+syntax match specBox /^\(\s\+\)\?\(+[+-]\+\||.*|\)$/ contains=specFailedKeyword,specDurationKeyword,specPendingKeyword,specPassedKeyword,specBoxContent
+syntax match specBoxContent /[a-zA-Z0-9]\+/ contained
+syntax match specBoxLine /^\(\s\+\)\?|/ contained
+
+" Spec timing
+" syntax match specDuration /\d\+\.\d\+s/ contained
+" syntax keyword specDurationKeyword Duration
+
+highlight def link specSpeckyCmd Question
+highlight def link specCallout Todo
+highlight def link specPassed MoreMsg
+highlight def link specPassedKeyword specPassed
+highlight def link specPending Function
+highlight def link specPendingKeyword specPending
+highlight def link specFailed WarningMsg
+highlight def link specFailedKeyword specFailed
+highlight def link specFailedDetails specFailed
+highlight def link specDuration Normal
+highlight def link specBox LineNr
+highlight def link specBoxContent Constant
+highlight def link specBoxLine LineNr
+highlight def link specErrorLine ErrorMsg
 
 let b:current_syntax = "specrun"
 

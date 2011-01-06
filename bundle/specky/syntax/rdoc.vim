@@ -1,6 +1,6 @@
 "
 " specky: syntax highlighting for 'rdoc' output
-" $Id: rdoc.vim 46 2008-08-12 16:24:10Z mahlon $
+" $Id$
 
 
 " Separator lines

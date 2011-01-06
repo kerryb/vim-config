@@ -1,4 +1,4 @@
-*specky.txt* Last change: $Id: specky.txt 67 2009-04-20 00:57:06Z mahlon $
+*specky.txt* Last change: $Id: specky.txt,v cd1f3381c1ed 2010/12/25 04:01:10 mahlon $
 
                 VIM REFERENCE MANUAL    by Mahlon E. Smith
 
@@ -9,10 +9,9 @@ A Plugin for testing Ruby code with RSpec -- and more                 *specky*
 ==============================================================================
 CONTENTS                                                      *SpeckyContents*
 
-
     1) Intro........................................|SpeckyIntro|
     2) Functionality................................|SpeckyFunctionality|
-    3) Enabling Specky..............................|SpeckyVimrcExample|
+    3) Enabling Specky..............................|SpeckyInstallation|
     4) Configuration................................|SpeckyOptions|
         4.1) Create text banners....................|g:speckyBannerKey|
         4.2) Cycling quote styles...................|g:speckyQuoteSwitcherKey|
@@ -22,6 +21,7 @@ CONTENTS                                                      *SpeckyContents*
         4.6) Modify the default spec command........|g:speckyRunSpecCmd|
         4.7) Modify the default rdoc command........|g:speckyRunRdocCmd|
         4.8) Alter new window behavior..............|g:speckyWindowType|
+        4.9) Running older rspec (1.x) .............|g:speckySpecVersion|
     5) Author.......................................|SpeckyAuthor|
     6) License......................................|SpeckyLicense|
 
@@ -30,18 +30,16 @@ CONTENTS                                                      *SpeckyContents*
 ==============================================================================
 1. INTRO                                                         *SpeckyIntro*
 
-
 Specky is primarily a small collection of functions to help make behavioral
-testing streamlined and easy when working with ruby and rspec.
+testing streamlined and easy when working with ruby and rspec.  Specky
+supports rspec 2.x by default, and is backwards compatible with rspec 1.x.
 
 Specky secondarily includes a couple of conveniences to make your everyday
 programming tasks smooooth and pleasurable.
 
 
-
 ==============================================================================
 2. FUNCTIONALITY                                         *SpeckyFunctionality*
-
 
 Okay then, what does it do?
 
@@ -80,39 +78,62 @@ plugin by Michael Sanders <msanders42+vim@gmail.com>. (Minimum version 0.74.)
 	http://www.vim.org/scripts/script.php?script_id=2540
 
 ==============================================================================
-3. ENABLING-SPECKY                                        *SpeckyVimrcExample*
+3. ENABLING-SPECKY                                        *SpeckyInstallation*
+
+Getting Specky to work should be a fairly trivial process.  Specky now
+uses a custom rspec formatter to function reliably, and it needs to know
+where that lives on your system.
+
+If you installed Specky from Vimball, it is likely found at:
+
+	~/.vim/ruby/specky_formatter.rb ~
+
+Otherwise, you'll need to locate it, and tell rspec to use it in one of two
+ways.
+
+	1) Set the 'g:speckyRunSpecCmd' variable explicitly:
+
+		let g:speckyRunSpecCmd = "rspec -r ~/.vim/ruby/specky_formatter.rb -f SpeckyFormatter" ~
+
+	2) or, leave 'g:speckyRunSpecCmd' at its default value, and instead use
+	   an '.rspec' settings file in the root directory of the the project
+	   you're working in.  I find this method much more flexible -- the
+	   '.rspec' file can be carried with your project, and customized to
+	   include additional bits like custom $LOAD_PATH injections, etc.
+	   Here's what mine usually looks like: >
+
+		-r loadpath
+		-r ~/.vim/bundle/specky/ruby/specky_formatter
+		-f SpeckyFormatter
 
 
-Here's what my config looks like. >
+After that is taken care of, then just set up your keybindings in your
+.vimrc.  Here's what my config looks like. >
 
-    let g:speckyBannerKey = "<C-S>b"
+    let g:speckyBannerKey        = "<C-S>b"
     let g:speckyQuoteSwitcherKey = "<C-S>'"
-    let g:speckyRunRdocKey = "<C-S>r"
-    let g:speckySpecSwitcherKey = "<C-S>x"
-    let g:speckyRunSpecKey = "<C-S>s"
-    let g:speckyRunSpecCmd = "spec -fs -r loadpath.rb"
-    let g:speckyRunRdocCmd = "fri -L -f plain"
-    let g:speckyWindowType = 2
+    let g:speckyRunRdocKey       = "<C-S>r"
+    let g:speckySpecSwitcherKey  = "<C-S>x"
+    let g:speckyRunSpecKey       = "<C-S>s"
+    let g:speckyRunRdocCmd       = "fri -L -f plain"
+    let g:speckyWindowType       = 2
 
-
-With these bindings, all specky commands start with <ctrl-s> ("s" for
-specky!), followed by a mnemonic function to run:
+With these bindings, all Specky commands start with <ctrl-s> ("s" for
+Specky!), followed by a mnemonic function to run:
 
     b ----> Banner creation ~
     ' ----> Quote cycling ~
     r ----> run Rdoc ~
     x ----> code and spec eXchange ~
-    s ----> run Spec ~
+    s ----> run rSpec ~
 
 Of course, <ctrl-s> is a "suspend" signal for most terminals, so these
 bindings are meant for a |gui| environment, such as gvim.  Your mileage (and
 tastes) will doubtlessly vary.  Do what you will.  I won't judge you.
 
 
-
 ==============================================================================
 4. CONFIGURATION-OPTIONS                                       *SpeckyOptions*
-
 
 Here are all of the available configuration options.
 
@@ -124,16 +145,14 @@ Please note that you must set binding variables:
     |g:speckySpecSwitcherKey|
     |g:speckyRunSpecKey|
 
-...in order to enable the respective specky functionality.  See
-|SpeckyVimrcExample| for details. Any other options are entirely optional.
+...in order to enable the respective Specky functionality.  See
+|SpeckyInstallation| for details. Any other options are entirely optional.
 Put these into your |vimrc|, or wherever else you enjoy storing this kind of
 stuff.
 
 
-
 ------------------------------------------------------------------------------
 4.1                                                        *g:speckyBannerKey*
-
 
 Setting this binding enables comment banner creation.
 
@@ -158,10 +177,8 @@ Oh man, what are you going to DO with all of that extra free time?
 The possibilities are staggering.
 
 
-
 ------------------------------------------------------------------------------
 4.2                                                 *g:speckyQuoteSwitcherKey*
-
 
 Setting this binding enables quote "style switching".
 
@@ -177,20 +194,16 @@ In ruby mode, symbols are also put into the rotation.
 Note that quote cycling only works with a |word|.
 
 
-
 ------------------------------------------------------------------------------
 4.3                                                       *g:speckyRunRdocKey*
-
 
 Setting this enables the display of rdoc documentation for the current
 word under the cursor.  For lookups with multiple matches, you can continue
 using this binding to "drill down" to the desired documentation.
          
 
-
 ------------------------------------------------------------------------------
 4.4                                                  *g:speckySpecSwitcherKey*
-
 
 Setting this enables spec to code switching, and visa versa.
 
@@ -205,12 +218,10 @@ Because it leaves respective buffers open, you can essentially think of this
 as a quick toggle between code and tests.
 
 
-
 ------------------------------------------------------------------------------
 4.5                                                       *g:speckyRunSpecKey*
 
-
-Setting this variable runs "spec" on the current buffer.
+Setting this variable runs "rspec" on the current buffer.
 
 All output is sent to a syntax highlighted scratch buffer. This new window is
 re-used for each spec run.  You can quickly "jump" to assertion failures and
@@ -232,31 +243,27 @@ their associated details with the following keys:
 
 
 Normally, you'd only want to perform this keystroke while in a spec file
-buffer.  If specky thinks you are in code, rather than a buffer (as indicated
+buffer.  If Specky thinks you are in code, rather than a buffer (as indicated
 by the lack of a "_spec.rb" file naming convention) then it will attempt to
 switch to the spec before running the command.
-
 
 
 ------------------------------------------------------------------------------
 4.6                                                       *g:speckyRunSpecCmd*
 
-
 This is the program, with flags, that the current file is sent to when
 executing the |g:speckyRunSpecKey| keybinding.
 
 A common addition is to include an "-r" flag for sucking in local libraries
-necessary for testing your project.  The spec "plain" output format is
-supported too, though less useful.
+necessary for testing your project.  In fact, this is required to use the 
+rspec formatter supplied by Specky.  See |SpeckyInstallation| for more info.
 
     Default: ~
-        spec -fs
-
+        rspec
 
 
 ------------------------------------------------------------------------------
 4.7                                                       *g:speckyRunRdocCmd*
-
 
 If you prefer an rdoc display program other than "ri", you can set it
 with this variable.  "fri -L -f plain" is always a nice choice, for example.
@@ -265,10 +272,8 @@ with this variable.  "fri -L -f plain" is always a nice choice, for example.
         ri
 
 
-
 ------------------------------------------------------------------------------
 4.8                                                       *g:speckyWindowType*
-
 
 For both spec and rdoc commands, this variable controls the behavior of the
 newly generated window.
@@ -282,6 +287,21 @@ newly generated window.
 		Split the current window horizontally
 	2 ~
 		Split the current window vertically
+
+
+------------------------------------------------------------------------------
+4.9                                                      *g:speckySpecVersion*
+
+Specky should work out of the box with rspec 2.x.  If you'd like to use rspec
+1.x instead, you can do so with the following Vim settings: >
+
+    let g:speckySpecVersion = 1
+	let g:speckyRunRdocCmd  = "spec -fs" 
+
+If you have both rspec 1.x and 2.x installed at the same time, you need to 
+be explicit with what version you are executing: >
+
+	let g:speckyRunRdocCmd  = "spec _1.3.0_ -fs" 
 
 
 ==============================================================================
@@ -302,7 +322,7 @@ Specky was written by Mahlon E. Smith.
 Specky is distributed under the BSD license.
     http://www.opensource.org/licenses/bsd-license.php
 >
-    Copyright (c) 2008, Mahlon E. Smith <mahlon@martini.nu>
+    Copyright (c) 2008-2010, Mahlon E. Smith <mahlon@martini.nu>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -331,3 +351,4 @@ Specky is distributed under the BSD license.
 
 
 vim: set noet nosta sw=4 ts=4 ft=help :
+

@@ -2,7 +2,7 @@
 "
 " Specky!
 " Mahlon E. Smith <mahlon@martini.nu>
-" $Id: specky.vim 69 2009-04-20 05:06:53Z mahlon $
+" $Id: specky.vim,v 763cef799c74 2010/12/18 08:56:09 mahlon $
 "
 
 
@@ -32,7 +32,7 @@ endif
 if exists( 'specky_loaded' )
 	finish
 endif
-let specky_loaded = '$Rev: 92 $'
+let specky_loaded = '$Rev: 763cef799c74 $'
 
 
 "}}}
@@ -99,7 +99,6 @@ function! <SID>SpecSwitcher()
 	endif
 
 	" Restore the original path.
-	"
 	execute 'set path=' . l:orig_path
 endfunction
 
@@ -118,28 +117,23 @@ function! <SID>QuoteSwitcher()
 
 	if l:type == '"'
 		" Double quote to single
-		"
 		execute ":normal viWc'" . l:word . "'"
 
 	elseif l:type == "'"
 		if &ft == 'ruby' || &ft == 'rspec'
 			" Single quote to symbol
-			"
 			execute ':normal viWc:' . l:word
 		else
 			" Single quote to double
-			"
 			execute ':normal viWc"' . l:word . '"'
 		end
 
 	else
 		" Whatever to double quote
-		"
 		execute ':normal viWc"' . l:word . '"'
 	endif
 
 	" Move the cursor back into the cl:word
-	"
 	call cursor( 0, getpos('.')[2] - 1 )
 endfunction
 
@@ -178,9 +172,10 @@ function! <SID>RunSpec()
 		silent call <SID>SpecSwitcher()
 	endif
 
-	let l:spec   = bufname('%')
-	let l:buf    = 'specky:specrun'
-	let l:bufnum = bufnr( l:buf )
+	let l:spec    = bufname('%')
+	let l:buf     = 'specky:specrun'
+	let l:bufnum  = bufnr( l:buf )
+	let l:specver = (exists( 'g:speckySpecVersion') && g:speckySpecVersion == 1) ? 1 : 2
 
 	" Squash the old buffer, if it exists.
 	"
@@ -189,8 +184,14 @@ function! <SID>RunSpec()
 	endif
 
 	execute <SID>NewWindowCmd() . l:buf
-	setlocal buftype=nofile bufhidden=delete noswapfile filetype=specrun
-	set foldtext='--'.getline(v:foldstart).v:folddashes
+	setlocal buftype=nofile bufhidden=delete noswapfile
+	if ( l:specver == 1 )
+		setlocal filetype=specrun1
+		set foldtext='--'.getline(v:foldstart).v:folddashes
+	else
+		setlocal filetype=specrun
+		set foldtext=_formatFoldText()
+	endif
 
 	" Set up some convenient keybindings.
 	"
@@ -203,20 +204,19 @@ function! <SID>RunSpec()
 	" Default cmd for spec
 	"
 	if !exists( 'g:speckyRunSpecCmd' )
-		let g:speckyRunSpecCmd = 'spec -fs'
+		let g:speckyRunSpecCmd = l:specver == 1 ? 'spec -fs' : 'rspec'
 	endif
 
 	" Call spec and gather up the output
 	"
-	let l:cmd    =  g:speckyRunSpecCmd . ' ' . l:spec
+	let l:cmd =  g:speckyRunSpecCmd . ' ' . l:spec
+	call append( line('$'), 'Output of: ' . l:cmd  )
+	call append( line('$'), '' )
 	let l:output = system( l:cmd )
-	call append( 0, split( l:output, "\n" ) )
-	call append( 0, '' )
-	call append( 0, 'Output of: ' . l:cmd  )
+	call append( line('$'), split( l:output, "\n" ) )
 	normal gg
 
 	" Lockdown the buffer
-	"
 	setlocal nomodifiable
 endfunction
 
@@ -263,8 +263,7 @@ function! <SID>RunRdoc()
 		execute 'bd! ' . l:buf
 	endif
 
-	" With multiple matches, strip the comams from the cWORD.
-	"
+	" With multiple matches, strip the commas from the cWORD.
 	let l:word = substitute( l:word, ',', '', 'eg' )
 
 	execute <SID>NewWindowCmd() . l:buf
@@ -279,19 +278,24 @@ function! <SID>RunRdoc()
 	execute 'normal gg'
 
 	" Lockdown the buffer
-	"
-	execute 'setlocal nomodifiable'
+	setlocal nomodifiable
 endfunction
 
 
 " }}}
 " FindSpecError( detail ) {{{
 "
+" detail:
+" 	1  -- find the next failure
+" 	-1 -- find the previous failure
+" 	0  -- expand the current failure's detail
+"
 " Convenience searches for jumping to spec failures.
 "
 function! <SID>FindSpecError( detail )
 
-	let l:err_str = '(FAILED\|ERROR - \d\+)$'
+	let l:specver = (exists( 'g:speckySpecVersion') && g:speckySpecVersion == 1) ? 1 : 2
+	let l:err_str = l:specver == 1 ? '(FAILED\|ERROR - \d\+)$' : 'FAILED - #\d\+)$'
 
 	if ( a:detail == 0 )
 		" Find the detailed failure text for the current failure line,
@@ -299,7 +303,11 @@ function! <SID>FindSpecError( detail )
 		"
 		let l:orig_so = &so
 		set so=100
-		call search('^' . matchstr(getline('.'),'\d\+)$') )
+		if l:specver == 1
+			call search('^' . matchstr(getline('.'),'\d\+)$') )
+		else
+			call search('^FAILURE - #' . matchstr(getline('.'),'\d\+)$') )
+		endif
 		if has('folding')
 			silent! normal za
 		endif
@@ -317,6 +325,7 @@ function! <SID>FindSpecError( detail )
 
 	endif
 endfunction
+
 
 " }}}
 " NewWindowCmd() {{{
@@ -336,6 +345,20 @@ function! <SID>NewWindowCmd()
 		return 'tabnew '
 	endif
 endfunction
+
+
+" }}}
+" _formatFoldText() {{{
+"
+" Make folded failure detail visually appealing when folded.
+"
+function! _formatFoldText()
+	let l:fold = tolower( getline(v:foldstart) )
+	let l:fold = substitute( l:fold, '-', 'detail', 'e' )
+	let l:fold = '--[ ' . substitute( l:fold, ')', ' ]', 'e' )
+	return l:fold
+endfunction
+
 
 " }}}
 " s:err( msg ) "{{{

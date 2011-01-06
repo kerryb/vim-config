@@ -255,7 +255,7 @@ Run selected code in a screen session (irb etc) ([more](http://technotales.wordp
   <dt>,xx</dt><dd>Set session/window name</dd>
 </dl>
 
-## specky (1.3)
+## specky (1.5)
 
 Functions to help make behavioral testing easy with ruby and rspec ([more](http://www.vim.org/scripts/script.php?script_id=2286))
 
