@@ -205,7 +205,7 @@ endfunction
 call s:DefineCommand("cd", "ChangeDirectory")
 call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
-call s:DefineCommand("e", "Edit")
+"call s:DefineCommand("e", "Edit") # if you don't mind not being able to "e!"
 
 " Tabular
 vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
