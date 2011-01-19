@@ -26,6 +26,10 @@ set nowrap  " Line wrapping off
 set timeoutlen=500
 let mapleader = ","
 
+set cc=80
+" Override the colour in .vimrc.local like this:
+"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+
 set tabstop=2
 set smarttab
 set shiftwidth=2
@@ -205,7 +209,7 @@ endfunction
 call s:DefineCommand("cd", "ChangeDirectory")
 call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
-"call s:DefineCommand("e", "Edit") # if you don't mind not being able to "e!"
+"call s:DefineCommand("e", "Edit") " if you don't mind not being able to "e!"
 
 " Tabular
 vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
