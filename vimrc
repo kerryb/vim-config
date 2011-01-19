@@ -292,7 +292,7 @@ noremap RB :call OpenRubyDoc(expand('<cword>'))<CR><CR>
 " Open the Rails ApiDock page for the word under cursor
 function! OpenRailsDoc(keyword)
   if filereadable('config/application.rb')
-    let url = 'http://railsapi.com/doc/rails-v3.0.1/?q='.a:keyword
+    let url = 'http://railsapi.com/doc/rails-v3.0.3/?q='.a:keyword
   else
     let url = 'http://railsapi.com/doc/rails-v2.3.8/?q='.a:keyword
   endif
