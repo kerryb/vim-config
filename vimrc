@@ -26,7 +26,8 @@ set nowrap  " Line wrapping off
 set timeoutlen=500
 let mapleader = ","
 
-set cc=80
+" Highlight 120th column
+set cc=120
 " Override the colour in .vimrc.local like this:
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
