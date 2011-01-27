@@ -26,8 +26,9 @@ set nowrap  " Line wrapping off
 set timeoutlen=500
 let mapleader = ","
 
-" Highlight 120th column
-set cc=120
+" Display soft column limit
+au WinEnter,FileType * set cc=
+au WinEnter,FileType ruby,eruby,cucumber set cc=120
 " Override the colour in .vimrc.local like this:
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
