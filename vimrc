@@ -28,7 +28,7 @@ let mapleader = ","
 
 " Display soft column limit
 au WinEnter,FileType * set cc=
-au WinEnter,FileType ruby,eruby,cucumber set cc=120
+au WinEnter,FileType ruby,eruby,rspec,cucumber set cc=120
 " Override the colour in .vimrc.local like this:
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
