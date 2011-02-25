@@ -78,6 +78,9 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
 
+" ,u to toggle undo history browser
+nnoremap <Leader>u :GundoToggle<CR>
+
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 

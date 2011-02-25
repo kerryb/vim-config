@@ -66,10 +66,6 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
   <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
 </dl>
 
-## AutoClose
-
-Inserts matching bracket, paren, brace or quote ([more](http://www.vim.org/scripts/script.php?script_id=1849))
-
 ## bufexplorer (7.2.8)
 
 Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=42))
@@ -109,6 +105,10 @@ Wisely add "end" in ruby, endfunction/endif/more in vim script, etc ([more](http
 ## Fugitive (1.1)
 
 A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
+
+## Gundo (2.0)
+
+Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
 
 ## markdown
 
