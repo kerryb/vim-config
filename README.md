@@ -110,6 +110,12 @@ A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/script
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
 
+*Keybindings*
+
+<dl>
+  <dt>,u</dt><dd>Toggle Gundo tree</dd>
+</dl>
+
 ## markdown
 
 Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode/))
