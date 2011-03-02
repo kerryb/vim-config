@@ -81,6 +81,9 @@ map <silent> <Leader>f :NERDTreeFind<CR>
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
 
+" ,x to open git commit history for current file
+nnoremap <Leader>x :Extradite<CR>
+
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 

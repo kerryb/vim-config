@@ -102,6 +102,16 @@ Fast and Easy Find and Replace Across Multiple Files ([more](http://www.vim.org/
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc ([more](http://www.vim.org/scripts/script.php?script_id=2386))
 
+## Extradite (4602089 - 2 March 2011)
+
+Brings up the commit log of the current file. In the log view ([more](http://int3.github.com/vim-extradite/))
+
+*Keybindings*
+
+<dl>
+  <dt>,x</dt><dd>Open commit history for current file</dd>
+</dl>
+
 ## Fugitive (1.1)
 
 A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
