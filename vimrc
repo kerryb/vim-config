@@ -315,6 +315,9 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 command! Rroutes :Redit config/routes.rb
 command! RTroutes :RTedit config/routes.rb
 
+" Align =>
+vnoremap <silent> <Leader>t> :Align =><CR>
+
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
