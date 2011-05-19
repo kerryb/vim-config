@@ -64,6 +64,7 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 
 <dl>
   <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
+  <dt>,t&gt;</dt><dd>Align on =></dd>
 </dl>
 
 ## bufexplorer (7.2.8)
