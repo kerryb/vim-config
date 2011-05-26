@@ -78,7 +78,6 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 </dl>
 
 ## Command-T (1.0b)
-http://*.google.com/reader/*
 Fast file navigation for VIM ([more](http://www.vim.org/scripts/script.php?script_id=3025))
 
 You need to build the code before you can use it:
