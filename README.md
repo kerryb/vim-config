@@ -77,7 +77,12 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
   <dt>,.</dt><dd>Show buffer explorer</dd>
 </dl>
 
+## Coffeescript (fd170cb - 13 June 2011)
+
+Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
+
 ## Command-T (1.0b)
+
 Fast file navigation for VIM ([more](http://www.vim.org/scripts/script.php?script_id=3025))
 
 You need to build the code before you can use it:
