@@ -5,7 +5,7 @@ filetype plugin indent on
 syntax on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-set guioptions-=T " no toolbar
+set guioptions=egmrt " no toolbar
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set laststatus=2  " Always show status line.
 set number " line numbers
@@ -24,6 +24,8 @@ set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
+set formatoptions+=l
+set lbr
 let mapleader = ","
 
 " Display soft column limit
@@ -43,7 +45,7 @@ autocmd FileType make set noexpandtab
 runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
-  colorscheme railscasts
+  colorscheme molokai
   source ~/.vim/bundle/vim-ruby-debugger/ruby_debugger.vim
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
@@ -58,7 +60,7 @@ if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
   set guifont=DejaVu\ Sans\ Mono\ 10
 else
-  set guifont=Menlo:h10
+  set guifont=Monaco:h11
 endif
 
 " ,s to show trailing whitespace
