@@ -6,7 +6,6 @@ syntax on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions=egmrt " no toolbar
-set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set laststatus=2  " Always show status line.
 set number " line numbers
 set scrolloff=3 " More context around cursor
@@ -319,6 +318,47 @@ command! RTroutes :RTedit config/routes.rb
 
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
+
+hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+
+function! MyStatusLine(mode)
+    let statusline=""
+    if a:mode == 'Enter'
+        let statusline.="%#StatColor#"
+    endif
+    let statusline.="\(%n\)\ %f\ "
+    if a:mode == 'Enter'
+        let statusline.="%*"
+    endif
+    let statusline.="%#Modified#%m"
+    if a:mode == 'Leave'
+        let statusline.="%*%r"
+    elseif a:mode == 'Enter'
+        let statusline.="%r%*"
+    endif
+    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %{fugitive#statusline()}\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return statusline
+endfunction
+
+au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+set statusline=%!MyStatusLine('Enter')
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatColor guibg=orange ctermbg=lightred
+  elseif a:mode == 'r'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  elseif a:mode == 'v'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  else
+    hi StatColor guibg=red ctermbg=red
+  endif
+endfunction 
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
