@@ -59,7 +59,7 @@ if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
   set guifont=DejaVu\ Sans\ Mono\ 10
 else
-  set guifont=Monaco:h11
+  set guifont=Monaco\ 9
 endif
 
 " ,s to show trailing whitespace
