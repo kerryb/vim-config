@@ -82,6 +82,9 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
 
+" ,p to display recent files
+map <silent> <Leader>p :MRU<CR>
+
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
 
