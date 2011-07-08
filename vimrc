@@ -25,6 +25,9 @@ set nowrap  " Line wrapping off
 set timeoutlen=500
 set formatoptions+=l
 set lbr
+set nobackup
+set nowritebackup
+set noswapfile
 let mapleader = ","
 
 " Display soft column limit
@@ -319,6 +322,7 @@ command! RTroutes :RTedit config/routes.rb
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
 
+let g:rails_statusline=0
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
 
