@@ -5,8 +5,7 @@ filetype plugin indent on
 syntax on
 
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-set guioptions-=T " no toolbar
-set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
+set guioptions=egmrt " no toolbar
 set laststatus=2  " Always show status line.
 set number " line numbers
 set scrolloff=3 " More context around cursor
@@ -24,6 +23,11 @@ set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
+set formatoptions+=l
+set lbr
+set nobackup
+set nowritebackup
+set noswapfile
 let mapleader = ","
 
 " Display soft column limit
@@ -43,7 +47,7 @@ autocmd FileType make set noexpandtab
 runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
-  colorscheme railscasts
+  colorscheme molokai
   source ~/.vim/bundle/vim-ruby-debugger/ruby_debugger.vim
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
@@ -58,7 +62,7 @@ if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
   set guifont=DejaVu\ Sans\ Mono\ 10
 else
-  set guifont=Menlo:h10
+  set guifont=Monaco\ 9
 endif
 
 " ,s to show trailing whitespace
@@ -77,6 +81,9 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
+
+" ,p to display recent files
+map <silent> <Leader>p :MRU<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
@@ -231,12 +238,14 @@ set nofoldenable      "dont fold by default
 " Don't do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
 function! SetCursorPosition()
-  if &filetype !~ 'commit\c'
-    if line("'\"") > 0 && line("'\"") <= line("$")
-      exe "normal g`\""
-    endif
-  end
+if &filetype !~ 'commit\c'
+  if line("'\"") > 0 && line("'\"") <= line("$")
+    exe "normal g`\""
+  endif
+end
 endfunction
+
+map <silent> <Leader>h :FufFile **/<CR>
 
 " Conque Shell
 let g:ConqueTerm_ReadUnfocused = 1
@@ -317,6 +326,48 @@ command! RTroutes :RTedit config/routes.rb
 
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
+
+let g:rails_statusline=0
+hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
+hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
+
+function! MyStatusLine(mode)
+    let statusline=""
+    if a:mode == 'Enter'
+        let statusline.="%#StatColor#"
+    endif
+    let statusline.="\(%n\)\ %f\ "
+    if a:mode == 'Enter'
+        let statusline.="%*"
+    endif
+    let statusline.="%#Modified#%m"
+    if a:mode == 'Leave'
+        let statusline.="%*%r"
+    elseif a:mode == 'Enter'
+        let statusline.="%r%*"
+    endif
+    let statusline .= "\ (%l/%L,\ %c)\ %P%=%h%w\ %{fugitive#statusline()}\ %y\ [%{&encoding}:%{&fileformat}]\ \ "
+    return statusline
+endfunction
+
+au WinEnter * setlocal statusline=%!MyStatusLine('Enter')
+au WinLeave * setlocal statusline=%!MyStatusLine('Leave')
+set statusline=%!MyStatusLine('Enter')
+
+function! InsertStatuslineColor(mode)
+  if a:mode == 'i'
+    hi StatColor guibg=orange ctermbg=lightred
+  elseif a:mode == 'r'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  elseif a:mode == 'v'
+    hi StatColor guibg=#e454ba ctermbg=magenta
+  else
+    hi StatColor guibg=red ctermbg=red
+  endif
+endfunction 
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
