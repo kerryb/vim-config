@@ -25,6 +25,9 @@ set nowrap  " Line wrapping off
 set timeoutlen=500
 set formatoptions+=l
 set lbr
+set nobackup
+set nowritebackup
+set noswapfile
 let mapleader = ","
 
 " Display soft column limit
@@ -78,6 +81,9 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
+
+" ,p to display recent files
+map <silent> <Leader>p :MRU<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
@@ -319,6 +325,7 @@ command! RTroutes :RTedit config/routes.rb
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
 
+let g:rails_statusline=0
 hi StatColor guibg=#95e454 guifg=black ctermbg=lightgreen ctermfg=black
 hi Modified guibg=orange guifg=black ctermbg=lightred ctermfg=black
 
