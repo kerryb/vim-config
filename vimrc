@@ -245,7 +245,7 @@ if &filetype !~ 'commit\c'
 end
 endfunction
 
-map <silent> <Leader>h :FufFile<CR>
+map <silent> <Leader>h :FufFile **/<CR>
 
 " Conque Shell
 let g:ConqueTerm_ReadUnfocused = 1
