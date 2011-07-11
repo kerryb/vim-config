@@ -84,6 +84,9 @@ nnoremap <Leader>u :GundoToggle<CR>
 " ,x to open git commit history for current file
 nnoremap <Leader>x :Extradite<CR>
 
+" ,, to run current rails spec
+map <Leader>, :wa\|:!script/spec %<CR>
+
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 

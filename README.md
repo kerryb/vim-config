@@ -332,6 +332,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>ctrl-]</dt><dd>Jump to definition (requires [exuberant ctags](http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/))</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
+  <dt>,,</dt><dd>Run rails spec file</dd>
   <dt>,rt</dt><dd>Run [run_tags](http://gist.github.com/186567) script (assuming it's installed and in the path)</dd>
   <dt>,s</dt><dd>Show/hide hidden characters</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
