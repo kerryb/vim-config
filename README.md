@@ -117,7 +117,7 @@ Brings up the commit log of the current file. In the log view ([more](http://int
   <dt>,x</dt><dd>Open commit history for current file</dd>
 </dl>
 
-## Fugitive (1.1)
+## Fugitive (1.2)
 
 A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
 
