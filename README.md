@@ -150,7 +150,7 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
   <dt>,f</dt><dd>Show current file in tree</dd>
 </dl>
 
-## NERD_commenter (2.2.2)
+## nerdcommenter (2.3.0)
 
 A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
 
