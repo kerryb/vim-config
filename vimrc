@@ -43,7 +43,6 @@ runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
   colorscheme railscasts
-  source ~/.vim/bundle/vim-ruby-debugger/ruby_debugger.vim
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
   else

@@ -2034,3 +2034,855 @@ let s:frames_window.logger = RubyDebugger.logger
 
 " *** Creating instances (end)
 
+let TU = { 'output': '', 'errors': '', 'success': ''}
+
+
+function! TU.run(...)
+  call g:TU.init()
+  for key in keys(s:Tests)
+    " Run tests only if function was called without arguments, of argument ==
+    " current tests group.
+    if !a:0 || a:1 == key
+      let g:TU.output = g:TU.output . "\n" . key . ":\n"
+      if has_key(s:Tests[key], 'before_all')
+        call s:Tests[key].before_all()
+      endif
+      for test in keys(s:Tests[key])
+        if test =~ '^test_'
+          if has_key(s:Tests[key], 'before')
+            call s:Tests[key].before()
+          endif
+          call s:Tests[key][test](test)
+          if has_key(s:Tests[key], 'after')
+            call s:Tests[key].after()
+          endif
+        endif
+      endfor
+      if has_key(s:Tests[key], 'after_all')
+        call s:Tests[key].after_all()
+      endif
+      let g:TU.output = g:TU.output . "\n"
+    endif
+  endfor
+
+  call g:TU.show_output()
+  call g:TU.restore()
+endfunction
+
+
+function! TU.init()
+  let g:TU.breakpoint_id = s:Breakpoint.id 
+  let s:Breakpoint.id = 0
+
+  let g:TU.variables = g:RubyDebugger.variables 
+  let g:RubyDebugger.variables = {}
+
+  let g:TU.breakpoints = g:RubyDebugger.breakpoints 
+  let g:RubyDebugger.breakpoints = []
+
+  let g:TU.var_id = s:Var.id
+  let s:Var.id = 0
+
+  let s:Mock.breakpoints = 0
+  let s:Mock.evals = 0
+
+  if s:variables_window.is_open()
+    call s:variables_window.close()
+  endif
+  if s:breakpoints_window.is_open()
+    call s:breakpoints_window.close()
+  endif
+
+  let g:TU.output = ""
+  let g:TU.success = ""
+  let g:TU.errors = ""
+
+  " For correct closing and deleting test files
+  let g:TU.hidden = &hidden
+  set nohidden
+endfunction
+
+
+function! TU.restore()
+  let s:Breakpoint.id = g:TU.breakpoint_id
+  unlet g:TU.breakpoint_id
+
+  let g:RubyDebugger.variables = g:TU.variables 
+  unlet g:TU.variables 
+
+  let g:RubyDebugger.breakpoints = g:TU.breakpoints  
+  unlet g:TU.breakpoints
+
+  let s:Var.id = g:TU.var_id 
+  unlet g:TU.var_id 
+
+  let &hidden = g:TU.hidden
+endfunction
+
+
+function! TU.show_output()
+  echo g:TU.output . "\n" . g:TU.errors
+endfunction
+
+
+function! TU.ok(condition, description, test)
+  if a:condition
+    let g:TU.output = g:TU.output . "."
+    let g:TU.success = g:TU.success . a:test . ": " . a:description . ", true\n"
+  else
+    let g:TU.output = g:TU.output . "F"
+    let g:TU.errors = g:TU.errors . a:test . ": " . a:description . ", expected true, got false.\n"
+  endif
+endfunction
+
+
+function! TU.equal(expected, actual, description, test)
+  if a:expected == a:actual
+    let g:TU.output = g:TU.output . "."
+    let g:TU.success = g:TU.success . a:test . ": " . a:description . ", equals\n"
+  else
+    let g:TU.output = g:TU.output . "F"
+    let g:TU.errors = g:TU.errors . a:test . ": " . a:description . ", expected " . a:expected . ", got " . a:actual . ".\n"
+  endif
+endfunction
+
+
+function! TU.match(expected, actual, description, test)
+  if a:expected =~ a:actual
+    let g:TU.output = g:TU.output . "."
+    let g:TU.success = g:TU.success . a:test . ": " . a:description . ", match one to other\n"
+  else
+    let g:TU.output = g:TU.output . "F"
+    let g:TU.errors = g:TU.errors . a:test . ": " . a:description . ", expected to match " . a:expected . ", got " . a:actual . ".\n"
+  endif
+endfunction
+
+
+let s:Tests = {}
+
+let s:Mock = { 'breakpoints': 0, 'evals': 0 }
+
+function! s:mock_debugger(messages, ...)
+  let commands = []
+  let messages_array = split(a:messages, s:separator)
+  for message in messages_array
+    let cmd = ""
+    if message =~ 'break'
+      let matches = matchlist(message, 'break \(.*\):\(.*\)')
+      let cmd = '<breakpointAdded no="1" location="' . matches[1] . ':' . matches[2] . '" />'
+      let s:Mock.breakpoints += 1
+    elseif message =~ 'delete'
+      let matches = matchlist(message, 'delete \(.*\)')
+      let cmd = '<breakpointDeleted no="' . matches[1] . '" />'
+      let s:Mock.breakpoints -= 1
+    elseif message =~ 'var local'
+      let cmd = '<variables>'
+      let cmd = cmd . '<variable name="self" kind="instance" value="Self" type="Object" hasChildren="true" objectId="-0x2418a904" />'
+      let cmd = cmd . '<variable name="some_local" kind="local" value="bla" type="String" hasChildren="false" objectId="-0x2418a905" />'
+      let cmd = cmd . '<variable name="array" kind="local" value="Array (2 element(s))" type="Array" hasChildren="true" objectId="-0x2418a906" />'
+      let cmd = cmd . '<variable name="quoted_hash" kind="local" value="Hash (1 element(s))" type="Hash" hasChildren="true" objectId="-0x2418a914" />'
+      let cmd = cmd . '<variable name="hash" kind="local" value="Hash (2 element(s))" type="Hash" hasChildren="true" objectId="-0x2418a907" />'
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'var instance -0x2418a904'
+      let cmd = '<variables>'
+      let cmd = cmd . '<variable name="self_array" kind="local" value="Array (2 element(s))" type="Array" hasChildren="true" objectId="-0x2418a908" />'
+      let cmd = cmd . '<variable name="self_local" kind="local" value="blabla" type="String" hasChildren="false" objectId="-0x2418a909" />'
+      let cmd = cmd . '<variable name="array" kind="local" value="Array (2 element(s))" type="Array" hasChildren="true" objectId="-0x2418a916" />'
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'var instance -0x2418a907'
+      let cmd = '<variables>'
+      let cmd = cmd . '<variable name="hash_local" kind="instance" value="Some string" type="String" hasChildren="false" objectId="-0x2418a910" />'
+      let cmd = cmd . '<variable name="hash_array" kind="instance" value="Array (1 element(s))" type="Array" hasChildren="true" objectId="-0x2418a911" />'
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'var instance -0x2418a906'
+      let cmd = '<variables>'
+      let cmd = cmd . '<variable name="[0]" kind="instance" value="[\.^bla$]" type="String" hasChildren="false" objectId="-0x2418a912" />'
+      let cmd = cmd . '<variable name="[1]" kind="instance" value="Array (1 element(s))" type="Array" hasChildren="true" objectId="-0x2418a913" />'
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'var instance -0x2418a914'
+      let cmd = '<variables>'
+      let cmd = cmd . "<variable name=\"'quoted'\" kind=\"instance\" value=\"String\" type=\"String\" hasChildren=\"false\" objectId=\"-0x2418a915\" />"
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'var instance -0x2418a916'
+      let cmd = '<variables>'
+      let cmd = cmd . "<variable name=\"[0]\" kind=\"instance\" value=\"String\" type=\"String\" hasChildren=\"false\" objectId=\"-0x2418a917\" />"
+      let cmd = cmd . '</variables>'
+    elseif message =~ 'where'
+      let filename = s:Mock.file
+      let cmd = '<frames>'
+      let cmd = cmd . "<frame no='1' file='" . filename . "' line='2' current='true' />"
+      let cmd = cmd . "<frame no='2' file='" . filename . "' line='3' />"
+      let cmd = cmd . '</frames>'
+    elseif message =~ '^p '
+      let p = matchlist(message, "^p \\(.*\\)")[1]
+      let s:Mock.evals += 1
+      let cmd = '<eval expression="' . p . '" value=""all users"" />'
+    endif
+    if cmd != ""
+      call add(commands, cmd)
+    endif
+  endfor
+  if !empty(commands)
+    call writefile([ join(commands, s:separator) ], s:tmp_file)
+    call g:RubyDebugger.receive_command()
+  endif
+endfunction
+
+
+function! s:Mock.mock_debugger()
+  let g:RubyDebugger.send_command = function("s:mock_debugger") 
+endfunction
+
+
+function! s:Mock.unmock_debugger()
+  let g:RubyDebugger.send_command = function("s:send_message_to_debugger")
+endfunction
+
+
+function! s:Mock.mock_file()
+  let filename = s:runtime_dir . "/tmp/ruby_debugger_test_file"
+  exe "new " . filename
+  exe "write"
+  return filename
+endfunction
+
+
+function! s:Mock.unmock_file(filename)
+  silent exe "close"
+  call delete(a:filename)
+endfunction
+
+
+
+
+let s:Tests.server = {}
+
+function! s:Tests.server.before_all()
+  let g:RubyDebugger.breakpoints = []
+  let g:RubyDebugger.frames = []
+  let g:RubyDebugger.variables = {} 
+endfunction
+
+function! s:Tests.server.before()
+  call g:RubyDebugger.queue.empty() 
+  call s:Server._stop_server(s:rdebug_port)
+  call s:Server._stop_server(s:debugger_port)
+endfunction
+
+function! s:Tests.server.test_should_run_server(test)
+  exe "Rdebugger" 
+  call g:TU.ok(type(g:RubyDebugger.server) == type({}), "Server should be initialized", a:test)
+  call g:TU.ok(g:RubyDebugger.server.is_running(), "Server should be run", a:test)
+  call g:TU.ok(g:RubyDebugger.server.rdebug_pid != "", "Process rdebug-ide should be run", a:test)
+  call g:TU.ok(g:RubyDebugger.server.debugger_pid != "", "Process debugger.rb should be run", a:test)
+endfunction
+
+
+function! s:Tests.server.test_should_stop_server(test)
+  exe "Rdebugger"
+  call g:RubyDebugger.server.stop()
+  call g:TU.ok(!g:RubyDebugger.server.is_running(), "Server should not be run", a:test)
+  call g:TU.equal("", s:Server._get_pid(s:rdebug_port, 0), "Process rdebug-ide should not exist", a:test)
+  call g:TU.equal("", s:Server._get_pid(s:debugger_port, 0), "Process debugger.rb should not exist", a:test)
+  call g:TU.equal("", g:RubyDebugger.server.rdebug_pid, "Pid of rdebug-ide should be nullified", a:test)
+  call g:TU.equal("", g:RubyDebugger.server.debugger_pid, "Pid of debugger.rb should be nullified", a:test)
+endfunction
+
+
+function! s:Tests.server.test_should_kill_old_server_before_starting_new(test)
+  exe "Rdebugger"
+  let old_rdebug_pid = g:RubyDebugger.server.rdebug_pid
+  let old_debugger_pid = g:RubyDebugger.server.debugger_pid
+  exe "Rdebugger"
+  call g:TU.ok(g:RubyDebugger.server.is_running(), "Server should be run", a:test)
+  call g:TU.ok(g:RubyDebugger.server.rdebug_pid != "", "Process rdebug-ide should be run", a:test)
+  call g:TU.ok(g:RubyDebugger.server.debugger_pid != "", "Process debugger.rb should be run", a:test)
+  call g:TU.ok(g:RubyDebugger.server.rdebug_pid != old_rdebug_pid, "Rdebug-ide should have new pid", a:test)
+  call g:TU.ok(g:RubyDebugger.server.debugger_pid != old_debugger_pid, "Debugger.rb should have new pid", a:test)
+endfunction
+
+ 
+
+
+let s:Tests.breakpoint = {}
+
+function! s:Tests.breakpoint.before_all()
+  call s:Mock.mock_debugger()
+endfunction
+
+
+function! s:Tests.breakpoint.after_all()
+  call s:Mock.unmock_debugger()
+endfunction
+
+
+function! s:Tests.breakpoint.before()
+  let s:Breakpoint.id = 0
+  let g:RubyDebugger.frames = []
+  let g:RubyDebugger.exceptions = []
+  let g:RubyDebugger.breakpoints = []
+  let g:RubyDebugger.variables = {} 
+  call g:RubyDebugger.queue.empty() 
+  call s:Server._stop_server(s:rdebug_port)
+  call s:Server._stop_server(s:debugger_port)
+  silent exe "only"
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_set_breakpoint(test)
+  exe "Rdebugger"
+  let filename = s:Mock.mock_file()
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+
+  call g:RubyDebugger.toggle_breakpoint()
+  let breakpoint = get(g:RubyDebugger.breakpoints, 0)
+  call g:TU.equal(1, breakpoint.id, "Id of first breakpoint should == 1", a:test)
+  call g:TU.match(breakpoint.file, file_pattern, "File should be set right", a:test)
+  call g:TU.equal(1, breakpoint.line, "Line should be set right", a:test)
+  " TODO: Find way to test sign
+  call g:TU.equal(g:RubyDebugger.server.rdebug_pid, breakpoint.rdebug_pid, "Breakpoint should be assigned to running server", a:test)
+  call g:TU.equal(1, breakpoint.debugger_id, "Breakpoint should get number from debugger", a:test)
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_add_all_unassigned_breakpoints_to_running_server(test)
+  let filename = s:Mock.mock_file()
+  " Write 3 lines of text and set 3 breakpoints (on every line)
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  exe "normal obla" 
+  exe "normal gg"
+  exe "write"
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal j"
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal j"
+  call g:RubyDebugger.toggle_breakpoint()
+
+  " Lets suggest that some breakpoint was assigned to old server
+  let g:RubyDebugger.breakpoints[1].rdebug_pid = 'bla'
+
+  call g:TU.equal(3, len(g:RubyDebugger.breakpoints), "3 breakpoints should be set", a:test)
+  exe "Rdebugger"
+  call g:TU.equal(3, s:Mock.breakpoints, "3 breakpoints should be assigned", a:test)
+  for breakpoint in g:RubyDebugger.breakpoints
+    call g:TU.equal(g:RubyDebugger.server.rdebug_pid, breakpoint.rdebug_pid, "Breakpoint should have PID of running server", a:test)
+  endfor
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_remove_all_breakpoints(test)
+  let filename = s:Mock.mock_file()
+  " Write 3 lines of text and set 3 breakpoints (on every line)
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  exe "normal obla" 
+  exe "normal gg"
+  exe "write"
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal j"
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal j"
+  call g:RubyDebugger.toggle_breakpoint()
+  call g:TU.equal(3, len(g:RubyDebugger.breakpoints), "3 breakpoints should be set", a:test)
+  
+  call g:RubyDebugger.remove_breakpoints()
+
+  call g:TU.equal(0, len(g:RubyDebugger.breakpoints), "Breakpoints should be removed", a:test)
+
+  call s:Mock.unmock_file(filename)
+endfunction
+
+  
+function! s:Tests.breakpoint.test_jump_to_breakpoint_by_breakpoint(test)
+  call s:Tests.breakpoint.jump_to_breakpoint('breakpoint', a:test)
+endfunction
+
+
+function! s:Tests.breakpoint.test_jump_to_breakpoint_by_suspended(test)
+  call s:Tests.breakpoint.jump_to_breakpoint('suspended', a:test)
+endfunction
+
+
+function! s:Tests.breakpoint.test_delete_breakpoint(test)
+  exe "Rdebugger"
+  let filename = s:Mock.mock_file()
+  call g:RubyDebugger.toggle_breakpoint()
+  call g:RubyDebugger.toggle_breakpoint()
+
+  call g:TU.ok(empty(g:RubyDebugger.breakpoints), "Breakpoint should be removed", a:test)
+  call g:TU.equal(0, s:Mock.breakpoints, "0 breakpoints should be assigned", a:test)
+
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.breakpoint.jump_to_breakpoint(cmd, test)
+  let filename = s:Mock.mock_file()
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+  
+  " Write 2 lines and set current line to second line. We will jump to first
+  " line
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  exe "write"
+
+  call g:TU.equal(2, line("."), "Current line before jumping is second", a:test)
+
+  let cmd = '<' . a:cmd . ' file="' . filename . '" line="1" />'
+  call writefile([ cmd ], s:tmp_file)
+  call g:RubyDebugger.receive_command()
+
+  call g:TU.equal(1, line("."), "Current line before jumping is first", a:test)
+  call g:TU.match(expand("%"), file_pattern, "Jumped to correct file", a:test)
+
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_open_window_without_got_breakpoints(test)
+  call g:RubyDebugger.open_breakpoints()
+
+  call g:TU.ok(s:breakpoints_window.is_open(), "Breakpoints window should opened", a:test)
+  call g:TU.equal(bufwinnr("%"), s:breakpoints_window.get_number(), "Focus should be into the breakpoints window", a:test)
+  call g:TU.equal(getline(1), s:breakpoints_window.title, "First line should be name", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_open_window_and_show_breakpoints(test)
+  let filename = s:Mock.mock_file()
+  " Replace all windows separators (\) and POSIX separators (/) to [\/] for
+  " making it cross-platform
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+  " Write 2 lines of text and set 2 breakpoints (on every line)
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  exe "normal gg"
+  exe "write"
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal j"
+  call g:RubyDebugger.toggle_breakpoint()
+
+  call s:Mock.unmock_file(filename)
+
+  " Lets suggest that some breakpoint is assigned
+  let g:RubyDebugger.breakpoints[1].debugger_id = 4
+
+  call g:RubyDebugger.open_breakpoints()
+  call g:TU.match(getline(2), '1  ' . file_pattern . ':1', "Should show first breakpoint", a:test)
+  call g:TU.match(getline(3), '2 4 ' . file_pattern . ':2', "Should show second breakpoint", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_open_selected_breakpoint_from_breakpoints_window(test)
+  let filename = s:Mock.mock_file()
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  call g:RubyDebugger.toggle_breakpoint()
+  exe "normal gg"
+  exe "write"
+  exe "wincmd w"
+  exe "new"
+
+  call g:TU.ok(expand("%") != filename, "It should not be within the file with breakpoint", a:test)
+  call g:RubyDebugger.open_breakpoints()
+  exe 'normal 2G'
+  call s:window_breakpoints_activate_node()
+  call g:TU.match(expand("%"), file_pattern, "It should open file with breakpoint", a:test)
+  call g:TU.equal(2, line("."), "It should jump to line with breakpoint", a:test)
+  call g:RubyDebugger.open_breakpoints()
+
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.breakpoint.test_should_delete_breakpoint_from_breakpoints_window(test)
+  let filename = s:Mock.mock_file()
+  call g:RubyDebugger.toggle_breakpoint()
+  call s:Mock.unmock_file(filename)
+  call g:TU.ok(!empty(g:RubyDebugger.breakpoints), "Breakpoint should be set", a:test)
+
+  call g:RubyDebugger.open_breakpoints()
+  exe 'normal 2G'
+  call s:window_breakpoints_delete_node()
+  call g:TU.equal('', getline(2), "Breakpoint should not be shown", a:test)
+  call g:TU.ok(empty(g:RubyDebugger.breakpoints), "Breakpoint should be destroyed", a:test)
+
+  exe 'close'
+endfunction
+
+
+
+let s:Tests.exceptions = {}
+
+function! s:Tests.exceptions.before_all()
+  call s:Mock.mock_debugger()
+endfunction
+
+
+function! s:Tests.exceptions.after_all()
+  call s:Mock.unmock_debugger()
+endfunction
+
+
+function! s:Tests.exceptions.before()
+  let s:Breakpoint.id = 0
+  let g:RubyDebugger.frames = []
+  let g:RubyDebugger.exceptions = []
+  let g:RubyDebugger.variables = {} 
+  call g:RubyDebugger.queue.empty() 
+  call s:Server._stop_server(s:rdebug_port)
+  call s:Server._stop_server(s:debugger_port)
+endfunction
+
+
+function! s:Tests.exceptions.test_should_not_set_exception_catcher_if_debugger_is_not_running(test)
+  call g:RubyDebugger.catch_exception("NameError")
+  call g:TU.equal(0, len(g:RubyDebugger.exceptions), "Exception catcher should not be set", a:test)
+endfunction
+
+
+function! s:Tests.exceptions.test_should_clear_exceptions_after_restarting_debugger(test)
+  exe "Rdebugger"
+  call g:RubyDebugger.catch_exception("NameError")
+  call g:TU.equal(1, len(g:RubyDebugger.exceptions), "Exception should be set after starting the server", a:test)
+  exe "Rdebugger"
+  call g:TU.equal(0, len(g:RubyDebugger.exceptions), "Exception should be cleared after restarting the server", a:test)
+endfunction
+
+
+function! s:Tests.exceptions.test_should_display_exceptions_in_window_breakpoints(test)
+  exe "Rdebugger"
+  call g:RubyDebugger.catch_exception("NameError")
+  call g:RubyDebugger.catch_exception("ArgumentError")
+  call g:RubyDebugger.open_breakpoints()
+  call g:TU.match('Exception breakpoints: NameError, ArgumentError', getline(3), "Should show exception breakpoints", a:test)
+  exe 'close'
+endfunction
+
+
+
+
+let s:Tests.frames = {}
+
+function! s:Tests.frames.before_all()
+  call s:Mock.mock_debugger()
+endfunction
+
+
+function! s:Tests.frames.after_all()
+  call s:Mock.unmock_debugger()
+endfunction
+
+
+function! s:Tests.frames.before()
+  let s:Breakpoint.id = 0
+  let g:RubyDebugger.frames = []
+  let g:RubyDebugger.variables = {} 
+  call g:RubyDebugger.queue.empty() 
+  call s:Server._stop_server(s:rdebug_port)
+  call s:Server._stop_server(s:debugger_port)
+endfunction
+
+
+function! s:Tests.frames.test_should_display_frames_in_window_frames(test)
+  let filename = s:Mock.mock_file()
+  " Replace all windows separators (\) and POSIX separators (/) to [\/] for
+  " making it cross-platform
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+  let s:Mock.file = filename
+  call g:RubyDebugger.send_command('where')
+
+  call g:RubyDebugger.open_frames()
+  call g:TU.match(getline(2), '1 Current ' . file_pattern . ':2', "Should show first frame", a:test)
+  call g:TU.match(getline(3), '2 ' . file_pattern . ':3', "Should show second frame", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.frames.test_should_open_file_with_frame(test)
+  let filename = s:Mock.mock_file()
+  let file_pattern = substitute(filename, '[\/\\]', '[\\\/\\\\]', "g")
+  let s:Mock.file = filename
+  " Write 3 lines of text and set 3 frames (on every line)
+  exe "normal iblablabla"
+  exe "normal oblabla" 
+  exe "normal obla" 
+  exe "normal gg"
+  exe "write"
+  exe "wincmd w"
+  call g:TU.ok(expand("%") != filename, "It should not be within the file with frame", a:test)
+
+  call g:RubyDebugger.send_command('where')
+  call g:TU.equal(2, len(g:RubyDebugger.frames), "2 frames should be set", a:test)
+
+  call g:RubyDebugger.open_frames()
+  exe 'normal 3G'
+  call s:window_frames_activate_node()
+  call g:TU.match(expand("%"), file_pattern, "It should open file with frame", a:test)
+  call g:TU.equal(3, line("."), "It should jump to line with frame", a:test)
+  call g:RubyDebugger.open_frames()
+
+  call s:Mock.unmock_file(filename)
+endfunction
+
+
+function! s:Tests.frames.test_should_clear_frames_after_movement_command(test)
+  let g:RubyDebugger.frames = [{ 'bla' : 'bla' }]
+  call g:RubyDebugger.next()
+  call g:TU.equal([], g:RubyDebugger.frames, "Frames should be cleaned", a:test)
+
+  let g:RubyDebugger.frames = [{ 'bla' : 'bla' }]
+  call g:RubyDebugger.step()
+  call g:TU.equal([], g:RubyDebugger.frames, "Frames should be cleaned", a:test)
+
+  let g:RubyDebugger.frames = [{ 'bla' : 'bla' }]
+  call g:RubyDebugger.continue()
+  call g:TU.equal([], g:RubyDebugger.frames, "Frames should be cleaned", a:test)
+
+  let g:RubyDebugger.frames = [{ 'bla' : 'bla' }]
+  call g:RubyDebugger.exit()
+  call g:TU.equal([], g:RubyDebugger.frames, "Frames should be cleaned", a:test)
+endfunction
+
+
+
+
+let s:Tests.variables = {}
+
+function! s:Tests.variables.before_all()
+  call s:Mock.mock_debugger()
+endfunction
+
+
+function! s:Tests.variables.after_all()
+  call s:Mock.unmock_debugger()
+endfunction
+
+
+function! s:Tests.variables.before()
+  let g:RubyDebugger.breakpoints = []
+  let g:RubyDebugger.frames = []
+  let g:RubyDebugger.variables = {} 
+  call g:RubyDebugger.queue.empty() 
+  call s:Server._stop_server(s:rdebug_port)
+  call s:Server._stop_server(s:debugger_port)
+endfunction
+
+
+function! s:Tests.variables.test_should_open_window_without_got_variables(test)
+  call g:RubyDebugger.open_variables()
+  call g:TU.ok(s:variables_window.is_open(), "Variables window should be opened", a:test)
+  call g:TU.equal(bufwinnr("%"), s:variables_window.get_number(), "Focus should be into the variables window", a:test)
+  call g:TU.equal(getline(1), s:variables_window.title, "First line should be name", a:test)
+  exe 'close'
+endfunction
+
+
+" TODO: Now, variables are localized after receiving <breakpoint> or <suspend>
+" in ruby_debugger.rb. I don't know how to test them there from here.
+"function! s:Tests.variables.test_should_init_variables_after_breakpoint(test)
+"  let filename = s:Mock.mock_file()
+"  
+"  let cmd = '<breakpoint file="' . filename . '" line="1" />'
+"  call writefile([ cmd ], s:tmp_file)
+"  call g:RubyDebugger.receive_command()
+"
+"  call g:TU.equal("VarParent", g:RubyDebugger.variables.type, "Root variable should be initialized", a:test)
+"  call g:TU.equal(5, len(g:RubyDebugger.variables.children), "4 variables should be initialized", a:test)
+"  call g:TU.equal(4, len(filter(copy(g:RubyDebugger.variables.children), 'v:val.type == "VarParent"')), "3 Parent variables should be initialized", a:test)
+"  call g:TU.equal(1, len(filter(copy(g:RubyDebugger.variables.children), 'v:val.type == "VarChild"')), "1 Child variable should be initialized", a:test)
+"
+"  call s:Mock.unmock_file(filename)
+"endfunction
+
+
+function! s:Tests.variables.test_should_open_variables_window(test)
+  call g:RubyDebugger.send_command('var local')
+
+  call g:RubyDebugger.open_variables()
+  call g:TU.ok(s:variables_window.is_open(), "Variables window should opened", a:test)
+  call g:TU.equal(bufwinnr("%"), s:variables_window.get_number(), "Focus should be into the variables window", a:test)
+  call g:TU.equal(getline(1), s:variables_window.title, "First line should be name", a:test)
+  call g:TU.match(getline(2), '|+self', "Second line should be 'self' variable", a:test)
+  call g:TU.match(getline(3), '|-some_local', "Third line should be a local variable", a:test)
+  call g:TU.match(getline(4), '|+array', "4-th line should be an array", a:test)
+  call g:TU.match(getline(5), '|+quoted_hash', "5-th line should be a hash", a:test)
+  call g:TU.match(getline(6), '`+hash', "6-th line should be a hash", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_close_variables_window_after_opening(test)
+  call g:RubyDebugger.send_command('var local')
+
+  call g:RubyDebugger.open_variables()
+  call g:RubyDebugger.open_variables()
+  call g:TU.ok(!s:variables_window.is_open(), "Variables window should be closed", a:test)
+endfunction
+
+
+function! s:Tests.variables.test_should_open_instance_subvariable(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 2G'
+
+  call s:window_variables_activate_node()
+  call g:TU.ok(s:variables_window.is_open(), "Variables window should opened", a:test)
+  call g:TU.match(getline(2), '|\~self', "Second line should be opened 'self' variable", a:test)
+  call g:TU.match(getline(3), '| |+self_array', "Third line should be closed array subvariable", a:test)
+  call g:TU.match(getline(4), '| |-self_local', "4-th line should be local subvariable", a:test)
+  call g:TU.match(getline(5), '| `+array', "5-th line should be array", a:test)
+  call g:TU.match(getline(6), '|-some_local', "6-th line should be local variable", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_open_instance_subvariable_with_quotes(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 5G'
+
+  call s:window_variables_activate_node()
+  call g:TU.ok(s:variables_window.is_open(), "Variables window should opened", a:test)
+  call g:TU.match(getline(5), '|\~quoted_hash', "5-th line should be hash variable", a:test)
+  call g:TU.match(getline(6), "| `-'quoted'", "6-th line should be quoted variable", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_close_instance_subvariable(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 2G'
+
+  call s:window_variables_activate_node()
+  call s:window_variables_activate_node()
+  call g:TU.ok(s:variables_window.is_open(), "Variables window should opened", a:test)
+  call g:TU.match(getline(2), '|+self', "Second line should be closed 'self' variable", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_open_last_variable_in_list(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 6G'
+
+  call s:window_variables_activate_node()
+  call g:TU.match(getline(6), '`\~hash', "5-th line should be opened hash", a:test)
+  call g:TU.match(getline(7), '  |-hash_local', "6 line should be local subvariable", a:test)
+  call g:TU.match(getline(8), '  `+hash_array', "7-th line should be array subvariable", a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_open_childs_of_array(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 4G'
+  call s:window_variables_activate_node()
+  call g:TU.match(getline(4), '|\~array', '4-th line should be opened array', a:test)
+  call g:TU.match(getline(5), '| |-\[0\]', '5 line should be local subvariable', a:test)
+  call g:TU.match(getline(6), '| `+\[1\]', '6-th line should be array subvariable', a:test)
+
+  exe 'close'
+endfunction
+
+
+function! s:Tests.variables.test_should_clear_variables_after_movement_command(test)
+  let g:RubyDebugger.variables = { 'bla' : 'bla' }
+  call g:RubyDebugger.next()
+  call g:TU.equal({}, g:RubyDebugger.variables, "Variables should be cleaned", a:test)
+
+  let g:RubyDebugger.variables = { 'bla' : 'bla' }
+  call g:RubyDebugger.step()
+  call g:TU.equal({}, g:RubyDebugger.variables, "Variables should be cleaned", a:test)
+
+  let g:RubyDebugger.variables = { 'bla' : 'bla' }
+  call g:RubyDebugger.continue()
+  call g:TU.equal({}, g:RubyDebugger.variables, "Variables should be cleaned", a:test)
+
+  let g:RubyDebugger.variables = { 'bla' : 'bla' }
+  call g:RubyDebugger.exit()
+  call g:TU.equal({}, g:RubyDebugger.variables, "Variables should be cleaned", a:test)
+endfunction
+
+
+function! s:Tests.variables.test_should_open_correct_variable_if_variable_has_repeated_name(test)
+  call g:RubyDebugger.send_command('var local')
+  call g:RubyDebugger.open_variables()
+  exe 'normal 2G'
+  call s:window_variables_activate_node()
+  exe 'normal 7G'
+  call s:window_variables_activate_node()
+
+  call g:TU.match(getline(5), '| `+array', "5-th line should be closed array", a:test)
+  call g:TU.match(getline(6), '|-some_local', "6-th line should be local variable", a:test)
+  call g:TU.match(getline(7), '|\~array', '7-th line should be opened array', a:test)
+  call g:TU.match(getline(8), '| |-\[0\]', '8 line should be local subvariable', a:test)
+  call g:TU.match(getline(9), '| `+\[1\]', '9-th line should be array subvariable', a:test)
+
+  exe 'close'
+endfunction
+
+" Test for issue #6
+"function! s:Tests.variables.test_should_update_opened_variables_on_next_suspend(test)
+"  call g:RubyDebugger.send_command('var local')
+"  call g:RubyDebugger.open_variables()
+"  exe 'normal 2G'
+"  call s:window_variables_activate_node()
+"  exe 'normal 7G'
+"  call s:window_variables_activate_node()
+"  call g:RubyDebugger.next()
+"  call g:RubyDebugger.open_variables()
+"  call g:RubyDebugger.open_variables()
+"
+"  call g:TU.equal(7, line("."), "Current line should = 7", a:test)
+"  call g:TU.match(getline(2), '|\~self', "Second line should be opened 'self' variable", a:test)
+"  call g:TU.match(getline(3), '| |+self_array', "Third line should be closed array subvariable", a:test)
+"  call g:TU.match(getline(4), '| |-self_updated', "4-th line should be local subvariable", a:test)
+"  call g:TU.match(getline(5), '| `+array', "5-th line should be closed array", a:test)
+"  call g:TU.match(getline(6), '|-some_local', "6-th line should be local variable", a:test)
+"  call g:TU.match(getline(7), '|\~array', '7-th line should be opened array', a:test)
+"  call g:TU.match(getline(8), '| `+\[0\]', '9-th line should be array subvariable', a:test)
+"  call g:TU.match(getline(9), '|+quoted_hash', '9-th line should be array subvariable', a:test)
+"
+"  call g:RubyDebugger.open_variables()
+"  unlet s:Mock.next
+"  call s:Mock.unmock_file(s:Mock.file)
+"
+"endfunction
+
+let s:Tests.command = {}
+
+function! s:Tests.command.before_all()
+  call s:Mock.mock_debugger()
+endfunction
+
+
+function! s:Tests.command.after_all()
+    call s:Mock.unmock_debugger()
+endfunction
+
+
+function! s:Tests.command.test_some_user_command(test)
+  call g:RubyDebugger.send_command("p \"all users\"") 
+  call g:TU.equal(1, s:Mock.evals, "It should return eval command", a:test)
+endfunction
+
+
+
