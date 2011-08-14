@@ -282,7 +282,7 @@ Functions to help make behavioral testing easy with ruby and rspec ([more](http:
 
 *Note:* Doesn't fully support RSpec 2.
 
-## SuperTab (1.1)
+## SuperTab (1.6)
 
 Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/script.php?script_id=1643))
 
