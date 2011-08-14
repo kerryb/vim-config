@@ -235,23 +235,11 @@ Run a focused ruby unit test in vi ([more](http://github.com/pgr0ss/ruby_focused
 
 *Note:* May not work in RSpec 2.
 
-## ruby-refactoring (ee523d - November 28, 2010)
+## ruby-refactoring (abc8074 - 29 June 2010)
 
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
-*Keybindings*
-
-<dl>
-  <dt>,rap</dt><dd>Add Parameter</dd>
-  <dt>,rit</dt><dd>Inline Temp</dd>
-  <dt>,rcpc</dt><dd>Convert Post-Conditional</dd>
-  <dt>,rec</dt><dd>Extract Constant</dd>
-  <dt>,rel</dt><dd>Extract Let (RSpec)</dd>
-  <dt>,relv</dt><dd>Extract Local Variable</dd>
-  <dt>,rrlv</dt><dd>Rename Local Variable</dd>
-  <dt>,rriv</dt><dd>Rename Instance Variable</dd>
-  <dt>,rem</dt><dd>Extract Method</dd>
-</dl>
+See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
 ## scala
 
