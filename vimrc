@@ -107,7 +107,7 @@ let g:ragtag_global_maps = 1
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
-nmap <silent> <Leader>s :setlocal spell spelllang=en_gb<CR>
+nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
