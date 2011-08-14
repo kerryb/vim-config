@@ -294,7 +294,7 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
 
-## Tabular (f4d460 - January 27, 2010)
+## Tabular (b7b4d87 - 31 March 2011)
 
 Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt))
 
