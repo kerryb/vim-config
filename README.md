@@ -121,7 +121,7 @@ Brings up the commit log of the current file. In the log view ([more](http://int
 
 A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
 
-## Gundo (2.0)
+## Gundo (2.2.2)
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
 
