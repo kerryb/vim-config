@@ -190,6 +190,10 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
+## ruby (7bee8d0 - 8 August, 2011)
+
+Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
+
 ## ruby debugger (6ce819c - July 11, 2011)
 
 Ruby Debugger: supports running of specs and cucumber features from within vim ([more](http://github.com/astashov/vim-ruby-debugger))
