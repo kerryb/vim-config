@@ -350,4 +350,4 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 
 # Vim Resources
 
-See my vim bookmarks on [delicious](http://delicious.com/kjbuckley/vim).
+See my vim bookmarks on [pinboard](http://pinboard.in/u:kerryb/t:vim).
