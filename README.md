@@ -198,6 +198,8 @@ Ruby support (newer than the version released with vim). ([more](https://github.
 
 Ruby Debugger: supports running of specs and cucumber features from within vim ([more](http://github.com/astashov/vim-ruby-debugger))
 
+NB. If upgrading this plugin, remember to change the default keybindings in plugin/ruby_debugger.vim
+
 *Keybindings*
 
 <dl>
@@ -219,7 +221,6 @@ If you don't have 'spec' or 'cucumber' in your /usr/bin folder, because you're u
 
     let g:ruby_debugger_spec_path = '$GEM_HOME/bin/spec'
     let g:ruby_debugger_cucumber_path = '$GEM_HOME/bin/cucumber'
-
 
 ## ruby_focused_unit_test (d00332 - August 08, 2010)
 
