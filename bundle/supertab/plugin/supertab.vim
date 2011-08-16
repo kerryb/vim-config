@@ -335,6 +335,10 @@ endfunction " }}}
 " previous entry in a completion list, and determines whether or not to simply
 " retain the normal usage of <tab> based on the cursor position.
 function! s:SuperTab(command)
+  if exists('b:SuperTabDisabled') && b:SuperTabDisabled
+    return "\<tab>"
+  endif
+
   call s:InitBuffer()
 
   if s:WillComplete()
@@ -363,23 +367,14 @@ function! s:SuperTab(command)
       \    b:complTypeContext == "\<c-n>"))
       return "\<c-p>"
 
-    " this used to handle call from captured keys with the longest enhancement
-    " enabled, but also must work when the enhancement is disabled.
+    " already in completion mode and not resetting for longest enhancement, so
+    " just scroll to next/previous
     elseif pumvisible() && !b:complReset
-      if b:complType == 'context'
-        exec "let contextDefault = \"" .
-          \ escape(g:SuperTabContextDefaultCompletionType, '<') . "\""
-        " if we are in another completion mode, just scroll to the next
-        " completion
-        if b:complTypeContext != contextDefault
-          return a:command == 'n' ? "\<c-n>" : "\<c-p>"
-        endif
-        return contextDefault
-      endif
+      let type = b:complType == 'context' ? b:complTypeContext : b:complType
       if a:command == 'n'
-        return b:complType == "\<c-p>" ? "\<c-p>" : "\<c-n>"
+        return type == "\<c-p>" ? "\<c-p>" : "\<c-n>"
       endif
-      return b:complType == "\<c-p>" ? "\<c-n>" : "\<c-p>"
+      return type == "\<c-p>" ? "\<c-n>" : "\<c-p>"
     endif
 
     " handle 'context' completion.

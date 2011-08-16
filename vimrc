@@ -1,6 +1,5 @@
 set nocompatible
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call pathogen#infect()
 filetype plugin indent on
 syntax on
 
@@ -44,7 +43,6 @@ runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
   colorscheme railscasts
-  source ~/.vim/bundle/vim-ruby-debugger/ruby_debugger.vim
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
   else
@@ -84,6 +82,9 @@ nnoremap <Leader>u :GundoToggle<CR>
 " ,x to open git commit history for current file
 nnoremap <Leader>x :Extradite<CR>
 
+" ,, to run current rails spec
+map <Leader>, :wa\|:!script/spec %<CR>
+
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 
@@ -104,7 +105,7 @@ let g:ragtag_global_maps = 1
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
-nmap <silent> <Leader>s :setlocal spell spelllang=en_gb<CR>
+nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20

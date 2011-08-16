@@ -117,11 +117,11 @@ Brings up the commit log of the current file. In the log view ([more](http://int
   <dt>,x</dt><dd>Open commit history for current file</dd>
 </dl>
 
-## Fugitive (1.1)
+## Fugitive (1.2)
 
 A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
 
-## Gundo (2.0)
+## Gundo (2.2.2)
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
 
@@ -150,7 +150,7 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
   <dt>,f</dt><dd>Show current file in tree</dd>
 </dl>
 
-## NERD_commenter (2.2.2)
+## nerdcommenter (2.3.0)
 
 A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
 
@@ -190,9 +190,15 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
-## ruby debugger (0b4c30 - October 02, 2010)
+## ruby (7bee8d0 - 8 August, 2011)
+
+Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
+
+## ruby debugger (6ce819c - July 11, 2011)
 
 Ruby Debugger: supports running of specs and cucumber features from within vim ([more](http://github.com/astashov/vim-ruby-debugger))
+
+NB. If upgrading this plugin, remember to change the default keybindings in plugin/ruby_debugger.vim
 
 *Keybindings*
 
@@ -216,7 +222,6 @@ If you don't have 'spec' or 'cucumber' in your /usr/bin folder, because you're u
     let g:ruby_debugger_spec_path = '$GEM_HOME/bin/spec'
     let g:ruby_debugger_cucumber_path = '$GEM_HOME/bin/cucumber'
 
-
 ## ruby_focused_unit_test (d00332 - August 08, 2010)
 
 Run a focused ruby unit test in vi ([more](http://github.com/pgr0ss/ruby_focused_unit_test_vim))
@@ -231,23 +236,11 @@ Run a focused ruby unit test in vi ([more](http://github.com/pgr0ss/ruby_focused
 
 *Note:* May not work in RSpec 2.
 
-## ruby-refactoring (ee523d - November 28, 2010)
+## ruby-refactoring (abc8074 - 29 June 2010)
 
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
-*Keybindings*
-
-<dl>
-  <dt>,rap</dt><dd>Add Parameter</dd>
-  <dt>,rit</dt><dd>Inline Temp</dd>
-  <dt>,rcpc</dt><dd>Convert Post-Conditional</dd>
-  <dt>,rec</dt><dd>Extract Constant</dd>
-  <dt>,rel</dt><dd>Extract Let (RSpec)</dd>
-  <dt>,relv</dt><dd>Extract Local Variable</dd>
-  <dt>,rrlv</dt><dd>Rename Local Variable</dd>
-  <dt>,rriv</dt><dd>Rename Instance Variable</dd>
-  <dt>,rem</dt><dd>Extract Method</dd>
-</dl>
+See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
 ## scala
 
@@ -290,7 +283,7 @@ Functions to help make behavioral testing easy with ruby and rspec ([more](http:
 
 *Note:* Doesn't fully support RSpec 2.
 
-## SuperTab (1.1)
+## SuperTab (1.6)
 
 Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/script.php?script_id=1643))
 
@@ -302,7 +295,7 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
 
-## Tabular (f4d460 - January 27, 2010)
+## Tabular (b7b4d87 - 31 March 2011)
 
 Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt))
 
@@ -332,6 +325,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>ctrl-]</dt><dd>Jump to definition (requires [exuberant ctags](http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/))</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
+  <dt>,,</dt><dd>Run rails spec file</dd>
   <dt>,rt</dt><dd>Run [run_tags](http://gist.github.com/186567) script (assuming it's installed and in the path)</dd>
   <dt>,s</dt><dd>Show/hide hidden characters</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
@@ -349,4 +343,4 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 
 # Vim Resources
 
-See my vim bookmarks on [delicious](http://delicious.com/kjbuckley/vim).
+See my vim bookmarks on [pinboard](http://pinboard.in/u:kerryb/t:vim).
