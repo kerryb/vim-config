@@ -309,6 +309,10 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 
 Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script_id=1590))
 
+## vim-bundler (3f1e6e9f, 22 Aug 2011)
+
+Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
+
 ## ZoomWin (23)
 
 Zoom in/out  of windows (toggle between one window and multi-window) ([more](http://www.vim.org/scripts/script.php?script_id=508))
