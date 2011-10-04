@@ -186,6 +186,10 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
   <dt>,r</dt><dd>run rake</dd>
 </dl>
 
+## rake (1.0)
+
+It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.php?script_id=3669))
+
 ## repeat (1.0)
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
@@ -309,6 +313,10 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 
 Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script_id=1590))
 
+## vim-bundler (3f1e6e9f, 22 Aug 2011)
+
+Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
+
 ## ZoomWin (23)
 
 Zoom in/out  of windows (toggle between one window and multi-window) ([more](http://www.vim.org/scripts/script.php?script_id=508))
@@ -330,6 +338,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,s</dt><dd>Show/hide hidden characters</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
+  <dt>,p</dt><dd>Switch to 'projector mode' (large font, light colour scheme)</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
 </dl>
