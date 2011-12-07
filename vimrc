@@ -323,8 +323,10 @@ command! RTroutes :RTedit config/routes.rb
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
 
+" It's not like :W is bound to anything anyway.
+command! W :w
+
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
