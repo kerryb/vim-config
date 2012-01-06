@@ -63,9 +63,9 @@ endif
 " ,p to switch to better font for projector
 :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
 
-" ,s to show trailing whitespace
+" ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
+nmap <silent> <leader>c :set nolist!<CR>
 
 " Highlight trailing whitespace
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
