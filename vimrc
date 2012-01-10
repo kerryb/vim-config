@@ -63,9 +63,9 @@ endif
 " ,p to switch to better font for projector
 :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
 
-" ,s to show trailing whitespace
+" ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>s :set nolist!<CR>
+nmap <silent> <leader>c :set nolist!<CR>
 
 " Highlight trailing whitespace
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
@@ -323,8 +323,10 @@ command! RTroutes :RTedit config/routes.rb
 " Align =>
 vnoremap <silent> <Leader>t> :Align =><CR>
 
+" It's not like :W is bound to anything anyway.
+command! W :w
+
 " Source a local configuration file if available.
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
-
