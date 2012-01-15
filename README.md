@@ -348,7 +348,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 
 <dl>
   <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
-  <dt>:SudoW</dt><dd>Save using sud (run <tt>sudo -v</tt> in terminal first)</dd>
+  <dt>:SudoW</dt><dd>Save using sudo (run <tt>sudo -v</tt> in terminal first)</dd>
 </dl>
 
 # Vim Resources
