@@ -95,10 +95,6 @@ You need to build the code before you can use it:
 
 Run interactive commands inside a Vim buffer ([more](http://www.vim.org/scripts/script.php?script_id=2771))
 
-## css_color (0.7)
-
-CSS color preview ([more](http://www.vim.org/scripts/script.php?script_id=2150))
-
 ## EasyGrep (0.98)
 
 Fast and Easy Find and Replace Across Multiple Files ([more](http://www.vim.org/scripts/script.php?script_id=2438))
@@ -316,6 +312,10 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
 Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
+
+## vim-css-color (417eaf8 - 27 May 2011)
+
+CSS color preview ([more](https://github.com/skammer/vim-css-color))
 
 ## ZoomWin (23)
 

@@ -39,6 +39,9 @@ set expandtab
 set backspace=start,indent,eol
 autocmd FileType make set noexpandtab
 
+" treat scss files as css
+au BufRead,BufNewFile *.scss set filetype=css
+
 runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
