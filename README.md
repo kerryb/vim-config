@@ -330,7 +330,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 # Other Keybindings
 
 <dl>
-  <dt>ctrl-]</dt><dd>Jump to definition (requires [exuberant ctags](http://blog.tobiascrawley.net/2009/01/01/generating-a-tags-file-from-a-git-hook/))</dd>
+  <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed - see Tags section below)</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
@@ -343,6 +343,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
 </dl>
+
 
 # Tags
 
