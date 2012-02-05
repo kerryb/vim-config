@@ -250,8 +250,8 @@ endfunction
 let g:ConqueTerm_ReadUnfocused = 1
 
 " Settings for VimClojure
-let g:clj_highlight_builtins=1
-let g:clj_paren_rainbow=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#ParenRainbow=1
 
 " ZoomWin configuration
 map <Leader>z :ZoomWin<CR>
