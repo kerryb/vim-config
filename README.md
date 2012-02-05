@@ -313,6 +313,10 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
 
+## vimClojure (2.3.1)
+
+Filetype, syntax and indent plugin for the Clojure programming language ([more](http://www.vim.org/scripts/script.php?script_id=2501))
+
 ## vim-css-color (417eaf8 - 27 May 2011)
 
 CSS color preview ([more](https://github.com/skammer/vim-css-color))
