@@ -45,7 +45,7 @@ au BufRead,BufNewFile *.scss set filetype=css
 runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
-  colorscheme darkmate
+  colorscheme darkermate
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
   else
@@ -62,9 +62,12 @@ else
   set guifont=Menlo:h10
 endif
 
-
 " ,p to switch to better font for projector
-:noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
+if has("mac")
+  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
+else
+  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
+endif
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
