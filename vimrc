@@ -45,7 +45,7 @@ au BufRead,BufNewFile *.scss set filetype=css
 runtime! plugin/matchit.vim " extends % to do/end etc
 
 if has('gui')
-  colorscheme railscasts
+  colorscheme darkmate
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
   else
