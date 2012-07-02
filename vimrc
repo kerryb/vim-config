@@ -23,6 +23,7 @@ set autowrite  " Writes on make/shell commands
 set ruler  " Ruler on
 set nowrap  " Line wrapping off
 set timeoutlen=500
+set cursorline
 let mapleader = ","
 
 " Display soft column limit

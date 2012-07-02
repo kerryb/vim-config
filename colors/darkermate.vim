@@ -1,12 +1,13 @@
 "
-" Vim Darkmate Theme (darkmate.vim)
+" Vim Darkermate Theme (darkermate.vim)
 "
-" Copyright (C) 2011 YearOfMoo
-" Author: Matias Niemelä <matias@yearofmoo.com>
-" Minor Additions: Adam Whittingham <adam.whittingham@gmail.com>
+" Minor changes by Adam Whittingham <adam.whittingham@gmail.com>
 "
-" Note: Based on the original darkmate theme for gedit
-" by Luigi Maselli <luigix_@t_gmail_com>
+" Based on the original darkmate.vim
+" from github.com/yearofmoo/Vim-Darkmate
+" by Matias Niemelä <matias@yearofmoo.com>
+"   (which was based on the excellent darkmate Gedit theme by
+"   Luigi Maselli <luigix_@t_gmail_com>)
 "
 " This library is free software; you can redistribute it and/or
 " modify it under the terms of the GNU Library General Public
@@ -28,7 +29,7 @@
 set background=dark
 highlight clear
 if exists("syntax_on")
-    syntax reset
+  syntax reset
 endif
 
 let g:colors_name = "darkermate"
