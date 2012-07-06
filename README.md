@@ -269,7 +269,7 @@ space-optimized, configurable folds, supports Ruby, Ocaml, Perl, PHP, Java... ([
 *Keybindings*
 
 <dl>
-  <dt>,F</dt><dd>Fold</dd>
+  <dt>,Z</dt><dd>Fold</dd>
 </dl>
 
 Uses standard vim commands to open and close folds etc (:help fold)

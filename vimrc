@@ -94,6 +94,9 @@ nnoremap <Leader>x :Extradite<CR>
 " ,, to run current spec file
 map <Leader>, :wa\|:!rspec %<CR>
 
+" ,Z for simplefold (override default ,F)
+map <unique> <silent> <Leader>Z <Plug>SimpleFold_Foldsearch
+
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 
