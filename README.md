@@ -91,6 +91,22 @@ You need to build the code before you can use it:
     ruby extconf.rb
     make
 
+*Keybindings*
+
+<dl>
+  <dt>,f</dt><dd>Open CommandT</dd>
+  <dt>,F</dt><dd>Open CommandT in directory of current file</dd>
+  <dt>,gc</dt><dd>Open CommandT in app/controllers directory</dd>
+  <dt>,gh</dt><dd>Open CommandT in app/helpers directory</dd>
+  <dt>,gm</dt><dd>Open CommandT in app/models directory</dd>
+  <dt>,gv</dt><dd>Open CommandT in app/views directory</dd>
+  <dt>,gl</dt><dd>Open CommandT in lib directory</dd>
+  <dt>,gp</dt><dd>Open CommandT in public directory</dd>
+  <dt>,gs</dt><dd>Open CommandT in spec directory</dd>
+  <dt>,gf</dt><dd>Open CommandT in features directory</dd>
+  <dt>,gg</dt><dd>Open Gemfile in new overlay split window</dd>
+</dl>
+
 ## Conque Shell (2.0)
 
 Run interactive commands inside a Vim buffer ([more](http://www.vim.org/scripts/script.php?script_id=2771))
@@ -143,7 +159,7 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
 
 <dl>
   <dt>,m</dt><dd>Show/hide NERDTree</dd>
-  <dt>,f</dt><dd>Show current file in tree</dd>
+  <dt>,n</dt><dd>Show current file in tree</dd>
 </dl>
 
 ## nerdcommenter (2.3.0)
@@ -342,6 +358,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,p</dt><dd>Switch to 'projector mode' (large font, light colour scheme)</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
+  <dt>%%</dt><dd>[Command mode] expand path of current file</dd>
 </dl>
 
 # Commands
