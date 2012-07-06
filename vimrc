@@ -62,6 +62,8 @@ else
   set guifont=Menlo:h10
 endif
 
+" Map %% to the current path
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
 " ,p to switch to better font for projector
 :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
@@ -81,7 +83,7 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 :map <silent> <Leader>w :set wrap!<CR>
 
 " ,f to find current file in NERDTree
-map <silent> <Leader>f :NERDTreeFind<CR>
+map <silent> <Leader>n :NERDTreeFind<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
@@ -116,6 +118,17 @@ nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+noremap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+map     <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
+noremap <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+noremap <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+noremap <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
+noremap <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
+noremap <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
+noremap <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
+noremap <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
+noremap <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
+noremap <leader>gg :topleft 100 :split Gemfile<cr>
 
 " A whole bunch of NERDTree configuration stolen from carlhuda's janus
 
