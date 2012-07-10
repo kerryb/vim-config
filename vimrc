@@ -122,6 +122,7 @@ nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 " Command-T configuration
 let g:CommandTMaxHeight=20
 noremap <leader>f :CommandTFlush<cr>\|:CommandT<cr>
+noremap <leader>t :CommandTFlush<cr>\|:CommandT<cr>
 map     <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 noremap <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
 noremap <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
