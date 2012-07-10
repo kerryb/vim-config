@@ -82,7 +82,7 @@ match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces hi
 " ,w to toggle line wrap
 :map <silent> <Leader>w :set wrap!<CR>
 
-" ,f to find current file in NERDTree
+" ,n to find current file in NERDTree
 map <silent> <Leader>n :NERDTreeFind<CR>
 
 " ,u to toggle undo history browser
