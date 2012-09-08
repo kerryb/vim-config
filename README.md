@@ -44,18 +44,6 @@ just those defined or overridden locally, not the ones provided by default.
 Plugins are installed in their own directories under <tt>bundle</tt>, thanks to
 [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332).
 
-## Abolish (1.0)
-
-Work with several variants of a word at once ([more](http://www.vim.org/scripts/script.php?script_id=1545))
-
-## ack (0.3.1)
-
-Plugin for the Perl module / CLI script 'ack' ([more](http://www.vim.org/scripts/script.php?script_id=2572))
-
-## afterimage (2.1)
-
-Edit PNG and GIF icons by converting them to XPM ([more](http://www.vim.org/scripts/script.php?script_id=1617))
-
 ## Align (35/41)
 
 Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim.org/scripts/script.php?script_id=294))
@@ -91,32 +79,6 @@ You need to build the code before you can use it:
     ruby extconf.rb
     make
 
-## Conque Shell (2.0)
-
-Run interactive commands inside a Vim buffer ([more](http://www.vim.org/scripts/script.php?script_id=2771))
-
-## EasyGrep (0.98)
-
-Fast and Easy Find and Replace Across Multiple Files ([more](http://www.vim.org/scripts/script.php?script_id=2438))
-
-## endwise (1.0)
-
-Wisely add "end" in ruby, endfunction/endif/more in vim script, etc ([more](http://www.vim.org/scripts/script.php?script_id=2386))
-
-## Extradite (4602089 - 2 March 2011)
-
-Brings up the commit log of the current file. In the log view ([more](http://int3.github.com/vim-extradite/))
-
-*Keybindings*
-
-<dl>
-  <dt>,x</dt><dd>Open commit history for current file</dd>
-</dl>
-
-## Fugitive (1.2)
-
-A Git wrapper so awesome, it should be illegal ([more](http://www.vim.org/scripts/script.php?script_id=2975))
-
 ## Gundo (2.2.2)
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
@@ -127,13 +89,13 @@ Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](h
   <dt>,u</dt><dd>Toggle Gundo tree</dd>
 </dl>
 
+## HTML5
+
+Adds support for HTML 5 keyword highlightings ([more](https://gist.github.com/256840))
+
 ## markdown
 
 Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode/))
-
-## matchit (1.13.2)
-
-Extended % matching for HTML, LaTeX, and many other languages ([more](http://www.vim.org/scripts/script.php?script_id=39))
 
 ## NERD_tree (4.1.0)
 
@@ -194,57 +156,11 @@ Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scr
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
 
-## ruby debugger (6ce819c - July 11, 2011)
-
-Ruby Debugger: supports running of specs and cucumber features from within vim ([more](http://github.com/astashov/vim-ruby-debugger))
-
-NB. If upgrading this plugin, remember to change the default keybindings in plugin/ruby_debugger.vim
-
-*Keybindings*
-
-<dl>
-  <dt>,dg</dt><dd>Start the Debugger</dd>
-  <dt>,dr</dt><dd>Debug the current test (can be a spec or a cucumber feature)</dd>
-  <dt>,db</dt><dd>Toggle breakpoint</dd>
-  <dt>,dv</dt><dd>Show variables window</dd>
-  <dt>,dm</dt><dd>Show breakpoints window</dd>
-  <dt>,dt</dt><dd>Show frames window</dd>
-  <dt>,ds</dt><dd>Step</dd>
-  <dt>,df</dt><dd>Finish</dd>
-  <dt>,dn</dt><dd>Next</dd>
-  <dt>,dc</dt><dd>Continue</dd>
-  <dt>,de</dt><dd>Exit</dd>
-  <dt>,dd</dt><dd>Remove all breakpoints</dd>
-</dl>
-
-If you don't have 'spec' or 'cucumber' in your /usr/bin folder, because you're using RVM, you need to add the following lines to your vimrc.local:
-
-    let g:ruby_debugger_spec_path = '$GEM_HOME/bin/spec'
-    let g:ruby_debugger_cucumber_path = '$GEM_HOME/bin/cucumber'
-
-## ruby_focused_unit_test (d00332 - August 08, 2010)
-
-Run a focused ruby unit test in vi ([more](http://github.com/pgr0ss/ruby_focused_unit_test_vim))
-
-*Keybindings*
-
-<dl>
-  <dt>,rb</dt><dd>Run entire test/spec</dd>
-  <dt>,rf</dt><dd>Run focussed test/spec</dd>
-  <dt>,rc</dt><dd>Run focussed contex (ie describe block)</dd>
-</dl>
-
-*Note:* May not work in RSpec 2.
-
 ## ruby-refactoring (abc8074 - 29 June 2010)
 
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
-
-## scala
-
-Scala support ([more](http://www.3plus4.de/scala/))
 
 ## SimpleFold (1.5.0)
 
@@ -257,17 +173,6 @@ space-optimized, configurable folds, supports Ruby, Ocaml, Perl, PHP, Java... ([
 </dl>
 
 Uses standard vim commands to open and close folds etc (:help fold)
-
-## Slime
-
-Run selected code in a screen session (irb etc) ([more](http://technotales.wordpress.com/2007/10/03/like-slime-for-vim/))
-
-*Keybindings*
-
-<dl>
-  <dt>,x</dt><dd>Run current paragraph or selection in named screen session</dd>
-  <dt>,xx</dt><dd>Set session/window name</dd>
-</dl>
 
 ## specky (1.5)
 
@@ -312,10 +217,6 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
 Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
-
-## vimClojure (2.3.1)
-
-Filetype, syntax and indent plugin for the Clojure programming language ([more](http://www.vim.org/scripts/script.php?script_id=2501))
 
 ## vim-css-color (417eaf8 - 27 May 2011)
 
