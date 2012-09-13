@@ -97,7 +97,7 @@ Adds support for HTML 5 keyword highlightings ([more](https://gist.github.com/25
 
 Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode/))
 
-## NERD_tree (4.1.0)
+## nerdtree (4.2.0)
 
 A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/scripts/script.php?script_id=1658))
 
