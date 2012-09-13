@@ -1,22 +1,22 @@
+This is a tweaked copy of the excellent Vi/Vim dev setup [Kerryb](https://github.com/kerryb/vim-config)
+
 # Installation
 
-If necessary, backup and remove your <tt>~/.vim</tt> directory and
-<tt>~/.vimrc</tt> file.
+If necessary, backup and remove your <tt>~/.vim</tt> directory and <tt>~/.vimrc</tt> file:
+
+    mv $HOME/.vim{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
+    mv $HOME/.vimrc{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
 
 Clone this repository to <tt>~/git</tt>:
 
-    git clone git://github.com/kerryb/vim-config.git ~/.vim
+    git clone git://github.com/adamwhittingham/vim-config.git ~/.vim
 
 (If you're behind a firewall that blocks port 9418, replace <tt>git:</tt> with
 <tt>https:</tt> in the above URL.)
 
-If you're on the BT intranet you can get it from here instead:
-
-    git clone git://git.nat.bt.com/vim-config/vim-config.git ~/.vim
-
 Alternatively, if for some bizarre reason you don't have git installed, you can
 download a zip or tar file using the link on
-[GitHub](http://github.com/kerryb/vim-config).
+[GitHub](http://github.com/adamwhittingham/vim-config).
 
 Finally, symlink <tt>.vimrc</tt>:
 
