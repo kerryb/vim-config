@@ -3,25 +3,27 @@ call pathogen#infect()
 filetype plugin indent on
 syntax on
 
+colorscheme darkermate
+
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
-set guioptions-=T " no toolbar
+set guioptions-=T   " no toolbar
+set guioptions-=m   " no menu
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l,col=%c%V,totlin=%L%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
-set laststatus=2  " Always show status line.
-set number " line numbers
-set scrolloff=3 " More context around cursor
-set hlsearch  " highlight search matches...
-set incsearch " ...as you type
+set laststatus=2    " Always show status line.
+set number          " line numbers
+set scrolloff=3     " More context around cursor
+set hlsearch        " highlight search matches...
+set incsearch       " ...as you type
 set ignorecase
 set smartcase
-set hidden " Allow buffer switching without saving
+set hidden          " Allow buffer switching without saving
 set history=1000
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
-set visualbell
 set mousehide
-set cf  " Enable error files & error jumping.
-set autowrite  " Writes on make/shell commands
-set ruler  " Ruler on
-set nowrap  " Line wrapping off
+set cf              " Enable error files & error jumping.
+set autowrite       " Writes on make/shell commands
+set ruler           " Ruler on
+set nowrap          " Line wrapping off
 set timeoutlen=500
 set cursorline
 let mapleader = ","
@@ -29,7 +31,7 @@ let mapleader = ","
 " Display soft column limit in modern versions of vim
 if version >= 730
   au WinEnter,FileType * set cc=
-  au WinEnter,FileType ruby,eruby,rspec,cucumber set cc=120
+  au WinEnter,FileType ruby,eruby,rspec,cucumber set cc=140
 endif
 " Override the colour in .vimrc.local like this:
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
@@ -47,8 +49,16 @@ au BufRead,BufNewFile *.scss set filetype=css
 
 runtime! plugin/matchit.vim " extends % to do/end etc
 
+if has('win32')
+  set guifont=Consolas\ 10
+elseif has('mac')
+  set guifont=Menlo:h10
+else
+  set guifont=DejaVu\ Sans\ Mono\ 10
+  " if you aren't using Ubuntu, set another default font here!
+endif
+
 if has('gui')
-  colorscheme darkermate
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
   else
@@ -60,9 +70,6 @@ endif
 
 if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
-  set guifont=DejaVu\ Sans\ Mono\ 10
-else
-  set guifont=Menlo:h10
 endif
 
 " ,p to switch to better font for projector
@@ -91,9 +98,6 @@ map <silent> <Leader>f :NERDTreeFind<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
-
-" ,x to open git commit history for current file
-nnoremap <Leader>x :Extradite<CR>
 
 " ,, to run current spec file
 map <Leader>, :wa\|:!rspec %<CR>
