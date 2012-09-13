@@ -152,11 +152,11 @@ It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
-## ruby (7bee8d0 - 8 August, 2011)
+## ruby (b10adca - 17 August, 2012)
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
 
-## ruby-refactoring (abc8074 - 29 June 2010)
+## ruby-refactoring (6447a4d - 28 Dec 2011)
 
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
