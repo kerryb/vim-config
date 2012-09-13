@@ -266,4 +266,4 @@ The run_tags scripts are available for ubuntu ([script](https://gist.github.com/
 
 # Vim Resources
 
-See my vim bookmarks on [pinboard](http://pinboard.in/u:kerryb/t:vim).
+See Kerryb's vim bookmarks on his [pinboard](http://pinboard.in/u:kerryb/t:vim).
