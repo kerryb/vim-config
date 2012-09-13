@@ -69,16 +69,6 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## Command-T (1.0b)
-
-Fast file navigation for VIM ([more](http://www.vim.org/scripts/script.php?script_id=3025))
-
-You need to build the code before you can use it:
-
-    cd bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-
 ## Gundo (2.2.2)
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
@@ -152,7 +142,7 @@ It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
-## ruby (b10adca - 17 August, 2012)
+## ruby (b10adca - 17 Aug 2012)
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
 
@@ -200,7 +190,7 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
 
-## Tabular (b7b4d87 - 31 March 2011)
+## Tabular (b7b4d87 - 31 Mar 2011)
 
 Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt))
 
