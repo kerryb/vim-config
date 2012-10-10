@@ -9,14 +9,14 @@ If necessary, backup and remove your <tt>~/.vim</tt> directory and <tt>~/.vimrc<
 
 Clone this repository to <tt>~/git</tt>:
 
-    git clone git://github.com/adamwhittingham/vim-config.git ~/.vim
+    git clone git://github.com/AdamWhittingham/vim-config.git ~/.vim
 
 (If you're behind a firewall that blocks port 9418, replace <tt>git:</tt> with
 <tt>https:</tt> in the above URL.)
 
 Alternatively, if for some bizarre reason you don't have git installed, you can
 download a zip or tar file using the link on
-[GitHub](http://github.com/adamwhittingham/vim-config).
+[GitHub](http://github.com/AdamWhittingham/vim-config).
 
 Finally, symlink <tt>.vimrc</tt>:
 
