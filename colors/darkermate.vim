@@ -70,6 +70,10 @@ hi vimHighLight       guifg=#FFC912 ctermfg=208                   gui=none
 hi vimNotFunc         guifg=#FFC912 ctermfg=208                   gui=none
 hi vimCommand         guifg=#FFC912 ctermfg=208                   gui=none
 
+" Auto-complete/suggestion box
+hi Pmenu              guifg=#FFFFFF ctermfg=15   guibg=#111111 ctermbg=235  gui=none
+hi PmenuSel           guifg=#FFC912 ctermfg=208  guibg=#161616 ctermbg=230  gui=none
+
 " C Stuff
 hi cCharacter           guifg=#FFC912 ctermfg=208                 gui=none
 
