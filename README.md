@@ -2,12 +2,14 @@ This is a tweaked copy of the excellent Vi/Vim dev setup [Kerryb](https://github
 
 # Installation
 
+### Backup
 If necessary, backup and remove your <tt>~/.vim</tt> directory and <tt>~/.vimrc</tt> file:
 
     mv $HOME/.vim{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
     mv $HOME/.vimrc{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
 
-Clone this repository to <tt>~/git</tt>:
+### Download
+Clone this repository to <tt>~/.vim</tt>:
 
     git clone git://github.com/AdamWhittingham/vim-config.git ~/.vim
 
@@ -18,7 +20,8 @@ Alternatively, if for some bizarre reason you don't have git installed, you can
 download a zip or tar file using the link on
 [GitHub](http://github.com/AdamWhittingham/vim-config).
 
-Finally, symlink <tt>.vimrc</tt>:
+### Symlink
+Finally, symlink <tt>.vimrc</tt> so the config is loaded when Vim starts:
 
     ln -s ~/.vim/vimrc ~/.vimrc
 
@@ -51,8 +54,9 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 *Keybindings*
 
 <dl>
-  <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
+  <dt>,tsp</dt><dd>Align on whitespace</dd>
   <dt>,t&gt;</dt><dd>Align on =></dd>
+  <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
 </dl>
 
 ## bufexplorer (7.2.8)
@@ -96,6 +100,9 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
 <dl>
   <dt>,m</dt><dd>Show/hide NERDTree</dd>
   <dt>,f</dt><dd>Show current file in tree</dd>
+  <dt>C</dt><dd>Set the current folder to be the root of the tree</dd>
+  <dt>p</dt><dd>Go to parent of selected item</dd>
+  <dt>?</dt><dd>Toggle the help list</dd>
 </dl>
 
 ## nerdcommenter (2.3.0)
