@@ -115,6 +115,13 @@ Run interactive commands inside a Vim buffer ([more](http://www.vim.org/scripts/
 
 Fast and Easy Find and Replace Across Multiple Files ([more](http://www.vim.org/scripts/script.php?script_id=2438))
 
+## EasyMotion (1.3)
+
+Provides a much simpler way to use some motions in vim. It takes the
+<number> out of <number>w or <number>f{char} by highlighting all possible
+choices and allowing you to press one key to jump directly to the target.
+([more](http://www.vim.org/scripts/script.php?script_id=3526))
+
 ## endwise (1.0)
 
 Wisely add "end" in ruby, endfunction/endif/more in vim script, etc ([more](http://www.vim.org/scripts/script.php?script_id=2386))
