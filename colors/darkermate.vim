@@ -40,7 +40,7 @@ au WinEnter * set cursorline
 set cursorline
 
 " Main Colors
-hi Normal                   guibg=#090909 ctermbg=235 guifg=#FFFFFF ctermfg=15  gui=none
+hi Normal                   guibg=#121212 ctermbg=235 guifg=#FFFFFF ctermfg=15  gui=none
 hi Visual                   guifg=#FFFFFF ctermfg=15  guibg=#555753 ctermbg=240 gui=none
 hi String                   guifg=#96ff00 ctermfg=118 gui=none
 hi Delimiter                guifg=#96ff00 ctermfg=118 gui=none
@@ -91,8 +91,8 @@ hi javaScriptMember         guifg=#00c900 ctermfg=2   gui=none
 "  Ruby                     Stuff
 hi rubySymbol               guifg=#009cff ctermfg=39  gui=none
 hi rubyClassDeclaration     guifg=#FFC912 ctermfg=208 gui=none
-hi rubyRailsUserClass       guifg=#fce94f ctermfg=221 gui=none
-hi rubyConstant             guifg=#fce94f ctermfg=221 gui=none
+hi rubyRailsUserClass       guifg=#FCE94F ctermfg=221 gui=none
+hi rubyConstant             guifg=#FCE94F ctermfg=221 gui=none
 hi erubyExpression          guifg=#FFC912 ctermfg=208 gui=none
 hi erubyDelimiter           guifg=#FFC912 ctermfg=208 gui=none
 hi rubyRegexp               guifg=#FF2BC5 ctermfg=206 gui=none
