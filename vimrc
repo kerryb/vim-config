@@ -36,6 +36,7 @@ endif
 " Override the colour in .vimrc.local like this:
 "hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 
+set tags=tags;/
 set tabstop=2
 set smarttab
 set shiftwidth=2
