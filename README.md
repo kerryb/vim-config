@@ -73,7 +73,7 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## Command-T
+## CtrlP
 Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 
 *Keybindings*

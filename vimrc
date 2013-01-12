@@ -30,7 +30,7 @@ set ruler           " Ruler on
 set nowrap          " Line wrapping off
 set timeoutlen=500
 set cursorline
-set tags=tags;/
+set tags=tags;./tags;
 set tabstop=2
 set smarttab
 set shiftwidth=2
@@ -38,9 +38,84 @@ set autoindent
 set expandtab
 set backspace=start,indent,eol
 
-" Setup the command-T style fuzzy search shortcut
-let g:ctrlp_map = '<Leader>t'
+" ----------------------------------------------
+" Setup Command Shortcuts
+" ----------------------------------------------
+
+" ,t to fuzzy search files
+let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+map <Leader>t <esc>:CtrlP<CR>
+
+" Ctrl+s to write the file
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" Add ,. for viewing all document buffers
+nmap <silent> <unique> <Leader>. :BufExplorer<CR>
+
+" ,p to switch to better font for projector
+if has("mac")
+  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
+else
+  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
+endif
+
+" ,c to show hidden characters
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>c :set nolist!<CR>
+
+" ,h to toggle search result highlighting
+:noremap <silent> <leader>h :set hls!<CR>
+
+" ,w to toggle line wrap
+:map <silent> <Leader>w :set wrap!<CR>
+
+" ,f to find current file in NERDTree
+map <silent> <Leader>f :NERDTreeFind<CR>
+
+" ,u to toggle undo history browser
+nnoremap <Leader>u :GundoToggle<CR>
+
+" ,, to run current spec file
+map <Leader>, :wa\|:!rspec %<CR>
+
+" ,s to toggle spelling highlighting
+nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
+
+" ,s' to cycle single quote, double quotes and symbol
+let g:speckyQuoteSwitcherKey = "<Leader>s'"
+
+" ,sx to switch between spec and implementation
+let g:speckySpecSwitcherKey = "<Leader>sx"
+
+" ,ss to run spec
+let g:speckyRunSpecKey = "<Leader>ss"
+"
+" ,m to toggle file tree
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
+
+" ,tt to tabulate visually selected rows based on |
+vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
+
+" ,t> to align visually selected lines by =>
+vnoremap <silent> <Leader>t> :Align =><CR>
+
+" ,z to zoom pane when using splits
+map <Leader>z :ZoomWin<CR>
+
+" ,rt to force a refresh of tags
+map <Leader>rt :!run_tags<CR><CR>
+
+" ,sw to strip whitespace off the ends
+nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
+
+" Ctrl+Alt+p to view the Vim style of the text under the cursor
+nmap <C-A-P> :call <SID>SynStack()<CR>
+
+" ----------------------------------------------
+" Setup Misc Vim Behaviours
+" ----------------------------------------------
 
 " Display soft column limit in modern versions of vim
 if version >= 730
@@ -50,11 +125,13 @@ endif
 
 autocmd FileType make set noexpandtab
 
-" treat scss files as css
+" Treat scss files as css
 au BufRead,BufNewFile *.scss set filetype=css
 
-runtime! plugin/matchit.vim " extends % to do/end etc
+" Extend % to do/end etc
+runtime! plugin/matchit.vim
 
+" Select a sensible font based on environment
 if has('win32')
   set guifont=Consolas\ 10
 elseif has('mac')
@@ -80,60 +157,18 @@ if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
 endif
 
-" ,p to switch to better font for projector
-if has("mac")
-  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
-else
-  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
-endif
-
-" ,c to show hidden characters
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>c :set nolist!<CR>
+" Fix supertab/endwise incompatibility
+let g:SuperTabCrMapping = 0
 
 " Highlight trailing whitespace
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces highlighted
 
-" ,h to toggle search result highlighting
-:noremap <silent> <leader>h :set hls!<CR>
-
-" ,w to toggle line wrap
-:map <silent> <Leader>w :set wrap!<CR>
-
-" ,f to find current file in NERDTree
-map <silent> <Leader>f :NERDTreeFind<CR>
-
-" ,u to toggle undo history browser
-nnoremap <Leader>u :GundoToggle<CR>
-
-" ,, to run current spec file
-map <Leader>, :wa\|:!rspec %<CR>
-
-" Fix supertab/endwise incompatibility
-let g:SuperTabCrMapping = 0
-
-map <Leader>r :Rake<CR>
-map <silent> <Leader>rb :wa<CR>:RunAllRubyTests<CR>
-map <silent> <Leader>rc :wa<CR>:RunRubyFocusedContext<CR>
-map <silent> <Leader>rf :wa<CR>:RunRubyFocusedUnitTest<CR>
-
-map <silent> <Leader>rr :wa<CR>:rubyf %<CR>
-
-let g:speckyQuoteSwitcherKey = "<Leader>s'"
-let g:speckySpecSwitcherKey = "<Leader>sx"
-let g:speckyRunSpecKey = "<Leader>ss"
 let g:speckyWindowType = 1
 
 let g:ragtag_global_maps = 1
 
-nmap <silent> <Leader>m :NERDTreeToggle<CR>
-nmap <silent> <unique> <Leader>. :BufExplorer<CR>
-
-nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
-
 " A whole bunch of NERDTree configuration stolen from carlhuda's janus
-
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
 "autocmd VimEnter * NERDTree
@@ -242,9 +277,6 @@ call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
 "call s:DefineCommand("e", "Edit") " if you don't mind not being able to "e!"
 
-" Tabular
-vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
-
 " Folding settings
 set foldmethod=indent "fold based on indent
 set foldnestmax=3     "deepest fold is 3 levels
@@ -268,9 +300,6 @@ let g:ConqueTerm_ReadUnfocused = 1
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
 
-" ZoomWin configuration
-map <Leader>z :ZoomWin<CR>
-
 " make Y consistent with C and D
 nnoremap Y y$
 
@@ -283,7 +312,6 @@ function! StripTrailingWhitespace()
 	normal 'yz<cr>
 	normal `z
 endfunction
-nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
@@ -296,8 +324,6 @@ imap klj <ESC>
 imap lkj <ESC>
 imap ljk <ESC>
 imap ;l <ESC>
-
-map <Leader>rt :!run_tags<CR><CR>
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
@@ -342,22 +368,22 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 command! Rroutes :Redit config/routes.rb
 command! RTroutes :RTedit config/routes.rb
 
-" Align =>
-vnoremap <silent> <Leader>t> :Align =><CR>
-
 " It's not like :W is bound to anything anyway.
 command! W :w
 
-" Source a local configuration file if available.
-if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
-endif
-
 " Show syntax highlighting groups for word under cursor
-nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" ----------------------------------------------
+"  Last, but not least, source any local config
+" ----------------------------------------------
+
+" Source a local configuration file if available.
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
