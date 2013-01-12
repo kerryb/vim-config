@@ -5,6 +5,8 @@ syntax on
 
 colorscheme darkermate
 
+let mapleader = ","
+
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
 set guioptions-=T   " no toolbar
 set guioptions-=m   " no menu
@@ -28,16 +30,6 @@ set ruler           " Ruler on
 set nowrap          " Line wrapping off
 set timeoutlen=500
 set cursorline
-let mapleader = ","
-
-" Display soft column limit in modern versions of vim
-if version >= 730
-  au WinEnter,FileType * set cc=
-  au WinEnter,FileType ruby,eruby,rspec,cucumber set cc=140
-endif
-" Override the colour in .vimrc.local like this:
-"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-
 set tags=tags;/
 set tabstop=2
 set smarttab
@@ -45,6 +37,17 @@ set shiftwidth=2
 set autoindent
 set expandtab
 set backspace=start,indent,eol
+
+" Setup the command-T style fuzzy search shortcut
+let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Display soft column limit in modern versions of vim
+if version >= 730
+  au WinEnter,FileType * set cc=
+  au WinEnter,FileType ruby,eruby,rspec,cucumber set cc=140
+endif
+
 autocmd FileType make set noexpandtab
 
 " treat scss files as css
@@ -61,6 +64,7 @@ else
   " if you aren't using Ubuntu, set another default font here!
 endif
 
+" Ruby debugger settings
 if has('gui')
   if has("mac")
     let g:ruby_debugger_progname = 'mvim'
@@ -71,6 +75,7 @@ if has('gui')
   map <Leader>dr :RdbTest<CR>
 endif
 
+" Fix gnome-terminal without xterm-color being set
 if $COLORTERM == 'gnome-terminal'
   set term=xterm-color
 endif
@@ -126,9 +131,6 @@ nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
-
-" Command-T configuration
-let g:CommandTMaxHeight=20
 
 " A whole bunch of NERDTree configuration stolen from carlhuda's janus
 

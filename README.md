@@ -74,19 +74,12 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
 ## Command-T
-Fast file navigation for VIM ([more](https://github.com/wincent/Command-T))
-
-You need to build the code before you can use it:
-
-    cd bundle/command-t/ruby/command-t
-    ruby extconf.rb
-    make
-Ubuntu users should see ([my blog post about building it](http://adamwhittingham.wordpress.com/2012/10/11/fixing-command-t-for-vim-in-ubuntu-12-04))
+Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 
 *Keybindings*
 
 <dl>
-  <dt>,t</dt><dd>Open CommandT</dd>
+  <dt>,t</dt><dd>Open the CtrlP fuzzy search</dd>
 </dl>
 
 ## Gundo (2.2.2)
