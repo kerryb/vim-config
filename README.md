@@ -75,7 +75,7 @@ Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([mor
 
 ## Color_Highlight (3e4cbb4d93 - 14 Dec 2012)
 
-Adds the ability to highlight hex colours in their own colour
+Adds the ability to highlight hex colours in their own colour ([more](https://github.com/chrisbra/color_highlight))
 
 *Keybindings*
 
