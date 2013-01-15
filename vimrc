@@ -45,11 +45,18 @@ set backspace=start,indent,eol
 " ,t to fuzzy search files
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-map <Leader>t <esc>:CtrlP<CR>
+
+" Rebuild the cache whenever the search is invoked. Switch to the commented
+" out line if this is too slow for you.
+map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
+"map <silent><Leader>t <esc>:CtrlP<CR>
 
 " Ctrl+s to write the file
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
+
+" F5 to reload doc
+map <silent> <F5> <esc>:e %<CR>
 
 " Add ,. for viewing all document buffers
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
