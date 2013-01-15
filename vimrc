@@ -120,6 +120,9 @@ nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 " Ctrl+Alt+p to view the Vim style of the text under the cursor
 nmap <C-A-P> :call <SID>SynStack()<CR>
 
+" ,cC to show colour references in that colour (color_hightlight)
+" ,cF to toggle showing the colour pn the text or backgroun (color_hightlight)d
+
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
@@ -385,6 +388,9 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" Automatically highlight colours in CSS and html in their own colour
+let g:colorizer_auto_filetype='css,html'
 
 " ----------------------------------------------
 "  Last, but not least, source any local config

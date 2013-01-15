@@ -73,6 +73,17 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
+## Color_Highlight (3e4cbb4d93 - 14 Dec 2012)
+
+Adds the ability to highlight hex colours in their own colour
+
+*Keybindings*
+
+<dl>
+  <dt>,cC</dt><dd>Toggle colour highlighting</dd>
+  <dt>,cF</dt><dd>Toggle text or background colouring</dd>
+</dl>
+
 ## CtrlP
 Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 
@@ -224,9 +235,9 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
 
-## vim-css-color (417eaf8 - 27 May 2011)
+## vim-powerbar (09c0cea859a2e0989eea740655b35976d951a84e - Nox 2012)
 
-CSS color preview ([more](https://github.com/skammer/vim-css-color))
+Colourful and neat status bar
 
 ## ZoomWin (23)
 
