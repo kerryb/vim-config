@@ -123,6 +123,12 @@ nmap <C-A-P> :call <SID>SynStack()<CR>
 " ,cC to show colour references in that colour (color_hightlight)
 " ,cF to toggle showing the colour pn the text or backgroun (color_hightlight)d
 
+" C-w s to vertical split
+map <C-w>s :vsplit<CR>
+
+" C-w S to horizontal split
+map <C-w>S :split<CR>
+
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
