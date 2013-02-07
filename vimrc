@@ -92,7 +92,7 @@ nnoremap <Leader>u :GundoToggle<CR>
 nnoremap <Leader>x :Extradite<CR>
 
 " ,, to run current spec file
-map <Leader>, :wa\|:!rspec %<CR>
+map <Leader>, :wa\|:!rspec --no-color %<CR>
 
 " ,Z for simplefold (override default ,F)
 map <unique> <silent> <Leader>Z <Plug>SimpleFold_Foldsearch
