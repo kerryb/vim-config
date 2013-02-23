@@ -129,6 +129,12 @@ map <C-w>s :vsplit<CR>
 " C-w S to horizontal split
 map <C-w>S :split<CR>
 
+" C-c to paste from the global buffer
+vmap <C-c> "+y<CR>
+
+" C-v to paste from the global buffer
+nmap <C-v> "+p<CR>
+
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
