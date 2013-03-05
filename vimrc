@@ -62,11 +62,12 @@ map <silent> <F5> <esc>:e %<CR>
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,p to switch to better font for projector
-if has("mac")
-  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
-else
-  :noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
-endif
+noremap <silent> <leader>p :ToggleProjectorMode<CR>
+"if has("mac")
+  ":noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
+"else
+  ":noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
+"endif
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
@@ -155,6 +156,10 @@ imap kj <ESC>
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
+
+" Setup the projector toggle plugin
+let g:default_colorscheme = 'darkermate'
+let g:projector_colorscheme = 'mac-classic'
 
 " Display soft column limit in modern versions of vim
 if version >= 730
@@ -331,9 +336,6 @@ function! SetCursorPosition()
     endif
   end
 endfunction
-
-" Conque Shell
-let g:ConqueTerm_ReadUnfocused = 1
 
 " make Y consistent with C and D
 nnoremap Y y$
