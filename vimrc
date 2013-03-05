@@ -403,8 +403,8 @@ endfunc
 " Mag Tagbar unfold headings on enter
 map <script> <silent> <buffer> <CR>  :call <SID>OpenFold()<CR>
 
-" Automatically turn on colorizers highlighting for css, html, less & sass
-let g:colorizer_auto_filetype='css,html,less,scss'
+" Automatically turn on colorizers highlighting for some filetypes
+let g:colorizer_auto_filetype='css,html,less,scss,vim'
 " Make colorizer play nicely with 2html
 let g:colorizer_syntax = 1
 
