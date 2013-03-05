@@ -400,11 +400,14 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
-" Automatically highlight colours in CSS and html in their own colour
-let g:colorizer_auto_filetype='css,html'
-
 " Mag Tagbar unfold headings on enter
 map <script> <silent> <buffer> <CR>  :call <SID>OpenFold()<CR>
+
+" Automatically turn on colorizers highlighting for css, html, less & sass
+let g:colorizer_auto_filetype='css,html,less,scss'
+" Make colorizer play nicely with 2html
+let g:colorizer_syntax = 1
+
 " ----------------------------------------------
 "  Last, but not least, source any local config
 " ----------------------------------------------

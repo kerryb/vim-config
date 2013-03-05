@@ -73,7 +73,7 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## Color_Highlight (3e4cbb4d93 - 14 Dec 2012)
+## Colorizer (3e4cbb4d93 - 14 Dec 2012)
 
 Adds the ability to highlight hex colours in their own colour ([more](https://github.com/chrisbra/color_highlight))
 
@@ -248,6 +248,8 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 # Other Keybindings
 
 <dl>
+  <dt>ctrl-alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
+  <dt>ctrl-alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed - see Tags section below)</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
@@ -276,7 +278,3 @@ The run_tags scripts are available for ubuntu ([script](https://gist.github.com/
   <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
   <dt>:SudoW</dt><dd>Save using sudo (run <tt>sudo -v</tt> in terminal first)</dd>
 </dl>
-
-# Vim Resources
-
-See Kerryb's vim bookmarks on his [pinboard](http://pinboard.in/u:kerryb/t:vim).
