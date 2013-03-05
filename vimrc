@@ -63,11 +63,6 @@ nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,p to switch to better font for projector
 noremap <silent> <leader>p :ToggleProjectorMode<CR>
-"if has("mac")
-  ":noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=Menlo:h14<CR>
-"else
-  ":noremap <silent> <leader>p :colorscheme mac-classic\|set guifont=DejaVu\ Sans\ Mono\ 14<CR>
-"endif
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
