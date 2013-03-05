@@ -121,7 +121,7 @@ nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 nmap <C-A-P> :call <SID>SynStack()<CR>
 
 " ,cC to show colour references in that colour (color_hightlight)
-" ,cF to toggle showing the colour pn the text or backgroun (color_hightlight)d
+" ,cF to toggle showing the colour on the text or background (color_hightlight)
 
 " C-w s to vertical split
 map <C-w>s :vsplit<CR>
@@ -129,11 +129,26 @@ map <C-w>s :vsplit<CR>
 " C-w S to horizontal split
 map <C-w>S :split<CR>
 
-" C-c to paste from the global buffer
-vmap <C-c> "+y<CR>
+" C-c to copy to the global buffer
+vmap <C-A-c> "+y<CR>
 
 " C-v to paste from the global buffer
-nmap <C-v> "+p<CR>
+map <C-A-v> "+p<CR>
+
+" ,] to toggle the tags sidebar
+nmap <Leader>] :TagbarToggle<CR>
+
+" It's not like :W is bound to anything anyway.
+command! W :w
+
+" Alternatives to ESC
+imap jkl <ESC>
+imap jlk <ESC>
+imap kjl <ESC>
+imap klj <ESC>
+imap lkj <ESC>
+imap ljk <ESC>
+imap ;l <ESC>
 
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
@@ -318,10 +333,6 @@ endfunction
 " Conque Shell
 let g:ConqueTerm_ReadUnfocused = 1
 
-" Settings for VimClojure
-let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1
-
 " make Y consistent with C and D
 nnoremap Y y$
 
@@ -337,15 +348,6 @@ endfunction
 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
-
-" Alternatives to ESC: *******************************************************
-imap jkl <ESC>
-imap jlk <ESC>
-imap kjl <ESC>
-imap klj <ESC>
-imap lkj <ESC>
-imap ljk <ESC>
-imap ;l <ESC>
 
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
@@ -390,9 +392,6 @@ command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent
 command! Rroutes :Redit config/routes.rb
 command! RTroutes :RTedit config/routes.rb
 
-" It's not like :W is bound to anything anyway.
-command! W :w
-
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -404,6 +403,8 @@ endfunc
 " Automatically highlight colours in CSS and html in their own colour
 let g:colorizer_auto_filetype='css,html'
 
+" Mag Tagbar unfold headings on enter
+map <script> <silent> <buffer> <CR>  :call <SID>OpenFold()<CR>
 " ----------------------------------------------
 "  Last, but not least, source any local config
 " ----------------------------------------------
