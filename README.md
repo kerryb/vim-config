@@ -179,18 +179,6 @@ Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-ref
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
-## SimpleFold (1.5.0)
-
-space-optimized, configurable folds, supports Ruby, Ocaml, Perl, PHP, Java... ([more](http://www.vim.org/scripts/script.php?script_id=1868))
-
-*Keybindings*
-
-<dl>
-  <dt>,F</dt><dd>Fold</dd>
-</dl>
-
-Uses standard vim commands to open and close folds etc (:help fold)
-
 ## specky (1.5)
 
 Functions to help make behavioral testing easy with ruby and rspec ([more](http://www.vim.org/scripts/script.php?script_id=2286))
@@ -225,6 +213,16 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 
 <dl>
   <dt>,tt</dt><dd>(when text is selected) format tables made with pipes (|)</dd>
+</dl>
+
+## Tagbar (cc222f5d8c - 26 Feb 2013)
+
+Sidebar for showing and navigating the tags in current file ([more](https://github.com/majutsushi/tagbar))
+
+*Keybindings*
+
+<dl>
+  <dt>,]</dt><dd>toggle the sidebar</dd>
 </dl>
 
 ## unimpaired (1.1)
