@@ -922,14 +922,13 @@ function! s:MapKeys() abort
     inoremap <script> <silent> <buffer> <LeftRelease>
                             \ <LeftRelease><C-o>:call <SID>CheckMouseClick()<CR>
 
-    map <script> <silent> <buffer> <CR>    :call <SID>JumpToTag(0)<CR>
+    nnoremap <script> <silent> <buffer> <CR>    :call <SID>JumpToTag(0)<CR>
     nnoremap <script> <silent> <buffer> p       :call <SID>JumpToTag(1)<CR>
     nnoremap <script> <silent> <buffer> <Space> :call <SID>ShowPrototype(0)<CR>
 
     nnoremap <script> <silent> <buffer> +        :call <SID>OpenFold()<CR>
     nnoremap <script> <silent> <buffer> <kPlus>  :call <SID>OpenFold()<CR>
     nnoremap <script> <silent> <buffer> zo       :call <SID>OpenFold()<CR>
-    map <script> <silent> <buffer> <CR>     :call <SID>OpenFold()<CR>
     nnoremap <script> <silent> <buffer> -        :call <SID>CloseFold()<CR>
     nnoremap <script> <silent> <buffer> <kMinus> :call <SID>CloseFold()<CR>
     nnoremap <script> <silent> <buffer> zc       :call <SID>CloseFold()<CR>

@@ -129,14 +129,14 @@ map <C-w>s :vsplit<CR>
 " C-w S to horizontal split
 map <C-w>S :split<CR>
 
-" C-c to copy to the global buffer
-vmap <C-A-c> "+y<CR>
-
-" C-v to paste from the global buffer
-map <C-A-v> "+p<CR>
-
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
+
+" C-c to copy to the global buffer
+vmap <A-c> "+y<CR>
+
+" C-v to paste from the global buffer
+map <A-v> "+p<CR>
 
 " It's not like :W is bound to anything anyway.
 command! W :w
@@ -149,6 +149,8 @@ imap klj <ESC>
 imap lkj <ESC>
 imap ljk <ESC>
 imap ;l <ESC>
+imap jk <ESC>
+imap kj <ESC>
 
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
@@ -399,9 +401,6 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-
-" Mag Tagbar unfold headings on enter
-map <script> <silent> <buffer> <CR>  :call <SID>OpenFold()<CR>
 
 " Automatically turn on colorizers highlighting for some filetypes
 let g:colorizer_auto_filetype='css,html,less,scss,vim'
