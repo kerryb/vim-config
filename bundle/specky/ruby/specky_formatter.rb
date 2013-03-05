@@ -76,19 +76,26 @@ class SpeckyFormatter < RSpec::Core::Formatters::BaseTextFormatter
 	###
 	def dump_failures
 		self.out "\n" unless @failures.empty?
+		cwd = Regexp.new( Dir.pwd )
+		bt_regexp = /(.+?):(\d+)(|:\d+)/
 
 		@failures.each_with_index do |example, index|
 			desc      = example.metadata[ :full_description ]
 			exception = example.execution_result[ :exception ]
 			file = line = nil
 
-			if exception.backtrace.first =~ /(.*):(\d+)/
-				file, line = $1, $2.to_i
-			end
+			# remove files that are not in within the cwd.
+			#
+			# this isn't optimal, but it does stay within specky's notion of
+			# running it from within the project directory, and makes sure we don't
+			# inadvertently display code from rspec itself.
+			#
+			bt_file = exception.backtrace.find { |line| line =~ bt_regexp && line =~ cwd }
+			file, line = $1, $2.to_i if bt_file =~ bt_regexp
 			self.out "FAILURE - #%d)" % [ index + 1 ]
-			self.out "%s:%d" % [ file, line ]
+			self.out "%s:%d" % [ file, line ] if bt_file
 
-			if RSpec::Core::PendingExampleFixedError === exception
+			if exception.respond_to?( :pending_fixed? ) && exception.pending_fixed?
 				self.out "%s FIXED" % [ desc ]
 				self.out "Expected pending '%s' to fail.  No error was raised." % [
 					example.metadata[ :execution_result ][ :pending_message ]
@@ -108,7 +115,7 @@ class SpeckyFormatter < RSpec::Core::Formatters::BaseTextFormatter
 				end
 			end
 
-			self.out exception_source( file, line ) if file && line
+			self.out exception_source( file, line-1 ) if file && line
 		end
 	end
 
@@ -179,4 +186,26 @@ class SpeckyFormatter < RSpec::Core::Formatters::BaseTextFormatter
 		return "| %s (%0.3fs" % [ description, duration ]
 	end
 end # SpeckyFormatter
+
+
+### Identical to the regular SpeckyFormatter, but it puts summary
+### information at the bottom of the screen instead of the top, and just
+### spits out rudamentary failure info.
+###
+class SpeckyFormatterConsole < SpeckyFormatter
+	def close
+		puts "Failures:" unless @failures.empty?
+		@failures.each do |test|
+			metadata = test.metadata
+			msg = "- %s\n  %s\n  %s:%d\n\n" % [
+				metadata[:full_description],
+				test.exception.message,
+				metadata[:file_path],
+				metadata[:line_number]
+			]
+			puts msg
+		end
+		output.puts @summary
+	end
+end
 

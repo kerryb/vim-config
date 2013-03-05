@@ -1,4 +1,4 @@
-*specky.txt* Last change: $Id: specky.txt,v cd1f3381c1ed 2010/12/25 04:01:10 mahlon $
+*specky.txt* Last change: $Id: specky.txt,v ed72213b1788 2012/02/11 00:08:43 mahlon $
 
                 VIM REFERENCE MANUAL    by Mahlon E. Smith
 
@@ -105,6 +105,10 @@ ways.
 		-r loadpath
 		-r ~/.vim/bundle/specky/ruby/specky_formatter
 		-f SpeckyFormatter
+
+	You can also use both of these methods, and use the
+	'SpeckyConsoleFormatter' class from your .rspec file, if it suits
+	your fancy.
 
 
 After that is taken care of, then just set up your keybindings in your

@@ -179,7 +179,7 @@ Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-ref
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
-## specky (1.5)
+## specky (1.6)
 
 Functions to help make behavioral testing easy with ruby and rspec ([more](http://www.vim.org/scripts/script.php?script_id=2286))
 
@@ -190,8 +190,6 @@ Functions to help make behavioral testing easy with ruby and rspec ([more](http:
   <dt>,sx</dt><dd>Switch between spec and implementation</dd>
   <dt>,s'</dt><dd>Cycle between single quotes, double quotes and symbol</dd>
 </dl>
-
-*Note:* Doesn't fully support RSpec 2.
 
 ## SuperTab (1.6)
 
