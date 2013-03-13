@@ -191,11 +191,6 @@ if has('gui')
   map <Leader>dr :RdbTest<CR>
 endif
 
-" Fix gnome-terminal without xterm-color being set
-if $COLORTERM == 'gnome-terminal'
-  set term=xterm-color
-endif
-
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 
