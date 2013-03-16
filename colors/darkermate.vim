@@ -1,13 +1,13 @@
 "
 " Vim Darkermate Theme (darkermate.vim)
 "
-" Minor changes by Adam Whittingham <adam.whittingham@gmail.com>
-"
 " Based on the original darkmate.vim
 " from github.com/yearofmoo/Vim-Darkmate
 " by Matias Niemelä <matias@yearofmoo.com>
 "   (which was based on the excellent darkmate Gedit theme by
 "   Luigi Maselli <luigix_@t_gmail_com>)
+"
+" Minor changes by Adam Whittingham <adam.whittingham@gmail.com>
 "
 " This library is free software; you can redistribute it and/or
 " modify it under the terms of the GNU Library General Public
@@ -40,8 +40,8 @@ au WinEnter * set cursorline
 set cursorline
 
 " Main Colors
-hi Normal                   guibg=#121212 ctermbg=235 guifg=#FFFFFF ctermfg=15  gui=none
-hi Visual                   guifg=#FFFFFF ctermfg=15  guibg=#555753 ctermbg=240 gui=none
+hi Normal                   guifg=#FFFFFF ctermfg=15  gui=none  guibg=#121212
+hi Visual                   guifg=#FFFFFF ctermfg=15  gui=none  guibg=#555753 ctermbg=245
 hi String                   guifg=#96ff00 ctermfg=118 gui=none
 hi Delimiter                guifg=#96ff00 ctermfg=118 gui=none
 hi Boolean                  guifg=#FF2BC5 ctermfg=206 gui=none
