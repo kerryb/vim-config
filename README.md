@@ -129,6 +129,13 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
 
 A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
 
+## projector mode (55e7a8d69a)
+
+Toggle 'projector mode': larger font and high contrast colour scheme ([more](https://github.com/AdamWhittingham/projector_mode))
+<dl>
+  <dt>,p</dt><dd>Toggle 'projector mode' (large font, high contrast)</dd>
+</dl>
+
 ## ragtag (2.0)
 
 A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more ([more](http://www.vim.org/scripts/script.php?script_id=1896))
@@ -259,7 +266,6 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
-  <dt>,p</dt><dd>Switch to 'projector mode' (large font, light colour scheme)</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
 </dl>
