@@ -148,6 +148,10 @@ imap ;l <ESC>
 imap jk <ESC>
 imap kj <ESC>
 
+" Better increment & decrement numbers (C-a is nicer for tmux/screen)
+nmap ++ <C-a>
+nmap -- <C-x>
+
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
