@@ -81,7 +81,7 @@ map <silent> <Leader>f :NERDTreeFind<CR>
 nnoremap <Leader>u :GundoToggle<CR>
 
 " ,, to run current spec file
-map <Leader>, :wa\|:!rspec %<CR>
+map <Leader>, :wa\|:Dispatch rspec %<CR>
 
 " ,s to toggle spelling highlighting
 nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
