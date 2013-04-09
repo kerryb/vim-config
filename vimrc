@@ -104,6 +104,9 @@ vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
 " ,t> to align visually selected lines by =>
 vnoremap <silent> <Leader>t> :Align =><CR>
 
+" ,t{ to align visually selected lines by =>
+vnoremap <silent> <Leader>t{ :Align {<CR>
+
 " ,z to zoom pane when using splits
 map <Leader>z :ZoomWin<CR>
 

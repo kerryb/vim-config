@@ -278,6 +278,8 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,rt</dt><dd>Run run_tags script (assuming it's installed and in the path)</dd>
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
+  <dt>,t{</dt><dd>Align on '{' characters (useful for let blocks)</dd>
+  <dt>,t></dt><dd>Align on '>' characters (useful for hashes)</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
