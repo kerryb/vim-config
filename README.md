@@ -236,11 +236,23 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
-Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
+Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
 
-## vim-powerbar (09c0cea859a2e0989eea740655b35976d951a84e - Nox 2012)
+## vim-less (1b37c0d7cc0f74fb4c1185ed359e641b6865a9ff - Mar 2013)
+
+Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
+
+## vim-powerbar (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
 
 Colourful and neat status bar
+
+## vim-dispatch (c0cae499ab0d727d43940b3200e8daa3b25bf220 - Mar 2013)
+
+Better code compilation & test running ([more](https://github.com/tpope/vim-dispatch))
+
+<dl>
+  <dt>,,</dt><dd>Run the current spec</dd>
+</dl>
 
 ## ZoomWin (23)
 
@@ -255,13 +267,14 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 # Other Keybindings
 
 <dl>
-  <dt>ctrl-alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
-  <dt>ctrl-alt-v</dt><dd>Paste from the system clipboard</dd>
+  <dt>++</dt><dd>Increment the number under the cursor</dd>
+  <dt>--<dt><dd>Decrement the number under the cursor</dd>
+  <dt>alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
+  <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed - see Tags section below)</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
-  <dt>,,</dt><dd>Run rspec on current file</dd>
   <dt>,rt</dt><dd>Run run_tags script (assuming it's installed and in the path)</dd>
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
