@@ -53,12 +53,6 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 
 *Keybindings*
 
-<dl>
-  <dt>,tsp</dt><dd>Align on whitespace</dd>
-  <dt>,t&gt;</dt><dd>Align on =></dd>
-  <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
-</dl>
-
 ## bufexplorer (7.2.8)
 
 Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=42))
@@ -210,6 +204,11 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
 
+
+## Switch (93759a6bf42a663d0916c1072c67df5e16e6a00a)
+
+Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
+
 ## Tabular (b7b4d87 - 31 Mar 2011)
 
 Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt))
@@ -278,6 +277,9 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,rt</dt><dd>Run run_tags script (assuming it's installed and in the path)</dd>
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
+  <dt>,tsp</dt><dd>Align on whitespace</dd>
+  <dt>,t&gt;</dt><dd>Align on =></dd>
+  <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
   <dt>,t{</dt><dd>Align on '{' characters (useful for let blocks)</dd>
   <dt>,t></dt><dd>Align on '>' characters (useful for hashes)</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>

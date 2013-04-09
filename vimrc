@@ -137,6 +137,9 @@ vmap <A-c> "+y<CR>
 " C-v to paste from the global buffer
 map <A-v> "+p<CR>
 
+" - to switch code blocks with the switch plugin
+map - :Switch<CR>
+
 " It's not like :W is bound to anything anyway.
 command! W :w
 
