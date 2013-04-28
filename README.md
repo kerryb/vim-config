@@ -30,10 +30,6 @@ Finally, symlink <tt>.vimrc</tt> so the config is loaded when Vim starts:
     cd ~/.vim
     git pull
 
-Then in vim:
-
-    :helptags ~/.vim/doc
-
 ## Local Customisation
 
 Local changes (eg if you prefer a different font or colour scheme) can either
@@ -84,7 +80,8 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 *Keybindings*
 
 <dl>
-  <dt>,t</dt><dd>Open the CtrlP fuzzy search</dd>
+  <dt>C-p</dt><dd>Open the CtrlP fuzzy search</dd>
+  <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
 </dl>
 
 ## Gundo (2.2.2)
@@ -105,6 +102,14 @@ Adds support for HTML 5 keyword highlightings ([more](https://gist.github.com/25
 
 Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode/))
 
+## machit
+
+Allows % to be changed to match more than single characters; often more up-to-date than the version which ships with Vim. ([more](http://www.vim.org/scripts/script.php?script_id=39))
+
+## nerdcommenter (2.3.0)
+
+A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
+
 ## nerdtree (4.2.0)
 
 A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/scripts/script.php?script_id=1658))
@@ -118,10 +123,6 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
   <dt>p</dt><dd>Go to parent of selected item</dd>
   <dt>?</dt><dd>Toggle the help list</dd>
 </dl>
-
-## nerdcommenter (2.3.0)
-
-A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
 
 ## projector mode (55e7a8d69a)
 
@@ -170,28 +171,6 @@ It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
-## ruby (b10adca - 17 Aug 2012)
-
-Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
-
-## ruby-refactoring (6447a4d - 28 Dec 2011)
-
-Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
-
-See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
-
-## specky (1.6)
-
-Functions to help make behavioral testing easy with ruby and rspec ([more](http://www.vim.org/scripts/script.php?script_id=2286))
-
-*Keybindings*
-
-<dl>
-  <dt>,ss</dt><dd>Run spec</dd>
-  <dt>,sx</dt><dd>Switch between spec and implementation</dd>
-  <dt>,s'</dt><dd>Cycle between single quotes, double quotes and symbol</dd>
-</dl>
-
 ## SuperTab (1.6)
 
 Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/script.php?script_id=1643))
@@ -200,14 +179,13 @@ Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/s
 
 Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http://www.vim.org/scripts/script.php?script_id=1697))
 
+## switch (93759a6bf42a663d0916c1072c67df5e16e6a00a)
+
+Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
+
 ## syntastic (1.2.0)
 
 Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
-
-
-## Switch (93759a6bf42a663d0916c1072c67df5e16e6a00a)
-
-Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
 
 ## Tabular (b7b4d87 - 31 Mar 2011)
 
@@ -237,21 +215,43 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
 
+## vim-colors-solarized
+
+The well-known solarized colorscheme ([more](https://github.com/altercation/solarized))
+
+## vim-dispatch (b171bbc64a18dd565ff4d354d340ee5f0bbd4ac1 - 28 April 2013)
+
+Run tests with neat integration for tmux or the shell ([more](https://github.com/tpope/vim-dispatch.git))
+
+<dl>
+  <dt>,,</dt><dd>Run current rspec file</dd>
+</dl>
+
+## vim-easytags (67a0a832ca3100d49ba3d353c6323f3db4edc4a4 - 28 April 2013)
+
+Automatically update ctags in the background ([more](https://github.com/xolox/vim-easytags))
+
+## vim-haml (ce0cfeddbd2825d07a4361ab1871d6970361a1c9)
+
+Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml))
+
 ## vim-less (1b37c0d7cc0f74fb4c1185ed359e641b6865a9ff - Mar 2013)
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
-## vim-powerbar (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
+## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
 
-Colourful and neat status bar
+Colourful and neat status bar without the need for font patching
 
-## vim-dispatch (c0cae499ab0d727d43940b3200e8daa3b25bf220 - Mar 2013)
+## vim-ruby (b10adca - 17 Aug 2012)
 
-Better code compilation & test running ([more](https://github.com/tpope/vim-dispatch))
+Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
 
-<dl>
-  <dt>,,</dt><dd>Run the current spec</dd>
-</dl>
+## vim-ruby-refactoring (6447a4d - 28 Dec 2011)
+
+Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
+
+See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
 ## ZoomWin (23)
 
@@ -299,5 +299,4 @@ The run_tags scripts are available for ubuntu ([script](https://gist.github.com/
 
 <dl>
   <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
-  <dt>:SudoW</dt><dd>Save using sudo (run <tt>sudo -v</tt> in terminal first)</dd>
 </dl>

@@ -7,99 +7,102 @@ colorscheme darkermate
 
 let mapleader = ","
 
+" ----------------------------------------------
+" Setup basic Vim behaviour
+" ----------------------------------------------
+
+set autoindent
+set autowrite       " Writes on make/shell commands
+set backspace=start,indent,eol
+set cf              " Enable error files & error jumping.
+set cursorline
+set expandtab
+set hidden          " Allow buffer switching without saving
+set history=1000
+set laststatus=2    " Always show status line.
+set mousehide
+set nowrap          " Line wrapping off
+set number          " line numbers
+set ruler           " Ruler on
+set scrolloff=3     " More context around cursor
 set sessionoptions=blank,buffers,curdir,folds,help,resize,tabpages,winsize
+set shiftwidth=2
+set smarttab
+set statusline=%<%f\ %h%m%r%=%-20.(line=%l\ of\ %L,col=%c%V%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
+set tabstop=2
+set tags=tags;./tags;
+set timeoutlen=500
+set wildmode=list:longest " Shell-like behaviour for command autocompletion
+
+" GVim Options
 set guioptions-=T   " no toolbar
 set guioptions-=m   " no menu
 set guioptions+=LlRrb " Hack which adds all scrollbars so that they can be removed, line below breaks without this
 set guioptions-=LlRrb " Remove all scrollbars
-set statusline=%<%f\ %h%m%r%=%-20.(line=%l\ of\ %L,col=%c%V%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
-set laststatus=2    " Always show status line.
-set number          " line numbers
-set scrolloff=3     " More context around cursor
+
+" Search options
 set hlsearch        " highlight search matches...
 set incsearch       " ...as you type
 set ignorecase
 set smartcase
-set hidden          " Allow buffer switching without saving
-set history=1000
-set wildmode=list:longest " Shell-like behaviour for command autocompletion
-set mousehide
-set cf              " Enable error files & error jumping.
-set autowrite       " Writes on make/shell commands
-set ruler           " Ruler on
-set nowrap          " Line wrapping off
-set timeoutlen=500
-set cursorline
-set tags=tags;./tags;
-set tabstop=2
-set smarttab
-set shiftwidth=2
-set autoindent
-set expandtab
-set backspace=start,indent,eol
-
-" Enable wrapping when editing text documents (eg Markdown)
-autocmd BufNewFile,BufRead *.md :setlocal wrap
 
 " ----------------------------------------------
-" Setup Command Shortcuts
+" Command Shortcuts
 " ----------------------------------------------
 
-" ,t to fuzzy search files
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" - to switch code blocks with the switch plugin
+map - :Switch<CR>
 
-" Rebuild the cache whenever the search is invoked. Switch to the commented
-" out line if this is too slow for you.
-map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
-"map <silent><Leader>t <esc>:CtrlP<CR>
+" -- to decrement numbers
+nmap -- <C-x>
+"  ++ to increment numbers (C-a is nicer for tmux/screen)
+nmap ++ <C-a>
 
-" Ctrl+s to write the file
-map <C-s> <esc>:w<CR>
-imap <C-s> <esc>:w<CR>
+" make W write, just as w
+command! W :w
 
-" F5 to reload doc
-map <silent> <F5> <esc>:e %<CR>
+" make Y consistent with C and D
+nnoremap Y y$
 
-" Add ,. for viewing all document buffers
+" ,. to view all document buffers
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
-" ,p to switch to better font for projector
-noremap <silent> <leader>p :ToggleProjectorMode<CR>
+" ,, to run current spec file
+map <Leader>, :wa\|:Dispatch rspec %<CR>
+
+" ,] to toggle the tags sidebar
+nmap <Leader>] :TagbarToggle<CR>
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>c :set nolist!<CR>
 
-" ,h to toggle search result highlighting
-:noremap <silent> <leader>h :set hls!<CR>
-
-" ,w to toggle line wrap
-:map <silent> <Leader>w :set wrap!<CR>
+" ,cC to show colour references in that colour (color_hightlight)
+" ,cF to toggle showing the colour on the text or background (color_hightlight)
+" Provided configured by colorizer
 
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
 
-" ,u to toggle undo history browser
-nnoremap <Leader>u :GundoToggle<CR>
+" ,h to toggle search result highlighting
+:noremap <silent> <leader>h :set hls!<CR>
 
-" ,, to run current spec file
-map <Leader>, :wa\|:Dispatch rspec %<CR>
+" ,m to toggle file tree
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
+
+" ,p to switch to better font for projector
+noremap <silent> <leader>p :ToggleProjectorMode<CR>
 
 " ,s to toggle spelling highlighting
 nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 
-" ,s' to cycle single quote, double quotes and symbol
-let g:speckyQuoteSwitcherKey = "<Leader>s'"
+" ,sw to strip whitespace off the ends
+nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
-" ,sx to switch between spec and implementation
-let g:speckySpecSwitcherKey = "<Leader>sx"
-
-" ,ss to run spec
-let g:speckyRunSpecKey = "<Leader>ss"
-"
-" ,m to toggle file tree
-nmap <silent> <Leader>m :NERDTreeToggle<CR>
+" ,t to clear cache and fuzzy search files
+" Rebuilds the cahce first, move to commented out line to just search
+map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
+"map <silent><Leader>t <esc>:CtrlP<CR>
 
 " ,tt to tabulate visually selected rows based on |
 vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
@@ -110,20 +113,39 @@ vnoremap <silent> <Leader>t> :Align =><CR>
 " ,t{ to align visually selected lines by =>
 vnoremap <silent> <Leader>t{ :Align {<CR>
 
+" ,u to toggle undo history browser
+nnoremap <Leader>u :GundoToggle<CR>
+
+" ,w to toggle line wrap
+:map <silent> <Leader>w :set wrap!<CR>
+
 " ,z to zoom pane when using splits
 map <Leader>z :ZoomWin<CR>
 
-" ,rt to force a refresh of tags
-map <Leader>rt :!run_tags<CR><CR>
+" C-c to copy to the global buffer
+vmap <A-c> "+y<CR>
 
-" ,sw to strip whitespace off the ends
-nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
+" C-v to paste from the global buffer
+map <A-v> "+p<CR>
+
+" Ctrl+s to write the file (Will scroll-lock Vim in the terminal!)
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+
+" Ctrl+p to fuzzy search files
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 " Ctrl+Alt+p to view the Vim style of the text under the cursor
-nmap <C-A-P> :call <SID>SynStack()<CR>
+nmap <C-A-p> :call <SID>SynStack()<CR>
 
-" ,cC to show colour references in that colour (color_hightlight)
-" ,cF to toggle showing the colour on the text or background (color_hightlight)
+" F5 to reload doc
+map <silent> <F5> <esc>:e %<CR>
+
+
+" ----------------------------------------------
+" Window split & size shortcuts
+" ----------------------------------------------
 
 " C-w s to vertical split
 map <C-w>s :vsplit<CR>
@@ -147,22 +169,11 @@ map <C-l> <C-w>l
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 
-" ,] to toggle the tags sidebar
-nmap <Leader>] :TagbarToggle<CR>
 
-" C-c to copy to the global buffer
-vmap <A-c> "+y<CR>
+" ----------------------------------------------
+" <ESC> Shortcuts
+" ----------------------------------------------
 
-" C-v to paste from the global buffer
-map <A-v> "+p<CR>
-
-" - to switch code blocks with the switch plugin
-map - :Switch<CR>
-
-" It's not like :W is bound to anything anyway.
-command! W :w
-
-" Alternatives to ESC
 imap jkl <ESC>
 imap jlk <ESC>
 imap kjl <ESC>
@@ -173,9 +184,6 @@ imap ;l <ESC>
 imap jk <ESC>
 imap kj <ESC>
 
-" Better increment & decrement numbers (C-a is nicer for tmux/screen)
-nmap ++ <C-a>
-nmap -- <C-x>
 
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
@@ -226,8 +234,6 @@ let g:SuperTabCrMapping = 0
 " Highlight trailing whitespace
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces highlighted
-
-let g:speckyWindowType = 1
 
 let g:ragtag_global_maps = 1
 
@@ -340,11 +346,6 @@ call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
 "call s:DefineCommand("e", "Edit") " if you don't mind not being able to "e!"
 
-" Folding settings
-set foldmethod=indent "fold based on indent
-set foldnestmax=3     "deepest fold is 3 levels
-set nofoldenable      "dont fold by default
-
 " Jump to last cursor position when opening a file
 " Don't do it when writing a commit log entry
 autocmd BufReadPost * call SetCursorPosition()
@@ -355,9 +356,6 @@ function! SetCursorPosition()
     endif
   end
 endfunction
-
-" make Y consistent with C and D
-nnoremap Y y$
 
 " strip trailing whitespace<foo&bar>
 "autocmd BufWritePre,FileWritePre * call StripTrailingWhitespace()
@@ -382,57 +380,35 @@ command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
       \ proident, sunt in culpa qui officia deserunt mollit anim id est
       \ laborum
 
-function! OpenInBrowser(url)
-  if has("mac")
-    exec '!open '.a:url
-  else
-    exec '!firefox -new-tab '.a:url.' &'
-  endif
-endfunction
-
-" Open the Ruby ApiDock page for the word under cursor
-function! OpenRubyDoc(keyword)
-  let url = 'http://railsapi.com/doc/ruby-v1.8/?q='.a:keyword
-  call OpenInBrowser(url)
-endfunction
-noremap RB :call OpenRubyDoc(expand('<cword>'))<CR><CR>
-
-" Open the Rails ApiDock page for the word under cursor
-function! OpenRailsDoc(keyword)
-  if filereadable('config/application.rb')
-    let url = 'http://railsapi.com/doc/rails-v3.0.4/?q='.a:keyword
-  else
-    let url = 'http://railsapi.com/doc/rails-v2.3.8/?q='.a:keyword
-  endif
-  call OpenInBrowser(url)
-endfunction
-noremap RR :call OpenRailsDoc(expand('<cword>'))<CR><CR>
-
-" :SudoW to save file using sudo (must be already authorised, eg sudo -v)
-command! -bar -nargs=0 SudoW   :silent exe "write !sudo tee % >/dev/null"|silent edit!
-
-" Edit routes
-command! Rroutes :Redit config/routes.rb
-command! RTroutes :RTedit config/routes.rb
-
-" Show syntax highlighting groups for word under cursor
-function! <SID>SynStack()
-  if !exists("*synstack")
-    return
-  endif
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
 " Automatically turn on colorizers highlighting for some filetypes
 let g:colorizer_auto_filetype='css,html,less,scss,vim'
 " Make colorizer play nicely with 2html
 let g:colorizer_syntax = 1
 
+" Enable wrapping when editing text documents (eg Markdown)
+autocmd BufNewFile,BufRead *.md :setlocal wrap
+
 " ----------------------------------------------
-"  Last, but not least, source any local config
+"  Setup Ctags support
 " ----------------------------------------------
 
-" Source a local configuration file if available.
+" Don't highlight tags by default
+:let g:easytags_auto_highlight = 0
+
+" Look for a local .tags file for project-specific tags
+:set tags=./tags;
+
+" Specify which tags file to use
+" (0 for global, 1 for local if exists, else global, 2 for local only)
+:let g:easytags_dynamic_files = 2
+
+" Follow symlinks when looking for tags
+:let g:easytags_resolve_links = 1
+
+" ----------------------------------------------
+"  Source any local config
+"  Keep this last to make sure local config overrides global!
+" ----------------------------------------------
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
