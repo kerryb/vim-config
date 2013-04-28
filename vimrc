@@ -128,6 +128,14 @@ map <C-w>s :vsplit<CR>
 " C-w S to horizontal split
 map <C-w>S :split<CR>
 
+" C-A-h and C-A-l to resize vertical split
+map <C-A-h> :vertical resize -7<CR>
+map <C-A-l> :vertical resize +7<CR>
+
+" C-A-j and C-A-k to resize horizontal split
+map <C-A-j> :resize -5<CR>
+map <C-A-k> :resize +5<CR>
+
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
 
