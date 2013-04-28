@@ -136,6 +136,14 @@ map <C-A-l> :vertical resize +7<CR>
 map <C-A-j> :resize -5<CR>
 map <C-A-k> :resize +5<CR>
 
+" C-H and C-L to jump left and right between splits
+map <C-h> <C-w>h
+map <C-l> <C-w>l
+"
+" C-J and C-K to jump down and up between splits
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
 
