@@ -136,8 +136,8 @@ imap <C-s> <esc>:w<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-" Ctrl+Alt+p to view the Vim style of the text under the cursor
-nmap <C-A-p> :call <SID>SynStack()<CR>
+" Ctrl+\ to view the Vim style of the text under the cursor
+nmap <C-\> :call <SID>SynStack()<CR>
 
 " F5 to reload doc
 map <silent> <F5> <esc>:e %<CR>
@@ -370,6 +370,15 @@ endfunction
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
 
+" Add function for showing the syntax tag for the selected text
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+
 "define :Lorem command to dump in a paragraph of lorem ipsum
 command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
       \ adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -393,18 +402,20 @@ autocmd BufNewFile,BufRead *.md :setlocal wrap
 " ----------------------------------------------
 
 " Don't highlight tags by default
-:let g:easytags_auto_highlight = 0
+let g:easytags_auto_highlight = 0
 
-" Look for a local .tags file for project-specific tags
-:set tags=./tags;
+" Name to check for local tags file
+set tags=./tags;
 
-" Specify which tags file to use
+" Specify which tags files to use
 " (0 for global, 1 for local if exists, else global, 2 for local only)
-:let g:easytags_dynamic_files = 2
+let g:easytags_dynamic_files = 2
 
 " Follow symlinks when looking for tags
-:let g:easytags_resolve_links = 1
+let g:easytags_resolve_links = 1
 
+" Also scan for class/struct members
+let g:easytags_include_members = 1
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!
