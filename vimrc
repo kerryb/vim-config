@@ -38,6 +38,9 @@ set autoindent
 set expandtab
 set backspace=start,indent,eol
 
+" Enable wrapping when editing text documents (eg Markdown)
+autocmd BufNewFile,BufRead *.md :setlocal wrap
+
 " ----------------------------------------------
 " Setup Command Shortcuts
 " ----------------------------------------------
