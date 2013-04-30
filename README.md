@@ -211,6 +211,10 @@ Sidebar for showing and navigating the tags in current file ([more](https://gith
 
 Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script_id=1590))
 
+## vim-abolish (d64ce06650, 30 Apr 2013)
+
+Better abbreviations, substitution and search with Bash like {a,b} style expansions
+
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
 Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
