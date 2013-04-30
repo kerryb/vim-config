@@ -240,9 +240,8 @@ let g:ragtag_global_maps = 1
 " A whole bunch of NERDTree configuration stolen from carlhuda's janus
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
-"autocmd VimEnter * NERDTree
-autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
 autocmd VimEnter * wincmd p
+autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
 autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 
 " Disable netrw's autocmd, since we're ALWAYS using NERDTree
@@ -253,7 +252,7 @@ augroup END
 
 let g:NERDTreeHijackNetrw = 0
 
-" If the parameter is a directory (including implicit '.'), open NERDTree
+" If the parameter is a directory (or there was no parameter), open NERDTree
 function s:NERDTreeIfDirectory(directory)
   if isdirectory(a:directory) || a:directory == ""
     NERDTree
@@ -391,6 +390,7 @@ command! -nargs=0 Lorem :normal iLorem ipsum dolor sit amet, consectetur
 
 " Automatically turn on colorizers highlighting for some filetypes
 let g:colorizer_auto_filetype='css,html,less,scss,vim'
+
 " Make colorizer play nicely with 2html
 let g:colorizer_syntax = 1
 
