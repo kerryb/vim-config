@@ -1,9 +1,8 @@
 "============================================================================
 "File:        syntastic.vim
-"Description: vim plugin for on the fly syntax checking
-"Maintainer:  Martin Grenfell <martin.grenfell at gmail dot com>
-"Version:     1.2.0
-"Last Change: 28 Oct, 2010
+"Description: Vim plugin for on the fly syntax checking.
+"Version:     3.0.0
+"Released On: 13 April, 2013
 "License:     This program is free software. It comes without any warranty,
 "             to the extent permitted by applicable law. You can redistribute
 "             it and/or modify it under the terms of the Do What The Fuck You
@@ -17,181 +16,258 @@ if exists("g:loaded_syntastic_plugin")
 endif
 let g:loaded_syntastic_plugin = 1
 
-let s:running_windows = has("win16") || has("win32") || has("win64")
+runtime! plugin/syntastic/*.vim
 
-if !exists("g:syntastic_enable_signs") || !has('signs')
-    let g:syntastic_enable_signs = 0
+let s:running_windows = has("win16") || has("win32")
+
+if !exists("g:syntastic_always_populate_loc_list")
+    let g:syntastic_always_populate_loc_list = 0
 endif
 
-if !exists("g:syntastic_auto_loc_list")
-    let g:syntastic_auto_loc_list = 0
+if !exists("g:syntastic_auto_jump")
+    let syntastic_auto_jump=0
 endif
 
 if !exists("g:syntastic_quiet_warnings")
     let g:syntastic_quiet_warnings = 0
 endif
 
-if !exists("g:syntastic_disabled_filetypes")
-    let g:syntastic_disabled_filetypes = []
+if !exists("g:syntastic_stl_format")
+    let g:syntastic_stl_format = '[Syntax: line:%F (%t)]'
 endif
 
-"load all the syntax checkers
-runtime! syntax_checkers/*.vim
+if !exists("g:syntastic_check_on_open")
+    let g:syntastic_check_on_open = 0
+endif
+
+if !exists("g:syntastic_check_on_wq")
+    let g:syntastic_check_on_wq = 1
+endif
+
+if !exists("g:syntastic_loc_list_height")
+    let g:syntastic_loc_list_height = 10
+endif
+
+let s:registry = g:SyntasticRegistry.Instance()
+let s:notifiers = g:SyntasticNotifiers.New()
+let s:modemap = g:SyntasticModeMap.Instance()
+
+function! s:CompleteCheckerName(argLead, cmdLine, cursorPos)
+    let checker_names = []
+    for ft in s:CurrentFiletypes()
+        for checker in s:registry.availableCheckersFor(ft)
+            call add(checker_names, checker.name())
+        endfor
+    endfor
+    return join(checker_names, "\n")
+endfunction
+
+command! SyntasticToggleMode call s:ToggleMode()
+command! -nargs=? -complete=custom,s:CompleteCheckerName SyntasticCheck call s:UpdateErrors(0, <f-args>) <bar> call s:Redraw()
+command! Errors call s:ShowLocList()
+command! SyntasticInfo call s:registry.echoInfoFor(&ft)
+
+highlight link SyntasticError SpellBad
+highlight link SyntasticWarning SpellCap
+
+augroup syntastic
+    autocmd BufReadPost * if g:syntastic_check_on_open | call s:UpdateErrors(1) | endif
+    autocmd BufWritePost * call s:UpdateErrors(1)
+
+    autocmd BufWinEnter * if empty(&bt) | call g:SyntasticAutoloclistNotifier.AutoToggle(g:SyntasticLoclist.Current()) | endif
+
+    " TODO: the next autocmd should be "autocmd BufWinLeave * if empty(&bt) | lclose | endif"
+    " but in recent versions of Vim lclose can no longer be called from BufWinLeave
+    autocmd BufEnter * call s:BufEnterHook()
+augroup END
+
+if v:version > 703 || (v:version == 703 && has('patch544'))
+    " QuitPre was added in Vim 7.3.544
+    augroup syntastic
+        autocmd QuitPre * call s:QuitPreHook()
+    augroup END
+endif
+
+
+function! s:BufEnterHook()
+    " TODO: at this point there is no b:syntastic_loclist
+    let loclist = filter(getloclist(0), 'v:val["valid"] == 1')
+    let buffers = syntastic#util#unique(map( loclist, 'v:val["bufnr"]' ))
+    if &bt=='quickfix' && !empty(loclist) && empty(filter( buffers, 'syntastic#util#bufIsActive(v:val)' ))
+        call g:SyntasticLoclistHide()
+    endif
+endfunction
+
+
+function! s:QuitPreHook()
+    let b:syntastic_skip_checks = !g:syntastic_check_on_wq
+    call g:SyntasticLoclistHide()
+endfunction
 
 "refresh and redraw all the error info for this buf when saving or reading
-autocmd bufreadpost,bufwritepost * call s:UpdateErrors()
-function! s:UpdateErrors()
-    call s:CacheErrors()
-
-    if g:syntastic_enable_signs
-        call s:RefreshSigns()
+function! s:UpdateErrors(auto_invoked, ...)
+    if s:SkipFile()
+        return
     endif
 
-    if g:syntastic_auto_loc_list
-        if s:BufHasErrorsOrWarningsToDisplay()
-            call s:ShowLocList()
+    if !a:auto_invoked || s:modemap.allowsAutoChecking(&filetype)
+        if a:0 >= 1
+            call s:CacheErrors(a:1)
         else
-            "TODO: this will close the loc list window if one was opened by
-            "something other than syntastic
-            lclose
+            call s:CacheErrors()
+        endif
+    end
+
+    let loclist = g:SyntasticLoclist.Current()
+    call s:notifiers.refresh(loclist)
+
+    if (g:syntastic_always_populate_loc_list || g:syntastic_auto_jump) && loclist.hasErrorsOrWarningsToDisplay()
+        call setloclist(0, loclist.filteredRaw())
+        if g:syntastic_auto_jump
+            silent! ll
         endif
     endif
 endfunction
 
+"clear the loc list for the buffer
+function! s:ClearCache()
+    call s:notifiers.reset(g:SyntasticLoclist.Current())
+    unlet! b:syntastic_loclist
+endfunction
+
+function! s:CurrentFiletypes()
+    "sub - for _ in filetypes otherwise we cant name syntax checker
+    "functions legally for filetypes like "gentoo-metadata"
+    let fts = substitute(&ft, '-', '_', 'g')
+    return split(fts, '\.')
+endfunction
+
 "detect and cache all syntax errors in this buffer
-"
-"depends on a function called SyntaxCheckers_{&ft}_GetLocList() existing
-"elsewhere
-function! s:CacheErrors()
-    let b:syntastic_loclist = []
+function! s:CacheErrors(...)
+    call s:ClearCache()
+    let newLoclist = g:SyntasticLoclist.New([])
 
-    if filereadable(expand("%"))
-        for ft in split(&ft, '\.')
-            if s:Checkable(ft)
-                let b:syntastic_loclist = extend(b:syntastic_loclist, SyntaxCheckers_{ft}_GetLocList())
+    if !s:SkipFile()
+        for ft in s:CurrentFiletypes()
+
+            if a:0
+                let checker = s:registry.getChecker(ft, a:1)
+                if !empty(checker)
+                    let checkers = [checker]
+                endif
+            else
+                let checkers = s:registry.getActiveCheckers(ft)
             endif
+
+            for checker in checkers
+                call syntastic#util#debug("CacheErrors: Invoking checker: " . checker.name())
+
+                let loclist = checker.getLocList()
+
+                if !loclist.isEmpty()
+                    let newLoclist = newLoclist.extend(loclist)
+
+                    "only get errors from one checker at a time
+                    break
+                endif
+            endfor
         endfor
     endif
+
+    let b:syntastic_loclist = newLoclist
 endfunction
 
-"return true if there are cached errors/warnings for this buf
-function! s:BufHasErrorsOrWarnings()
-    return exists("b:syntastic_loclist") && !empty(b:syntastic_loclist)
-endfunction
-
-"return true if there are cached errors for this buf
-function! s:BufHasErrors()
-    return len(s:ErrorsForType('E')) > 0
-endfunction
-
-function! s:BufHasErrorsOrWarningsToDisplay()
-    return s:BufHasErrors() || (!g:syntastic_quiet_warnings && s:BufHasErrorsOrWarnings())
-endfunction
-
-function! s:ErrorsForType(type)
-    if !exists("b:syntastic_loclist")
-        return []
-    endif
-    return filter(copy(b:syntastic_loclist), 'v:val["type"] ==# "' . a:type . '"')
-endfunction
-
-if g:syntastic_enable_signs
-    "use >> to display syntax errors in the sign column
-    sign define SyntasticError text=>> texthl=error
-    sign define SyntasticWarning text=>> texthl=todo
-endif
-
-"start counting sign ids at 5000, start here to hopefully avoid conflicting
-"with any other code that places signs (not sure if this precaution is
-"actually needed)
-let s:first_sign_id = 5000
-let s:next_sign_id = s:first_sign_id
-
-"place signs by all syntax errs in the buffer
-function s:SignErrors()
-    if s:BufHasErrorsOrWarningsToDisplay()
-        for i in b:syntastic_loclist
-            if i['bufnr'] != bufnr("")
-                continue
-            endif
-
-            let sign_type = 'SyntasticError'
-            if i['type'] == 'W'
-                let sign_type = 'SyntasticWarning'
-            endif
-
-            exec "sign place ". s:next_sign_id ." line=". i['lnum'] ." name=". sign_type ." file=". expand("%:p")
-            call add(s:BufSignIds(), s:next_sign_id)
-            let s:next_sign_id += 1
-        endfor
-    endif
-endfunction
-
-"remove the signs with the given ids from this buffer
-function! s:RemoveSigns(ids)
-    for i in a:ids
-        exec "sign unplace " . i
-        call remove(s:BufSignIds(), index(s:BufSignIds(), i))
-    endfor
-endfunction
-
-"get all the ids of the SyntaxError signs in the buffer
-function! s:BufSignIds()
-    if !exists("b:syntastic_sign_ids")
-        let b:syntastic_sign_ids = []
-    endif
-    return b:syntastic_sign_ids
-endfunction
-
-"update the error signs
-function! s:RefreshSigns()
-    let old_signs = copy(s:BufSignIds())
-    call s:SignErrors()
-    call s:RemoveSigns(old_signs)
-    let s:first_sign_id = s:next_sign_id
+function! s:ToggleMode()
+    call s:modemap.toggleMode()
+    call s:ClearCache()
+    call s:UpdateErrors(1)
+    call s:modemap.echoMode()
 endfunction
 
 "display the cached errors for this buf in the location list
 function! s:ShowLocList()
-    if exists("b:syntastic_loclist")
-        call setloclist(0, b:syntastic_loclist)
-        let num = winnr()
-        lopen
-        if num != winnr()
-            wincmd p
-        endif
+    let loclist = g:SyntasticLoclist.Current()
+    call loclist.show()
+endfunction
+
+"the script changes &shellpipe and &shell to stop the screen flicking when
+"shelling out to syntax checkers. Not all OSs support the hacks though
+function! s:OSSupportsShellpipeHack()
+    return !s:running_windows && executable('/bin/bash') && (s:uname() !~ "FreeBSD") && (s:uname() !~ "OpenBSD")
+endfunction
+
+function! s:IsRedrawRequiredAfterMake()
+    return !s:running_windows && (s:uname() =~ "FreeBSD" || s:uname() =~ "OpenBSD")
+endfunction
+
+"Redraw in a way that doesnt make the screen flicker or leave anomalies behind.
+"
+"Some terminal versions of vim require `redraw!` - otherwise there can be
+"random anomalies left behind.
+"
+"However, on some versions of gvim using `redraw!` causes the screen to
+"flicker - so use redraw.
+function! s:Redraw()
+    if has('gui_running') || has('gui_macvim')
+        redraw
+    else
+        redraw!
     endif
 endfunction
 
-command Errors call s:ShowLocList()
+" Skip running in special buffers
+function! s:SkipFile()
+    let force_skip = exists('b:syntastic_skip_checks') ? b:syntastic_skip_checks : 0
+    return force_skip || !empty(&buftype) || !filereadable(expand('%')) || getwinvar(0, '&diff')
+endfunction
 
-"return [syntax:X(Y)] if syntax errors are detected in the buffer, where X is the
-"line number of the first error and Y is the number of errors detected. (Y) is
-"only displayed if > 1 errors are detected
+function! s:uname()
+    if !exists('s:uname')
+        let s:uname = system('uname')
+    endif
+    return s:uname
+endfunction
+
+"return a string representing the state of buffer according to
+"g:syntastic_stl_format
 "
 "return '' if no errors are cached for the buffer
 function! SyntasticStatuslineFlag()
-    if s:BufHasErrorsOrWarningsToDisplay()
+    let loclist = g:SyntasticLoclist.Current()
+    if loclist.hasErrorsOrWarningsToDisplay()
+        let errors = loclist.errors()
+        let warnings = loclist.warnings()
 
-        let first_err_line = b:syntastic_loclist[0]['lnum']
-        if g:syntastic_quiet_warnings
-            let first_err_line = s:ErrorsForType('E')[0]['lnum']
-        endif
+        let num_errors = len(errors)
+        let num_warnings = len(warnings)
 
-        let err_count = len(b:syntastic_loclist)
-        if g:syntastic_quiet_warnings
-            let err_count = len(s:ErrorsForType('E'))
-        endif
+        let output = g:syntastic_stl_format
 
-        let toReturn = '[syntax:' . first_err_line
+        "hide stuff wrapped in %E(...) unless there are errors
+        let output = substitute(output, '\C%E{\([^}]*\)}', num_errors ? '\1' : '' , 'g')
 
-        if err_count > 1
-            let toReturn .= '(' . err_count . ')'
-        endif
+        "hide stuff wrapped in %W(...) unless there are warnings
+        let output = substitute(output, '\C%W{\([^}]*\)}', num_warnings ? '\1' : '' , 'g')
 
-        let toReturn .= ']'
+        "hide stuff wrapped in %B(...) unless there are both errors and warnings
+        let output = substitute(output, '\C%B{\([^}]*\)}', (num_warnings && num_errors) ? '\1' : '' , 'g')
 
-        return toReturn
+
+        "sub in the total errors/warnings/both
+        let output = substitute(output, '\C%w', num_warnings, 'g')
+        let output = substitute(output, '\C%e', num_errors, 'g')
+        let output = substitute(output, '\C%t', loclist.length(), 'g')
+
+        "first error/warning line num
+        let output = substitute(output, '\C%F', loclist.filteredRaw()[0]['lnum'], 'g')
+
+        "first error line num
+        let output = substitute(output, '\C%fe', num_errors ? errors[0]['lnum'] : '', 'g')
+
+        "first warning line num
+        let output = substitute(output, '\C%fw', num_warnings ? warnings[0]['lnum'] : '', 'g')
+
+        return output
     else
         return ''
     endif
@@ -207,62 +283,69 @@ endfunction
 "
 "The corresponding options are set for the duration of the function call. They
 "are set with :let, so dont escape spaces.
+"
+"a:options may also contain:
+"   'defaults' - a dict containing default values for the returned errors
+"   'subtype' - all errors will be assigned the given subtype
 function! SyntasticMake(options)
-    let old_loclist = getloclist(0)
-    let old_makeprg = &makeprg
-    let old_shellpipe = &shellpipe
-    let old_errorformat = &errorformat
+    call syntastic#util#debug('SyntasticMake: called with options: '. string(a:options))
 
-    if !s:running_windows
+    let old_loclist = getloclist(0)
+    let old_makeprg = &l:makeprg
+    let old_shellpipe = &shellpipe
+    let old_shell = &shell
+    let old_errorformat = &l:errorformat
+
+    if s:OSSupportsShellpipeHack()
         "this is a hack to stop the screen needing to be ':redraw'n when
         "when :lmake is run. Otherwise the screen flickers annoyingly
         let &shellpipe='&>'
+        let &shell = '/bin/bash'
     endif
 
     if has_key(a:options, 'makeprg')
-        let &makeprg = a:options['makeprg']
+        let &l:makeprg = a:options['makeprg']
     endif
 
     if has_key(a:options, 'errorformat')
-        let &errorformat = a:options['errorformat']
+        let &l:errorformat = a:options['errorformat']
     endif
 
     silent lmake!
     let errors = getloclist(0)
 
     call setloclist(0, old_loclist)
-    let &makeprg = old_makeprg
-    let &errorformat = old_errorformat
+    let &l:makeprg = old_makeprg
+    let &l:errorformat = old_errorformat
     let &shellpipe=old_shellpipe
+    let &shell=old_shell
+
+    if s:IsRedrawRequiredAfterMake()
+        call s:Redraw()
+    endif
+
+    if has_key(a:options, 'defaults')
+        call SyntasticAddToErrors(errors, a:options['defaults'])
+    endif
+
+    " Add subtype info if present.
+    if has_key(a:options, 'subtype')
+        call SyntasticAddToErrors(errors, {'subtype': a:options['subtype']})
+    endif
 
     return errors
 endfunction
 
-function! s:Checkable(ft)
-    return exists("*SyntaxCheckers_". a:ft ."_GetLocList") &&
-                \ index(g:syntastic_disabled_filetypes, a:ft) == -1
-endfunction
-
-command! -nargs=? SyntasticEnable call s:Enable(<f-args>)
-command! -nargs=? SyntasticDisable call s:Disable(<f-args>)
-
-"disable syntax checking for the given filetype (defaulting to current ft)
-function! s:Disable(...)
-    let ft = a:0 ? a:1 : &filetype
-
-    if !empty(ft) && index(g:syntastic_disabled_filetypes, ft) == -1
-        call add(g:syntastic_disabled_filetypes, ft)
-    endif
-endfunction
-
-"enable syntax checking for the given filetype (defaulting to current ft)
-function! s:Enable(...)
-    let ft = a:0 ? a:1 : &filetype
-
-    let i = index(g:syntastic_disabled_filetypes, ft)
-    if i != -1
-        call remove(g:syntastic_disabled_filetypes, i)
-    endif
+"take a list of errors and add default values to them from a:options
+function! SyntasticAddToErrors(errors, options)
+    for i in range(0, len(a:errors)-1)
+        for key in keys(a:options)
+            if !has_key(a:errors[i], key) || empty(a:errors[i][key])
+                let a:errors[i][key] = a:options[key]
+            endif
+        endfor
+    endfor
+    return a:errors
 endfunction
 
 " vim: set et sts=4 sw=4:

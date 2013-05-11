@@ -183,9 +183,9 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
 
-## syntastic (1.2.0)
+## syntastic (7f0412e91dd6e2b48cbe8ae54bddcfeca0c127c1)
 
-Automatic syntax checking ([more](http://www.vim.org/scripts/script.php?script_id=2736))
+Automatic syntax checking ([more](https://github.com/scrooloose/syntastic))
 
 ## Tabular (b7b4d87 - 31 Mar 2011)
 
