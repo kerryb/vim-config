@@ -336,6 +336,12 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 Lightweight bag of Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
 
+## vim-gitgutter (ff031d - 24 Apr 2013)
+
+A Vim plugin which shows a git diff in the 'gutter' (sign column). It shows whether each line has been
+added, modified, and where lines have been removed.
+([more](https://github.com/airblade/vim-gitgutter))
+
 ## vimClojure (2.3.1)
 
 Filetype, syntax and indent plugin for the Clojure programming language ([more](http://www.vim.org/scripts/script.php?script_id=2501))
