@@ -41,6 +41,8 @@ au WinEnter * set cursorline
 " Main Colors
 hi Normal                   guifg=#FFFFFF ctermfg=15  gui=none  guibg=#121212
 hi Visual                   guifg=#FFFFFF ctermfg=15  gui=none  guibg=#555753 ctermbg=245
+hi SignColumn               guifg=#FFFFFF ctermfg=15  gui=none  guibg=#121212
+
 hi String                   guifg=#96ff00 ctermfg=118 gui=none
 hi Delimiter                guifg=#96ff00 ctermfg=118 gui=none
 hi Boolean                  guifg=#FF2BC5 ctermfg=206 gui=none

@@ -84,6 +84,17 @@ nmap <silent> <leader>c :set nolist!<CR>
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
 
+" ,g to jump to the next change since git commit
+" ,G to jump to the last change since git commit
+nmap <leader>g <Plug>GitGutterNextHunk
+nmap <leader>G <Plug>GitGutterPrevHunk
+
+" ,gt to toggle the gutter
+nmap <leader>gt :GitGutterToggle<CR>
+
+" ,gh yo highlight changed lines
+nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
+
 " ,h to toggle search result highlighting
 :noremap <silent> <leader>h :set hls!<CR>
 
@@ -416,6 +427,12 @@ let g:easytags_resolve_links = 1
 
 " Also scan for class/struct members
 let g:easytags_include_members = 1
+
+" ----------------------------------------------
+"  Set the git gutter colors to be the same as the number column
+" ----------------------------------------------
+hi clear SignColumn
+
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!

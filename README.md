@@ -75,6 +75,7 @@ Adds the ability to highlight hex colours in their own colour ([more](https://gi
 </dl>
 
 ## CtrlP
+
 Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 
 *Keybindings*
@@ -82,6 +83,17 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 <dl>
   <dt>C-p</dt><dd>Open the CtrlP fuzzy search</dd>
   <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
+</dl>
+
+## GitGutter (ff031d022f - 27 May 2013)
+
+Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
+
+<dl>
+  <dt>,g</dt><dd>Skip to the next changed chunk</dd>
+  <dt>,G</dt><dd>Skip to the previous changed chunk</dd>
+  <dt>,gt</dt><dd>Toggle the git change gutter</dd>
+  <dt>,gh</dt><dd>Highlight all changed lines</dd>
 </dl>
 
 ## Gundo (2.2.2)
