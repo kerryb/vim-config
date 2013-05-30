@@ -191,11 +191,11 @@ Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/s
 
 Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http://www.vim.org/scripts/script.php?script_id=1697))
 
-## switch (93759a6bf42a663d0916c1072c67df5e16e6a00a)
+## switch (93759a6b)
 
 Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
 
-## syntastic (7f0412e91dd6e2b48cbe8ae54bddcfeca0c127c1)
+## syntastic (7f0412e9)
 
 Automatic syntax checking ([more](https://github.com/scrooloose/syntastic))
 
@@ -255,6 +255,14 @@ Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
+## vim-numberline (cc55ddc6b4 - 30 May 2013)
+
+Smarter switching between relative and absolute line numbering
+
+<dl>
+  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
+</dl>
+
 ## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
 
 Colourful and neat status bar without the need for font patching
@@ -301,9 +309,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,w</dt><dd>Toggle word wrapping</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
-  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
 </dl>
-
 
 # Tags
 

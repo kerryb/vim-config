@@ -426,16 +426,6 @@ let g:easytags_resolve_links = 1
 " Also scan for class/struct members
 let g:easytags_include_members = 1
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <C-n> :call NumberToggle()<cr>
-
 " ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column
 " ----------------------------------------------
