@@ -153,7 +153,6 @@ nmap <C-\> :call <SID>SynStack()<CR>
 " F5 to reload doc
 map <silent> <F5> <esc>:e %<CR>
 
-
 " ----------------------------------------------
 " Window split & size shortcuts
 " ----------------------------------------------
@@ -194,7 +193,6 @@ imap ljk <ESC>
 imap ;l <ESC>
 imap jk <ESC>
 imap kj <ESC>
-
 
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
@@ -427,6 +425,16 @@ let g:easytags_resolve_links = 1
 
 " Also scan for class/struct members
 let g:easytags_include_members = 1
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column

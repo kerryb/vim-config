@@ -301,6 +301,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,w</dt><dd>Toggle word wrapping</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
+  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
 </dl>
 
 
