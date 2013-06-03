@@ -85,17 +85,6 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
   <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
 </dl>
 
-## GitGutter (ff031d022f - 27 May 2013)
-
-Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
-
-<dl>
-  <dt>,g</dt><dd>Skip to the next changed chunk</dd>
-  <dt>,G</dt><dd>Skip to the previous changed chunk</dd>
-  <dt>,gt</dt><dd>Toggle the git change gutter</dd>
-  <dt>,gh</dt><dd>Highlight all changed lines</dd>
-</dl>
-
 ## Gundo (2.2.2)
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
@@ -243,15 +232,26 @@ Run tests with neat integration for tmux or the shell ([more](https://github.com
   <dt>,,</dt><dd>Run current rspec file</dd>
 </dl>
 
-## vim-easytags (67a0a832ca3100d49ba3d353c6323f3db4edc4a4 - 28 April 2013)
+## vim-easytags (7916b46 - 3 June 2013)
 
 Automatically update ctags in the background ([more](https://github.com/xolox/vim-easytags))
 
-## vim-haml (ce0cfeddbd2825d07a4361ab1871d6970361a1c9)
+## vim-gitgutter (ff031d022f - 27 May 2013)
+
+Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
+
+<dl>
+  <dt>,g</dt><dd>Skip to the next changed chunk</dd>
+  <dt>,G</dt><dd>Skip to the previous changed chunk</dd>
+  <dt>,gt</dt><dd>Toggle the git change gutter</dd>
+  <dt>,gh</dt><dd>Highlight all changed lines</dd>
+</dl>
+
+## vim-haml (3327947 - 3 June 2013)
 
 Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml))
 
-## vim-less (1b37c0d7cc0f74fb4c1185ed359e641b6865a9ff - Mar 2013)
+## vim-less (8443f89 - 3 June 2013)
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
