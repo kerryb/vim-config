@@ -409,6 +409,17 @@ let g:colorizer_syntax = 1
 " Enable wrapping when editing text documents (eg Markdown)
 autocmd BufNewFile,BufRead *.md :setlocal wrap
 
+" Setup relative number toggle on Ctrl+n
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
+
 " ----------------------------------------------
 "  Setup Ctags support
 " ----------------------------------------------

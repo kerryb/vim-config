@@ -255,14 +255,6 @@ Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
-## vim-numberline (cc55ddc6b4 - 30 May 2013)
-
-Smarter switching between relative and absolute line numbering
-
-<dl>
-  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
-</dl>
-
 ## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
 
 Colourful and neat status bar without the need for font patching
@@ -295,6 +287,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
   <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed - see Tags section below)</dd>
+  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
