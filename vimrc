@@ -147,6 +147,9 @@ imap <C-s> <esc>:w<CR>
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+" Ignores files in any VCS or tmp directory
+set wildignore+=tmp/*,*.so,*.swp,*.zip
+
 " Ctrl+\ to view the Vim style of the text under the cursor
 nmap <C-\> :call <SID>SynStack()<CR>
 
