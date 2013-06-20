@@ -59,7 +59,7 @@ hi Exception                guifg=#FFC912 ctermfg=220 gui=none
 hi Function                 guifg=#FFFFFF ctermfg=15  gui=none
 hi Define                   guifg=#FFC912 ctermfg=220 gui=none
 hi LineNr                   guifg=#FFFFFF ctermfg=15  gui=none
-hi CursorLine               guibg=#000000 ctermbg=0   gui=none
+hi CursorLine               guibg=#000000 ctermbg=0   gui=none  cterm=none
 
 " Vim Stuff
 hi vimGroup                 guifg=#FFFFFF ctermfg=15  gui=none
