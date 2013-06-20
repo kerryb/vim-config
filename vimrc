@@ -256,6 +256,10 @@ autocmd VimEnter * wincmd p
 autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
 autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 
+" Make NERDTree close when you open a file from it. Helps recover screen
+" space!
+let NERDTreeQuitOnOpen=1
+
 " Disable netrw's autocmd, since we're ALWAYS using NERDTree
 runtime plugin/netRwPlugin.vim
 augroup FileExplorer
