@@ -33,6 +33,7 @@ set tabstop=2
 set tags=tags;./tags;
 set timeoutlen=500
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
+set fillchars+=vert:\  "Set the window borders to not have | chars in them
 
 " GVim Options
 set guioptions-=T   " no toolbar

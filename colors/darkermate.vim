@@ -70,6 +70,7 @@ hi vimOption                guifg=#FFFFFF ctermfg=15  gui=none
 hi vimHighLight             guifg=#FFC912 ctermfg=220 gui=none
 hi vimNotFunc               guifg=#FFC912 ctermfg=220 gui=none
 hi vimCommand               guifg=#FFC912 ctermfg=220 gui=none
+hi VertSplit                guifg=#444444 ctermfg=8
 
 " Auto-complete/suggestion box
 hi Pmenu                    guifg=#FFFFFF ctermfg=15  guibg=#111111 ctermbg=235 gui=none
