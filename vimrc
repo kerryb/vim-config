@@ -30,7 +30,6 @@ set shiftwidth=2
 set smarttab
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l\ of\ %L,col=%c%V%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set tabstop=2
-set tags=tags;./tags;
 set timeoutlen=500
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set fillchars+=vert:\  "Set the window borders to not have | chars in them
@@ -428,6 +427,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " ----------------------------------------------
 "  Setup Ctags support
 " ----------------------------------------------
+set tags=./tags;
 
 " Don't highlight tags by default
 let g:easytags_auto_highlight = 0
