@@ -100,12 +100,17 @@ map <unique> <silent> <Leader>Z <Plug>SimpleFold_Foldsearch
 " Fix supertab/endwise incompatibility
 let g:SuperTabCrMapping = 0
 
-map <Leader>r :Rake<CR>
+map <Leader>rk :Rake<CR>
 map <silent> <Leader>rb :wa<CR>:RunAllRubyTests<CR>
 map <silent> <Leader>rc :wa<CR>:RunRubyFocusedContext<CR>
 map <silent> <Leader>rf :wa<CR>:RunRubyFocusedUnitTest<CR>
 
 map <silent> <Leader>rr :wa<CR>:rubyf %<CR>
+
+let g:RubyRunner_key = '<Leader>r'
+let g:RubyRunner_keep_focus_key = '<Leader>R'
+let g:RubyRunner_open_below = 1
+"let g:RubyRunner_window_size = 10
 
 let g:speckyQuoteSwitcherKey = "<Leader>s'"
 let g:speckySpecSwitcherKey = "<Leader>sx"
@@ -139,7 +144,7 @@ noremap <leader>gg :topleft 100 :split Gemfile<cr>
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
 "autocmd VimEnter * NERDTree
-autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
+"autocmd VimEnter * call s:NERDTreeIfDirectory(expand("<amatch>"))
 autocmd VimEnter * wincmd p
 autocmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
 

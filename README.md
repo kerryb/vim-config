@@ -350,6 +350,10 @@ Filetype, syntax and indent plugin for the Clojure programming language ([more](
 
 CSS color preview ([more](https://github.com/skammer/vim-css-color))
 
+## vim-ruby-runner (152e583ee0 - 22 April 2012)
+
+Run ruby from within vim ([more](https://github.com/henrik/vim-ruby-runner))
+
 ## ZoomWin (23)
 
 Zoom in/out  of windows (toggle between one window and multi-window) ([more](http://www.vim.org/scripts/script.php?script_id=508))

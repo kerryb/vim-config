@@ -1,0 +1,62 @@
+*ruby_runner.txt*   Plugin to execute Ruby code from one buffer into another.
+
+================================================================================
+ABOUT                                                          *RubyRunnerAbout*
+
+By Henrik Nyh 2011-03-19 under the MIT license.
+Source available on GitHub: http://github.com/henrik/vim-ruby-runner
+
+================================================================================
+USAGE                                                               *RubyRunner*
+
+:RunRuby                                                              *:RunRuby*
+
+    Executes the contents of the current buffer (which may be unsaved) as
+    Ruby code and outputs the results into a new buffer.
+
+By default, |:RunRuby| is bound to <Leader>r (terminal Vim) or <D-r> (GUI Vims –
+D is the Command key) for buffers with a ruby filetype.
+
+The output buffer gains focus, and you can use <Leader>r/<D-r> again to close it.
+You can also close it with q and the ordinary commands like |ZZ| and |:q|.
+
+If you hold shift, <Leader>R/<D-R> will keep focus in the input buffer.
+For GUI Vims, the command is available in input mode, and you'll stay in that mode.
+So you can keep hitting <D-R> as you type, any time you have valid Ruby code.
+
+One and the same output buffer is reused per tab page. This implies that you can
+move the buffer around (e.g. change to a vertical split) and expect future
+output to go to the same place as long as you don't close the output buffer.
+
+================================================================================
+CONFIGURATION                                          *RubyRunnerConfiguration*
+
+This goes in ~/.vimrc.
+
+To more easily set a ruby filetype (with ":FR"):
+
+    command! FR set filetype=ruby
+
+If you don't like the default mappings, change them with some variation on:
+
+    let g:RubyRunner_key = '<Leader>r'
+    let g:RubyRunner_keep_focus_key = '<Leader>R'
+
+If you'd like the output buffer to open below rather than above the input
+buffer, do:
+
+    let g:RubyRunner_open_below = 1
+
+If you'd like the output buffer's window to be a different size, do:
+
+    let g:RubyRunner_window_size = 10
+
+================================================================================
+CAVEATS                                                      *RubyRunnerCaveats*
+
+Requires Vim with autocmd support for the default mappings to be defined.
+
+Script execution does not wait for `gets`. The value of any `gets` will be nil.
+
+Vim will be unresponsive while the script executes, and will only show the
+output all at once after completion.
