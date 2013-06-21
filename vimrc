@@ -427,7 +427,6 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " ----------------------------------------------
 "  Setup Ctags support
 " ----------------------------------------------
-set tags=./tags;
 
 " Don't highlight tags by default
 let g:easytags_auto_highlight = 0
