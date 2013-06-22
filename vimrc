@@ -110,9 +110,10 @@ nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 " ,sw to strip whitespace off the ends
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
-" ,t to clear cache and fuzzy search files
-" Rebuilds the cahce first, move to commented out line to just search
+" ,t to clear cache and fuzzy search files; ,T in current file's directory
+" Rebuilds the cache first, move to commented out line to just search
 map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
+map <silent> <leader>T :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
 "map <silent><Leader>t <esc>:CtrlP<CR>
 
 " ,tt to tabulate visually selected rows based on |
@@ -142,10 +143,6 @@ map <A-v> "+p<CR>
 " Ctrl+s to write the file (Will scroll-lock Vim in the terminal!)
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
-
-" Ctrl+p to fuzzy search files
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
 
 " Ignores files in any VCS or tmp directory
 set wildignore+=tmp/*,*.so,*.swp,*.zip
