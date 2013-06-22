@@ -30,6 +30,11 @@ Finally, symlink <tt>.vimrc</tt> so the config is loaded when Vim starts:
     cd ~/.vim
     git pull
 
+## External Dependencies
+There are a couple of things you might want to install to get the best out of this config:
+* ctags - enables tags support when workingn with code
+* Ack - enables grepping through the current directories
+
 ## Local Customisation
 
 Local changes (eg if you prefer a different font or colour scheme) can either
