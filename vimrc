@@ -53,11 +53,6 @@ set smartcase
 " - to switch code blocks with the switch plugin
 map - :Switch<CR>
 
-" -- to decrement numbers
-nmap -- <C-x>
-"  ++ to increment numbers (C-a is nicer for tmux/screen)
-nmap ++ <C-a>
-
 " make W write, just as w
 command! W :w
 
