@@ -111,6 +111,14 @@ Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](h
 
 Adds support for HTML 5 keyword highlightings ([more](https://gist.github.com/256840))
 
+## LustJuggler
+
+Quickly switch between buffers using the home row or number keys ([more](https://github.com/sjbach/lusty))
+
+<dl>
+  <dt>,lj</dt><dd>Show buffer list</dd>
+</dl>
+
 ## markdown
 
 Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode/))
