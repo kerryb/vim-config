@@ -53,8 +53,9 @@ set smartcase
 " - to switch code blocks with the switch plugin
 map - :Switch<CR>
 
-" make W write, just as w
+" make W and Q act like w and q
 command! W :w
+command! Q :q
 
 " make Y consistent with C and D
 nnoremap Y y$
