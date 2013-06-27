@@ -18,7 +18,7 @@ set cf              " Enable error files & error jumping.
 set cursorline
 set expandtab
 set hidden          " Allow buffer switching without saving
-set history=1000
+set history=1000    " Remember a decent way back
 set laststatus=2    " Always show status line.
 set mousehide
 set nowrap          " Line wrapping off
@@ -35,8 +35,8 @@ set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set fillchars+=vert:\  "Set the window borders to not have | chars in them
 
 " GVim Options
-set guioptions-=T   " no toolbar
-set guioptions-=m   " no menu
+set guioptions-=T     " no toolbar
+set guioptions-=m     " no menu
 set guioptions+=LlRrb " Hack which adds all scrollbars so that they can be removed, line below breaks without this
 set guioptions-=LlRrb " Remove all scrollbars
 
@@ -72,9 +72,9 @@ nmap <Leader>] :TagbarToggle<CR>
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>c :set nolist!<CR>
 
+" Defined by default in colorizer
 " ,cC to show colour references in that colour (color_hightlight)
 " ,cF to toggle showing the colour on the text or background (color_hightlight)
-" Provided configured by colorizer
 
 " ,f to find current file in NERDTree
 map <silent> <Leader>f :NERDTreeFind<CR>
@@ -109,7 +109,6 @@ nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 " Rebuilds the cache first, move to commented out line to just search
 map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
 map <silent> <leader>T :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
-"map <silent><Leader>t <esc>:CtrlP<CR>
 
 " ,tt to tabulate visually selected rows based on |
 vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
@@ -147,6 +146,13 @@ nmap <C-\> :call <SID>SynStack()<CR>
 
 " F5 to reload doc
 map <silent> <F5> <esc>:e %<CR>
+
+" Rebind half/fulll page scrolls to do 1 line at a time.
+" Numbers are the Distance, Duraction and speed
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
 
 " ----------------------------------------------
 " Window split & size shortcuts
