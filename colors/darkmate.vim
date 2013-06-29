@@ -1,1 +1,0 @@
-darkmate/darkmate.vim
