@@ -41,7 +41,7 @@ hi Constant                 guifg=#ffff00 guibg=NONE    guisp=NONE    gui=NONE  
 hi Debug                    guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
 hi Define                   guifg=#faf4c6 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=230  ctermbg=NONE cterm=NONE
 hi Delimiter                guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
-hi Exception                guifg=#900100 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=103  ctermbg=NONE cterm=NONE
+hi Exception                guifg=#d00200 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=160  ctermbg=NONE cterm=NONE
 hi Float                    guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
 hi Function                 guifg=#ffff00 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=11   ctermbg=NONE cterm=NONE
 hi Identifier               guifg=#c6de10 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=148  ctermbg=NONE cterm=NONE
@@ -63,10 +63,10 @@ hi Typedef                  guifg=#7e8aa2 guibg=NONE    guisp=NONE    gui=NONE  
 "  Ruby
 hi rubyAccess               guifg=#a40073 guibg=NONE guisp=NONE gui=NONE ctermfg=126 ctermbg=NONE cterm=NONE
 hi rubyClass                guifg=#a40073 guibg=NONE guisp=NONE gui=NONE ctermfg=126 ctermbg=NONE cterm=NONE
-hi rubyDefine               guifg=#aa0066 guibg=NONE guisp=NONE gui=bold ctermfg=125 ctermbg=NONE cterm=bold
+hi rubyDefine               guifg=#aa2266 guibg=NONE guisp=NONE gui=bold ctermfg=125 ctermbg=NONE cterm=bold
 hi rubyInteger              guifg=#00c99b guibg=NONE guisp=NONE gui=NONE ctermfg=125 ctermbg=NONE cterm=NONE
-hi rubyControl              guifg=#dd0093 guibg=NONE guisp=NONE gui=NONE ctermfg=162 ctermbg=NONE cterm=NONE
-hi rubyConstant             guifg=#8c5fe6 guibg=NONE guisp=NONE gui=NONE ctermfg=98  ctermbg=NONE cterm=NONE
+hi rubyControl              guifg=#cc55dd guibg=NONE guisp=NONE gui=NONE ctermfg=162 ctermbg=NONE cterm=NONE
+hi rubyConstant             guifg=#8c5fe6 guibg=NONE guisp=NONE gui=NONE ctermfg=17  ctermbg=NONE cterm=NONE
 hi rubyClassDeclaration     guifg=#00c99b guibg=NONE guisp=NONE gui=NONE ctermfg=43  ctermbg=NONE cterm=NONE
 hi rubyIdentifier           guifg=#c6b6fe guibg=NONE guisp=NONE gui=NONE ctermfg=147 ctermbg=NONE cterm=NONE
 hi rubyInstanceVariable     guifg=#96ff00 guibg=NONE guisp=NONE gui=NONE ctermfg=118 ctermbg=NONE cterm=NONE
