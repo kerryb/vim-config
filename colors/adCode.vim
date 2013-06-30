@@ -15,8 +15,8 @@ endif
 
 "  Main
 hi Normal                   guifg=#faf4c6 guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
+hi Default                  guifg=#faf4c6 guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
 hi Visual                   guifg=#faf4c6 guibg=#3c414c guisp=#3c414c gui=NONE                  ctermfg=230  ctermbg=239  cterm=NONE
-hi SignColumn               guifg=#faf4c6 guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=15   ctermbg=233  cterm=NONE
 
 "  Vim_Elements
 hi Cursor                   guifg=NONE    guibg=#626262 guisp=#626262 gui=NONE                  ctermfg=NONE ctermbg=241  cterm=NONE
@@ -28,6 +28,7 @@ hi PMenu                    guifg=#ffffff guibg=#202020 guisp=#202020 gui=NONE  
 hi PMenuSbar                guifg=NONE    guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=NONE ctermbg=234  cterm=NONE
 hi PMenuSel                 guifg=#000000 guibg=#e0dd26 guisp=#e0dd26 gui=bold                  ctermfg=NONE ctermbg=184  cterm=bold
 hi PMenuThumb               guifg=NONE    guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=NONE ctermbg=236  cterm=NONE
+hi SignColumn               guifg=#faf4c6 guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=15   ctermbg=234  cterm=NONE
 hi StatusLine               guifg=#d3d3d5 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=188  ctermbg=236  cterm=NONE
 hi StatusLineNC             guifg=#939395 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=246  ctermbg=236  cterm=NONE
 hi VertSplit                guifg=#444444 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=238  ctermbg=236  cterm=NONE
