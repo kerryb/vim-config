@@ -444,6 +444,9 @@ let g:easytags_include_members = 1
 " ----------------------------------------------
 hi clear SignColumn
 
+" Set the Gutter to show all the time, avoiding the column 'pop' when saving
+let g:gitgutter_sign_column_always = 1
+
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!
