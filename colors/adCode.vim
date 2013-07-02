@@ -14,9 +14,9 @@ if version > 580
 endif
 
 "  Main
-hi Normal                   guifg=#faf4c6 guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
-hi Default                  guifg=#faf4c6 guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
-hi Visual                   guifg=#faf4c6 guibg=#3c414c guisp=#3c414c gui=NONE                  ctermfg=230  ctermbg=239  cterm=NONE
+hi Normal                   guifg=#fafafa guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
+hi Default                  guifg=#fafafa guibg=#121212 guisp=#121212 gui=NONE                  ctermfg=254  ctermbg=NONE cterm=NONE
+hi Visual                   guifg=#fafafa guibg=#3c414c guisp=#3c414c gui=NONE                  ctermfg=230  ctermbg=239  cterm=NONE
 
 "  Vim_Elements
 hi Cursor                   guifg=NONE    guibg=#626262 guisp=#626262 gui=NONE                  ctermfg=NONE ctermbg=241  cterm=NONE
@@ -24,11 +24,11 @@ hi CursorColumn             guifg=NONE    guibg=#202020 guisp=#202020 gui=NONE  
 hi CursorLine               guifg=NONE    guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=NONE ctermbg=234  cterm=NONE
 hi Folded                   guifg=#a0a8b0 guibg=#384048 guisp=#384048 gui=NONE                  ctermfg=103  ctermbg=238  cterm=NONE
 hi LineNr                   guifg=NONE    guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=NONE ctermbg=234  cterm=NONE
-hi PMenu                    guifg=#ffffff guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=15   ctermbg=234  cterm=NONE
+hi PMenu                    guifg=#fafafa guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=15   ctermbg=234  cterm=NONE
 hi PMenuSbar                guifg=NONE    guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=NONE ctermbg=234  cterm=NONE
 hi PMenuSel                 guifg=#000000 guibg=#e0dd26 guisp=#e0dd26 gui=bold                  ctermfg=NONE ctermbg=184  cterm=bold
 hi PMenuThumb               guifg=NONE    guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=NONE ctermbg=236  cterm=NONE
-hi SignColumn               guifg=#faf4c6 guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=15   ctermbg=234  cterm=NONE
+hi SignColumn               guifg=#fafafa guibg=#202020 guisp=#202020 gui=NONE                  ctermfg=15   ctermbg=234  cterm=NONE
 hi StatusLine               guifg=#d3d3d5 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=188  ctermbg=236  cterm=NONE
 hi StatusLineNC             guifg=#939395 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=246  ctermbg=236  cterm=NONE
 hi VertSplit                guifg=#444444 guibg=#303030 guisp=#303030 gui=NONE                  ctermfg=238  ctermbg=236  cterm=NONE
@@ -40,7 +40,7 @@ hi Comment                  guifg=#646478 guibg=NONE    guisp=NONE    gui=italic
 hi Conditional              guifg=#7e8aa2 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=103  ctermbg=NONE cterm=NONE
 hi Constant                 guifg=#ffff00 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=11   ctermbg=NONE cterm=NONE
 hi Debug                    guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
-hi Define                   guifg=#faf4c6 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=230  ctermbg=NONE cterm=NONE
+hi Define                   guifg=#fafafa guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=230  ctermbg=NONE cterm=NONE
 hi Delimiter                guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
 hi Exception                guifg=#d00200 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=160  ctermbg=NONE cterm=NONE
 hi Float                    guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
@@ -53,7 +53,7 @@ hi MatchParen               guifg=#ffffff guibg=#202020 guisp=#202020 gui=bold,u
 hi Number                   guifg=#00c99b guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=190  ctermbg=NONE cterm=NONE
 hi Operator                 guifg=#7e8aa2 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=103  ctermbg=NONE cterm=NONE
 hi Special                  guifg=#84ff00 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=118  ctermbg=NONE cterm=NONE
-hi Statement                guifg=#8c5fe6 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=98   ctermbg=NONE cterm=NONE
+hi Statement                guifg=#8c5fe6 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=135  ctermbg=NONE cterm=NONE
 hi String                   guifg=#5dff05 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=82   ctermbg=NONE cterm=NONE
 hi Structure                guifg=#7e8aa2 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=103  ctermbg=NONE cterm=NONE
 hi Title                    guifg=#f6f3e8 guibg=NONE    guisp=NONE    gui=bold                  ctermfg=230  ctermbg=NONE cterm=bold
@@ -67,7 +67,7 @@ hi rubyClass                guifg=#a40073 guibg=NONE guisp=NONE gui=NONE ctermfg
 hi rubyDefine               guifg=#aa2266 guibg=NONE guisp=NONE gui=bold ctermfg=125 ctermbg=NONE cterm=bold
 hi rubyInteger              guifg=#00c99b guibg=NONE guisp=NONE gui=NONE ctermfg=125 ctermbg=NONE cterm=NONE
 hi rubyControl              guifg=#cc55dd guibg=NONE guisp=NONE gui=NONE ctermfg=162 ctermbg=NONE cterm=NONE
-hi rubyConstant             guifg=#8c5fe6 guibg=NONE guisp=NONE gui=NONE ctermfg=17  ctermbg=NONE cterm=NONE
+hi rubyConstant             guifg=#8c5fe6 guibg=NONE guisp=NONE gui=NONE ctermfg=135 ctermbg=NONE cterm=NONE
 hi rubyClassDeclaration     guifg=#00c99b guibg=NONE guisp=NONE gui=NONE ctermfg=43  ctermbg=NONE cterm=NONE
 hi rubyIdentifier           guifg=#c6b6fe guibg=NONE guisp=NONE gui=NONE ctermfg=147 ctermbg=NONE cterm=NONE
 hi rubyInstanceVariable     guifg=#96ff00 guibg=NONE guisp=NONE gui=NONE ctermfg=118 ctermbg=NONE cterm=NONE
