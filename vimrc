@@ -64,7 +64,7 @@ nnoremap Y y$
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,, to run current spec file
-map <Leader>, :wa\|:Dispatch rspec %<CR>
+map <Leader>, :wa\|!clear && rspec %<CR>
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
