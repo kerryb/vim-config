@@ -64,7 +64,12 @@ nnoremap Y y$
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,, to run current spec file
-map <Leader>, :wa\|!clear && rspec --no-colour %<CR>
+" GUI vim does not appreciate terminal color codes
+if has("gui_running")
+  map <Leader>, :wa\|!rspec --no-color %<CR>
+else
+  map <Leader>, :wa\|!clear && rspec --color %<CR>
+endif
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
