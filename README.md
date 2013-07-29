@@ -302,8 +302,6 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 # Other Keybindings
 
 <dl>
-  <dt>++</dt><dd>Increment the number under the cursor</dd>
-  <dt>--<dt><dd>Decrement the number under the cursor</dd>
   <dt>alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
   <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed - see Tags section below)</dd>

@@ -64,7 +64,7 @@ nnoremap Y y$
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,, to run current spec file
-map <Leader>, :wa\|!clear && rspec --no-colour %<CR>
+map <Leader>, :wa\|!rspec --no-colour %<CR>
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
@@ -140,7 +140,7 @@ map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
 " Ignores files in any VCS or tmp directory
-set wildignore+=tmp/*,*.so,*.swp,*.zip
+set wildignore+=tmp/*,.git/*,*.so,*.swp,*.zip
 
 " Ctrl+\ to view the Vim style of the text under the cursor
 nmap <C-\> :call <SID>SynStack()<CR>
@@ -427,7 +427,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 let g:easytags_auto_highlight = 0
 
 " Name to check for local tags file
-set tags=./tags;
+set tags=tags;
 
 " Specify which tags files to use
 " (0 for global, 1 for local if exists, else global, 2 for local only)
