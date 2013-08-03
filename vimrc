@@ -229,8 +229,9 @@ if has('win32')
 elseif has('mac')
   set guifont=Menlo:h10
 else
+  "set guifont=Source\ Code\ Pro\ 10
   set guifont=DejaVu\ Sans\ Mono\ 10
-  " if you aren't using Ubuntu, set another default font here!
+  " if you don't have these fonts, set one here or in your vim.local file
 endif
 
 " Ruby debugger settings
