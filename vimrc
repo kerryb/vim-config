@@ -50,9 +50,6 @@ set smartcase
 " Command Shortcuts
 " ----------------------------------------------
 
-" - to switch code blocks with the switch plugin
-map - :Switch<CR>
-
 " make W and Q act like w and q
 command! W :w
 command! Q :q
@@ -433,7 +430,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 let g:easytags_auto_highlight = 0
 
 " Name to check for local tags file
-set tags=./tags;
+set tags=tags
 
 " Specify which tags files to use
 " (0 for global, 1 for local if exists, else global, 2 for local only)
