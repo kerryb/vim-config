@@ -429,9 +429,6 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " Don't highlight tags by default
 let g:easytags_auto_highlight = 0
 
-" Name to check for local tags file
-set tags=tags
-
 " Specify which tags files to use
 " (0 for global, 1 for local if exists, else global, 2 for local only)
 let g:easytags_dynamic_files = 2
