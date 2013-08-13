@@ -426,19 +426,6 @@ nnoremap <C-n> :call NumberToggle()<cr>
 "  Setup Ctags support
 " ----------------------------------------------
 
-" Don't highlight tags by default
-let g:easytags_auto_highlight = 0
-
-" Specify which tags files to use
-" (0 for global, 1 for local if exists, else global, 2 for local only)
-let g:easytags_dynamic_files = 2
-
-" Follow symlinks when looking for tags
-let g:easytags_resolve_links = 1
-
-" Also scan for class/struct members
-let g:easytags_include_members = 1
-
 " ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column
 " ----------------------------------------------

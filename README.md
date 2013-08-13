@@ -252,10 +252,6 @@ Run tests with neat integration for tmux or the shell ([more](https://github.com
   <dt>,,</dt><dd>Run current rspec file</dd>
 </dl>
 
-## vim-easytags (7916b46 - 3 June 2013)
-
-Automatically update ctags in the background ([more](https://github.com/xolox/vim-easytags))
-
 ## vim-gitgutter (ff031d022f - 27 May 2013)
 
 Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
