@@ -61,6 +61,10 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 
 *Keybindings*
 
+## Autotag (1.13)
+
+Automatically update tags when saving files ([more](http://www.vim.org/scripts/script.php?script_id=1343))
+
 ## bufexplorer (7.2.8)
 
 Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=42))
