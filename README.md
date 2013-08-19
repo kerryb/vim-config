@@ -248,14 +248,6 @@ Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bun
 
 The well-known solarized colorscheme ([more](https://github.com/altercation/solarized))
 
-## vim-dispatch (b171bbc64a18dd565ff4d354d340ee5f0bbd4ac1 - 28 April 2013)
-
-Run tests with neat integration for tmux or the shell ([more](https://github.com/tpope/vim-dispatch.git))
-
-<dl>
-  <dt>,,</dt><dd>Run current rspec file</dd>
-</dl>
-
 ## vim-gitgutter (ff031d022f - 27 May 2013)
 
 Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
@@ -278,6 +270,16 @@ Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 ## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
 
 Colourful and neat status bar without the need for font patching
+
+## vim-rspec
+
+Add nice shortcuts for running rspec ([more](https://github.com/thoughtbot/vim-rspec))
+<dl>
+  <dt>,,</dt><dd>Run this spec</dd>
+  <dt>,1</dt><dd>Run nearest spec</dd>
+  <dt>,2</dt><dd>Run last spec</dd>
+  <dt>,3</dt><dd>Run all specs</dd>
+</dl>
 
 ## vim-ruby (b10adca - 17 Aug 2012)
 

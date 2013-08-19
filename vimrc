@@ -93,6 +93,11 @@ nmap <leader>gt :GitGutterToggle<CR>
 " ,gh yo highlight changed lines
 nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
 
+map <Leader>, :call RunCurrentSpecFile()<CR>
+map <Leader>1 :call RunNearestSpec()<CR>
+map <Leader>2 :call RunLastSpec()<CR>
+map <Leader>3 :call RunAllSpecs()<CR>
+
 " ,h to toggle search result highlighting
 :noremap <silent> <leader>h :set hls!<CR>
 
