@@ -227,12 +227,12 @@ runtime! plugin/matchit.vim
 
 " Select a sensible font based on environment
 if has('win32')
-  set guifont=Consolas\ 10
+  set guifont=Consolas\ 9
 elseif has('mac')
-  set guifont=Menlo:h10
+  set guifont=Menlo:h9
 else
   "set guifont=Source\ Code\ Pro\ 10
-  set guifont=DejaVu\ Sans\ Mono\ 10
+  set guifont=DejaVu\ Sans\ Mono\ 9
   " if you don't have these fonts, set one here or in your vim.local file
 endif
 
