@@ -275,10 +275,10 @@ Colourful and neat status bar without the need for font patching
 
 Add nice shortcuts for running rspec ([more](https://github.com/thoughtbot/vim-rspec))
 <dl>
-  <dt>,,</dt><dd>Run this spec</dd>
-  <dt>,1</dt><dd>Run nearest spec</dd>
-  <dt>,2</dt><dd>Run last spec</dd>
-  <dt>,3</dt><dd>Run all specs</dd>
+  <dt>,1</dt><dd>Run this spec</dd>
+  <dt>,2</dt><dd>Run nearest spec</dd>
+  <dt>,3</dt><dd>Run last spec</dd>
+  <dt>,4</dt><dd>Run all specs</dd>
 </dl>
 
 ## vim-ruby (b10adca - 17 Aug 2012)
