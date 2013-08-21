@@ -107,6 +107,9 @@ nmap <silent> <Leader>m :NERDTreeToggle<CR>
 " ,p to switch to better font for projector
 noremap <silent> <leader>p :ToggleProjectorMode<CR>
 
+" ,rt to run ctags on the current directory
+map <leader>rt :!ctags -R .<CR><CR>
+
 " ,s to toggle spelling highlighting
 nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 
@@ -427,9 +430,6 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
-" ----------------------------------------------
-"  Setup Ctags support
-" ----------------------------------------------
 
 " ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column
