@@ -71,6 +71,17 @@ endif
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
 
+" ,a<something> to align visually selected lines on <something>
+vnoremap <silent> <Leader>a= :Align =<CR>
+vnoremap <silent> <Leader>a=> :Align =><CR>
+vnoremap <silent> <Leader>a, :Align ,<CR>
+vnoremap <silent> <Leader>a{ :Align {<CR>
+vnoremap <silent> <Leader>a<space> :Align " "<CR>
+
+" ,a| to tabulate visually selected rows based on |
+" Different from `:Align |` because it correctly spaces Cucumber table titles
+vnoremap <silent> <Leader>a\| :call Tabularize('/\|/')<CR>
+
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>c :set nolist!<CR>
@@ -79,8 +90,9 @@ nmap <silent> <leader>c :set nolist!<CR>
 " ,cC to show colour references in that colour (color_hightlight)
 " ,cF to toggle showing the colour on the text or background (color_hightlight)
 
-" ,f to find current file in NERDTree
-map <silent> <Leader>f :NERDTreeFind<CR>
+" ,f to clear cache and fuzzy search files; ,F in current file's directory
+map <silent> <leader>f :ClearCtrlPCache<cr>\|:CtrlP<cr>
+map <silent> <leader>F :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
 
 " ,g to jump to the next change since git commit
 " ,G to jump to the last change since git commit
@@ -101,8 +113,9 @@ map <Leader>4 :call RunAllSpecs()<CR>
 " ,h to toggle search result highlighting
 :noremap <silent> <leader>h :set hls!<CR>
 
-" ,m to toggle file tree
+" ,m to toggle file tree (,M to select the current file in the tree)
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
+map <silent> <Leader>M :NERDTreeFind<CR>
 
 " ,p to switch to better font for projector
 noremap <silent> <leader>p :ToggleProjectorMode<CR>
@@ -117,18 +130,9 @@ nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
 " ,t to clear cache and fuzzy search files; ,T in current file's directory
-" Rebuilds the cache first, move to commented out line to just search
+" TO BE DEPRECATED FOR ,f and ,F
 map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
 map <silent> <leader>T :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
-
-" ,tt to tabulate visually selected rows based on |
-vnoremap <silent> <Leader>tt :call Tabularize('/\|/')<CR>
-
-" ,t> to align visually selected lines by =>
-vnoremap <silent> <Leader>t> :Align =><CR>
-
-" ,t{ to align visually selected lines by =>
-vnoremap <silent> <Leader>t{ :Align {<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
@@ -149,8 +153,6 @@ map <A-v> "+p<CR>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-" Ignores files in any VCS or tmp directory
-set wildignore+=tmp/*,*.so,*.swp,*.zip
 
 " Ctrl+\ to view the Vim style of the text under the cursor
 nmap <C-\> :call <SID>SynStack()<CR>
@@ -430,6 +432,8 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 
+" Ignores files in any VCS or tmp directory
+set wildignore+=tmp/*,*.so,*.swp,*.zip
 
 " ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column

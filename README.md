@@ -61,6 +61,15 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
 
 *Keybindings*
 
+<dl>
+  <dt>,a=</dt><dd>Align on =</dd>
+  <dt>,a=></dt><dd>Align on =></dd>
+  <dt>,a,</dt><dd>Align on ,</dd>
+  <dt>,a{</dt><dd>Align on {</dd>
+  <dt>,a|</dt><dd>Align on |</dd>
+  <dt>,a<space><dt><dd>Align on spaces</dd>
+</dl>
+
 ## Autotag (1.13)
 
 Automatically update tags when saving files ([more](http://www.vim.org/scripts/script.php?script_id=1343))
@@ -315,10 +324,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
   <dt>,tsp</dt><dd>Align on whitespace</dd>
-  <dt>,t&gt;</dt><dd>Align on =></dd>
   <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
-  <dt>,t{</dt><dd>Align on '{' characters (useful for let blocks)</dd>
-  <dt>,t></dt><dd>Align on '>' characters (useful for hashes)</dd>
   <dt>,w</dt><dd>Toggle word wrapping</dd>
   <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
   <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
