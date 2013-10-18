@@ -268,6 +268,14 @@ Show the changes made since the last commit in the gutter ([more](https://github
   <dt>,gh</dt><dd>Highlight all changed lines</dd>
 </dl>
 
+## vim-indent-guidelines (eec1b629dc4 - 18 Oct 2013)
+
+Show indent guidelines - very useful when editing Haml! ([more](https://github.com/nathanaelkane/vim-indent-guides))
+
+<dl>
+  <dt>,ig</dt><dd>Toggle indentation guidelines</dd>
+</dl>
+
 ## vim-haml (3327947 - 3 June 2013)
 
 Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml))
