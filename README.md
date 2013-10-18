@@ -288,6 +288,18 @@ Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
 Colourful and neat status bar without the need for font patching
 
+## vim-rails (bdc32389e7 - 18 Oct 2013)
+
+Quick navigation around rails projects ([more](https://github.com/tpope/vim-rails))
+
+<dl>
+  <dt>:A</dt><dd>Alternate file- switch between specs and production code</dd>
+  <dt>:R</dt><dd>Related file- switch between modles, controllers and views</dd>
+  <dt>:Emodel</dt><dd>Switch to the model</dd>
+  <dt>:Eview</dt><dd>Switch to the view</dd>
+  <dt>:Econtroller</dt><dd>Switch to the controller</dd>
+</dl>
+
 ## vim-rspec
 
 Add nice shortcuts for running rspec ([more](https://github.com/thoughtbot/vim-rspec))
