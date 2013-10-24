@@ -153,7 +153,6 @@ map <A-v> "+p<CR>
 map <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
 
-
 " Ctrl+\ to view the Vim style of the text under the cursor
 nmap <C-\> :call <SID>SynStack()<CR>
 
@@ -166,6 +165,13 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
 noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 20, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 20, 4)<CR>
+
+" ----------------------------------------------
+" Insert Mode Abbreviations
+" ----------------------------------------------
+
+" Try to auto-complete xml tags on typing '</'
+iabbrev </ </<C-X><C-O>
 
 " ----------------------------------------------
 " Window split & size shortcuts
