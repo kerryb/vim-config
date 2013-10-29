@@ -310,6 +310,12 @@ Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-ref
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
+## vim_search_objects (c9b5dc3 – 28 Nov 2011)
+
+Allow previous search to act as a text object (a little [more](git@github.com:Raimondi/vim_search_objects.git))
+
+eg va/ to visually sepect previous match, or ca/ to change it.
+
 ## vroom (00f0d4d - 27 May 2013)
 
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
