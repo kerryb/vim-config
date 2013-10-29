@@ -449,6 +449,10 @@ hi clear SignColumn
 " Set the Gutter to show all the time, avoiding the column 'pop' when saving
 let g:gitgutter_sign_column_always = 1
 
+" Vroom settings
+let g:vroom_write_all = 1
+let g:vroom_cucumber_path = 'cucumber '
+
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!

@@ -300,16 +300,6 @@ Quick navigation around rails projects ([more](https://github.com/tpope/vim-rail
   <dt>:Econtroller</dt><dd>Switch to the controller</dd>
 </dl>
 
-## vim-rspec
-
-Add nice shortcuts for running rspec ([more](https://github.com/thoughtbot/vim-rspec))
-<dl>
-  <dt>,1</dt><dd>Run this spec</dd>
-  <dt>,2</dt><dd>Run nearest spec</dd>
-  <dt>,3</dt><dd>Run last spec</dd>
-  <dt>,4</dt><dd>Run all specs</dd>
-</dl>
-
 ## vim-ruby (b10adca - 17 Aug 2012)
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
@@ -319,6 +309,15 @@ Ruby support (newer than the version released with vim). ([more](https://github.
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
+
+## vroom (00f0d4d - 27 May 2013)
+
+A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
+
+<dl>
+  <dt>,r</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
+  <dt>,R</dt><dd>Run nearest test/spec/feature</dd>
+</dl>
 
 ## ZoomWin (23)
 
