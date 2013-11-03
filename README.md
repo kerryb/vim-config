@@ -88,9 +88,9 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## Colorizer (3e4cbb4d93 - 14 Dec 2012)
+## color_highlight (e44f3d9 – 9 Oct 2013)
 
-Adds the ability to highlight hex colours in their own colour ([more](https://github.com/chrisbra/color_highlight))
+Highlight color names and codes in the same color that they represent ([more] (http://www.vim.org/scripts/script.php?script_id=3963))
 
 *Keybindings*
 
