@@ -106,8 +106,8 @@ map <Leader>2 :call RunNearestSpec()<CR>
 map <Leader>3 :call RunLastSpec()<CR>
 map <Leader>4 :call RunAllSpecs()<CR>
 
-" ,h to toggle search result highlighting
-:noremap <silent> <leader>h :set hls!<CR>
+" ,h to dismiss search result highlighting until next search
+:noremap <silent> <leader>h :noh<CR>
 
 " ,m to toggle file tree (,M to select the current file in the tree)
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
