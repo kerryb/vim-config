@@ -86,10 +86,6 @@ vnoremap <silent> <Leader>a\| :call Tabularize('/\|/')<CR>
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>c :set nolist!<CR>
 
-" Defined by default in colorizer
-" ,cC to show colour references in that colour (color_hightlight)
-" ,cF to toggle showing the colour on the text or background (color_hightlight)
-
 " ,f to clear cache and fuzzy search files; ,F in current file's directory
 map <silent> <leader>f :ClearCtrlPCache<cr>\|:CtrlP<cr>
 map <silent> <leader>F :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
@@ -448,6 +444,10 @@ hi clear SignColumn
 
 " Set the Gutter to show all the time, avoiding the column 'pop' when saving
 let g:gitgutter_sign_column_always = 1
+
+" Vroom settings
+let g:vroom_write_all = 1
+let g:vroom_cucumber_path = 'cucumber '
 
 " ----------------------------------------------
 "  Source any local config

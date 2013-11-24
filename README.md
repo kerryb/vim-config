@@ -88,9 +88,9 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## Colorizer (3e4cbb4d93 - 14 Dec 2012)
+## color_highlight (e44f3d9 – 9 Oct 2013)
 
-Adds the ability to highlight hex colours in their own colour ([more](https://github.com/chrisbra/color_highlight))
+Highlight color names and codes in the same color that they represent ([more] (http://www.vim.org/scripts/script.php?script_id=3963))
 
 *Keybindings*
 
@@ -197,7 +197,7 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
   <dt>,r</dt><dd>run rake</dd>
 </dl>
 
-## rake (1.0)
+## rake (1.2)
 
 It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.php?script_id=3669))
 
@@ -300,16 +300,6 @@ Quick navigation around rails projects ([more](https://github.com/tpope/vim-rail
   <dt>:Econtroller</dt><dd>Switch to the controller</dd>
 </dl>
 
-## vim-rspec
-
-Add nice shortcuts for running rspec ([more](https://github.com/thoughtbot/vim-rspec))
-<dl>
-  <dt>,1</dt><dd>Run this spec</dd>
-  <dt>,2</dt><dd>Run nearest spec</dd>
-  <dt>,3</dt><dd>Run last spec</dd>
-  <dt>,4</dt><dd>Run all specs</dd>
-</dl>
-
 ## vim-ruby (b10adca - 17 Aug 2012)
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
@@ -319,6 +309,21 @@ Ruby support (newer than the version released with vim). ([more](https://github.
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
+
+## vim_search_objects (c9b5dc3 – 28 Nov 2011)
+
+Allow previous search to act as a text object (a little [more](git@github.com:Raimondi/vim_search_objects.git))
+
+eg va/ to visually sepect previous match, or ca/ to change it.
+
+## vroom (00f0d4d - 27 May 2013)
+
+A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
+
+<dl>
+  <dt>,r</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
+  <dt>,R</dt><dd>Run nearest test/spec/feature</dd>
+</dl>
 
 ## ZoomWin (23)
 
