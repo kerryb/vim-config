@@ -197,7 +197,7 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
   <dt>,r</dt><dd>run rake</dd>
 </dl>
 
-## rake (1.0)
+## rake (1.2)
 
 It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.php?script_id=3669))
 
