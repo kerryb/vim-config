@@ -437,9 +437,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " Ignores files in any VCS or tmp directory
 set wildignore+=tmp/*,*.so,*.swp,*.zip
 
-" ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column
-" ----------------------------------------------
 hi clear SignColumn
 
 " Set the Gutter to show all the time, avoiding the column 'pop' when saving
