@@ -14,27 +14,23 @@ if exists("g:loaded_syntastic_go_govet_checker")
 endif
 let g:loaded_syntastic_go_govet_checker=1
 
-function! SyntaxCheckers_go_govet_IsAvailable()
+function! SyntaxCheckers_go_govet_IsAvailable() dict
     return executable('go')
 endfunction
 
-function! SyntaxCheckers_go_govet_GetLocList()
+function! SyntaxCheckers_go_govet_GetLocList() dict
     let makeprg = 'go vet'
     let errorformat = '%Evet: %.%\+: %f:%l:%c: %m,%W%f:%l: %m,%-G%.%#'
 
-    " The go tool needs to either be run with an import path as an
+    " The go compiler needs to either be run with an import path as an
     " argument or directly from the package directory. Since figuring out
-    " the poper import path is fickle, just pushd/popd to the package.
-    let popd = getcwd()
-    let pushd = expand('%:p:h')
-    "
-    " pushd
-    exec 'lcd ' . fnameescape(pushd)
+    " the proper import path is fickle, just cwd to the package.
 
-    let errors = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'defaults': {'type': 'w'} })
-
-    " popd
-    exec 'lcd ' . fnameescape(popd)
+    let errors = SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'cwd': expand('%:p:h'),
+        \ 'defaults': {'type': 'w'} })
 
     return errors
 endfunction

@@ -14,23 +14,18 @@ if exists("g:loaded_syntastic_nasm_nasm_checker")
 endif
 let g:loaded_syntastic_nasm_nasm_checker=1
 
-function! SyntaxCheckers_nasm_nasm_IsAvailable()
-    return executable("nasm")
-endfunction
+function! SyntaxCheckers_nasm_nasm_GetLocList() dict
+    let wd = syntastic#util#shescape(expand("%:p:h") . "/")
+    let makeprg = self.makeprgBuild({
+        \ 'args': '-X gnu -f elf' .
+        \       ' -I ' . syntastic#util#shescape(expand("%:p:h") . "/") .
+        \       ' ' . syntastic#c#NullOutput() })
 
-function! SyntaxCheckers_nasm_nasm_GetLocList()
-    if has("win32")
-        let outfile="NUL"
-    else
-        let outfile="/dev/null"
-    endif
-    let wd = shellescape(expand("%:p:h") . "/")
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'nasm',
-                \ 'args': '-X gnu -f elf -I ' . wd . ' -o ' . outfile,
-                \ 'subchecker': 'nasm' })
     let errorformat = '%f:%l: %t%*[^:]: %m'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

@@ -11,17 +11,8 @@ if exists("g:loaded_syntastic_sh_checkbashisms_checker")
 endif
 let g:loaded_syntastic_sh_checkbashisms_checker=1
 
-
-function! SyntaxCheckers_sh_checkbashisms_IsAvailable()
-    return executable('checkbashisms')
-endfunction
-
-
-function! SyntaxCheckers_sh_checkbashisms_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'checkbashisms',
-        \ 'args': '-fpx',
-        \ 'subchecker': 'checkbashisms'})
+function! SyntaxCheckers_sh_checkbashisms_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '-fx' })
 
     let errorformat =
         \ '%-Gscript %f is already a bash script; skipping,' .
@@ -32,10 +23,13 @@ function! SyntaxCheckers_sh_checkbashisms_GetLocList()
         \ '%Wpossible bashism in %f line %l (%m):,%C%.%#,%Z.%#,' .
         \ '%-G%.%#'
 
-    return SyntasticMake({'makeprg': makeprg, 'errorformat': errorformat, 'subtype': 'Style'})
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'subtype': 'Style' })
 endfunction
 
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'sh',
-    \ 'name': 'checkbashisms'})
+    \ 'name': 'checkbashisms' })

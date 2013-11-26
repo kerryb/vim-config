@@ -12,24 +12,23 @@ if exists("g:loaded_syntastic_python_python_checker")
 endif
 let g:loaded_syntastic_python_python_checker=1
 
-function! SyntaxCheckers_python_python_IsAvailable()
-    return executable('python')
-endfunction
-
-function! SyntaxCheckers_python_python_GetLocList()
+function! SyntaxCheckers_python_python_GetLocList() dict
     let fname = "'" . escape(expand('%'), "\\'") . "'"
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'python',
+
+    let makeprg = self.makeprgBuild({
         \ 'args': '-c',
-        \ 'fname': shellescape("compile(open(" . fname . ").read(), " . fname . ", 'exec')"),
-        \ 'subchecker': 'python' })
+        \ 'fname': syntastic#util#shescape("compile(open(" . fname . ").read(), " . fname . ", 'exec')") })
+
     let errorformat =
         \ '%E  File "%f"\, line %l,' .
         \ '%C    %p^,' .
         \ '%C    %.%#,' .
         \ '%Z%m,' .
         \ '%-G%.%#'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

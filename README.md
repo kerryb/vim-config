@@ -217,7 +217,7 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
 
-## syntastic (7f0412e9)
+## syntastic (0714044f98 - 25/11/2013)
 
 Automatic syntax checking ([more](https://github.com/scrooloose/syntastic))
 

@@ -15,18 +15,16 @@ if exists("g:loaded_syntastic_coq_coqtop_checker")
 endif
 let g:loaded_syntastic_coq_coqtop_checker=1
 
-function! SyntaxCheckers_coq_coqtop_IsAvailable()
-    return executable('coqtop')
-endfunction
+function! SyntaxCheckers_coq_coqtop_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '-noglob -batch -load-vernac-source' })
 
-function! SyntaxCheckers_coq_coqtop_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'coqtop',
-                \ 'args': '-noglob -batch -load-vernac-source',
-                \ 'subchecker': 'coqtop' })
-    let errorformat = '%AFile \"%f\"\, line %l\, characters %c\-%.%#\:,%C%m'
+    let errorformat =
+        \ '%AFile \"%f\"\, line %l\, characters %c\-%.%#\:,'.
+        \ '%C%m'
 
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

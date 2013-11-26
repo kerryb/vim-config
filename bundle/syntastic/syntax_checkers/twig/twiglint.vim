@@ -20,20 +20,17 @@ function! SyntaxCheckers_twig_twiglint_GetHighlightRegex(item)
     return '\V'
 endfunction
 
-function! SyntaxCheckers_twig_twiglint_IsAvailable()
-    return executable('twig-lint')
-endfunction
-
-function! SyntaxCheckers_twig_twiglint_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'twig-lint',
-                \ 'args': 'lint --format=csv',
-                \ 'subchecker': 'twiglint' })
+function! SyntaxCheckers_twig_twiglint_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': 'lint --format=csv' })
 
     let errorformat = '"%f"\,%l\,%m'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat})
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat})
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'twig',
-    \ 'name': 'twiglint'})
+    \ 'name': 'twiglint',
+    \ 'exec': 'twig-lint'})

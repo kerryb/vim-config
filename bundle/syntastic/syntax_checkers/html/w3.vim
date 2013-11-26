@@ -26,14 +26,15 @@ if !exists('g:syntastic_html_w3_api')
     let g:syntastic_html_w3_api = 'http://validator.w3.org/check'
 endif
 
-function! SyntaxCheckers_html_w3_IsAvailable()
+function! SyntaxCheckers_html_w3_IsAvailable() dict
     return executable('curl')
 endfunction
 
-function! SyntaxCheckers_html_w3_GetLocList()
+function! SyntaxCheckers_html_w3_GetLocList() dict
     let makeprg = 'curl -s -F output=json ' .
-        \ '-F uploaded_file=@' . shellescape(expand('%:p')) . '\;type=text/html ' .
+        \ '-F uploaded_file=@' . syntastic#util#shexpand('%:p') . '\;type=text/html ' .
         \ g:syntastic_html_w3_api
+
     let errorformat =
         \ '%A %\+{,' .
         \ '%C %\+"lastLine": %l\,%\?,' .
@@ -44,10 +45,15 @@ function! SyntaxCheckers_html_w3_GetLocList()
         \ '%C %\+"subtype": "%tarning"\,%\?,' .
         \ '%Z %\+}\,,' .
         \ '%-G%.%#'
-    let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'defaults': {'bufnr': bufnr("")} })
 
-    for n in range(len(loclist))
-        let loclist[n]['text'] = substitute(loclist[n]['text'], '\\\([\"]\)', '\1', 'g')
+    let loclist = SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'defaults': {'bufnr': bufnr("")},
+        \ 'returns': [0] })
+
+    for e in loclist
+        let e['text'] = substitute(e['text'], '\m\\\([\"]\)', '\1', 'g')
     endfor
 
     return loclist

@@ -24,10 +24,6 @@ if !exists('g:syntastic_xhtml_tidy_ignore_errors')
     let g:syntastic_xhtml_tidy_ignore_errors = []
 endif
 
-function! SyntaxCheckers_xhtml_tidy_IsAvailable()
-    return executable("tidy")
-endfunction
-
 " TODO: join this with html.vim DRY's sake?
 function! s:TidyEncOptByFenc()
     let tidy_opts = {
@@ -47,7 +43,7 @@ function! s:TidyEncOptByFenc()
     return get(tidy_opts, &fileencoding, '-utf8')
 endfunction
 
-function! s:IgnoreErrror(text)
+function! s:IgnoreError(text)
     for i in g:syntastic_xhtml_tidy_ignore_errors
         if stridx(a:text, i) != -1
             return 1
@@ -56,21 +52,24 @@ function! s:IgnoreErrror(text)
     return 0
 endfunction
 
-function! SyntaxCheckers_xhtml_tidy_GetLocList()
+function! SyntaxCheckers_xhtml_tidy_GetLocList() dict
     let encopt = s:TidyEncOptByFenc()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'tidy',
-        \ 'args': encopt . ' -xml -e',
-        \ 'subchecker': 'tidy' })
+    let makeprg = self.makeprgBuild({ 'args': encopt . ' -xml -e' })
+
     let errorformat=
         \ '%Wline %l column %v - Warning: %m,' .
         \ '%Eline %l column %v - Error: %m,' .
         \ '%-G%.%#'
-    let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'defaults': {'bufnr': bufnr("")} })
 
-    for n in range(len(loclist))
-        if loclist[n]['valid'] && s:IgnoreErrror(loclist[n]['text']) == 1
-            let loclist[n]['valid'] = 0
+    let loclist = SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'defaults': {'bufnr': bufnr("")},
+        \ 'returns': [0, 1, 2] })
+
+    for e in loclist
+        if e['valid'] && s:IgnoreError(e['text']) == 1
+            let e['valid'] = 0
         endif
     endfor
 

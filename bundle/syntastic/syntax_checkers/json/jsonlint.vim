@@ -14,17 +14,20 @@ if exists("g:loaded_syntastic_json_jsonlint_checker")
 endif
 let g:loaded_syntastic_json_jsonlint_checker=1
 
-function! SyntaxCheckers_json_jsonlint_IsAvailable()
-    return executable('jsonlint')
-endfunction
+function! SyntaxCheckers_json_jsonlint_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'post_args': '--compact' })
 
-function! SyntaxCheckers_json_jsonlint_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'jsonlint',
-                \ 'post_args': '--compact',
-                \ 'subchecker': 'jsonlint' })
-    let errorformat = '%ELine %l:%c,%Z\\s%#Reason: %m,%C%.%#,%f: line %l\, col %c\, %m,%-G%.%#'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'defaults': {'bufnr': bufnr('')} })
+    let errorformat =
+        \ '%ELine %l:%c,'.
+        \ '%Z\\s%#Reason: %m,'.
+        \ '%C%.%#,'.
+        \ '%f: line %l\, col %c\, %m,'.
+        \ '%-G%.%#'
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'defaults': {'bufnr': bufnr('')} })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
