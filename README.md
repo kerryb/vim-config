@@ -310,6 +310,13 @@ Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-ref
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
+## ruby-xmpfilter (8612796 - Oct 2013)
+
+Helper for ruby's xmpfilter ([more](https://github.com/t9md/vim-ruby-xmpfilter))
+
+Annotate ruby code with the result of running it, Ruby Tapas style. Press ,X to
+append a '# =>' to a line, then ,x to execute the file and insert all results.
+
 ## vim_search_objects (c9b5dc3 – 28 Nov 2011)
 
 Allow previous search to act as a text object (a little [more](git@github.com:Raimondi/vim_search_objects.git))

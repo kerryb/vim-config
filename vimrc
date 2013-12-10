@@ -449,6 +449,15 @@ let g:gitgutter_sign_column_always = 1
 let g:vroom_write_all = 1
 let g:vroom_cucumber_path = 'cucumber '
 
+" xmp-filter mappings
+autocmd FileType ruby nmap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <Leader>x <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <Leader>x <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <Leader>x <Plug>(xmpfilter-run)
+
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!
