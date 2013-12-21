@@ -249,6 +249,10 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 
 Better abbreviations, substitution and search with Bash like {a,b} style expansions
 
+## vim-airline (233e3c60ce, 17 Dec, 2013)
+
+Powerline like behaviour, but without the heavy Python ([more](https://github.com/bling/vim-airline))
+
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
 Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
@@ -283,10 +287,6 @@ Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml
 ## vim-less (8443f89 - 3 June 2013)
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
-
-## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
-
-Colourful and neat status bar without the need for font patching
 
 ## vim-rails (bdc32389e7 - 18 Oct 2013)
 

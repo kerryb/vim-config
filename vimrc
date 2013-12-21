@@ -214,6 +214,14 @@ imap kj <ESC>
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
 
+" Setup vim-airline to look nicer
+let g:airline_left_sep = ""
+let g:airline_left_alt_sep = ""
+let g:airline_right_sep = ""
+let g:airline_right_alt_sep = ""
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme = "powerlineish"
+
 " Setup the projector toggle plugin
 let g:default_colorscheme = 'darkermate'
 let g:projector_colorscheme = 'mac-classic'
