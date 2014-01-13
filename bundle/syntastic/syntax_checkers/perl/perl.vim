@@ -19,7 +19,7 @@
 " - g:syntastic_perl_lib_path (list; default: [])
 "   List of include directories to be added to the perl command line. Example:
 "
-"       let g:syntastic_perl_lib_path = [ './lib', './lib/auto' ]
+let g:syntastic_perl_lib_path = [ './lib', './lib/auto' ]
 
 if exists('g:loaded_syntastic_perl_perl_checker')
     finish
