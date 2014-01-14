@@ -1,4 +1,3 @@
-This is a tweaked copy of the excellent Vi/Vim dev setup [Kerryb](https://github.com/kerryb/vim-config)
 
 # Installation
 
@@ -321,8 +320,8 @@ eg va/ to visually sepect previous match, or ca/ to change it.
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
 
 <dl>
-  <dt>,r</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
-  <dt>,R</dt><dd>Run nearest test/spec/feature</dd>
+  <dt>,t</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
+  <dt>,T</dt><dd>Run nearest test/spec/feature to the cursor</dd>
 </dl>
 
 ## ZoomWin (23)
@@ -342,6 +341,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed</dd>
   <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
+  <dt>,,</dt><dd>Toggle between the previously opened buffer</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>
