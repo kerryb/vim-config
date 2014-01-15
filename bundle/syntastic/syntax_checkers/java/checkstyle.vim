@@ -23,51 +23,51 @@ if !exists("g:syntastic_java_checkstyle_conf_file")
     let g:syntastic_java_checkstyle_conf_file = 'sun_checks.xml'
 endif
 
-function! SyntaxCheckers_java_checkstyle_IsAvailable()
-    return executable('java')
+function! SyntaxCheckers_java_checkstyle_Preprocess(errors)
+    let out = copy(a:errors)
+    for n in range(len(out))
+        let parts = matchlist(out[n], '\m\(.*<file name="\)\([^"]\+\)\(">.*\)')
+        if len(parts) >= 4
+            let parts[2] = syntastic#util#decodeXMLEntities(parts[2])
+            let out[n] = join(parts[1:3], '')
+        endif
+    endfor
+    return out
 endfunction
 
-function! s:CygwinPath(path) 
-	return substitute(system("cygpath -m ".a:path), '\%x00', '', 'g')
-endfunction
+function! SyntaxCheckers_java_checkstyle_GetLocList() dict
 
-function! s:RemoveCarriageReturn(line)
-	return substitute(a:line, '\r', '', 'g')
-endfunction
+    let fname = syntastic#util#shescape( expand('%:p:h') . '/' . expand('%:t') )
 
-function! s:RemoveCarriageReturns(errors)
-	for error in a:errors
-		let error['text'] = s:RemoveCarriageReturn(error['text'])
-	endfor
-endfunction
+    if has('win32unix')
+        let fname = substitute(system('cygpath -m ' . fname), '\m\%x00', '', 'g')
+    endif
 
-function! SyntaxCheckers_java_checkstyle_GetLocList()
+    let makeprg = self.makeprgBuild({
+        \ 'args': '-cp ' . g:syntastic_java_checkstyle_classpath .
+        \         ' com.puppycrawl.tools.checkstyle.Main -c ' . g:syntastic_java_checkstyle_conf_file .
+        \         ' -f xml',
+        \ 'fname': fname })
 
-	let fname = fnameescape(expand ( '%:p:h' ) . '/' . expand ( '%:t' ))
+    let errorformat =
+        \ '%P<file name="%f">,' .
+        \ '%Q</file>,' .
+        \ '%E<error line="%l" column="%c" severity="%trror" message="%m" source="%.%#"/>,' .
+        \ '%E<error line="%l" severity="%trror" message="%m" source="%.%#"/>,' .
+        \ '%E<error line="%l" column="%c" severity="%tarning" message="%m" source="%.%#"/>,' .
+        \ '%E<error line="%l" severity="%tarning" message="%m" source="%.%#"/>,' .
+        \ '%-G%.%#'
 
-	if has('win32unix')
-		let fname =  s:CygwinPath(fname)
-	endif
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'subtype': 'Style',
+        \ 'preprocess': 'SyntaxCheckers_java_checkstyle_Preprocess',
+        \ 'postprocess': ['cygwinRemoveCR', 'decodeXMLEntities'] })
 
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'java',
-                \ 'args': '-cp ' . g:syntastic_java_checkstyle_classpath . ' com.puppycrawl.tools.checkstyle.Main -c ' . g:syntastic_java_checkstyle_conf_file,
-                \ 'fname': fname,
-                \ 'tail': '2>&1',
-                \ 'subchecker': 'checkstyle' })
-
-    " check style format
-    let errorformat = '%f:%l:%c:\ %m,%f:%l:\ %m'
-    let errors = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
-
-	if has('win32unix')
-		call s:RemoveCarriageReturns(errors)
-	endif
-
-	return errors
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'java',
-    \ 'name': 'checkstyle'})
-
+    \ 'name': 'checkstyle',
+    \ 'exec': 'java'})

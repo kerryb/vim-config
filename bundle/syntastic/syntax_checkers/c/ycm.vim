@@ -10,12 +10,12 @@
 "
 "============================================================================
 
-if exists("loaded_ycm_c_syntax_checker")
+if exists("g:loaded_syntastic_c_ycm_checker")
     finish
 endif
-let loaded_ycm_c_syntax_checker = 1
+let g:loaded_syntastic_c_ycm_checker = 1
 
-function! SyntaxCheckers_c_ycm_IsAvailable()
+function! SyntaxCheckers_c_ycm_IsAvailable() dict
     return exists('g:loaded_youcompleteme')
 endfunction
 
@@ -23,7 +23,7 @@ if !exists('g:loaded_youcompleteme')
     finish
 endif
 
-function! SyntaxCheckers_c_ycm_GetLocList()
+function! SyntaxCheckers_c_ycm_GetLocList() dict
     return youcompleteme#CurrentFileDiagnostics()
 endfunction
 

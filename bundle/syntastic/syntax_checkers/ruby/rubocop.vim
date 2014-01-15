@@ -18,29 +18,29 @@ if exists("g:loaded_syntastic_ruby_rubocop_checker")
 endif
 let g:loaded_syntastic_ruby_rubocop_checker=1
 
-function! SyntaxCheckers_ruby_rubocop_IsAvailable()
-    return executable('rubocop')
+function! SyntaxCheckers_ruby_rubocop_IsAvailable() dict
+    let exe = self.getExec()
+    return
+        \ executable(exe) &&
+        \ syntastic#util#versionIsAtLeast(syntastic#util#getVersion(exe . ' --version'), [0,9,0])
 endfunction
 
-function! SyntaxCheckers_ruby_rubocop_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'rubocop',
-                \ 'args': '--emacs --silent',
-                \ 'subchecker': 'rubocop' })
+function! SyntaxCheckers_ruby_rubocop_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '--format emacs --silent' })
 
-    let errorformat = '%f:%l:\ %t:\ %m'
+    let errorformat = '%f:%l:%c: %t: %m'
 
     let loclist = SyntasticMake({
-                \ 'makeprg': makeprg,
-                \ 'errorformat': errorformat,
-                \ 'subtype': 'Style'})
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'subtype': 'Style'})
 
     " convert rubocop severities to error types recognized by syntastic
-    for n in range(len(loclist))
-        if loclist[n]['type'] == 'F'
-            let loclist[n]['type'] = 'E'
-        elseif loclist[n]['type'] != 'W' && loclist[n]['type'] != 'E'
-            let loclist[n]['type'] = 'W'
+    for e in loclist
+        if e['type'] == 'F'
+            let e['type'] = 'E'
+        elseif e['type'] != 'W' && e['type'] != 'E'
+            let e['type'] = 'W'
         endif
     endfor
 

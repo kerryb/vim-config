@@ -22,13 +22,14 @@
 "
 "============================================================================
 
-function! SyntaxCheckers_vala_valac_IsAvailable()
-    return executable('valac')
-endfunction
+if exists("g:loaded_syntastic_vala_valac_checker")
+    finish
+endif
+let g:loaded_syntastic_vala_valac_checker = 1
 
 function! SyntaxCheckers_vala_valac_GetHighlightRegex(pos)
-    let strlength = strlen(matchstr(a:pos['text'], '\^\+$'))
-    return '\%>'.(a:pos.col-1).'c.*\%<'.(a:pos.col+strlength+1).'c'
+    let strlength = strlen(matchstr(a:pos['text'], '\m\^\+$'))
+    return '\%>' . (a:pos.col-1) . 'c.*\%<' . (a:pos.col+strlength+1) . 'c'
 endfunction
 
 function! s:GetValaModules()
@@ -47,16 +48,18 @@ function! s:GetValaModules()
     return split(strpart(modules_str, 12), '\s\+')
 endfunction
 
-function! SyntaxCheckers_vala_valac_GetLocList()
+function! SyntaxCheckers_vala_valac_GetLocList() dict
     let vala_pkg_args = join(map(s:GetValaModules(), '"--pkg ".v:val'), ' ')
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'valac',
-                \ 'args': '-C ' . vala_pkg_args,
-                \ 'subchecker': 'valac' })
-    let errorformat = '%A%f:%l.%c-%\d%\+.%\d%\+: %t%[a-z]%\+: %m,%C%m,%Z%m'
+    let makeprg = self.makeprgBuild({ 'args': '-C ' . vala_pkg_args })
 
-    return SyntasticMake({ 'makeprg': makeprg,
-                         \ 'errorformat': errorformat })
+    let errorformat =
+        \ '%A%f:%l.%c-%\d%\+.%\d%\+: %t%[a-z]%\+: %m,'.
+        \ '%C%m,'.
+        \ '%Z%m'
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

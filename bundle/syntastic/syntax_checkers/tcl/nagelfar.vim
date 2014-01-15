@@ -16,18 +16,17 @@ if exists("g:loaded_syntastic_tcl_nagelfar_checker")
 endif
 let g:loaded_syntastic_tcl_nagelfar_checker=1
 
-function! SyntaxCheckers_tcl_nagelfar_IsAvailable()
-    return executable('nagelfar')
-endfunction
+function! SyntaxCheckers_tcl_nagelfar_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '-H' })
 
-function! SyntaxCheckers_tcl_nagelfar_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': 'nagelfar',
-                \ 'args': '-H ' . g:syntastic_tcl_nagelfar_conf,
-                \ 'subchecker': 'nagelfar' })
-    let errorformat='%I%f: %l: N %m, %f: %l: %t %m, %-GChecking file %f'
+    let errorformat =
+        \ '%I%f: %l: N %m,'.
+        \ '%f: %l: %t %m,'.
+        \ '%-GChecking file %f'
 
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

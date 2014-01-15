@@ -60,13 +60,8 @@ nnoremap Y y$
 " ,. to view all document buffers
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
-" ,, to run current spec file
-" GUI vim does not appreciate terminal color codes
-if has("gui_running")
-  map <Leader>, :wa\|!rspec --no-color %<CR>
-else
-  map <Leader>, :wa\|!clear && rspec --color %<CR>
-endif
+" ,, to switch to the previous buffer
+map <Leader>, :b#<CR>
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
@@ -101,13 +96,8 @@ nmap <leader>gt :GitGutterToggle<CR>
 " ,gh yo highlight changed lines
 nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
 
-map <Leader>1 :call RunCurrentSpecFile()<CR>
-map <Leader>2 :call RunNearestSpec()<CR>
-map <Leader>3 :call RunLastSpec()<CR>
-map <Leader>4 :call RunAllSpecs()<CR>
-
-" ,h to toggle search result highlighting
-:noremap <silent> <leader>h :set hls!<CR>
+" ,h to dismiss search result highlighting until next search
+:noremap <silent> <leader>h :noh<CR>
 
 " ,m to toggle file tree (,M to select the current file in the tree)
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
@@ -125,10 +115,9 @@ nmap <silent> <Leader>s :setlocal spell! spelllang=en_gb<CR>
 " ,sw to strip whitespace off the ends
 nmap <silent> <Leader>sw :call StripTrailingWhitespace()<CR>
 
-" ,t to clear cache and fuzzy search files; ,T in current file's directory
-" TO BE DEPRECATED FOR ,f and ,F
-map <silent> <leader>t :ClearCtrlPCache<cr>\|:CtrlP<cr>
-map <silent> <leader>T :ClearCtrlPCache<cr>\|:CtrlPCurFile<cr>
+" ,t to run tests
+map <silent> <leader>t :VroomRunTestFile<CR>
+map <silent> <leader>T :VroomRunNearestTest<CR>
 
 " ,u to toggle undo history browser
 nnoremap <Leader>u :GundoToggle<CR>
@@ -213,6 +202,14 @@ imap kj <ESC>
 " ----------------------------------------------
 " Setup Misc Vim Behaviours
 " ----------------------------------------------
+
+" Setup vim-airline to look nicer
+let g:airline_left_sep = ""
+let g:airline_left_alt_sep = ""
+let g:airline_right_sep = ""
+let g:airline_right_alt_sep = ""
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme = "powerlineish"
 
 " Setup the projector toggle plugin
 let g:default_colorscheme = 'darkermate'
@@ -437,9 +434,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " Ignores files in any VCS or tmp directory
 set wildignore+=tmp/*,*.so,*.swp,*.zip
 
-" ----------------------------------------------
 "  Set the git gutter colors to be the same as the number column
-" ----------------------------------------------
 hi clear SignColumn
 
 " Set the Gutter to show all the time, avoiding the column 'pop' when saving
@@ -448,6 +443,7 @@ let g:gitgutter_sign_column_always = 1
 " Vroom settings
 let g:vroom_write_all = 1
 let g:vroom_cucumber_path = 'cucumber '
+let g:vroom_map_keys = 0
 
 " xmp-filter mappings
 autocmd FileType ruby nmap <buffer> <Leader>X <Plug>(xmpfilter-mark)

@@ -34,23 +34,27 @@ if g:syntastic_less_use_less_lint
     let s:check_file = 'node ' . expand('<sfile>:p:h') . '/less-lint.js'
 else
     let s:check_file = 'lessc'
-end
+endif
 
-function! SyntaxCheckers_less_lessc_IsAvailable()
-    return executable('lessc')
+function! SyntaxCheckers_less_lessc_IsAvailable() dict
+    return g:syntastic_less_use_less_lint ? executable('node') : executable('lessc')
 endfunction
 
-function! SyntaxCheckers_less_lessc_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-                \ 'exe': s:check_file,
-                \ 'args': g:syntastic_less_options,
-                \ 'tail': syntastic#util#DevNull(),
-                \ 'subchecker': 'lessc' })
-    let errorformat = '%m in %f:%l:%c'
+function! SyntaxCheckers_less_lessc_GetLocList() dict
+    let makeprg = self.makeprgBuild({
+        \ 'exe': s:check_file,
+        \ 'args': g:syntastic_less_options,
+        \ 'tail': syntastic#util#DevNull() })
 
-    return SyntasticMake({ 'makeprg': makeprg,
-                         \ 'errorformat': errorformat,
-                         \ 'defaults': {'bufnr': bufnr(""), 'text': "Syntax error"} })
+    let errorformat =
+        \ '%m in %f on line %l\, column %c:,' .
+        \ '%m in %f:%l:%c,' .
+        \ '%-G%.%#'
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'defaults': {'bufnr': bufnr(""), 'text': "Syntax error"} })
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

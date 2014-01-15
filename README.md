@@ -215,7 +215,7 @@ Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http:/
 
 Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
 
-## syntastic (7f0412e9)
+## syntastic (0714044f98 - 25/11/2013)
 
 Automatic syntax checking ([more](https://github.com/scrooloose/syntastic))
 
@@ -246,6 +246,10 @@ Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script
 ## vim-abolish (d64ce06650, 30 Apr 2013)
 
 Better abbreviations, substitution and search with Bash like {a,b} style expansions
+
+## vim-airline (233e3c60ce, 17 Dec, 2013)
+
+Powerline like behaviour, but without the heavy Python ([more](https://github.com/bling/vim-airline))
 
 ## vim-bundler (3f1e6e9f, 22 Aug 2011)
 
@@ -281,10 +285,6 @@ Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml
 ## vim-less (8443f89 - 3 June 2013)
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
-
-## vim-powerline (09c0cea859a2e0989eea740655b35976d951a84e - Nov 2012)
-
-Colourful and neat status bar without the need for font patching
 
 ## vim-rails (bdc32389e7 - 18 Oct 2013)
 
@@ -326,8 +326,8 @@ eg va/ to visually sepect previous match, or ca/ to change it.
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
 
 <dl>
-  <dt>,r</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
-  <dt>,R</dt><dd>Run nearest test/spec/feature</dd>
+  <dt>,t</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
+  <dt>,T</dt><dd>Run nearest test/spec/feature to the cursor</dd>
 </dl>
 
 ## ZoomWin (23)
@@ -347,6 +347,7 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
   <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed</dd>
   <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
+  <dt>,,</dt><dd>Toggle between the previously opened buffer</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
   <dt>,rr</dt><dd>Run ruby file</dd>

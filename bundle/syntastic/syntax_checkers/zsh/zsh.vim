@@ -15,17 +15,14 @@ if exists("g:loaded_syntastic_zsh_zsh_checker")
 endif
 let g:loaded_syntastic_zsh_zsh_checker=1
 
-function! SyntaxCheckers_zsh_zsh_IsAvailable()
-    return executable("zsh")
-endfunction
+function! SyntaxCheckers_zsh_zsh_GetLocList() dict
+    let makeprg = self.makeprgBuild({ 'args': '-n' })
 
-function! SyntaxCheckers_zsh_zsh_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'zsh',
-        \ 'args': '-n',
-        \ 'subchecker': 'zsh' })
     let errorformat = '%f:%l: %m'
-    return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat})
+
+    return SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat})
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({

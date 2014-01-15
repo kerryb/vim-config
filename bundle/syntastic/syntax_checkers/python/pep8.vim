@@ -17,19 +17,18 @@ if exists("g:loaded_syntastic_python_pep8_checker")
 endif
 let g:loaded_syntastic_python_pep8_checker=1
 
-function! SyntaxCheckers_python_pep8_IsAvailable()
-    return executable('pep8')
-endfunction
+function! SyntaxCheckers_python_pep8_GetLocList() dict
+    let makeprg = self.makeprgBuild({})
 
-function! SyntaxCheckers_python_pep8_GetLocList()
-    let makeprg = syntastic#makeprg#build({
-        \ 'exe': 'pep8',
-        \ 'subchecker': 'pep8' })
     let errorformat = '%f:%l:%c: %m'
-    let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat, 'subtype': 'Style' })
 
-    for n in range(len(loclist))
-        let loclist[n]['type'] = loclist[n]['text'] =~? '^W' ? 'W' : 'E'
+    let loclist = SyntasticMake({
+        \ 'makeprg': makeprg,
+        \ 'errorformat': errorformat,
+        \ 'subtype': 'Style' })
+
+    for e in loclist
+        let e['type'] = e['text'] =~? '^W' ? 'W' : 'E'
     endfor
 
     return loclist
