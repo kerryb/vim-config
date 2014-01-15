@@ -1,5 +1,3 @@
-This is a tweaked copy of the excellent Vi/Vim dev setup [Kerryb](https://github.com/kerryb/vim-config)
-
 # Installation
 
 ### Backup
