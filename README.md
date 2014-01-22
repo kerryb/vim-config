@@ -260,7 +260,7 @@ Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bun
 
 The well-known solarized colorscheme ([more](https://github.com/altercation/solarized))
 
-## vim-gitgutter (ff031d022f - 27 May 2013)
+## vim-gitgutter ( 13a11f8935 - 16 Jan 2014)
 
 Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
 
