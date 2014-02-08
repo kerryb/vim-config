@@ -1,15 +1,58 @@
 set nocompatible
-call pathogen#infect()
-filetype plugin indent on
+filetype off
+
+
+" ----------------------------------------------
+" Define all the plugins!
+" ----------------------------------------------
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'ack.vim'
+Bundle 'Align'
+Bundle 'AutoTag'
+Bundle 'bufexplorer.zip'
+Bundle 'vim-coffee-script'
+Bundle 'colorizer'
+Bundle 'kien/ctrlp.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'matchit.zip'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-ragtag'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'ervandew/supertab'
+Bundle 'groenewege/vim-less'
+Bundle 'majutsushi/tagbar'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vroom'
+Bundle 'bling/vim-airline'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'ZoomWin'
+
 syntax on
-
-colorscheme darkermate
-
-let mapleader = ","
+filetype plugin indent on
 
 " ----------------------------------------------
 " Setup basic Vim behaviour
 " ----------------------------------------------
+
+let mapleader = ","
+colorscheme darkermate
 
 set autoindent
 set autowrite       " Writes on make/shell commands
@@ -67,9 +110,7 @@ map <Leader>, :b#<CR>
 nmap <Leader>] :TagbarToggle<CR>
 
 " ,a<something> to align visually selected lines on <something>
-vnoremap <silent> <Leader>a= :Align =<CR>
 vnoremap <silent> <Leader>a=> :Align =><CR>
-vnoremap <silent> <Leader>a, :Align ,<CR>
 vnoremap <silent> <Leader>a{ :Align {<CR>
 vnoremap <silent> <Leader>a<space> :Align " "<CR>
 
@@ -233,11 +274,11 @@ runtime! plugin/matchit.vim
 if has('win32')
   set guifont=Consolas\ 9
 elseif has('mac')
-  set guifont=Menlo:h9
+  set guifont=Menlo:h13
 else
   "set guifont=Source\ Code\ Pro\ 10
   set guifont=DejaVu\ Sans\ Mono\ 9
-  " if you don't have these fonts, set one here or in your vim.local file
+  " if you don't have these fonts, set one here or in your ~/vim.local file
 endif
 
 " Ruby debugger settings
