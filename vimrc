@@ -1,7 +1,6 @@
 set nocompatible
 filetype off
 
-
 " ----------------------------------------------
 " Define all the plugins!
 " ----------------------------------------------
@@ -11,7 +10,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'ack.vim'
-Bundle 'Align'
 Bundle 'AutoTag'
 Bundle 'bufexplorer.zip'
 Bundle 'vim-coffee-script'
@@ -110,13 +108,12 @@ map <Leader>, :b#<CR>
 nmap <Leader>] :TagbarToggle<CR>
 
 " ,a<something> to align visually selected lines on <something>
-vnoremap <silent> <Leader>a=> :Align =><CR>
-vnoremap <silent> <Leader>a{ :Align {<CR>
-vnoremap <silent> <Leader>a<space> :Align " "<CR>
-
-" ,a| to tabulate visually selected rows based on |
-" Different from `:Align |` because it correctly spaces Cucumber table titles
-vnoremap <silent> <Leader>a\| :call Tabularize('/\|/')<CR>
+vnoremap <silent> <Leader>a= :Tabularize /=<CR>
+vnoremap <silent> <Leader>a=> :Tabularize /=><CR>
+vnoremap <silent> <Leader>a, :Tabularize /,<CR>
+vnoremap <silent> <Leader>a{ :Tabularize /{<CR>
+vnoremap <silent> <Leader>a\| :Tabularize /\|<CR>
+vnoremap <silent> <Leader>a<space> :Tabularize / <CR>
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$

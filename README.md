@@ -1,33 +1,24 @@
+An awesome Vim config for development, slow roasted with a Ruby twist and a shot of web.
 
 # Installation
 
-### Backup
-If necessary, backup and remove your <tt>~/.vim</tt> directory and <tt>~/.vimrc</tt> file:
-
-    mv $HOME/.vim{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
-    mv $HOME/.vimrc{,.original-$(date +%Y.%m.%d-%H.%M.%S)}
-
-### Download
-Clone this repository to <tt>~/.vim</tt>:
-
-    git clone git://github.com/AdamWhittingham/vim-config.git ~/.vim
-
-(If you're behind a firewall that blocks port 9418, replace <tt>git:</tt> with
-<tt>https:</tt> in the above URL.)
-
-Alternatively, if for some bizarre reason you don't have git installed, you can
-download a zip or tar file using the link on
-[GitHub](http://github.com/AdamWhittingham/vim-config).
-
-### Symlink
-Finally, symlink <tt>.vimrc</tt> so the config is loaded when Vim starts:
-
+```bash
+    git clone https://github.com/AdamWhittingham/vim-config.git ~/.vim
     ln -s ~/.vim/vimrc ~/.vimrc
+    vim +BundleInstall +qall
+```
+
+Should this not leave you with a nice working vim (certain versions are a bit iffy about the last line) then launch vim and run `:BundleInstall`
 
 ## Keeping up-to-date
+1. Grab the latest version of the config
 
+```bash
     cd ~/.vim
     git pull
+```
+
+2. Grab the latest plugins by launching vim and running `:BundleInstall`
 
 ## External Dependencies
 There are a couple of things you might want to install to get the best out of this config:
@@ -35,9 +26,8 @@ There are a couple of things you might want to install to get the best out of th
 * Ack - enables grepping through the current directories
 
 ## Local Customisation
-
-Local changes (eg if you prefer a different font or colour scheme) can either
-be made in a branch, or in <tt>~/.vimrc.local</tt>.
+Local changes (eg if you prefer a different font or colour scheme) can be made `~/.vimrc.local`
+(or in a branch!)
 
 # Included Plugins
 
@@ -50,21 +40,6 @@ This plugin is a front for the Perl module App::Ack. Ack can be used as a replac
 (more)[http://www.vim.org/scripts/script.php?script_id=2572]
 
 Requires ack (aka ack-grep) to be installed.
-
-## Align
-
-Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim.org/scripts/script.php?script_id=294))
-
-*Keybindings*
-
-<dl>
-  <dt>,a=</dt><dd>Align on =</dd>
-  <dt>,a=></dt><dd>Align on =></dd>
-  <dt>,a,</dt><dd>Align on ,</dd>
-  <dt>,a{</dt><dd>Align on {</dd>
-  <dt>,a|</dt><dd>Align on |</dd>
-  <dt>,a<space><dt><dd>Align on spaces</dd>
-</dl>
 
 ## Autotag
 
@@ -215,6 +190,11 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 *Keybindings*
 
 <dl>
+  <dt>,a=</dt><dd>Align on =</dd>
+  <dt>,a,</dt><dd>Align on ,</dd>
+  <dt>,a{</dt><dd>Align on {</dd>
+  <dt>,a|</dt><dd>Align on |</dd>
+  <dt>,a<space><dt><dd>Align on spaces</dd>
   <dt>,tt</dt><dd>(when text is selected) format tables made with pipes (|)</dd>
 </dl>
 
