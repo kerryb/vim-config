@@ -110,10 +110,10 @@ nmap <Leader>] :TagbarToggle<CR>
 " ,a<something> to align visually selected lines on <something>
 vnoremap <silent> <Leader>a= :Tabularize /=<CR>
 vnoremap <silent> <Leader>a=> :Tabularize /=><CR>
-vnoremap <silent> <Leader>a, :Tabularize /,<CR>
+vnoremap <silent> <Leader>a, :Tabularize /,\zs<CR>
 vnoremap <silent> <Leader>a{ :Tabularize /{<CR>
 vnoremap <silent> <Leader>a\| :Tabularize /\|<CR>
-vnoremap <silent> <Leader>a<space> :Tabularize / <CR>
+vnoremap <silent> <Leader>a<space> :Tabularize / \zs<CR>
 
 " ,c to show hidden characters
 set listchars=tab:>-,trail:·,eol:$
@@ -271,7 +271,7 @@ runtime! plugin/matchit.vim
 if has('win32')
   set guifont=Consolas\ 9
 elseif has('mac')
-  set guifont=Menlo:h13
+  set guifont=Menlo:h11
 else
   "set guifont=Source\ Code\ Pro\ 10
   set guifont=DejaVu\ Sans\ Mono\ 9
