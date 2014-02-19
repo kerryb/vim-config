@@ -44,17 +44,14 @@ be made in a branch, or in <tt>~/.vimrc.local</tt>.
 See the plugins' web pages for more information. The keybindings listed are mostly
 just those defined or overridden locally, not the ones provided by default.
 
-Plugins are installed in their own directories under <tt>bundle</tt>, thanks to
-[Pathogen](http://www.vim.org/scripts/script.php?script_id=2332).
-
-## Ack (0.3.1)
+## Ack
 
 This plugin is a front for the Perl module App::Ack. Ack can be used as a replacement for 99% of the uses of grep.
 (more)[http://www.vim.org/scripts/script.php?script_id=2572]
 
 Requires ack (aka ack-grep) to be installed.
 
-## Align (35/41)
+## Align
 
 Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim.org/scripts/script.php?script_id=294))
 
@@ -69,11 +66,11 @@ Help folks to align text, eqns, declarations, tables, etc ([more](http://www.vim
   <dt>,a<space><dt><dd>Align on spaces</dd>
 </dl>
 
-## Autotag (1.13)
+## Autotag
 
 Automatically update tags when saving files ([more](http://www.vim.org/scripts/script.php?script_id=1343))
 
-## bufexplorer (7.2.8)
+## bufexplorer
 
 Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=42))
 
@@ -83,11 +80,11 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
   <dt>,.</dt><dd>Show buffer explorer</dd>
 </dl>
 
-## Coffeescript (fd170cb - 13 June 2011)
+## Coffeescript
 
 Adds support for CoffeeScript. It handles syntax, indenting, and compiling ([more](http://www.vim.org/scripts/script.php?script_id=3590))
 
-## color_highlight (e44f3d9 – 9 Oct 2013)
+## color_highlight
 
 Highlight color names and codes in the same color that they represent ([more] (http://www.vim.org/scripts/script.php?script_id=3963))
 
@@ -109,7 +106,7 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
   <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
 </dl>
 
-## Gundo (2.2.2)
+## Gundo
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
 
@@ -117,18 +114,6 @@ Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](h
 
 <dl>
   <dt>,u</dt><dd>Toggle Gundo tree</dd>
-</dl>
-
-## HTML5
-
-Adds support for HTML 5 keyword highlightings ([more](https://gist.github.com/256840))
-
-## LustJuggler
-
-Quickly switch between buffers using the home row or number keys ([more](https://github.com/sjbach/lusty))
-
-<dl>
-  <dt>,lj</dt><dd>Show buffer list</dd>
 </dl>
 
 ## markdown
@@ -139,11 +124,14 @@ Syntax highlighting for Markdown ([more](http://plasticboy.com/markdown-vim-mode
 
 Allows % to be changed to match more than single characters; often more up-to-date than the version which ships with Vim. ([more](http://www.vim.org/scripts/script.php?script_id=39))
 
-## nerdcommenter (2.3.0)
+## nerdcommenter
 
 A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
+<dl>
+  <dt>,c{space}</dt><dd>Comment/Uncomment this line</dd>
+</dl>
 
-## nerdtree (4.2.0)
+## nerdtree
 
 A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/scripts/script.php?script_id=1658))
 
@@ -157,14 +145,14 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
   <dt>?</dt><dd>Toggle the help list</dd>
 </dl>
 
-## projector mode (55e7a8d69a)
+## projector mode
 
 Toggle 'projector mode': larger font and high contrast colour scheme ([more](https://github.com/AdamWhittingham/projector_mode))
 <dl>
   <dt>,p</dt><dd>Toggle 'projector mode' (large font, high contrast)</dd>
 </dl>
 
-## ragtag (2.0)
+## ragtag
 
 A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more ([more](http://www.vim.org/scripts/script.php?script_id=1896))
 
@@ -186,7 +174,7 @@ If you have already typed 'foo', the following shortcuts apply (with the cursor 
   <dt>&lt;C-X&gt;$</dt><dd>&lt;script src="/javascripts/^.js"&gt;&lt;/script&gt; <em>ragtag-CTRL-X_$</em></dd>
 </dl>
 
-## rails (4.3)
+## rails
 
 Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([more](http://www.vim.org/scripts/script.php?script_id=1567))
 
@@ -196,33 +184,33 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
   <dt>,r</dt><dd>run rake</dd>
 </dl>
 
-## rake (1.2)
+## rake
 
 It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.php?script_id=3669))
 
-## repeat (1.0)
+## repeat
 
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
-## SuperTab (1.6)
+## speeddating
+
+Fix up C-a and C-x when dealing with dates. ([more](https://github.com/tpope/vim-speeddating))
+
+## SuperTab
 
 Do all your insert-mode completion with Tab ([more](http://www.vim.org/scripts/script.php?script_id=1643))
 
-## surround (1.90)
+## surround
 
 Delete/change/add parentheses/quotes/XML-tags/much more with ease ([more](http://www.vim.org/scripts/script.php?script_id=1697))
 
-## switch (93759a6b)
-
-Switch between predefined code blocks (eg. Ruby 1.8 to 1.9 hash syntax) ([more](https://github.com/AndrewRadev/switch.vim))
-
-## syntastic (0714044f98 - 25/11/2013)
+## syntastic
 
 Automatic syntax checking ([more](https://github.com/scrooloose/syntastic))
 
-## Tabular (b7b4d87 - 31 Mar 2011)
+## Tabular
 
-Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular/blob/master/doc/Tabular.txt))
+Configurable, flexible, intuitive text aligning ([more](http://github.com/godlygeek/tabular))
 
 *Keybindings*
 
@@ -230,7 +218,7 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
   <dt>,tt</dt><dd>(when text is selected) format tables made with pipes (|)</dd>
 </dl>
 
-## Tagbar (cc222f5d8c - 26 Feb 2013)
+## Tagbar
 
 Sidebar for showing and navigating the tags in current file ([more](https://github.com/majutsushi/tagbar))
 
@@ -240,27 +228,19 @@ Sidebar for showing and navigating the tags in current file ([more](https://gith
   <dt>,]</dt><dd>toggle the sidebar</dd>
 </dl>
 
-## unimpaired (1.1)
+## unimpaired
 
 Pairs of handy bracket maps ([more](http://www.vim.org/scripts/script.php?script_id=1590))
 
-## vim-abolish (d64ce06650, 30 Apr 2013)
+## vim-abolish
 
 Better abbreviations, substitution and search with Bash like {a,b} style expansions
 
-## vim-airline (233e3c60ce, 17 Dec, 2013)
+## vim-airline
 
 Powerline like behaviour, but without the heavy Python ([more](https://github.com/bling/vim-airline))
 
-## vim-bundler (3f1e6e9f, 22 Aug 2011)
-
-Lightweight bag Vim goodies for Bundler ([more](https://github.com/tpope/vim-bundler))
-
-## vim-colors-solarized
-
-The well-known solarized colorscheme ([more](https://github.com/altercation/solarized))
-
-## vim-gitgutter ( 13a11f8935 - 16 Jan 2014)
+## vim-gitgutter
 
 Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
 
@@ -271,7 +251,7 @@ Show the changes made since the last commit in the gutter ([more](https://github
   <dt>,gh</dt><dd>Highlight all changed lines</dd>
 </dl>
 
-## vim-indent-guidelines (eec1b629dc4 - 18 Oct 2013)
+## vim-indent-guidelines
 
 Show indent guidelines - very useful when editing Haml! ([more](https://github.com/nathanaelkane/vim-indent-guides))
 
@@ -279,15 +259,15 @@ Show indent guidelines - very useful when editing Haml! ([more](https://github.c
   <dt>,ig</dt><dd>Toggle indentation guidelines</dd>
 </dl>
 
-## vim-haml (3327947 - 3 June 2013)
+## vim-haml
 
 Add haml, sass and SCSS syntax support ([more](https://github.com/tpope/vim-haml))
 
-## vim-less (8443f89 - 3 June 2013)
+## vim-less
 
 Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
-## vim-rails (bdc32389e7 - 18 Oct 2013)
+## vim-rails
 
 Quick navigation around rails projects ([more](https://github.com/tpope/vim-rails))
 
@@ -299,23 +279,17 @@ Quick navigation around rails projects ([more](https://github.com/tpope/vim-rail
   <dt>:Econtroller</dt><dd>Switch to the controller</dd>
 </dl>
 
-## vim-ruby (b10adca - 17 Aug 2012)
+## vim-ruby
 
 Ruby support (newer than the version released with vim). ([more](https://github.com/vim-ruby/vim-ruby))
 
-## vim-ruby-refactoring (6447a4d - 28 Dec 2011)
+## vim-ruby-refactoring
 
 Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-refactoring))
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
-## vim_search_objects (c9b5dc3 – 28 Nov 2011)
-
-Allow previous search to act as a text object (a little [more](git@github.com:Raimondi/vim_search_objects.git))
-
-eg va/ to visually sepect previous match, or ca/ to change it.
-
-## vroom (00f0d4d - 27 May 2013)
+## vroom
 
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
 
@@ -324,9 +298,9 @@ A plugin for running your Ruby tests, specs, and features. ([more](http://www.vi
   <dt>,T</dt><dd>Run nearest test/spec/feature to the cursor</dd>
 </dl>
 
-## ZoomWin (23)
+## ZoomWin
 
-Zoom in/out  of windows (toggle between one window and multi-window) ([more](http://www.vim.org/scripts/script.php?script_id=508))
+Zoom in/out of windows and panes (toggle between one window and multi-window) ([more](http://www.vim.org/scripts/script.php?script_id=508))
 
 *Keybindings*
 
@@ -337,14 +311,11 @@ Zoom in/out  of windows (toggle between one window and multi-window) ([more](htt
 # Other Keybindings
 
 <dl>
-  <dt>alt-c</dt><dd>In visual modes, copy the selected to the system clipboard</dd>
-  <dt>alt-v</dt><dd>Paste from the system clipboard</dd>
+  <dt>,,</dt><dd>Toggle between the previously opened buffer</dd>
   <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed</dd>
   <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
-  <dt>,,</dt><dd>Toggle between the previously opened buffer</dd>
   <dt>,c</dt><dd>Show/hide hidden characters</dd>
   <dt>,h</dt><dd>Hide search highlighting</dd>
-  <dt>,rr</dt><dd>Run ruby file</dd>
   <dt>,rt</dt><dd>Run `ctags -R .`</dd>
   <dt>,s</dt><dd>Show/hide spelling errors</dd>
   <dt>,sw</dt><dd>Strip trailing whitespace</dd>
