@@ -10,6 +10,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'AutoTag'
 Bundle 'bufexplorer.zip'
 Bundle 'vim-coffee-script'
