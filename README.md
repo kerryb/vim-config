@@ -191,7 +191,9 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 
 <dl>
   <dt>,a=</dt><dd>Align on =</dd>
+  <dt>,a=></dt><dd>Align on =></dd>
   <dt>,a,</dt><dd>Align on ,</dd>
+  <dt>,a:</dt><dd>Align on :</dd>
   <dt>,a{</dt><dd>Align on {</dd>
   <dt>,a|</dt><dd>Align on |</dd>
   <dt>,a<space><dt><dd>Align on spaces</dd>

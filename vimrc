@@ -113,6 +113,7 @@ vnoremap <silent> <Leader>a=> :Tabularize /=><CR>
 vnoremap <silent> <Leader>a, :Tabularize /,\zs<CR>
 vnoremap <silent> <Leader>a{ :Tabularize /{<CR>
 vnoremap <silent> <Leader>a\| :Tabularize /\|<CR>
+vnoremap <silent> <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <silent> <Leader>a<space> :Tabularize / \zs<CR>
 
 " ,c to show hidden characters
