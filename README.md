@@ -310,4 +310,5 @@ Zoom in/out of windows and panes (toggle between one window and multi-window) ([
 
 <dl>
   <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
+  <dt>:Hipster</dt><dd>Generate 'hipster ipsum' text</dd>
 </dl>
