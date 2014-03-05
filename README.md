@@ -88,6 +88,10 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
   <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
 </dl>
 
+## Endwise
+
+Auto completion of 'end' in Ruby ([more](https://github.com/tpope/vim-endwise))
+
 ## Gundo
 
 Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](http://www.vim.org/scripts/script.php?script_id=3304))
