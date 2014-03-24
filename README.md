@@ -150,29 +150,6 @@ Keys | Function
   `,` `v` | Toggle 'projector mode' (large font, high contrast)
 
 
-## ragtag
-
-A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more ([more](http://www.vim.org/scripts/script.php?script_id=1896))
-
-If you have already typed 'foo', the following shortcuts apply (with the cursor position marked by ^):
-
-Keys | Function
------|--------------------
-  `&lt;C-X&gt;=` | foo&lt;%= ^ %&gt;
-  `&lt;C-X&gt;+` | &lt;%= foo^ %&gt;
-  `&lt;C-X&gt;-` | foo&lt;% ^ %&gt;
-  `&lt;C-X&gt;_` | &lt;% foo^ %&gt;
-  `&lt;C-X&gt;'` | foo&lt;%# ^ %&gt;
-  `&lt;C-X&gt;"` | &lt;%# foo^ %&gt;
-  `&lt;C-X&gt;&lt;Space&gt;` | &lt;foo&gt;^&lt;/foo&gt;
-  `&lt;C-X&gt;&lt;CR&gt;` | &lt;foo&gt;<br />^<br />&lt;/foo&gt;
-  `&lt;C-X&gt;/` | Last HTML tag closed
-  `&lt;C-X&gt;!` | &lt;!DOCTYPE...&gt;/&lt;?xml ...?&gt; (menu)
-  `&lt;C-X&gt;@` | &lt;link rel="stylesheet" ...&gt;
-  `&lt;C-X&gt;#` | &lt;meta http-equiv="Content-Type" ... /&gt; <em>ragtag-CTRL-X_#</em>
-  `&lt;C-X&gt;$` | &lt;script src="/javascripts/^.js"&gt;&lt;/script&gt; <em>ragtag-CTRL-X_$</em>
-
-
 ## rails
 
 Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([more](http://www.vim.org/scripts/script.php?script_id=1567))
