@@ -30,6 +30,11 @@ There are a couple of things you might want to install to get the best out of th
 Local changes (eg if you prefer a different font or colour scheme) can be made `~/.vimrc.local`
 (or in a branch!)
 
+# The Leader Key
+A large number of the useful commands in Vim start with the 'leader' key, so Vim knows something cool is about to happen.
+
+For this config, the leader is the comma button. This is shown in the following notes as `,`
+
 # Plugins - all the goodies!
 
 See the plugins' web pages for more information. The keybindings listed are mostly
@@ -58,9 +63,10 @@ Buffer explorer/browser ([more](http://www.vim.org/scripts/script.php?script_id=
 
 *Keybindings*
 
-<dl>
-  <dt>,.</dt><dd>Show buffer explorer</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `.` | Show buffer explorer
+
 
 ## Coffeescript
 
@@ -72,10 +78,11 @@ Highlight color names and codes in the same color that they represent ([more] (h
 
 *Keybindings*
 
-<dl>
-  <dt>,cC</dt><dd>Toggle colour highlighting</dd>
-  <dt>,cF</dt><dd>Toggle text or background colouring</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `cC` | Toggle colour highlighting
+  `,` `cF` | Toggle text or background colouring
+
 
 ## CtrlP
 
@@ -83,10 +90,11 @@ Fast file navigation for VIM ([more](https://github.com/kien/ctrlp.vim))
 
 *Keybindings*
 
-<dl>
-  <dt>C-p</dt><dd>Open the CtrlP fuzzy search</dd>
-  <dt>,t</dt><dd>Refresh the cache and open the CtrlP fuzzy search</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `C-p` | Open the CtrlP fuzzy search
+  `,` `t` | Refresh the cache and open the CtrlP fuzzy search
+
 
 ## Endwise
 
@@ -98,9 +106,10 @@ Gundo is a Vim plugin for visualizing your undo tree to make it usable ([more](h
 
 *Keybindings*
 
-<dl>
-  <dt>,u</dt><dd>Toggle Gundo tree</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `u` | Toggle Gundo tree
+
 
 ## markdown
 
@@ -113,9 +122,10 @@ Allows % to be changed to match more than single characters; often more up-to-da
 ## nerdcommenter
 
 A plugin that allows for easy commenting of code for many filetypes ([more](http://www.vim.org/scripts/script.php?script_id=1218))
-<dl>
-  <dt>,c{space}</dt><dd>Comment/Uncomment this line</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `c{space}` | Comment/Uncomment this line
+
 
 ## nerdtree
 
@@ -123,20 +133,22 @@ A tree explorer plugin for navigating the filesystem ([more](http://www.vim.org/
 
 *Keybindings*
 
-<dl>
-  <dt>,m</dt><dd>Show/hide NERDTree</dd>
-  <dt>,f</dt><dd>Show current file in tree</dd>
-  <dt>C</dt><dd>Set the current folder to be the root of the tree</dd>
-  <dt>p</dt><dd>Go to parent of selected item</dd>
-  <dt>?</dt><dd>Toggle the help list</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `m` | Show/hide NERDTree
+  `,` `f` | Show current file in tree
+  `C` | Set the current folder to be the root of the tree
+  `p` | Go to parent of selected item
+  `?` | Toggle the help list
+
 
 ## projector mode
 
 Toggle 'projector mode': larger font and high contrast colour scheme ([more](https://github.com/AdamWhittingham/projector_mode))
-<dl>
-  <dt>,p</dt><dd>Toggle 'projector mode' (large font, high contrast)</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `v` | Toggle 'projector mode' (large font, high contrast)
+
 
 ## ragtag
 
@@ -144,21 +156,22 @@ A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more ([more](http://w
 
 If you have already typed 'foo', the following shortcuts apply (with the cursor position marked by ^):
 
-<dl>
-  <dt>&lt;C-X&gt;=</dt><dd>foo&lt;%= ^ %&gt;</dd>
-  <dt>&lt;C-X&gt;+</dt><dd>&lt;%= foo^ %&gt;</dd>
-  <dt>&lt;C-X&gt;-</dt><dd>foo&lt;% ^ %&gt;</dd>
-  <dt>&lt;C-X&gt;_</dt><dd>&lt;% foo^ %&gt;</dd>
-  <dt>&lt;C-X&gt;'</dt><dd>foo&lt;%# ^ %&gt;</dd>
-  <dt>&lt;C-X&gt;"</dt><dd>&lt;%# foo^ %&gt;</dd>
-  <dt>&lt;C-X&gt;&lt;Space&gt;</dt><dd>&lt;foo&gt;^&lt;/foo&gt;</dd>
-  <dt>&lt;C-X&gt;&lt;CR&gt;</dt><dd>&lt;foo&gt;<br />^<br />&lt;/foo&gt;</dd>
-  <dt>&lt;C-X&gt;/</dt><dd>Last HTML tag closed</dd>
-  <dt>&lt;C-X&gt;!</dt><dd>&lt;!DOCTYPE...&gt;/&lt;?xml ...?&gt; (menu)</dd>
-  <dt>&lt;C-X&gt;@</dt><dd>&lt;link rel="stylesheet" ...&gt;</dd>
-  <dt>&lt;C-X&gt;#</dt><dd>&lt;meta http-equiv="Content-Type" ... /&gt; <em>ragtag-CTRL-X_#</em></dd>
-  <dt>&lt;C-X&gt;$</dt><dd>&lt;script src="/javascripts/^.js"&gt;&lt;/script&gt; <em>ragtag-CTRL-X_$</em></dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `&lt;C-X&gt;=` | foo&lt;%= ^ %&gt;
+  `&lt;C-X&gt;+` | &lt;%= foo^ %&gt;
+  `&lt;C-X&gt;-` | foo&lt;% ^ %&gt;
+  `&lt;C-X&gt;_` | &lt;% foo^ %&gt;
+  `&lt;C-X&gt;'` | foo&lt;%# ^ %&gt;
+  `&lt;C-X&gt;"` | &lt;%# foo^ %&gt;
+  `&lt;C-X&gt;&lt;Space&gt;` | &lt;foo&gt;^&lt;/foo&gt;
+  `&lt;C-X&gt;&lt;CR&gt;` | &lt;foo&gt;<br />^<br />&lt;/foo&gt;
+  `&lt;C-X&gt;/` | Last HTML tag closed
+  `&lt;C-X&gt;!` | &lt;!DOCTYPE...&gt;/&lt;?xml ...?&gt; (menu)
+  `&lt;C-X&gt;@` | &lt;link rel="stylesheet" ...&gt;
+  `&lt;C-X&gt;#` | &lt;meta http-equiv="Content-Type" ... /&gt; <em>ragtag-CTRL-X_#</em>
+  `&lt;C-X&gt;$` | &lt;script src="/javascripts/^.js"&gt;&lt;/script&gt; <em>ragtag-CTRL-X_$</em>
+
 
 ## rails
 
@@ -166,9 +179,10 @@ Ruby on Rails: easy file navigation, enhanced syntax highlighting, and more ([mo
 
 *Keybindings*
 
-<dl>
-  <dt>,r</dt><dd>run rake</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `r` | run rake
+
 
 ## rake
 
@@ -200,16 +214,17 @@ Configurable, flexible, intuitive text aligning ([more](http://github.com/godlyg
 
 *Keybindings*
 
-<dl>
-  <dt>,a=</dt><dd>Align on =</dd>
-  <dt>,a=></dt><dd>Align on =></dd>
-  <dt>,a,</dt><dd>Align on ,</dd>
-  <dt>,a:</dt><dd>Align on :</dd>
-  <dt>,a{</dt><dd>Align on {</dd>
-  <dt>,a|</dt><dd>Align on |</dd>
-  <dt>,a<space><dt><dd>Align on spaces</dd>
-  <dt>,tt</dt><dd>(when text is selected) format tables made with pipes (|)</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `a=` | Align on =
+  `,` `a=>` | Align on =>
+  `,` `a,` | Align on ,
+  `,` `a:` | Align on :
+  `,` `a{` | Align on {
+  `,` `a|` | Align on |
+  `,` `a<space>`Align on spaces
+  `,` `tt` | (when text is selected) format tables made with pipes (|)
+
 
 ## Tagbar
 
@@ -217,9 +232,10 @@ Sidebar for showing and navigating the tags in current file ([more](https://gith
 
 *Keybindings*
 
-<dl>
-  <dt>,]</dt><dd>toggle the sidebar</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `]` | toggle the sidebar
+
 
 ## unimpaired
 
@@ -237,20 +253,22 @@ Powerline like behaviour, but without the heavy Python ([more](https://github.co
 
 Show the changes made since the last commit in the gutter ([more](https://github.com/airblade/vim-gitgutter))
 
-<dl>
-  <dt>,g</dt><dd>Skip to the next changed chunk</dd>
-  <dt>,G</dt><dd>Skip to the previous changed chunk</dd>
-  <dt>,gt</dt><dd>Toggle the git change gutter</dd>
-  <dt>,gh</dt><dd>Highlight all changed lines</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `g` | Skip to the next changed chunk
+  `,` `G` | Skip to the previous changed chunk
+  `,` `gt` | Toggle the git change gutter
+  `,` `gh` | Highlight all changed lines
+
 
 ## vim-indent-guidelines
 
 Show indent guidelines - very useful when editing Haml! ([more](https://github.com/nathanaelkane/vim-indent-guides))
 
-<dl>
-  <dt>,ig</dt><dd>Toggle indentation guidelines</dd>
-</dl>
+Keys           | Function
+---------------|--------------------
+  `,` `ig` | Toggle indentation guidelines
+
 
 ## vim-haml
 
@@ -264,13 +282,14 @@ Less syntax highlighting ([more](https://github.com/groenewege/vim-less))
 
 Quick navigation around rails projects ([more](https://github.com/tpope/vim-rails))
 
-<dl>
-  <dt>:A</dt><dd>Alternate file- switch between specs and production code</dd>
-  <dt>:R</dt><dd>Related file- switch between modles, controllers and views</dd>
-  <dt>:Emodel</dt><dd>Switch to the model</dd>
-  <dt>:Eview</dt><dd>Switch to the view</dd>
-  <dt>:Econtroller</dt><dd>Switch to the controller</dd>
-</dl>
+Keys             | Function
+-----------------|-----------------------------------------------------------
+  `:A`           | Alternate file- switch between specs and production code
+  `:R`           | Related file- switch between modles, controllers and views
+  `:Emodel`      | Switch to the model
+  `:Eview`       | Switch to the view
+  `:Econtroller` | Switch to the controller
+
 
 ## vim-ruby
 
@@ -286,10 +305,11 @@ See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for 
 
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
 
-<dl>
-  <dt>,t</dt><dd>Run current test/spec/feature, or previous if in another file</dd>
-  <dt>,T</dt><dd>Run nearest test/spec/feature to the cursor</dd>
-</dl>
+Keys          | Function
+--------------|--------------------------------------------------------------
+  `,` `t` | Run current test/spec/feature, or previous if in another file
+  `,` `T` | Run nearest test/spec/feature to the cursor
+
 
 ## ZoomWin
 
@@ -297,31 +317,34 @@ Zoom in/out of windows and panes (toggle between one window and multi-window) ([
 
 *Keybindings*
 
-<dl>
-  <dt>,z</dt><dd>Zoom</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `,` `z` | Zoom
+
 
 # Other Keybindings
 
-<dl>
-  <dt>,,</dt><dd>Toggle between the previously opened buffer</dd>
-  <dt>ctrl-]</dt><dd>Jump to definition (needs exuberant ctags installed</dd>
-  <dt>ctrl-n</dt><dd>Toggle between absolute and relative numbering</dd>
-  <dt>,c</dt><dd>Show/hide hidden characters</dd>
-  <dt>,h</dt><dd>Hide search highlighting</dd>
-  <dt>,rt</dt><dd>Run `ctags -R .`</dd>
-  <dt>,s</dt><dd>Show/hide spelling errors</dd>
-  <dt>,sw</dt><dd>Strip trailing whitespace</dd>
-  <dt>,tsp</dt><dd>Align on whitespace</dd>
-  <dt>,tlt</dt><dd>Align LaTEX tables (to avoid clashing with our existing ,tt mapping)</dd>
-  <dt>,w</dt><dd>Toggle word wrapping</dd>
-  <dt>RB</dt><dd>Open Ruby docs in browser for word under cursor</dd>
-  <dt>RR</dt><dd>Open Rails docs in browser for word under cursor</dd>
-</dl>
+Keys                 | Function
+-----|------------------------------------------------------------------------
+`,` `,`        | Toggle between the previously opened buffer
+`ctrl-]`           | Jump to definition (needs exuberant ctags installed
+`ctrl-n`           | Toggle between absolute and relative numbering
+`,` `c`        | Show/hide hidden characters
+`,` `h`        | Hide search highlighting
+`,` `rt`       | Run `ctags -R .`
+`,` `s`        | Show/hide spelling errors
+`,` `sw`       | Strip trailing whitespace
+`,` `tsp`      | Align on whitespace
+`,` `tlt`      | Align LaTEX tables (to avoid clashing with our existing ,tt mapping)
+`,` `w`        | Toggle word wrapping
+`RB`               | Open Ruby docs in browser for word under cursor
+`RR`               | Open Rails docs in browser for word under cursor
+
 
 # Commands
 
-<dl>
-  <dt>:Lorem</dt><dd>Generate 'lorem ipsum' text</dd>
-  <dt>:Hipster</dt><dd>Generate 'hipster ipsum' text</dd>
-</dl>
+Keys | Function
+-----|--------------------
+  `:Lorem` | Generate 'lorem ipsum' text
+  `:Hipster` | Generate 'hipster ipsum' text
+
