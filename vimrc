@@ -106,7 +106,7 @@ nnoremap Y y$
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,, to switch to the previous buffer
-map <Leader>, :b#<CR>
+map <Leader><Leader> :b#<CR>
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
