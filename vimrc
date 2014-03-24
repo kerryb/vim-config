@@ -105,7 +105,7 @@ nnoremap Y y$
 nmap <silent> <unique> <Leader>. :BufExplorer<CR>
 
 " ,, to switch to the previous buffer
-map <Leader><Leader> :b#<CR>
+map <silent> <Leader><Leader> :b#<CR>
 
 " ,] to toggle the tags sidebar
 nmap <Leader>] :TagbarToggle<CR>
@@ -118,10 +118,6 @@ vnoremap <silent> <Leader>a{ :Tabularize /{<CR>
 vnoremap <silent> <Leader>a\| :Tabularize /\|<CR>
 vnoremap <silent> <Leader>a: :Tabularize /:\zs<CR>
 vnoremap <silent> <Leader>a<space> :Tabularize / \zs<CR>
-
-" ,c to show hidden characters
-set listchars=tab:>-,trail:·,eol:$
-nmap <silent> <leader>c :set nolist!<CR>
 
 " ,f to clear cache and fuzzy search files; ,F in current file's directory
 map <silent> <leader>f :ClearCtrlPCache<cr>\|:CtrlP<cr>
@@ -140,6 +136,10 @@ nmap <leader>gh :GitGutterLineHighlightsToggle<CR>
 
 " ,h to dismiss search result highlighting until next search
 :noremap <silent> <leader>h :noh<CR>
+
+" ,H to show hidden characters
+set listchars=tab:>-,trail:·,eol:$
+nmap <silent> <leader>H :set nolist!<CR>
 
 " ,m to toggle file tree (,M to select the current file in the tree)
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
@@ -300,13 +300,10 @@ let g:SuperTabCrMapping = 0
 highlight RedundantSpaces term=standout ctermbg=red guibg=red
 match RedundantSpaces /\s\+$\| \+\ze\t/ "\ze sets end of match so only spaces highlighted
 
-let g:ragtag_global_maps = 1
-
 " A whole bunch of NERDTree configuration stolen from carlhuda's janus
 let NERDTreeIgnore=['\.rbc$', '\~$']
 
-" Make NERDTree close when you open a file from it. Helps recover screen
-" space!
+" Make NERDTree close when you open a file from it. Helps recover screen space!
 let NERDTreeQuitOnOpen=1
 
 " Disable netrw's autocmd, since we're ALWAYS using NERDTree
@@ -408,7 +405,6 @@ endfunction
 call s:DefineCommand("cd", "ChangeDirectory")
 call s:DefineCommand("touch", "Touch")
 call s:DefineCommand("rm", "Remove")
-"call s:DefineCommand("e", "Edit") " if you don't mind not being able to "e!"
 
 " Jump to last cursor position when opening a file
 " Don't do it when writing a commit log entry

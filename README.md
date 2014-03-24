@@ -281,8 +281,8 @@ Keys             | Function
   `,` `,`        | Toggle between the previously opened buffer
   `ctrl-]`       | Jump to definition (needs exuberant ctags installed)
   `ctrl-n`       | Toggle between absolute and relative numbering
-  `,` `c`        | Show/hide hidden characters
   `,` `h`        | Hide search highlighting
+  `,` `H`        | Show/hide hidden characters
   `,` `rt`       | Run `ctags -R .`
   `,` `s`        | Show/hide spelling errors
   `,` `sw`       | Strip trailing whitespace
