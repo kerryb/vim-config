@@ -485,6 +485,9 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " Ignores files in any VCS or tmp directory
 set wildignore+=tmp/*,*.so,*.swp,*.zip
 
+" Set ctrlp to ignore files in the VCS folders
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+
 "  Set the git gutter colors to be the same as the number column
 hi clear SignColumn
 
