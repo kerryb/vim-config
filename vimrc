@@ -76,6 +76,7 @@ set smarttab
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l\ of\ %L,col=%c%V%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set tabstop=2
 set timeoutlen=500
+set wildignore+=tmp/*,*.so,*.swp,*.zip " Ignores files in any VCS or tmp directory
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set fillchars+=vert:\  "Set the window borders to not have | chars in them
 
@@ -187,7 +188,7 @@ nmap <C-\> :call <SID>SynStack()<CR>
 " F5 to reload doc
 map <silent> <F5> <esc>:e %<CR>
 
-" Rebind half/fulll page scrolls to do 1 line at a time.
+" Rebind half/full page scrolls to do 1 line at a time.
 " Numbers are the Distance, Duraction and speed
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 20, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 20, 2)<CR>
@@ -478,9 +479,6 @@ function! NumberToggle()
 endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
-
-" Ignores files in any VCS or tmp directory
-set wildignore+=tmp/*,*.so,*.swp,*.zip
 
 " Set ctrlp to ignore files in the VCS directories
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
