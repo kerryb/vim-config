@@ -35,7 +35,7 @@ hi VertSplit                guifg=#444444 guibg=#303030 guisp=#303030 gui=NONE  
 
 "  Programming_Basics
 hi Boolean                  guifg=#e6ff00 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=149  ctermbg=NONE cterm=NONE
-hi Character                guifg=#ff9800 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
+hi Character                guifg=#74E62E guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=208  ctermbg=NONE cterm=NONE
 hi Comment                  guifg=#646478 guibg=NONE    guisp=NONE    gui=italic                ctermfg=60   ctermbg=NONE cterm=NONE
 hi Conditional              guifg=#7e8aa2 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=103  ctermbg=NONE cterm=NONE
 hi Constant                 guifg=#ffff00 guibg=NONE    guisp=NONE    gui=NONE                  ctermfg=11   ctermbg=NONE cterm=NONE
@@ -86,8 +86,8 @@ hi rubyInclude              guifg=#ffff00 guibg=NONE guisp=NONE gui=NONE ctermfg
 
 "  NERD_Tree
 hi NERDTreeCWD              guifg=#96ff00 ctermfg=118   gui=none
-hi NERDTreeDir              guifg=#FFC912 ctermfg=74    gui=none
-hi NERDTreeDirSlash         guifg=#FFC912 ctermfg=74    gui=none
+hi NERDTreeDir              guifg=#009cff ctermfg=81    gui=none
+hi NERDTreeDirSlash         guifg=#009cff ctermfg=81    gui=none
 
 "  HTML
 hi htmlTag                  guifg=#00c900 ctermfg=2     gui=none
