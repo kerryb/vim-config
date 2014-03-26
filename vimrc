@@ -65,6 +65,7 @@ set hidden          " Allow buffer switching without saving
 set history=1000    " Remember a decent way back
 set laststatus=2    " Always show status line.
 set mousehide
+set nofoldenable    " Disable all folding of content
 set nowrap          " Line wrapping off
 set number          " line numbers
 set ruler           " Ruler on
@@ -481,7 +482,7 @@ nnoremap <C-n> :call NumberToggle()<cr>
 " Ignores files in any VCS or tmp directory
 set wildignore+=tmp/*,*.so,*.swp,*.zip
 
-" Set ctrlp to ignore files in the VCS folders
+" Set ctrlp to ignore files in the VCS directories
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 "  Set the git gutter colors to be the same as the number column
@@ -494,6 +495,9 @@ let g:gitgutter_sign_column_always = 1
 let g:vroom_write_all = 1
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_map_keys = 0
+
+" Disable Markdown folding
+let g:vim_markdown_folding_disabled=1
 
 " ----------------------------------------------
 "  Source any local config
