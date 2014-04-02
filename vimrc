@@ -76,7 +76,7 @@ set smarttab
 set statusline=%<%f\ %h%m%r%=%-20.(line=%l\ of\ %L,col=%c%V%)\%h%m%r%=%-40(,%n%Y%)\%P%#warningmsg#%{SyntasticStatuslineFlag()}%*
 set tabstop=2
 set timeoutlen=500
-set wildignore+=tmp/*,*.so,*.swp,*.zip " Ignores files in any VCS or tmp directory
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jar,.git/*,.svn/* " Ignores files in any VCS or tmp directory
 set wildmode=list:longest " Shell-like behaviour for command autocompletion
 set fillchars+=vert:\  "Set the window borders to not have | chars in them
 
@@ -481,7 +481,10 @@ endfunc
 nnoremap <C-n> :call NumberToggle()<cr>
 
 " Set ctrlp to ignore files in the VCS directories
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|bzr|tmp|log)$',
+  \ 'file': '\v\.(exe|so|dll|swp|DS_Store|zip|jar)$',
+  \ }
 
 "  Set the git gutter colors to be the same as the number column
 hi clear SignColumn
