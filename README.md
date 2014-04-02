@@ -257,6 +257,21 @@ Refactoring tool for Ruby in vim! ([more](https://github.com/ecomba/vim-ruby-ref
 
 See [relish documentation](http://relishapp.com/despo/vim-ruby-refactoring) for examples.
 
+## vim-textobj-rubyblock
+Allow Ruby-aware text manipulation ([more](https://github.com/nelstrom/vim-textobj-rubyblock))
+
+Keys        | Function
+------------|----------------------------------------------------------------------------------
+  `v``a``r` | Visually select the current Ruby scope, including the boundary lines
+  `v``i``r` | Visually select the inside of the current Ruby scope (exludes the boundary lines)
+
+When visually selecting something, the following can be used:
+
+Keys        | Function
+------------|----------------------------------------------------------------------------------
+  `a``r`    | Extend the selection out one scope level
+  `i``r`    | Contact the selection in one scope level
+
 
 ## vroom
 A plugin for running your Ruby tests, specs, and features. ([more](http://www.vim.org/scripts/script.php?script_id=3995))
