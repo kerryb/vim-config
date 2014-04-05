@@ -18,6 +18,7 @@ Bundle 'bling/vim-airline'
 Bundle 'bogado/file-line'
 Bundle 'bufexplorer.zip'
 Bundle 'colorizer'
+Bundle 'digitaltoad/vim-jade'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
@@ -271,6 +272,9 @@ autocmd FileType make set noexpandtab
 
 " Treat scss files as css
 au BufRead,BufNewFile *.scss set filetype=css
+
+" Treat .jade.html (required by meteor) as Jade
+au BufRead,BufNewFile *.jade.html set filetype=jade
 
 " Extend % to do/end etc
 runtime! plugin/matchit.vim
