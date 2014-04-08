@@ -162,6 +162,16 @@ It's like rails.vim without the rails ([more](http://www.vim.org/scripts/script.
 Use the repeat command (.) with supported plugins ([more](http://www.vim.org/scripts/script.php?script_id=2136))
 
 
+## ruby-xmpfilter
+
+Helper for ruby's xmpfilter ([more](https://github.com/t9md/vim-ruby-xmpfilter))
+
+Annotate ruby code with the result of running it, Ruby Tapas style. Press ,X to
+append a '# =>' to a line, then ,x to execute the file and insert all results.
+
+**Important:** You need to install the `rcodetools` gem for this to work.
+
+
 ## speeddating
 Fix up C-a and C-x when dealing with dates. ([more](https://github.com/tpope/vim-speeddating))
 

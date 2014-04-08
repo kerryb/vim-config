@@ -35,6 +35,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/gundo.vim'
+Bundle 't9md/vim-ruby-xmpfilter'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-haml'
@@ -503,6 +504,15 @@ let g:vroom_write_all = 1
 let g:vroom_cucumber_path = 'cucumber '
 let g:vroom_map_keys = 0
 
+" xmp-filter mappings
+autocmd FileType ruby nmap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+autocmd FileType ruby xmap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+autocmd FileType ruby imap <buffer> <Leader>X <Plug>(xmpfilter-mark)
+
+autocmd FileType ruby nmap <buffer> <Leader>x <Plug>(xmpfilter-run)
+autocmd FileType ruby xmap <buffer> <Leader>x <Plug>(xmpfilter-run)
+autocmd FileType ruby imap <buffer> <Leader>x <Plug>(xmpfilter-run)
+
 " Disable Markdown folding
 let g:vim_markdown_folding_disabled=1
 
@@ -511,5 +521,5 @@ let g:vim_markdown_folding_disabled=1
 "  Keep this last to make sure local config overrides global!
 " ----------------------------------------------
 if filereadable(expand("~/.vimrc.local"))
-  source ~/.vimrc.local
+source ~/.vimrc.local
 endif
