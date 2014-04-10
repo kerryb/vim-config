@@ -516,6 +516,9 @@ autocmd FileType ruby imap <buffer> <Leader>x <Plug>(xmpfilter-run)
 " Disable Markdown folding
 let g:vim_markdown_folding_disabled=1
 
+" Don't report Angular ng-* attributes as errors in HTML
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
 " ----------------------------------------------
 "  Source any local config
 "  Keep this last to make sure local config overrides global!
