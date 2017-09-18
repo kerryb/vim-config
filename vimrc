@@ -14,7 +14,7 @@ syntax on
 
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
-noremap <leader>f :CtrlPMixed<cr>
+noremap <leader>f :CtrlP<cr>
 
 " Test runner
 Plug 'janko-m/vim-test'
@@ -29,6 +29,9 @@ Plug 'tpope/vim-endwise'
 
 " Square-bracket mappings for various handy things
 Plug 'tpope/vim-unimpaired'
+
+" Comment/uncomment code
+Plug 'tpope/vim-commentary'
 
 " End of plugins
 call plug#end()
