@@ -9,6 +9,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'chriskempson/base16-vim'
 
 " Language support
+" Polyglot seems to mess up auto-indent for elixir
+Plug 'elixir-lang/vim-elixir'
+let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 syntax on
 
@@ -36,6 +39,7 @@ Plug 'tpope/vim-commentary'
 " End of plugins
 call plug#end()
 
+
 " Appearance
 :set guifont=Source\ Code\ Pro\ Light:h10
 colorscheme base16-default-dark
@@ -55,4 +59,3 @@ set cursorline
 map <Space> <Leader>
 nnoremap <Leader>x i
 set showcmd
-
