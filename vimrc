@@ -18,7 +18,7 @@ syntax on
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 noremap <leader>f :CtrlP<cr>
-
+noremap <leader>b :CtrlPBuffer<cr>
 
 " Make netrw act vaguely like nerdtree
 Plug 'tpope/vim-vinegar'
