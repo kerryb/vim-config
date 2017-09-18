@@ -69,3 +69,10 @@ set cursorline
 map <Space> <Leader>
 nnoremap <Leader>x i
 set showcmd
+
+" Allow unsaved buffers
+set hidden
+
+" open files at last position
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+  \| exe "normal! g'\"" | endif
