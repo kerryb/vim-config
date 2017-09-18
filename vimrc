@@ -19,6 +19,17 @@ syntax on
 Plug 'ctrlpvim/ctrlp.vim'
 noremap <leader>f :CtrlP<cr>
 
+
+" Make netrw act vaguely like nerdtree
+Plug 'tpope/vim-vinegar'
+" trigger with _ rather than break standard behaviour of -
+autocmd VimEnter * nunmap -
+nmap _ <Plug>VinegarUp
+
+" Ag for searching
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
+
 " Test runner
 Plug 'janko-m/vim-test'
 nmap <silent> <leader>t :TestNearest<CR>
