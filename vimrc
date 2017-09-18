@@ -50,7 +50,6 @@ Plug 'tpope/vim-commentary'
 " End of plugins
 call plug#end()
 
-
 " Appearance
 :set guifont=Source\ Code\ Pro\ Light:h10
 colorscheme base16-default-dark
