@@ -37,6 +37,17 @@ call plug#end()
 :set guifont=Source\ Code\ Pro\ Light:h10
 colorscheme base16-default-dark
 
+" Searching and history
+set ignorecase smartcase
+set history=10000
+set showmatch
+set incsearch
+set hlsearch
+
+
+" highlight current line
+set cursorline
+
 " Use space as leader
 map <Space> <Leader>
 nnoremap <Leader>x i
