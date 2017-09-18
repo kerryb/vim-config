@@ -12,6 +12,10 @@ Plug 'chriskempson/base16-vim'
 Plug 'sheerun/vim-polyglot'
 syntax on
 
+" Fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
+noremap <leader>f :CtrlPMixed<cr>
+
 " Test runner
 Plug 'janko-m/vim-test'
 nmap <silent> <leader>t :TestNearest<CR>
