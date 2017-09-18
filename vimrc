@@ -32,11 +32,11 @@ let g:ackprg = 'ag --vimgrep'
 
 " Test runner
 Plug 'janko-m/vim-test'
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
+nmap <silent> <leader>t :wa<cr>:TestNearest<cr>
+nmap <silent> <leader>T :wa<cr>:TestFile<cr>
+nmap <silent> <leader>a :wa<cr>:TestSuite<cr>
+nmap <silent> <leader>l :wa<cr>:TestLast<cr>
+nmap <silent> <leader>g :wa<cr>:TestVisit<cr>
 
 " Auto-insert closing end etc
 Plug 'tpope/vim-endwise'
