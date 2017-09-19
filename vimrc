@@ -19,6 +19,8 @@ syntax on
 Plug 'ctrlpvim/ctrlp.vim'
 noremap <leader>f :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
+" ~ TODO: figure out how to ignore directories properly
+" set wildignore+=*/tmp/*,*/doc/*,*/node_modules/*,*/deps/*,*.so,*.swp,*.zip
 
 " Make netrw act vaguely like nerdtree
 Plug 'tpope/vim-vinegar'
