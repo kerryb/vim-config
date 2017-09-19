@@ -54,6 +54,7 @@ call plug#end()
 
 " Appearance
 :set guifont=Source\ Code\ Pro\ Light:h10
+set t_Co=256
 colorscheme base16-default-dark
 
 " 2 spaces; no tabs (as is right and proper)
