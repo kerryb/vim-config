@@ -22,11 +22,11 @@ noremap <leader>b :CtrlPBuffer<cr>
 " ~ TODO: figure out how to ignore directories properly
 " set wildignore+=*/tmp/*,*/doc/*,*/node_modules/*,*/deps/*,*.so,*.swp,*.zip
 
-" Make netrw act vaguely like nerdtree
+" Make netrw act vaguely like nerdtree, but override trigger
 Plug 'tpope/vim-vinegar'
 " trigger with _ rather than break standard behaviour of -
 autocmd VimEnter * nunmap -
-nmap _ <Plug>VinegarUp
+nmap <leader>- <Plug>VinegarUp
 
 " Ag for searching
 Plug 'mileszs/ack.vim'
