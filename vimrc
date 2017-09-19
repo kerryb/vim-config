@@ -56,6 +56,9 @@ call plug#end()
 :set guifont=Source\ Code\ Pro\ Light:h10
 colorscheme base16-default-dark
 
+" 2 spaces; no tabs (as is right and proper)
+:set ai sw=2 sts=2 et
+
 " Searching and history
 set ignorecase smartcase
 set history=10000
