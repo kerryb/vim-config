@@ -20,6 +20,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 noremap <leader>f :CtrlP<cr>
 noremap <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
+let g:ctrlp_use_caching = 0
 
 " Make netrw act vaguely like nerdtree, but override trigger
 Plug 'tpope/vim-vinegar'
