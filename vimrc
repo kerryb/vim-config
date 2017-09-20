@@ -1,3 +1,10 @@
+" Things I'm still missing ...
+"
+" * Jump to previous file (was ,,)
+" * Kump to alternate file (was :A)
+" * Tab completion (is ^p/^n enough?)
+" * Change surrounding
+
 " Basic sanity
 set nocompatible
 filetype off
