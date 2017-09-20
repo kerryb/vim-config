@@ -67,6 +67,8 @@ set showmatch
 set incsearch
 set hlsearch
 
+" Keep swapfiles out of working dir (but don't let them clobber each other)
+:set directory=~/.vim/swapfiles//
 
 " highlight current line
 set cursorline
