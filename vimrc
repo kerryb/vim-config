@@ -54,6 +54,9 @@ Plug 'tpope/vim-endwise'
 " Square-bracket mappings for various handy things
 Plug 'tpope/vim-unimpaired'
 
+" Change surrounding parens etc
+Plug 'tpope/vim-surround'
+
 " Comment/uncomment code
 Plug 'tpope/vim-commentary'
 
