@@ -74,6 +74,8 @@ set history=10000
 set showmatch
 set incsearch
 set hlsearch
+" Hide search results
+map <Leader>h :noh<CR>
 
 " Keep swapfiles out of working dir (but don't let them clobber each other)
 :set directory=~/.vim/swapfiles//
