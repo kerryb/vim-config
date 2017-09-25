@@ -4,6 +4,7 @@
 " * Kump to alternate file (was :A)
 " * Tab completion (is ^p/^n enough?)
 " * Change surrounding
+" * Clever substitution (was :S)
 
 " Basic sanity
 set nocompatible
