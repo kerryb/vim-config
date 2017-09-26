@@ -68,6 +68,9 @@ call plug#end()
 set t_Co=256
 colorscheme base16-default-dark
 
+" Line numbers
+set number
+
 " 2 spaces; no tabs (as is right and proper)
 :set ai sw=2 sts=2 et
 
