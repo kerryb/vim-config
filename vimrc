@@ -40,6 +40,20 @@ nmap <leader>- <Plug>VinegarUp
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
 
+" Multipurpose tab key (from Gary Bernhardt)
+" Indent if we're at the beginning of a line. Else, do completion.
+
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
 " Test runner
 Plug 'janko-m/vim-test'
 nmap <silent> <leader>t :wa<cr>:TestFile<cr>
