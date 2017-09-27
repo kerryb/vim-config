@@ -1,6 +1,5 @@
 " Things I'm still missing ...
 "
-" * Jump to previous file (was ,,)
 " * Clever substitution (was :S)
 
 " Basic sanity
@@ -123,3 +122,6 @@ function! AltCommand(path, vim_command)
   endif
 endfunction
 nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
+
+" Jump to previous buffer with <leader>,
+nnoremap <leader>, :b#<cr>
