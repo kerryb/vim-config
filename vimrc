@@ -58,6 +58,10 @@ nmap <silent> <leader>a :wa<cr>:TestSuite<cr>
 nmap <silent> <leader>l :wa<cr>:TestLast<cr>
 nmap <silent> <leader>g :wa<cr>:TestVisit<cr>
 
+" Jump between test and implementation with :A
+Plug 'tpope/vim-projectionist'
+Plug 'andyl/vim-projectionist-elixir'
+
 " Auto-insert closing end etc
 Plug 'tpope/vim-endwise'
 
@@ -108,7 +112,7 @@ set showcmd
 set hidden
 
 " open files at last position
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit"
   \| exe "normal! g'\"" | endif
 
 " Use alt to jump to alternate file on <leader>.
