@@ -74,6 +74,9 @@ Plug 'tpope/vim-surround'
 " Comment/uncomment code
 Plug 'tpope/vim-commentary'
 
+" Automatically generate ctags files
+Plug 'ludovicchabant/vim-gutentags'
+
 " End of plugins
 call plug#end()
 
