@@ -74,6 +74,9 @@ Plug 'tpope/vim-surround'
 " Comment/uncomment code
 Plug 'tpope/vim-commentary'
 
+" Make . work properly with plugin maps
+Plug 'tpope/vim-repeat'
+
 " Automatically generate ctags files
 Plug 'ludovicchabant/vim-gutentags'
 
