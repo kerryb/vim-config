@@ -26,11 +26,12 @@ noremap <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
 let g:ctrlp_use_caching = 0
 
-" Make netrw act vaguely like nerdtree, but override trigger
-Plug 'tpope/vim-vinegar'
-" trigger with _ rather than break standard behaviour of -
-autocmd VimEnter * nunmap -
-nmap <leader>- <Plug>VinegarUp
+" File explorer (tried netrw and vim-vinegar, but didn't quite cut it)
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+nmap <silent> <Leader>m :NERDTreeToggle<CR>
+map <silent> <Leader>M :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen=1
 
 " Ag for searching
 Plug 'mileszs/ack.vim'
