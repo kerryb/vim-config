@@ -9,8 +9,8 @@ filetype off
 " Use vim-plug to manage plugins
 call plug#begin('~/.vim/plugged')
 
-" Colours
-Plug 'chriskempson/base16-vim'
+" Colour scheme (required by grb256)
+Plug 'twerth/ir_black'
 
 " Language support
 " Polyglot seems to mess up auto-indent for elixir
@@ -30,7 +30,9 @@ let g:ctrlp_use_caching = 0
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 nmap <silent> <Leader>m :NERDTreeToggle<CR>
+nmap <silent> <Leader>- :NERDTreeToggle<CR>
 map <silent> <Leader>M :NERDTreeFind<CR>
+map <silent> <Leader>= :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
 " Ag for searching
@@ -85,9 +87,9 @@ Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 " Appearance
-:set guifont=Source\ Code\ Pro\ Light:h10
+set guifont=Source\ Code\ Pro\ Light:h10
 set t_Co=256
-colorscheme base16-default-dark
+colorscheme grb256
 
 " Line numbers
 set number
