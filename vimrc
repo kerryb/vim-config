@@ -95,7 +95,7 @@ colorscheme grb256
 set number
 
 " 2 spaces; no tabs (as is right and proper)
-:set ai sw=2 sts=2 et
+set ai sw=2 sts=2 et
 
 " Searching and history
 set ignorecase smartcase
@@ -107,7 +107,7 @@ set hlsearch
 map <Leader>h :noh<CR>
 
 " Keep swapfiles out of working dir (but don't let them clobber each other)
-:set directory=~/.vim/swapfiles//
+set directory=~/.vim/swapfiles//
 
 " highlight current line
 set cursorline
