@@ -74,6 +74,9 @@ Plug 'tpope/vim-unimpaired'
 " Change surrounding parens etc
 Plug 'tpope/vim-surround'
 
+" Flexible searching
+Plug 'tpope/vim-abolish'
+
 " Comment/uncomment code
 Plug 'tpope/vim-commentary'
 
