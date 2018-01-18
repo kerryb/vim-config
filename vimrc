@@ -19,9 +19,10 @@ let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 syntax on
 
-" Elixir format on save
+" Elixir formatter (don't enable on-save formatting)
 Plug 'mhinz/vim-mix-format'
-let g:mix_format_on_save = 1
+let g:mix_format_on_save = 0
+nmap <silent> <Leader>ef :MixFormat<CR>
 
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
