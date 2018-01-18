@@ -22,7 +22,7 @@ syntax on
 " Elixir formatter (don't enable on-save formatting)
 Plug 'mhinz/vim-mix-format'
 let g:mix_format_on_save = 0
-nmap <silent> <Leader>ef :MixFormat<CR>
+nmap <silent> <Leader>ef :w<CR>:MixFormat<CR>
 
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
