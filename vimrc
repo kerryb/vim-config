@@ -115,6 +115,8 @@ set directory=~/.vim/swapfiles//
 " highlight current line
 set cursorline
 
+" Keep a few lines visible above or below cursor
+set scrolloff=5
 " Use space as leader
 map <Space> <Leader>
 nnoremap <Leader>x i
