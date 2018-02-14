@@ -148,3 +148,6 @@ nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
 
 " Jump to previous buffer with <leader>,
 nnoremap <leader>, :b#<cr>
+
+" Regenerate tags with <leader>rt
+nnoremap <leader>rt :!ctags -R<cr>
