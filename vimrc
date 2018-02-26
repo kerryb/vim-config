@@ -151,3 +151,6 @@ nnoremap <leader>, :b#<cr>
 
 " Regenerate tags with <leader>rt
 nnoremap <leader>rt :!ctags -R<cr>
+
+" Strip trailing whitespace with <leader>sw
+nnoremap <leader>sw :%s/[ \t]*$//<cr>:noh<cr>
