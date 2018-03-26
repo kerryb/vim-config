@@ -18,6 +18,7 @@ Plug 'elixir-lang/vim-elixir'
 let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
+Plug 'slashmili/alchemist.vim'
 syntax on
 
 " Elixir formatter (don't enable on-save formatting)
