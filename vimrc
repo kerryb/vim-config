@@ -24,6 +24,7 @@ syntax on
 " Elixir formatter (don't enable on-save formatting)
 Plug 'mhinz/vim-mix-format'
 let g:mix_format_on_save = 0
+let g:mix_format_silent_errors = 1
 nmap <silent> <Leader>ef :w<CR>:MixFormat<CR>
 
 " Fuzzy file finder
