@@ -157,3 +157,12 @@ nnoremap <leader>rt :!ctags -R<cr>
 
 " Strip trailing whitespace with <leader>sw
 nnoremap <leader>sw :%s/[ \t]*$//<cr>:noh<cr>
+
+" TODO: make these two filetype-dependent, and use the same key
+" Fire up Pry with current file loaded with <leader>r
+nnoremap <leader>r :w<cr>:!pry -r ./%<cr>
+" Fire up Iex with current file loaded with <leader>e
+nnoremap <leader>e :w<cr>:!iex -r %<cr>
+
+" Copy the current file path with <leader>c
+nnoremap <leader>c :let @+ = expand("%")<cr>
