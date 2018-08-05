@@ -94,13 +94,16 @@ Plug 'tpope/vim-repeat'
 " Automatically generate ctags files
 Plug 'ludovicchabant/vim-gutentags'
 
+" Colour scheme
+Plug 'NLKNguyen/papercolor-theme'
+
 " End of plugins
 call plug#end()
 
 " Appearance
 set guifont=Source\ Code\ Pro\ Light:h10
 set t_Co=256
-colorscheme grb256
+colorscheme PaperColor
 
 " Line numbers
 set number
