@@ -166,6 +166,8 @@ nnoremap <leader>sw :%s/[ \t]*$//<cr>:noh<cr>
 nnoremap <leader>r :w<cr>:!pry -r ./%<cr>
 " Fire up Iex with current file loaded with <leader>e
 nnoremap <leader>e :w<cr>:!iex -r %<cr>
+" Run fast isolated test (don't load applications)
+nnoremap <leader>n :wa<cr>:!mix test --no-start --no-color %<cr>
 
 " Copy the current file path with <leader>c
 nnoremap <leader>c :let @+ = expand("%")<cr>
