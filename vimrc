@@ -19,13 +19,19 @@ let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'slashmili/alchemist.vim'
+Plug 'w0rp/ale'
+let g:ale_elixir_elixir_ls_release = '/opt/elixir-ls/rel'
+let g:ale_completion_enabled = 1
+autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
+let g:ale_linters = {}
+let g:ale_fixers = {}
+let g:ale_linters.scss = ['stylelint']
+let g:ale_linters.css = ['stylelint']
+let g:ale_fixers.elm = ['format']
+let g:ale_fixers.ruby = ['rubocop']
+let g:ale_fixers.elixir = ['mix_format']
+let g:ale_fix_on_save = 1
 syntax on
-
-" Elixir formatter (don't enable on-save formatting)
-Plug 'mhinz/vim-mix-format'
-let g:mix_format_on_save = 0
-let g:mix_format_silent_errors = 1
-nmap <silent> <Leader>ef :w<CR>:MixFormat<CR>
 
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
