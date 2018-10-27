@@ -49,6 +49,10 @@ map <silent> <Leader>M :NERDTreeFind<CR>
 map <silent> <Leader>= :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
+" Git status annotations
+Plug 'airblade/vim-gitgutter'
+set updatetime=100
+
 " Ag for searching
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
