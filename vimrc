@@ -21,7 +21,7 @@ Plug 'tpope/vim-rails'
 Plug 'slashmili/alchemist.vim'
 Plug 'w0rp/ale'
 let g:ale_elixir_elixir_ls_release = '/opt/elixir-ls/rel'
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 let g:ale_linters = {}
 let g:ale_fixers = {}
