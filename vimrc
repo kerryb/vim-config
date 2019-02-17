@@ -19,6 +19,7 @@ let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'slashmili/alchemist.vim'
+Plug 'sirtaj/vim-openscad'
 Plug 'w0rp/ale'
 let g:ale_elixir_elixir_ls_release = '/opt/elixir-ls/rel'
 let g:ale_completion_enabled = 0
