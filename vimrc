@@ -13,15 +13,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'twerth/ir_black'
 
 " Language support
-" Polyglot seems to mess up auto-indent for elixir
-Plug 'elixir-lang/vim-elixir'
-let g:polyglot_disabled = ['elixir']
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'slashmili/alchemist.vim'
 Plug 'sirtaj/vim-openscad'
-Plug 'w0rp/ale'
-let g:ale_elixir_elixir_ls_release = '/opt/elixir-ls/rel'
+let g:ale_elixir_elixir_ls_release = '/usr/local/elixir-ls'
 let g:ale_completion_enabled = 0
 autocmd FileType elixir nnoremap <c-]> :ALEGoToDefinition<cr>
 let g:ale_linters = {}
@@ -32,6 +28,11 @@ let g:ale_fixers.elm = ['format']
 let g:ale_fixers.ruby = ['rubocop']
 let g:ale_fixers.elixir = ['mix_format']
 let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 'never'
+let g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+" Need to load plugin *after* setting options
+Plug 'w0rp/ale'
 syntax on
 
 " Fuzzy file finder
@@ -104,6 +105,7 @@ Plug 'tpope/vim-repeat'
 
 " Automatically generate ctags files
 Plug 'ludovicchabant/vim-gutentags'
+set tags=tags
 
 " Colour scheme
 Plug 'NLKNguyen/papercolor-theme'
