@@ -45,6 +45,7 @@ set updatetime=100
 " Ag for searching
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
+cnoreabbrev Ag Ack!
 
 " Multipurpose tab key (from Gary Bernhardt)
 " Indent if we're at the beginning of a line. Else, do completion.
