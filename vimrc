@@ -160,7 +160,14 @@ nnoremap <leader>, :b#<cr>
 nnoremap <leader>rt :!ctags -R<cr>
 
 " Strip trailing whitespace with <leader>sw
-nnoremap <leader>sw :%s/[ \t]*$//<cr>:noh<cr>
+:nnoremap <Leader>sw :let _save_pos=getpos(".") <Bar>
+    \ :let _s=@/ <Bar>
+    \ :%s/\s\+$//e <Bar>
+    \ :let @/=_s <Bar>
+    \ :nohl <Bar>
+    \ :unlet _s<Bar>
+    \ :call setpos('.', _save_pos)<Bar>
+    \ :unlet _save_pos<CR><CR>
 
 " TODO: make these two filetype-dependent, and use the same key
 " Fire up Pry with current file loaded with <leader>r
