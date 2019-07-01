@@ -76,6 +76,10 @@ Plug 'andyl/vim-projectionist-elixir'
 " Auto-insert closing end etc
 Plug 'tpope/vim-endwise'
 
+" HTML/XML mappings
+Plug 'tpope/vim-ragtag'
+let g:ragtag_global_maps = 1
+
 " Square-bracket mappings for various handy things
 Plug 'tpope/vim-unimpaired'
 
