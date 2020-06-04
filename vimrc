@@ -11,7 +11,6 @@ Plug 'tpope/vim-rails'
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 let g:mix_format_on_save = 1
-Plug 'slashmili/alchemist.vim'
 Plug 'sirtaj/vim-openscad'
 syntax on
 
