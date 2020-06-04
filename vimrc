@@ -9,9 +9,6 @@ filetype off
 " Use vim-plug to manage plugins
 call plug#begin('~/.vim/plugged')
 
-" Colour scheme (required by grb256)
-Plug 'twerth/ir_black'
-
 " Language support
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
