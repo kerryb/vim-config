@@ -166,6 +166,9 @@ function! AltCommand(path, vim_command)
 endfunction
 nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
 
+" Make Y consistent with C and D
+nnoremap Y y$
+
 " Jump to previous buffer with <leader>,
 nnoremap <leader>, :b#<cr>
 
