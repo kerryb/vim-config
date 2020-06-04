@@ -36,20 +36,13 @@ Plug 'airblade/vim-gitgutter'
 set updatetime=100
 
 " Ag for searching
-if executable('ag') 
-  set grepprg=ag\ --nogroup\ --nocolor\ --column
-  set grepformat=%f:%l:%c%m
-endif
-" Plug 'mileszs/ack.vim'
-" let g:ackprg = 'ag --vimgrep'
-" cnoreabbrev Ag Ack!
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Extended search & replace
 Plug 'tpope/tpope-vim-abolish'
 
 " Multipurpose tab key (from Gary Bernhardt)
 " Indent if we're at the beginning of a line. Else, do completion.
-
 function! InsertTabWrapper()
   let col = col('.') - 1
   if !col || getline('.')[col - 1] !~ '\k'
