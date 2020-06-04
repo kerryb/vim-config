@@ -1,7 +1,3 @@
-" Things I'm still missing ...
-"
-" * Clever substitution (was :S)
-
 " Basic sanity
 set nocompatible
 filetype off
@@ -43,6 +39,9 @@ set updatetime=100
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --vimgrep'
 cnoreabbrev Ag Ack!
+
+" Extended search & replace
+Plug 'tpope/tpope-vim-abolish'
 
 " Multipurpose tab key (from Gary Bernhardt)
 " Indent if we're at the beginning of a line. Else, do completion.
