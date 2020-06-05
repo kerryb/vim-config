@@ -84,7 +84,8 @@ Plug 'airblade/vim-gitgutter'
 set updatetime=100
 
 " Ag for searching
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --vimgrep'
 
 " Extended search & replace
 Plug 'tpope/tpope-vim-abolish'
