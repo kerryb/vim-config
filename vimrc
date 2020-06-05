@@ -231,3 +231,5 @@ nnoremap <leader>n :wa<cr>:!mix test --no-start --no-color %<cr>
 
 " Copy the current file path with <leader>c
 nnoremap <leader>c :let @+ = expand("%")<cr>
+" <leader>C for <filename>:<current line>
+nnoremap <leader>C :let @+ = expand("%") . ":" . line(".")<cr>
