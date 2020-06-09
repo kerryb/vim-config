@@ -78,10 +78,6 @@ let NERDTreeQuitOnOpen=1
 Plug 'airblade/vim-gitgutter'
 set updatetime=100
 
-" Ag for searching
-Plug 'mileszs/ack.vim'
-let g:ackprg = 'ag --vimgrep'
-
 " Extended search & replace
 Plug 'tpope/tpope-vim-abolish'
 
