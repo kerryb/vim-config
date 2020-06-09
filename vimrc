@@ -58,12 +58,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " End of CoC config
 
-" Fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
-noremap <leader>f :CtrlP<cr>
-noremap <leader>b :CtrlPBuffer<cr>
-let g:ctrlp_user_command = 'ag %s --files-with-matches -g ""'
-let g:ctrlp_use_caching = 0
+" Fuzzy file finder (requires `brew install fzf`)
+set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+noremap <leader>f :Files<cr>
+noremap <leader>b :Buffers<cr>
 
 " File explorer (tried netrw and vim-vinegar, but didn't quite cut it)
 Plug 'scrooloose/nerdtree'
