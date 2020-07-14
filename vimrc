@@ -9,8 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'elixir-editors/vim-elixir'
-Plug 'mhinz/vim-mix-format'
-let g:mix_format_on_save = 1
 Plug 'sirtaj/vim-openscad'
 syntax on
 
@@ -31,6 +29,8 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+autocmd BufWritePost *.ex,*.exs silent :call CocAction('format')
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
