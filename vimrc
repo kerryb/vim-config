@@ -50,6 +50,8 @@ function! s:show_documentation()
   endif
 endfunction
 
+nnoremap <silent> <leader>o :<C-u>CocList outline<CR>
+
 nmap <leader>rn <Plug>(coc-rename)
 
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
