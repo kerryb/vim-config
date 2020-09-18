@@ -150,6 +150,10 @@ set guifont=Source\ Code\ Pro\ Light:h10
 set t_Co=256
 colorscheme PaperColor
 
+" Move the fullscreen toggle away from the escape key
+anoremenu 1.1 TouchBar.-flexspace- <Nop>
+tlnoremenu 1.1 TouchBar.-flexspace- <Nop>
+
 " Line numbers
 set number
 
