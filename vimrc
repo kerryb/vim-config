@@ -189,18 +189,6 @@ set hidden
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit"
   \| exe "normal! g'\"" | endif
 
-" Use alt to jump to alternate file on <leader>.
-" Needs alt installed: https://github.com/uptech/alt
-function! AltCommand(path, vim_command)
-  let l:alternate = system("alt " . a:path)
-  if empty(l:alternate)
-    echo "No alternate file for " . a:path . " exists!"
-  else
-    exec a:vim_command . " " . l:alternate
-  endif
-endfunction
-nnoremap <leader>. :w<cr>:call AltCommand(expand('%'), ':e')<cr>
-
 " Make Y consistent with C and D
 nnoremap Y y$
 
