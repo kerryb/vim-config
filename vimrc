@@ -60,11 +60,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " End of CoC config
 
-" Fuzzy file finder (requires `brew install fzf`)
+" Fuzzy file finder
 set rtp+=/usr/local/opt/fzf
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let $FZF_DEFAULT_OPTS = '--bind ctrl-a:select-all,ctrl-d:deselect-all'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 noremap <leader>f :Files<cr>
 noremap <leader>b :Buffers<cr>
