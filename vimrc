@@ -85,6 +85,9 @@ set updatetime=100
 " Extended search & replace
 Plug 'tpope/tpope-vim-abolish'
 
+" open files at last position
+Plug 'farmergreg/vim-lastplace'
+
 " Test runner
 Plug 'janko-m/vim-test'
 nmap <silent> <leader>t :wa<cr>:TestFile<cr>
@@ -186,10 +189,6 @@ set showcmd
 
 " Allow unsaved buffers
 set hidden
-
-" open files at last position
-au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && &filetype != "gitcommit"
-  \| exe "normal! g'\"" | endif
 
 " Make Y consistent with C and D
 nnoremap Y y$
