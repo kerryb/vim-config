@@ -10,7 +10,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
 Plug 'elixir-editors/vim-elixir'
 Plug 'sirtaj/vim-openscad'
+Plug 'neomake/neomake'
 syntax on
+let g:neomake_elixir_enabled_makers = ['credo']
+autocmd! BufWritePost *.ex,*.exs Neomake
 
 " Language server support
 " Need to run :CocInstall coc-elixir (etc)
