@@ -93,6 +93,7 @@ Plug 'farmergreg/vim-lastplace'
 
 " Test runner
 Plug 'janko-m/vim-test'
+Plug 'tpope/vim-dispatch'
 nmap <silent> <leader>t :wa<cr>:TestFile<cr>
 nmap <silent> <leader>T :wa<cr>:TestNearest<cr>
 nmap <silent> <leader>a :wa<cr>:TestSuite<cr>
