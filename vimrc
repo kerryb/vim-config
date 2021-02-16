@@ -33,7 +33,7 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-autocmd BufWritePost *.ex,*.exs silent :call CocAction('format')
+autocmd BufWritePre *.ex,*.exs :call CocAction('format')
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
