@@ -150,6 +150,15 @@ let g:gutentags_ctags_exclude = [
 
 " Colour scheme
 Plug 'NLKNguyen/papercolor-theme'
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default.dark': {
+  \       'override' : {
+  \         'color01' : ['#d70000', '160'],
+  \       }
+  \     }
+  \   }
+  \ }
 
 " End of plugins
 call plug#end()
