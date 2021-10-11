@@ -148,7 +148,7 @@ let g:gutentags_ctags_exclude = [
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx'
       \ ]
 
-" Colour scheme
+" Colour schemes
 Plug 'NLKNguyen/papercolor-theme'
 let g:PaperColor_Theme_Options = {
   \   'theme': {
@@ -160,13 +160,16 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
+Plug 'morhetz/gruvbox'
+
 " End of plugins
 call plug#end()
 
 " Appearance
 set guifont=Source\ Code\ Pro\ Light:h10
 set t_Co=256
-colorscheme PaperColor
+" colorscheme PaperColor
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Move the fullscreen toggle away from the escape key
 anoremenu 1.1 TouchBar.-flexspace- <Nop>
