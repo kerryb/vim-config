@@ -81,6 +81,10 @@ map <silent> <Leader>M :NERDTreeFind<CR>
 map <silent> <Leader>= :NERDTreeFind<CR>
 let NERDTreeQuitOnOpen=1
 
+" Navigate undo tree
+Plug 'sjl/gundo.vim'
+nnoremap <leader>u :GundoToggle<CR>
+
 " Git status annotations
 Plug 'airblade/vim-gitgutter'
 set updatetime=100
