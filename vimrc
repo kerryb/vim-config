@@ -178,8 +178,8 @@ set t_Co=256
 " colorscheme PaperColor
 " colorscheme eldar
 
-autocmd vimenter * ++nested colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
+autocmd vimenter * ++nested colorscheme gruvbox
 
 " Move the fullscreen toggle away from the escape key
 anoremenu 1.1 TouchBar.-flexspace- <Nop>
