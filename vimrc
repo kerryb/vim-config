@@ -165,8 +165,7 @@ let g:PaperColor_Theme_Options = {
   \   }
   \ }
 
-Plug 'morhetz/gruvbox'
-Plug 'agude/vim-eldar'
+Plug 'lifepillar/vim-gruvbox8'
 
 " End of plugins
 call plug#end()
@@ -175,11 +174,7 @@ call plug#end()
 set guifont=Source\ Code\ Pro\ Light:h10
 set t_Co=256
 
-" colorscheme PaperColor
-" colorscheme eldar
-
-let g:gruvbox_contrast_dark = 'hard'
-autocmd vimenter * ++nested colorscheme gruvbox
+colorscheme gruvbox8
 
 " Move the fullscreen toggle away from the escape key
 anoremenu 1.1 TouchBar.-flexspace- <Nop>
