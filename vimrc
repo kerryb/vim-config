@@ -8,6 +8,7 @@ call plug#begin('~/.vim/plugged')
 " Language support
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
 Plug 'elixir-editors/vim-elixir'
 Plug 'sirtaj/vim-openscad'
 Plug 'neomake/neomake'
