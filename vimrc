@@ -108,7 +108,7 @@ nmap <silent> <leader>T :wa<cr>:TestNearest<cr>
 nmap <silent> <leader>a :wa<cr>:TestSuite<cr>
 nmap <silent> <leader>l :wa<cr>:TestLast<cr>
 nmap <silent> <leader>g :wa<cr>:TestVisit<cr>
-let test#strategy = "vimterminal"
+let test#strategy = 'dispatch'
 
 " Jump between test and implementation with :A
 Plug 'tpope/vim-projectionist'
