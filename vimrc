@@ -239,9 +239,11 @@ nnoremap <leader>rt :!ctags -R<cr>
 
 " TODO: make these two filetype-dependent, and use the same key
 " Fire up Pry with current file loaded with <leader>r
-nnoremap <leader>r :w<cr>:!pry -r ./%<cr>
+nnoremap <leader>r :wa<cr>:!ruby -r ./%<cr>
 " Fire up Iex with current file loaded with <leader>e
-nnoremap <leader>e :w<cr>:!iex -r %<cr>
+nnoremap <leader>e :wa<cr>:!iex -r %<cr>
+" Run current file as a script with mix
+nnoremap <leader>E :wa<cr>:!mix run %<cr>
 " Run fast isolated test (don't load applications)
 nnoremap <leader>n :wa<cr>:!mix test --no-start --no-color %<cr>
 
