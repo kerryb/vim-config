@@ -138,6 +138,9 @@ Plug 'tpope/vim-commentary'
 " Make . work properly with plugin maps
 Plug 'tpope/vim-repeat'
 
+" Allow use of <filename>:<lineno> to open file on a specific line
+Plug 'bogado/file-line'
+
 " Automatically generate ctags files
 " Note: Elixir needs ~/.ctags from https://github.com/mmorearty/elixir-ctags
 Plug 'ludovicchabant/vim-gutentags'
