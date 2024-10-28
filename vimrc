@@ -15,6 +15,7 @@ Plug 'neomake/neomake'
 syntax on
 let g:neomake_elixir_enabled_makers = ['credo']
 autocmd! BufWritePost *.ex,*.exs Neomake
+nmap <silent> <Leader>m :make<CR>
 
 " Language server support
 " Need to run :CocInstall coc-elixir (etc)
@@ -79,7 +80,6 @@ noremap <leader>b :Buffers<cr>
 " File explorer (tried netrw and vim-vinegar, but didn't quite cut it)
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-nmap <silent> <Leader>m :NERDTreeToggle<CR>
 nmap <silent> <Leader>- :NERDTreeToggle<CR>
 map <silent> <Leader>M :NERDTreeFind<CR>
 map <silent> <Leader>= :NERDTreeFind<CR>
