@@ -15,7 +15,7 @@ Plug 'neomake/neomake'
 syntax on
 let g:neomake_elixir_enabled_makers = ['credo']
 autocmd! BufWritePost *.ex,*.exs Neomake
-nmap <silent> <Leader>m :make<CR>
+nmap <silent> <Leader>m :wa<CR>:make<CR>
 
 " Language server support
 " Need to run :CocInstall coc-elixir (etc)
