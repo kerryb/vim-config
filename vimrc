@@ -177,6 +177,9 @@ let g:PaperColor_Theme_Options = {
 
 Plug 'lifepillar/vim-gruvbox8'
 
+" Colourise colour codes and names
+Plug 'chrisbra/Colorizer'
+
 " End of plugins
 call plug#end()
 
