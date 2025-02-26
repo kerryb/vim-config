@@ -283,3 +283,8 @@ nnoremap <leader>n :wa<cr>:!mix test --no-start --no-color %<cr>
 nnoremap <leader>c :let @+ = expand("%")<cr>
 " <leader>C for <filename>:<current line>
 nnoremap <leader>C :let @+ = expand("%") . ":" . line(".")<cr>
+
+" remap gf and gF in terminal to open the file in the previous window, not the
+" one with the terminal in
+" nnoremap gf &buftype==#'terminal' ? "<C-w>v<C-w>Hgf<C-w>l:q<CR>" : 'gf'
+" nnoremap gf &buftype==#'terminal' ? :let _jump_to=expand("<cWORD>")<cr><c-w>p:execute("e "._jump_to)<cr> : 'gf'
