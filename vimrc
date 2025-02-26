@@ -189,6 +189,32 @@ set t_Co=256
 
 colorscheme gruvbox8
 
+" Override terminal colours
+" Normal/bright pairs; black/red/green/yellow/blue/magenta/cyan/white
+
+" These are the defaults:
+" let g:terminal_ansi_colors = [
+"   \'#282828', '#cc241d',
+"   \'#98971a', '#d79921',
+"   \'#458588', '#b16286',
+"   \'#689d6a', '#a89984',
+"   \'#928374', '#fb4934',
+"   \'#b8bb26', '#fabd2f',
+"   \'#83a598', '#d3869b',
+"   \'#8ec07c', '#ebdbb2',
+"   \]
+
+let g:terminal_ansi_colors = [
+  \'#282828', '#cc241d',
+  \'#98971a', '#d79921',
+  \'#458588', '#b16286',
+  \'#689d6a', '#a89984',
+  \'#928374', '#fb4934',
+  \'#b8bb26', '#fabd2f',
+  \'#83a598', '#d3869b',
+  \'#8ec07c', '#ebdbb2',
+  \]
+
 " Move the fullscreen toggle away from the escape key
 anoremenu 1.1 TouchBar.-flexspace- <Nop>
 tlnoremenu 1.1 TouchBar.-flexspace- <Nop>
