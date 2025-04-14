@@ -225,6 +225,9 @@ set number
 " 2 spaces; no tabs (as is right and proper)
 set ai sw=2 sts=2 et
 
+" and only one space after a full stop when joining lines
+set nojoinspaces
+
 " Searching and history
 set ignorecase smartcase
 set history=10000
