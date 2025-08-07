@@ -39,6 +39,7 @@ hi CocSearch ctermfg=12 guifg=#18A3FF
 hi CocMenuSel ctermbg=109 guibg=#13354A
 
 autocmd BufWritePre *.ex,*.exs :call CocAction('format')
+autocmd BufWritePost *.heex :!mix format %
 
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
